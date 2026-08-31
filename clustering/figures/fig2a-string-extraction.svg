@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 200" font-family="Helvetica,Arial,sans-serif">
+<rect x="20" y="20" width="76" height="27" fill="#3c919e" rx="2"/>
+<text x="58.0" y="39" font-size="12.5" fill="white" text-anchor="middle" font-weight="bold">File 1</text>
+<rect x="102" y="20" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="159.0" y="39" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Reloc</text>
+<rect x="220" y="20" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="277.0" y="39" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Rsrc</text>
+<rect x="338" y="20" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="395.0" y="39" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">oleaut32.dll</text>
+<rect x="456" y="20" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="513.0" y="39" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">user32.dll</text>
+<rect x="20" y="50" width="76" height="27" fill="#3c919e" rx="2"/>
+<text x="58.0" y="69" font-size="12.5" fill="white" text-anchor="middle" font-weight="bold">File 2</text>
+<rect x="102" y="50" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="159.0" y="69" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Reloc</text>
+<rect x="220" y="50" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="277.0" y="69" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Rsrc</text>
+<rect x="338" y="50" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="395.0" y="69" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">user32.dll</text>
+<rect x="456" y="50" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="513.0" y="69" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">comctl32.dll</text>
+<rect x="20" y="80" width="76" height="27" fill="#3c919e" rx="2"/>
+<text x="58.0" y="99" font-size="12.5" fill="white" text-anchor="middle" font-weight="bold">File 3</text>
+<rect x="102" y="80" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="159.0" y="99" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Reloc</text>
+<rect x="220" y="80" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="277.0" y="99" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Rsrc</text>
+<rect x="338" y="80" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="395.0" y="99" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">kernel32.dll</text>
+<rect x="456" y="80" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="513.0" y="99" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">oleaut32.dll</text>
+<rect x="574" y="80" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="631.0" y="99" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">ole32.dll</text>
+<rect x="20" y="110" width="76" height="27" fill="#3c919e" rx="2"/>
+<text x="58.0" y="129" font-size="12.5" fill="white" text-anchor="middle" font-weight="bold">File 4</text>
+<rect x="102" y="110" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="159.0" y="129" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Reloc</text>
+<rect x="220" y="110" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="277.0" y="129" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Rsrc</text>
+<rect x="338" y="110" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="395.0" y="129" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">kernel32.dll</text>
+<rect x="456" y="110" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="513.0" y="129" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">ole32.dll</text>
+<rect x="574" y="110" width="114" height="27" fill="#e4e4e4" rx="2"/>
+<text x="631.0" y="129" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">ws2_32.dll</text>
+<rect x="20" y="140" width="76" height="27" fill="#3c919e" rx="2"/>
+<text x="58.0" y="159" font-size="12.5" fill="white" text-anchor="middle" font-weight="bold">File 5</text>
+<rect x="102" y="140" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="159.0" y="159" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">P.Rsrc</text>
+<rect x="220" y="140" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="277.0" y="159" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">kernel32.dll</text>
+<rect x="338" y="140" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="395.0" y="159" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">oleaut32.dll</text>
+<rect x="456" y="140" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="513.0" y="159" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">user32.dll</text>
+<rect x="574" y="140" width="114" height="27" fill="#f2f2f2" rx="2"/>
+<text x="631.0" y="159" font-size="12" fill="#333333" text-anchor="middle" font-weight="normal">comctl32.dll</text>
+</svg>

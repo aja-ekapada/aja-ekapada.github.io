@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="448" viewBox="0 0 660 448" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="660" height="448" fill="white"/>
+<text x="330" y="22" text-anchor="middle" font-size="14" font-weight="bold">Timestep sampling at the winner cell (lr2e-4/r8), test set 2</text>
+<line x1="118.3" y1="40" x2="118.3" y2="364" stroke="#e6e6e6"/>
+<text x="118.3" y="379" text-anchor="middle" fill="#444" font-size="11">88</text>
+<line x1="304.3" y1="40" x2="304.3" y2="364" stroke="#e6e6e6"/>
+<text x="304.3" y="379" text-anchor="middle" fill="#444" font-size="11">90</text>
+<line x1="490.2" y1="40" x2="490.2" y2="364" stroke="#e6e6e6"/>
+<text x="490.2" y="379" text-anchor="middle" fill="#444" font-size="11">92</text>
+<line x1="72" y1="344.0" x2="636" y2="344.0" stroke="#e6e6e6"/>
+<text x="66" y="348.0" text-anchor="end" fill="#444" font-size="11">0.235</text>
+<line x1="72" y1="227.6" x2="636" y2="227.6" stroke="#e6e6e6"/>
+<text x="66" y="231.6" text-anchor="end" fill="#444" font-size="11">0.240</text>
+<line x1="72" y1="111.2" x2="636" y2="111.2" stroke="#e6e6e6"/>
+<text x="66" y="115.2" text-anchor="end" fill="#444" font-size="11">0.245</text>
+<rect x="72" y="40" width="564" height="324" fill="none" stroke="#888"/>
+<text x="354" y="396" text-anchor="middle" font-size="12">transfer face_sim</text>
+<text transform="translate(28,202) rotate(-90)" text-anchor="middle" font-size="12">cosine_sim</text>
+<line x1="110.9" y1="125.2" x2="161.2" y2="201.6" stroke="#1b1b1b" stroke-width="1.6" stroke-opacity="0.8"/>
+<polygon points="169.0,213.3 155.4,205.4 167.1,197.7" fill="#1b1b1b" fill-opacity="0.9"/>
+<circle cx="110.9" cy="125.2" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="172.3" cy="218.3" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<line x1="110.9" y1="125.2" x2="578.0" y2="272.8" stroke="#1b1b1b" stroke-width="1.6" stroke-opacity="0.8"/>
+<polygon points="591.4,277.0 575.9,279.5 580.1,266.1" fill="#1b1b1b" fill-opacity="0.9"/>
+<circle cx="110.9" cy="125.2" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="597.1" cy="278.8" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="110.9" cy="125.2" r="4.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="597.1" cy="278.8" r="4.5" fill="#56b8c1" stroke="#56b8c1" stroke-width="1.5"/>
+<circle cx="172.3" cy="218.3" r="4.5" fill="#8a4fbe" stroke="#8a4fbe" stroke-width="1.5"/>
+<circle cx="141.6" cy="171.7" r="0" fill="#666" stroke="#666" stroke-width="1.5"/>
+<text x="149.6" y="175.7" text-anchor="start" font-size="11" fill="#666">slope −0.00606</text>
+<circle cx="354.5" cy="202.0" r="0" fill="#666" stroke="#666" stroke-width="1.5"/>
+<text x="354.5" y="218.0" text-anchor="middle" font-size="11" fill="#666">slope −0.00126</text>
+<rect x="548" y="46" width="82" height="57" fill="white" fill-opacity="0.92" stroke="#bbb"/>
+<circle cx="559.8" cy="58.0" r="4" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<text x="570" y="62">sigmoid</text>
+<circle cx="559.8" cy="75.0" r="4" fill="#56b8c1" stroke="#56b8c1" stroke-width="1.5"/>
+<text x="570" y="79">linear</text>
+<circle cx="559.8" cy="92.0" r="4" fill="#8a4fbe" stroke="#8a4fbe" stroke-width="1.5"/>
+<text x="570" y="96">shift</text>
+<text x="72" y="422" font-size="10" fill="#666" text-anchor="start">Hue = sampler, with sigmoid in the screen's colour for the winner cell. Black arrows run from</text>
+<text x="72" y="436" font-size="10" fill="#666" text-anchor="start">the sigmoid baseline to each arm, labelled with the trade-off slope (cosine/face).</text>
+</svg>

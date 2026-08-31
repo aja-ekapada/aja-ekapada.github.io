@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 118" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+<text x="20" y="22" font-size="14.5" fill="#3c919e" text-anchor="start" font-weight="bold" font-style="normal">Set S — sorted, deduplicated; each string receives a fixed index</text>
+<rect x="20" y="40" width="108" height="27" fill="#3c919e" rx="2"/>
+<text x="74.0" y="59" font-size="12.5" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">String</text>
+<rect x="130.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="172.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">P.Reloc</text>
+<rect x="219.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="261.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">P.Rsrc</text>
+<rect x="308.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="350.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">comctl32.dll</text>
+<rect x="397.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="439.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">kernel32.dll</text>
+<rect x="486.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="528.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">ole32.dll</text>
+<rect x="575.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="617.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">oleaut32.dll</text>
+<rect x="664.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="706.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">user32.dll</text>
+<rect x="753.0" y="40" width="85.0" height="27" fill="#3c919e" rx="2"/>
+<text x="795.5" y="59" font-size="11" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">ws2_32.dll</text>
+<rect x="20" y="70" width="108" height="27" fill="#e4e4e4" rx="2"/>
+<text x="74.0" y="89" font-size="12" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">Index</text>
+<rect x="130.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="172.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 0</text>
+<rect x="219.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="261.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 1</text>
+<rect x="308.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="350.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 2</text>
+<rect x="397.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="439.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 3</text>
+<rect x="486.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="528.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 4</text>
+<rect x="575.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="617.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 5</text>
+<rect x="664.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="706.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 6</text>
+<rect x="753.0" y="70" width="85.0" height="27" fill="#f2f2f2" rx="2"/>
+<text x="795.5" y="89" font-size="11.5" fill="#666" text-anchor="middle" font-weight="normal" font-style="normal">j = 7</text>
+</svg>

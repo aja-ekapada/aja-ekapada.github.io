@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="720" height="430" fill="white"/>
+<text x="360" y="22" text-anchor="middle" font-size="14" font-weight="bold">Mean face_sim per bucket vs. training steps</text>
+<text x="360" y="40" text-anchor="middle" font-size="12" fill="#666">Full Sweep screen, averaged over the cells evaluated at each step, test set 2</text>
+<text x="109.5" y="337" text-anchor="middle" fill="#444" font-size="11">1000</text>
+<text x="188.6" y="337" text-anchor="middle" fill="#444" font-size="11">2000</text>
+<text x="267.8" y="337" text-anchor="middle" fill="#444" font-size="11">3000</text>
+<text x="347.0" y="337" text-anchor="middle" fill="#444" font-size="11">4000</text>
+<text x="426.1" y="337" text-anchor="middle" fill="#444" font-size="11">5000</text>
+<line x1="58" y1="304.1" x2="438" y2="304.1" stroke="#e6e6e6"/>
+<text x="52" y="308.1" text-anchor="end" fill="#444" font-size="11">0</text>
+<line x1="58" y1="192.0" x2="438" y2="192.0" stroke="#e6e6e6"/>
+<text x="52" y="196.0" text-anchor="end" fill="#444" font-size="11">50</text>
+<line x1="58" y1="79.9" x2="438" y2="79.9" stroke="#e6e6e6"/>
+<text x="52" y="83.9" text-anchor="end" fill="#444" font-size="11">100</text>
+<rect x="58" y="62" width="380" height="260" fill="none" stroke="#888"/>
+<text x="248" y="354" text-anchor="middle" font-size="12">training steps</text>
+<text transform="translate(14,192) rotate(-90)" text-anchor="middle" font-size="12">mean face_sim</text>
+<polyline points="69.9,219.7 109.5,146.1 149.0,110.1 188.6,93.4 228.2,87.5 267.8,85.8 307.4,85.4 347.0,83.9 386.5,85.3 426.1,85.2" fill="none" stroke="#1b1b1b" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="69.9" cy="219.7" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="109.5" cy="146.1" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="149.0" cy="110.1" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="188.6" cy="93.4" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="228.2" cy="87.5" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="267.8" cy="85.8" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="307.4" cy="85.4" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="347.0" cy="83.9" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="386.5" cy="85.3" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="426.1" cy="85.2" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<polyline points="69.9,211.0 109.5,143.5 149.0,110.3 188.6,95.5 228.2,91.4 267.8,90.7 307.4,88.7 347.0,88.7 386.5,90.4 426.1,89.7" fill="none" stroke="#7f7f7f" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="69.9" cy="211.0" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="109.5" cy="143.5" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="149.0" cy="110.3" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="188.6" cy="95.5" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="228.2" cy="91.4" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="267.8" cy="90.7" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="307.4" cy="88.7" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="347.0" cy="88.7" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="386.5" cy="90.4" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="426.1" cy="89.7" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<polyline points="69.9,219.4 109.5,163.8 149.0,133.8 188.6,120.7 228.2,115.1 267.8,113.0 307.4,115.9 347.0,113.0 386.5,115.8 426.1,114.1" fill="none" stroke="#7b3294" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="69.9" cy="219.4" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="109.5" cy="163.8" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="149.0" cy="133.8" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="188.6" cy="120.7" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="228.2" cy="115.1" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="267.8" cy="113.0" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="307.4" cy="115.9" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="347.0" cy="113.0" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="386.5" cy="115.8" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="426.1" cy="114.1" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<polyline points="69.9,242.0 109.5,187.8 149.0,156.3 188.6,144.9 228.2,138.1 267.8,137.6 307.4,134.6 347.0,133.2 386.5,137.9 426.1,135.4" fill="none" stroke="#c9a227" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="69.9" cy="242.0" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="109.5" cy="187.8" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="149.0" cy="156.3" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="188.6" cy="144.9" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="228.2" cy="138.1" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="267.8" cy="137.6" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="307.4" cy="134.6" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="347.0" cy="133.2" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="386.5" cy="137.9" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="426.1" cy="135.4" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<polyline points="69.9,254.3 109.5,209.7 149.0,175.7 188.6,158.8 228.2,147.3 267.8,148.5 307.4,136.9 347.0,136.3 386.5,149.5 426.1,142.8" fill="none" stroke="#8c564b" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="69.9" cy="254.3" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="109.5" cy="209.7" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="149.0" cy="175.7" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="188.6" cy="158.8" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="228.2" cy="147.3" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="267.8" cy="148.5" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="307.4" cy="136.9" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="347.0" cy="136.3" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="386.5" cy="149.5" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="426.1" cy="142.8" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<rect x="452" y="66" width="260" height="91" fill="white" fill-opacity="0.92" stroke="#bbb"/>
+<circle cx="463.6" cy="78.0" r="4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<text x="474" y="82">identity_only: 97.4 at 3000</text>
+<circle cx="463.6" cy="95.0" r="4" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<text x="474" y="99">product_conditioning: 95.2 at 3000</text>
+<circle cx="463.6" cy="112.0" r="4" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<text x="474" y="116">style_shift: 85.3 at 3000</text>
+<circle cx="463.6" cy="129.0" r="4" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<text x="474" y="133">outfit_shift: 74.3 at 3000</text>
+<circle cx="463.6" cy="146.0" r="4" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<text x="474" y="150">context_shift: 69.4 at 3000</text>
+<text x="58" y="402" font-size="10" fill="#666" text-anchor="start">Cells leave the mean at their cap: 12 cells through 3000, 9 at 3500-4000, 4 (5e-5 only) at 4500-5000;</text>
+<text x="58" y="416" font-size="10" fill="#666" text-anchor="start">the legend gives the all-cell mean at step 3000.</text>
+</svg>

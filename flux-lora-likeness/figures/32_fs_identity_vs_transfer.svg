@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="720" height="470" fill="white"/>
+<text x="360" y="22" text-anchor="middle" font-size="14" font-weight="bold">Full Sweep screen: identity_only face_sim vs transfer face_sim per cell, test set 2</text>
+<line x1="209.6" y1="50" x2="209.6" y2="340" stroke="#e6e6e6"/>
+<text x="209.6" y="355" text-anchor="middle" fill="#444" font-size="11">80</text>
+<line x1="421.2" y1="50" x2="421.2" y2="340" stroke="#e6e6e6"/>
+<text x="421.2" y="355" text-anchor="middle" fill="#444" font-size="11">90</text>
+<line x1="632.8" y1="50" x2="632.8" y2="340" stroke="#e6e6e6"/>
+<text x="632.8" y="355" text-anchor="middle" fill="#444" font-size="11">100</text>
+<text x="124" y="66.1" text-anchor="end" fill="#444" font-size="11">lr5e-5/r4</text>
+<text x="124" y="90.2" text-anchor="end" fill="#444" font-size="11">lr2e-4/r4</text>
+<text x="124" y="114.4" text-anchor="end" fill="#444" font-size="11">lr5e-5/r8</text>
+<text x="124" y="138.6" text-anchor="end" fill="#444" font-size="11">lr5e-5/r32</text>
+<text x="124" y="162.8" text-anchor="end" fill="#444" font-size="11">lr1e-4/r16</text>
+<text x="124" y="186.9" text-anchor="end" fill="#444" font-size="11">lr5e-5/r16</text>
+<text x="124" y="211.1" text-anchor="end" fill="#444" font-size="11">lr1e-4/r4</text>
+<text x="124" y="235.2" text-anchor="end" fill="#444" font-size="11">lr1e-4/r32</text>
+<text x="124" y="259.4" text-anchor="end" fill="#444" font-size="11">lr1e-4/r8</text>
+<text x="124" y="283.6" text-anchor="end" fill="#444" font-size="11">lr2e-4/r16</text>
+<text x="124" y="307.8" text-anchor="end" fill="#444" font-size="11">lr2e-4/r32</text>
+<text x="124" y="331.9" text-anchor="end" fill="#444" font-size="11">lr2e-4/r8</text>
+<rect x="130" y="50" width="540" height="290" fill="none" stroke="#888"/>
+<text x="400" y="372" text-anchor="middle" font-size="12">face_sim</text>
+<polyline points="230.7,62.1 584.9,62.1" fill="none" stroke="#9ab7e2" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="230.7" cy="62.1" r="4.5" fill="#9ab7e2" stroke="#9ab7e2" stroke-width="1.5"/>
+<circle cx="584.9" cy="62.1" r="4.5" fill="white" stroke="#9ab7e2" stroke-width="1.5"/>
+<text x="407.8" y="53.1" text-anchor="middle" font-size="9" fill="#666">gap 16.7</text>
+<polyline points="236.4,86.2 568.4,86.2" fill="none" stroke="#f9b4d3" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="236.4" cy="86.2" r="4.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="568.4" cy="86.2" r="4.5" fill="white" stroke="#f9b4d3" stroke-width="1.5"/>
+<text x="402.4" y="77.2" text-anchor="middle" font-size="9" fill="#666">gap 15.7</text>
+<polyline points="257.2,110.4 581.6,110.4" fill="none" stroke="#628fd2" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="257.2" cy="110.4" r="4.5" fill="#628fd2" stroke="#628fd2" stroke-width="1.5"/>
+<circle cx="581.6" cy="110.4" r="4.5" fill="white" stroke="#628fd2" stroke-width="1.5"/>
+<text x="419.4" y="101.4" text-anchor="middle" font-size="9" fill="#666">gap 15.3</text>
+<polyline points="268.8,134.6 593.2,134.6" fill="none" stroke="#17478f" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="268.8" cy="134.6" r="4.5" fill="#17478f" stroke="#17478f" stroke-width="1.5"/>
+<circle cx="593.2" cy="134.6" r="4.5" fill="white" stroke="#17478f" stroke-width="1.5"/>
+<text x="431.0" y="125.6" text-anchor="middle" font-size="9" fill="#666">gap 15.3</text>
+<polyline points="286.8,158.8 587.7,158.8" fill="none" stroke="#2ca02c" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="286.8" cy="158.8" r="4.5" fill="#2ca02c" stroke="#2ca02c" stroke-width="1.5"/>
+<circle cx="587.7" cy="158.8" r="4.5" fill="white" stroke="#2ca02c" stroke-width="1.5"/>
+<text x="437.2" y="149.8" text-anchor="middle" font-size="9" fill="#666">gap 14.2</text>
+<polyline points="294.2,182.9 599.3,182.9" fill="none" stroke="#1f5fbf" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="294.2" cy="182.9" r="4.5" fill="#1f5fbf" stroke="#1f5fbf" stroke-width="1.5"/>
+<circle cx="599.3" cy="182.9" r="4.5" fill="white" stroke="#1f5fbf" stroke-width="1.5"/>
+<text x="446.8" y="173.9" text-anchor="middle" font-size="9" fill="#666">gap 14.4</text>
+<polyline points="296.1,207.1 599.3,207.1" fill="none" stroke="#a0d4a0" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="296.1" cy="207.1" r="4.5" fill="#a0d4a0" stroke="#a0d4a0" stroke-width="1.5"/>
+<circle cx="599.3" cy="207.1" r="4.5" fill="white" stroke="#a0d4a0" stroke-width="1.5"/>
+<text x="447.7" y="198.1" text-anchor="middle" font-size="9" fill="#666">gap 14.3</text>
+<polyline points="309.0,231.2 597.0,231.2" fill="none" stroke="#217821" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="309.0" cy="231.2" r="4.5" fill="#217821" stroke="#217821" stroke-width="1.5"/>
+<circle cx="597.0" cy="231.2" r="4.5" fill="white" stroke="#217821" stroke-width="1.5"/>
+<text x="453.0" y="222.2" text-anchor="middle" font-size="9" fill="#666">gap 13.6</text>
+<polyline points="333.3,255.4 594.5,255.4" fill="none" stroke="#6bbc6b" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="333.3" cy="255.4" r="4.5" fill="#6bbc6b" stroke="#6bbc6b" stroke-width="1.5"/>
+<circle cx="594.5" cy="255.4" r="4.5" fill="white" stroke="#6bbc6b" stroke-width="1.5"/>
+<text x="463.9" y="246.4" text-anchor="middle" font-size="9" fill="#666">gap 12.3</text>
+<polyline points="358.1,279.6 614.1,279.6" fill="none" stroke="#d62728" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="358.1" cy="279.6" r="4.5" fill="#d62728" stroke="#d62728" stroke-width="1.5"/>
+<circle cx="614.1" cy="279.6" r="4.5" fill="white" stroke="#d62728" stroke-width="1.5"/>
+<text x="486.1" y="270.6" text-anchor="middle" font-size="9" fill="#666">gap 12.1</text>
+<polyline points="362.5,303.8 606.5,303.8" fill="none" stroke="#e8470f" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="362.5" cy="303.8" r="4.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="606.5" cy="303.8" r="4.5" fill="white" stroke="#e8470f" stroke-width="1.5"/>
+<text x="484.5" y="294.8" text-anchor="middle" font-size="9" fill="#666">gap 11.5</text>
+<polyline points="377.1,327.9 612.4,327.9" fill="none" stroke="#f06292" stroke-width="2.5" stroke-opacity="0.5"/>
+<circle cx="377.1" cy="327.9" r="4.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="612.4" cy="327.9" r="4.5" fill="white" stroke="#f06292" stroke-width="1.5"/>
+<text x="494.8" y="318.9" text-anchor="middle" font-size="9" fill="#666">gap 11.1</text>
+<rect x="61" y="378" width="607" height="57" fill="white" fill-opacity="0.92" stroke="#bbb"/>
+<circle cx="72.8" cy="390.0" r="4" fill="#d62728" stroke="#d62728" stroke-width="1.5"/>
+<text x="83" y="394">lr 2e-4</text>
+<circle cx="72.8" cy="407.0" r="4" fill="#2ca02c" stroke="#2ca02c" stroke-width="1.5"/>
+<text x="83" y="411">lr 1e-4</text>
+<circle cx="72.8" cy="424.0" r="4" fill="#1f5fbf" stroke="#1f5fbf" stroke-width="1.5"/>
+<text x="83" y="428">lr 5e-5</text>
+<circle cx="373.4" cy="390.0" r="4" fill="#666" stroke="#666" stroke-width="1.5"/>
+<text x="383" y="394">transfer face_sim (four transfer buckets)</text>
+<circle cx="373.4" cy="407.0" r="4" fill="white" stroke="#666" stroke-width="1.5"/>
+<text x="383" y="411">identity_only face_sim</text>
+<text x="130" y="455" font-size="10" fill="#666" text-anchor="start">Cells sorted by transfer face_sim. Hue = learning rate (legend); shade = rank, lighter for lower.</text>
+</svg>

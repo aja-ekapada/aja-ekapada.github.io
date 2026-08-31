@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="440" viewBox="0 0 660 440" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="660" height="440" fill="white"/>
+<text x="330" y="22" text-anchor="middle" font-size="14" font-weight="bold">Inference LoRA scale: transfer face_sim and cosine_sim against scale (three cells), test set 2</text>
+<text x="185" y="44" text-anchor="middle" font-size="12" font-weight="bold">transfer face_sim</text>
+<text x="70.0" y="335" text-anchor="middle" fill="#444" font-size="11">0.7</text>
+<text x="146.7" y="335" text-anchor="middle" fill="#444" font-size="11">0.85</text>
+<text x="223.3" y="335" text-anchor="middle" fill="#444" font-size="11">1</text>
+<text x="300.0" y="335" text-anchor="middle" fill="#444" font-size="11">1.15</text>
+<line x1="70" y1="254.8" x2="300" y2="254.8" stroke="#e6e6e6"/>
+<text x="64" y="258.8" text-anchor="end" fill="#444" font-size="11">70</text>
+<line x1="70" y1="177.2" x2="300" y2="177.2" stroke="#e6e6e6"/>
+<text x="64" y="181.2" text-anchor="end" fill="#444" font-size="11">80</text>
+<line x1="70" y1="99.7" x2="300" y2="99.7" stroke="#e6e6e6"/>
+<text x="64" y="103.7" text-anchor="end" fill="#444" font-size="11">90</text>
+<rect x="70" y="50" width="230" height="270" fill="none" stroke="#888"/>
+<text x="185" y="352" text-anchor="middle" font-size="12">LoRA scale</text>
+<text transform="translate(26,185) rotate(-90)" text-anchor="middle" font-size="12">transfer face_sim</text>
+<polyline points="70.0,275.8 146.7,216.0 223.3,167.2 300.0,115.2" fill="none" stroke="#f9b4d3" stroke-width="1.6" stroke-opacity="0.85"/>
+<circle cx="70.0" cy="275.8" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="146.7" cy="216.0" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="223.3" cy="167.2" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="300.0" cy="115.2" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<polyline points="70.0,209.1 146.7,149.3 223.3,115.9 300.0,89.6" fill="none" stroke="#f06292" stroke-width="1.6" stroke-opacity="0.85"/>
+<circle cx="70.0" cy="209.1" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="146.7" cy="149.3" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="223.3" cy="115.9" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="300.0" cy="89.6" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<polyline points="70.0,200.5 146.7,158.6 223.3,121.4 300.0,97.3" fill="none" stroke="#e8470f" stroke-width="1.6" stroke-opacity="0.85"/>
+<circle cx="70.0" cy="200.5" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="146.7" cy="158.6" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="223.3" cy="121.4" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="300.0" cy="97.3" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<text x="485" y="44" text-anchor="middle" font-size="12" font-weight="bold">cosine_sim</text>
+<text x="370.0" y="335" text-anchor="middle" fill="#444" font-size="11">0.7</text>
+<text x="446.7" y="335" text-anchor="middle" fill="#444" font-size="11">0.85</text>
+<text x="523.3" y="335" text-anchor="middle" fill="#444" font-size="11">1</text>
+<text x="600.0" y="335" text-anchor="middle" fill="#444" font-size="11">1.15</text>
+<line x1="370" y1="285.9" x2="600" y2="285.9" stroke="#e6e6e6"/>
+<text x="364" y="289.9" text-anchor="end" fill="#444" font-size="11">0.235</text>
+<line x1="370" y1="208.3" x2="600" y2="208.3" stroke="#e6e6e6"/>
+<text x="364" y="212.3" text-anchor="end" fill="#444" font-size="11">0.240</text>
+<line x1="370" y1="130.7" x2="600" y2="130.7" stroke="#e6e6e6"/>
+<text x="364" y="134.7" text-anchor="end" fill="#444" font-size="11">0.245</text>
+<line x1="370" y1="53.1" x2="600" y2="53.1" stroke="#e6e6e6"/>
+<text x="364" y="57.1" text-anchor="end" fill="#444" font-size="11">0.250</text>
+<rect x="370" y="50" width="230" height="270" fill="none" stroke="#888"/>
+<text x="485" y="352" text-anchor="middle" font-size="12">LoRA scale</text>
+<text transform="translate(326,185) rotate(-90)" text-anchor="middle" font-size="12">cosine_sim</text>
+<polyline points="370.0,79.5 446.7,112.1 523.3,147.8 600.0,191.2" fill="none" stroke="#f9b4d3" stroke-width="1.6" stroke-opacity="0.85"/>
+<circle cx="370.0" cy="79.5" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="446.7" cy="112.1" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="523.3" cy="147.8" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<circle cx="600.0" cy="191.2" r="3.5" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<polyline points="370.0,144.7 446.7,161.7 523.3,140.0 600.0,175.7" fill="none" stroke="#f06292" stroke-width="1.6" stroke-opacity="0.85"/>
+<circle cx="370.0" cy="144.7" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="446.7" cy="161.7" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="523.3" cy="140.0" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<circle cx="600.0" cy="175.7" r="3.5" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<polyline points="370.0,112.1 446.7,161.7 523.3,130.7 600.0,160.2" fill="none" stroke="#e8470f" stroke-width="1.6" stroke-opacity="0.85"/>
+<circle cx="370.0" cy="112.1" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="446.7" cy="161.7" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="523.3" cy="130.7" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<circle cx="600.0" cy="160.2" r="3.5" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<rect x="59" y="366" width="571" height="40" fill="white" fill-opacity="0.92" stroke="#bbb"/>
+<text x="67" y="379" font-weight="bold">best checkpoint per cell</text>
+<circle cx="70.8" cy="395.0" r="4" fill="#f9b4d3" stroke="#f9b4d3" stroke-width="1.5"/>
+<text x="81" y="399">r4 (step 1500)</text>
+<circle cx="259.2" cy="395.0" r="4" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<text x="269" y="399">r8 (step 4000)</text>
+<circle cx="447.6" cy="395.0" r="4" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<text x="458" y="399">r32 (step 3000)</text>
+<text x="70" y="428" font-size="10" fill="#666" text-anchor="start">Shade = rank (light pink r4, pink r8, orange-red r32), all lr 2e-4.</text>
+</svg>

@@ -1,0 +1,46 @@
+/* Figure and reference styling for the FLUX LoRA likeness post.
+   Typography (body, headings, tables, captions) inherits the site theme. */
+
+figure {
+  margin: 1.6rem 0;
+}
+
+figure img,
+p img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Figures nested inside the numbered pipeline list */
+ol > li img {
+  margin: 0.9rem auto 0.4rem;
+}
+
+/* Display math can overflow on narrow screens */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.4rem 0;
+}
+
+/* References block */
+#references p,
+#refs p {
+  text-indent: -1.5rem;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+/* The description feeds meta/OG tags only; the subtitle already carries the
+   on-page byline, so keep the title-block description from rendering twice. */
+#title-block-header .description,
+.quarto-title .description {
+  display: none;
+}
+
+/* TOC: nested levels ship as .collapse and rely on quarto.js to expand;
+   force them visible so the section listing works with or without JS. */
+#TOC ul.collapse { display: block; }

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="448" viewBox="0 0 900 448" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="900" height="448" fill="white"/>
+<text x="450" y="22" text-anchor="middle" font-size="14" font-weight="bold">lr2e-4/r32 (step 3000) vs lr2e-4/r8 (step 4000) per bucket: who wins depends on the test set</text>
+<text x="250" y="44" text-anchor="middle" font-size="12" font-weight="bold">test set 1 (shares events with training)</text>
+<text x="106.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 106.0 312)">identity_only</text>
+<text x="178.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 178.0 312)">product_conditioning</text>
+<text x="250.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 250.0 312)">style_shift</text>
+<text x="322.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 322.0 312)">outfit_shift</text>
+<text x="394.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 394.0 312)">context_shift</text>
+<line x1="70" y1="282.8" x2="430" y2="282.8" stroke="#e6e6e6"/>
+<text x="64" y="286.8" text-anchor="end" fill="#444" font-size="11">60</text>
+<line x1="70" y1="175.0" x2="430" y2="175.0" stroke="#e6e6e6"/>
+<text x="64" y="179.0" text-anchor="end" fill="#444" font-size="11">80</text>
+<line x1="70" y1="67.2" x2="430" y2="67.2" stroke="#e6e6e6"/>
+<text x="64" y="71.2" text-anchor="end" fill="#444" font-size="11">100</text>
+<rect x="70" y="50" width="360" height="250" fill="none" stroke="#888"/>
+<text transform="translate(26,175) rotate(-90)" text-anchor="middle" font-size="12">face_sim</text>
+<rect x="82.2" y="67.8" width="21.6" height="215.0" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="108.2" y="67.8" width="21.6" height="215.0" fill="#f06292" fill-opacity="0.9"/>
+<text x="93.0" y="58.8" text-anchor="middle" font-size="9" fill="#e8470f">99.9</text>
+<text x="119.0" y="58.8" text-anchor="middle" font-size="9" fill="#f06292">99.9</text>
+<rect x="154.2" y="68.9" width="21.6" height="213.9" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="180.2" y="68.3" width="21.6" height="214.4" fill="#f06292" fill-opacity="0.9"/>
+<text x="165.0" y="59.9" text-anchor="middle" font-size="9" fill="#e8470f">99.7</text>
+<text x="191.0" y="59.3" text-anchor="middle" font-size="9" fill="#f06292">99.8</text>
+<rect x="226.2" y="125.4" width="21.6" height="157.3" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="252.2" y="95.3" width="21.6" height="187.5" fill="#f06292" fill-opacity="0.9"/>
+<text x="237.0" y="116.4" text-anchor="middle" font-size="9" fill="#e8470f">89.2</text>
+<text x="263.0" y="86.3" text-anchor="middle" font-size="9" fill="#f06292">94.8</text>
+<rect x="298.2" y="166.9" width="21.6" height="115.8" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="324.2" y="151.8" width="21.6" height="130.9" fill="#f06292" fill-opacity="0.9"/>
+<text x="309.0" y="157.9" text-anchor="middle" font-size="9" fill="#e8470f">81.5</text>
+<text x="335.0" y="142.8" text-anchor="middle" font-size="9" fill="#f06292">84.3</text>
+<rect x="370.2" y="156.1" width="21.6" height="126.6" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="396.2" y="116.3" width="21.6" height="166.5" fill="#f06292" fill-opacity="0.9"/>
+<text x="381.0" y="147.1" text-anchor="middle" font-size="9" fill="#e8470f">83.5</text>
+<text x="407.0" y="107.3" text-anchor="middle" font-size="9" fill="#f06292">90.9</text>
+<text x="670" y="44" text-anchor="middle" font-size="12" font-weight="bold">test set 2 (event-clean)</text>
+<text x="526.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 526.0 312)">identity_only</text>
+<text x="598.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 598.0 312)">product_conditioning</text>
+<text x="670.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 670.0 312)">style_shift</text>
+<text x="742.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 742.0 312)">outfit_shift</text>
+<text x="814.0" y="312" text-anchor="end" fill="#444" font-size="11" transform="rotate(-22 814.0 312)">context_shift</text>
+<line x1="490" y1="282.8" x2="850" y2="282.8" stroke="#e6e6e6"/>
+<text x="484" y="286.8" text-anchor="end" fill="#444" font-size="11">60</text>
+<line x1="490" y1="175.0" x2="850" y2="175.0" stroke="#e6e6e6"/>
+<text x="484" y="179.0" text-anchor="end" fill="#444" font-size="11">80</text>
+<line x1="490" y1="67.2" x2="850" y2="67.2" stroke="#e6e6e6"/>
+<text x="484" y="71.2" text-anchor="end" fill="#444" font-size="11">100</text>
+<rect x="490" y="50" width="360" height="250" fill="none" stroke="#888"/>
+<rect x="502.2" y="73.7" width="21.6" height="209.1" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="528.2" y="72.6" width="21.6" height="210.1" fill="#f06292" fill-opacity="0.9"/>
+<text x="513.0" y="64.7" text-anchor="middle" font-size="9" fill="#e8470f">98.8</text>
+<text x="539.0" y="63.6" text-anchor="middle" font-size="9" fill="#f06292">99.0</text>
+<rect x="574.2" y="76.9" width="21.6" height="205.8" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="600.2" y="78.0" width="21.6" height="204.7" fill="#f06292" fill-opacity="0.9"/>
+<text x="585.0" y="67.9" text-anchor="middle" font-size="9" fill="#e8470f">98.2</text>
+<text x="611.0" y="69.0" text-anchor="middle" font-size="9" fill="#f06292">98.0</text>
+<rect x="646.2" y="117.9" width="21.6" height="164.9" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="672.2" y="98.5" width="21.6" height="184.3" fill="#f06292" fill-opacity="0.9"/>
+<text x="657.0" y="108.9" text-anchor="middle" font-size="9" fill="#e8470f">90.6</text>
+<text x="683.0" y="89.5" text-anchor="middle" font-size="9" fill="#f06292">94.2</text>
+<rect x="718.2" y="170.7" width="21.6" height="112.1" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="744.2" y="176.1" width="21.6" height="106.7" fill="#f06292" fill-opacity="0.9"/>
+<text x="729.0" y="161.7" text-anchor="middle" font-size="9" fill="#e8470f">80.8</text>
+<text x="755.0" y="167.1" text-anchor="middle" font-size="9" fill="#f06292">79.8</text>
+<rect x="790.2" y="178.2" width="21.6" height="104.5" fill="#e8470f" fill-opacity="0.9"/>
+<rect x="816.2" y="177.2" width="21.6" height="105.6" fill="#f06292" fill-opacity="0.9"/>
+<text x="801.0" y="169.2" text-anchor="middle" font-size="9" fill="#e8470f">79.4</text>
+<text x="827.0" y="168.2" text-anchor="middle" font-size="9" fill="#f06292">79.6</text>
+<rect x="150" y="372" width="370" height="23" fill="white" fill-opacity="0.92" stroke="#bbb"/>
+<rect x="158.4" y="380.0" width="8" height="8" fill="#e8470f" stroke="#e8470f" stroke-width="1.5"/>
+<text x="172" y="388">lr2e-4/r32 at step 3000</text>
+<rect x="340.2" y="380.0" width="8" height="8" fill="#f06292" stroke="#f06292" stroke-width="1.5"/>
+<text x="354" y="388">lr2e-4/r8 at step 4000</text>
+<text x="70" y="428" font-size="10" fill="#666" text-anchor="start">Bars start at 60, not 0, to show the per-bucket differences; each cell at its best checkpoint on test set 2. Shade = rank (pink r8, orange-red r32), both lr 2e-4.</text>
+</svg>

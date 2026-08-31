@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aja S.">
+<meta name="description" content="A single-pass streaming clustering algorithm that cut malware-corpus analysis from 9 hours to 12 minutes — later granted as a US patent.">
+
+<title>Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes – Aja S.</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cfca05be01d3419732a5879cfde5cf21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Continuous-Time Generative Models",
+  "description": "An applied tour of the stochastic-calculus machinery behind modern generative AI.",
+  "url": "https://aja-ekapada.github.io"
+}
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes – Aja S.">
+<meta property="og:description" content="A single-pass streaming clustering algorithm that cut malware-corpus analysis from 9 hours to 12 minutes — later granted as a US patent.">
+<meta property="og:image" content="https://aja-ekapada.github.io/clustering/figures/fig1-malware-growth.svg">
+<meta property="og:site_name" content="Aja S.">
+<meta property="og:image:alt" content="Line chart of total unique malware samples from January 2007 to March 2009, rising toward 20 million, with a rose forecast line continuing the climb.">
+<meta name="twitter:title" content="Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes – Aja S.">
+<meta name="twitter:description" content="A single-pass streaming clustering algorithm that cut malware-corpus analysis from 9 hours to 12 minutes — later granted as a US patent.">
+<meta name="twitter:image" content="https://aja-ekapada.github.io/clustering/figures/fig1-malware-growth.svg">
+<meta name="twitter:image:alt" content="Line chart of total unique malware samples from January 2007 to March 2009, rising toward 20 million, with a rose forecast line continuing the climb.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Home</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../continuous-time-generative-models/index.html"> 
+<span class="menu-text">Continuous-Time Generative Models</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aja-ekapada/aja-ekapada.github.io"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link active" data-scroll-target="#the-problem"><span class="header-section-number">1</span> The problem</a>
+  <ul class="collapse">
+  <li><a href="#exponential-growth-in-malware-volume" id="toc-exponential-growth-in-malware-volume" class="nav-link" data-scroll-target="#exponential-growth-in-malware-volume"><span class="header-section-number">1.1</span> Exponential growth in malware volume</a></li>
+  <li><a href="#redundancy-among-samples" id="toc-redundancy-among-samples" class="nav-link" data-scroll-target="#redundancy-among-samples"><span class="header-section-number">1.2</span> Redundancy among samples</a></li>
+  <li><a href="#why-not-hierarchical-clustering" id="toc-why-not-hierarchical-clustering" class="nav-link" data-scroll-target="#why-not-hierarchical-clustering"><span class="header-section-number">1.3</span> Why not hierarchical clustering?</a></li>
+  </ul></li>
+  <li><a href="#the-method-streaming-clustering" id="toc-the-method-streaming-clustering" class="nav-link" data-scroll-target="#the-method-streaming-clustering"><span class="header-section-number">2</span> The method: streaming clustering</a>
+  <ul class="collapse">
+  <li><a href="#method-overview" id="toc-method-overview" class="nav-link" data-scroll-target="#method-overview"><span class="header-section-number">2.1</span> Method overview</a></li>
+  <li><a href="#simile-a-similarity-measure-between-two-files" id="toc-simile-a-similarity-measure-between-two-files" class="nav-link" data-scroll-target="#simile-a-similarity-measure-between-two-files"><span class="header-section-number">2.2</span> Simile: a similarity measure between two files</a></li>
+  <li><a href="#simile-between-a-file-and-a-cluster" id="toc-simile-between-a-file-and-a-cluster" class="nav-link" data-scroll-target="#simile-between-a-file-and-a-cluster"><span class="header-section-number">2.3</span> Simile between a file and a cluster</a></li>
+  <li><a href="#the-streaming-algorithm" id="toc-the-streaming-algorithm" class="nav-link" data-scroll-target="#the-streaming-algorithm"><span class="header-section-number">2.4</span> The streaming algorithm</a></li>
+  </ul></li>
+  <li><a href="#optimizations" id="toc-optimizations" class="nav-link" data-scroll-target="#optimizations"><span class="header-section-number">3</span> Optimizations</a>
+  <ul class="collapse">
+  <li><a href="#inherent-computational-complexity" id="toc-inherent-computational-complexity" class="nav-link" data-scroll-target="#inherent-computational-complexity"><span class="header-section-number">3.1</span> Inherent computational complexity</a></li>
+  <li><a href="#binary-representation-and-complexity-reduction" id="toc-binary-representation-and-complexity-reduction" class="nav-link" data-scroll-target="#binary-representation-and-complexity-reduction"><span class="header-section-number">3.2</span> Binary representation and complexity reduction</a>
+  <ul class="collapse">
+  <li><a href="#optimization-1-discard-if-poor" id="toc-optimization-1-discard-if-poor" class="nav-link" data-scroll-target="#optimization-1-discard-if-poor"><span class="header-section-number">3.2.1</span> Optimization 1: discard if poor</a></li>
+  <li><a href="#optimization-2-n_f-rightarrow-n_c" id="toc-optimization-2-n_f-rightarrow-n_c" class="nav-link" data-scroll-target="#optimization-2-n_f-rightarrow-n_c"><span class="header-section-number">3.2.2</span> Optimization 2: <span class="math inline">N_F \rightarrow N_C</span></a></li>
+  <li><a href="#optimization-3-sparse-matrix" id="toc-optimization-3-sparse-matrix" class="nav-link" data-scroll-target="#optimization-3-sparse-matrix"><span class="header-section-number">3.2.3</span> Optimization 3: sparse matrix</a></li>
+  <li><a href="#the-result" id="toc-the-result" class="nav-link" data-scroll-target="#the-result"><span class="header-section-number">3.2.4</span> The result</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#results-and-comparison" id="toc-results-and-comparison" class="nav-link" data-scroll-target="#results-and-comparison"><span class="header-section-number">4</span> Results and comparison</a>
+  <ul class="collapse">
+  <li><a href="#comparison-with-hierarchical-clustering" id="toc-comparison-with-hierarchical-clustering" class="nav-link" data-scroll-target="#comparison-with-hierarchical-clustering"><span class="header-section-number">4.1</span> Comparison with hierarchical clustering</a></li>
+  <li><a href="#experimental-evaluation" id="toc-experimental-evaluation" class="nav-link" data-scroll-target="#experimental-evaluation"><span class="header-section-number">4.2</span> Experimental evaluation</a>
+  <ul class="collapse">
+  <li><a href="#detections-per-signature" id="toc-detections-per-signature" class="nav-link" data-scroll-target="#detections-per-signature"><span class="header-section-number">4.2.1</span> Detections per signature</a></li>
+  </ul></li>
+  <li><a href="#relation-to-existing-work" id="toc-relation-to-existing-work" class="nav-link" data-scroll-target="#relation-to-existing-work"><span class="header-section-number">4.3</span> Relation to existing work</a></li>
+  <li><a href="#patent-disclosure-and-citation-impact" id="toc-patent-disclosure-and-citation-impact" class="nav-link" data-scroll-target="#patent-disclosure-and-citation-impact"><span class="header-section-number">4.4</span> Patent disclosure and citation impact</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">5</span> Conclusions</a></li>
+  <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link" data-scroll-target="#how-to-cite">How to cite</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/aja-ekapada/aja-ekapada.github.io/blob/main/clustering/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/aja-ekapada/aja-ekapada.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</h1>
+<p class="subtitle lead">A retrospective account of work I did in one of my previous roles on large-scale malware clustering, subsequently granted as a US patent.</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">security</div>
+    <div class="quarto-category">malware</div>
+    <div class="quarto-category">clustering</div>
+    <div class="quarto-category">algorithms</div>
+    <div class="quarto-category">patents</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A single-pass streaming clustering algorithm that cut malware-corpus analysis from 9 hours to 12 minutes — later granted as a US patent.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aja S. </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<section id="the-problem" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> The problem</h1>
+<section id="exponential-growth-in-malware-volume" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="exponential-growth-in-malware-volume"><span class="header-section-number">1.1</span> Exponential growth in malware volume</h2>
+<p>In the late 2000s, the anti-malware industry faced a submission rate that substantially exceeded its analysis capacity. Novel malware samples, together with a continuous stream of variants derived from existing families, arrived faster than human analysts could examine them. The scale of the increase is documented in the AV-TEST Institute’s collection statistics, which record an average monthly growth rate of 9.5% over this period (<a href="#fig-malware-growth" class="quarto-xref">Figure&nbsp;1</a>). This growth produced three consequences:</p>
+<ul>
+<li><strong>Processing time increased</strong> — each sample required individual analysis, and analyst capacity did not scale with submission volume.</li>
+<li><strong>Definition content expanded</strong> — each newly identified threat required an additional signature to be distributed to customers.</li>
+<li><strong>Scan durations lengthened</strong> — larger signature databases increased scan time on every protected endpoint.</li>
+</ul>
+<div id="fig-malware-growth" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Line chart of total unique malware samples from January 2007 to March 2009, rising toward 20 million, with a rose forecast line continuing the climb.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-malware-growth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig1-malware-growth.svg" class="img-fluid figure-img" alt="Line chart of total unique malware samples from January 2007 to March 2009, rising toward 20 million, with a rose forecast line continuing the climb.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-malware-growth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Total unique samples in AV-TEST’s malware collection, January 2007 to March 2009. The rose line is AV-TEST’s own forecast. Data: AV-TEST GmbH, <em>Malware Collection Statistics</em>, 2009-07-24.
+</figcaption>
+</figure>
+</div>
+<p>The conventional practice of authoring one signature per sample was therefore not scalable, and a fundamentally different formulation of the problem was required.</p>
+</section>
+<section id="redundancy-among-samples" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="redundancy-among-samples"><span class="header-section-number">1.2</span> Redundancy among samples</h2>
+<p>The governing observation is that <strong>not all samples exhibit unique behavior</strong>. The majority of newly submitted malware consists of variants of previously observed specimens: repacked, modified, or lightly mutated instances of the same underlying families.</p>
+<p>This redundancy motivates an alternative strategy: rather than analyzing every sample individually, <strong>group samples exhibiting similar behavior into clusters</strong>, analyze a single representative from each cluster, and infer the behavior of the remaining members by extension. A single <em>generic signature</em> can then be authored to detect the entire cluster. One signature then provides the coverage previously requiring hundreds, reversing each of the three consequences above.</p>
+</section>
+<section id="why-not-hierarchical-clustering" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="why-not-hierarchical-clustering"><span class="header-section-number">1.3</span> Why not hierarchical clustering?</h2>
+<p>The conventional choice for a task of this shape is hierarchical agglomerative clustering. Each item begins as its own cluster; the closest pair is merged; the process repeats until a stopping criterion is met. It is well understood, requires no advance specification of the number of clusters, and produces a dendrogram from which groupings may be cut at any desired granularity. Its complexity, however, is prohibitive at this scale.</p>
+<p>For <span class="math inline">N_F</span> files, hierarchical clustering requires the full pairwise similarity matrix:</p>
+<ul>
+<li><strong>Space complexity: <span class="math inline">O(N_F^2)</span>.</strong> All pairwise similarities are retained, since any pair may become the next merge candidate.</li>
+<li><strong>Time complexity: <span class="math inline">O(N_F^3)</span> for the naive formulation</strong>, reducible to <span class="math inline">O(N_F^2 \log N_F)</span> with priority-queue variants. Every merge alters the distances from the new cluster to all others, so similarities are recomputed repeatedly.</li>
+</ul>
+<p>The quadratic space term is the decisive obstacle. At <span class="math inline">N_F = 194{,}802</span>, the pairwise matrix contains approximately <span class="math inline">1.9 \times 10^{10}</span> entries, requiring on the order of 75 GB at four bytes per entry before any file content is stored. The cubic time term compounds this: doubling the corpus increases the work eightfold.</p>
+<p>A second objection is structural. Hierarchical clustering is inherently a <em>batch</em> method: the complete corpus must be present before clustering begins, and the arrival of new samples requires re-clustering from the start. Given a submission stream of millions of samples per year, a method requiring full recomputation on each arrival is unusable irrespective of its complexity.</p>
+<p>These two objections, quadratic memory and batch operation, motivate the streaming formulation described in the remainder of this post.</p>
+</section>
+</section>
+<section id="the-method-streaming-clustering" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The method: streaming clustering</h1>
+<section id="method-overview" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="method-overview"><span class="header-section-number">2.1</span> Method overview</h2>
+<p>The method rests on a single feature source: <strong>the ASCII strings contained within the files themselves</strong>. Malware samples encode a substantial degree of identity in their embedded strings, including DLL names, API identifiers, file paths, registry entries, URLs, packer artifacts, and compiler fingerprints. Variants belonging to a common family typically share a large proportion of this string content.</p>
+<p>The processing pipeline comprises three stages:</p>
+<ol type="1">
+<li><p><strong>String extraction.</strong> All ASCII strings are extracted from every sample and consolidated into an exhaustive set of unique strings, <em>S</em> (<a href="#fig-string-extraction" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<div id="fig-string-extraction" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five file icons, each listing a handful of extracted ASCII strings such as section names and imported DLL names.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-string-extraction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig2a-string-extraction.svg" class="img-fluid figure-img" alt="Five file icons, each listing a handful of extracted ASCII strings such as section names and imported DLL names.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-string-extraction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Representative ASCII strings extracted per file, comprising section names and imported DLL names, which constitute the shared residue characteristic of variants.
+</figcaption>
+</figure>
+</div>
+<p>Sorting and deduplicating the extracted strings yields the set <em>S</em>. Each member is assigned a fixed index <span class="math inline">j</span> as per its position in the sorted order (<a href="#fig-string-set" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<div id="fig-string-set" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A row of boxes holding the union of all extracted strings, each assigned a column index.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-string-set-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig2a2-string-set.svg" class="img-fluid figure-img" alt="A row of boxes holding the union of all extracted strings, each assigned a column index.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-string-set-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The unique string set S, with the index assigned to each member.
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>File-Vector construction.</strong> A File-Vector is a binary vector of length <span class="math inline">\left| S \right|</span> and represents the subset of the string set <em>S</em> present in its corresponding file. As each string is assigned a unique index in the previous step, a 1 or 0 at each index denotes the presence or absence of the corresponding string in that file (<a href="#fig-file-vector-matrix" class="quarto-xref">Figure&nbsp;4</a>).</p>
+<div id="fig-file-vector-matrix" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A five-row binary matrix; each row is a file, each column a string, with 1-cells highlighted in violet.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-file-vector-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig2b-file-vector-matrix.svg" class="img-fluid figure-img" alt="A five-row binary matrix; each row is a file, each column a string, with 1-cells highlighted in violet.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-file-vector-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The same five files as binary File-Vectors, over the columns of S established above.
+</figcaption>
+</figure>
+</div>
+<p>The file clustering problem is thereby reduced to a <em>vector</em> clustering problem.</p></li>
+<li><p><strong>Cluster generation.</strong> The resulting vectors are streamed into the clustering algorithm sequentially.</p></li>
+</ol>
+<p>As with any clustering scheme, three components are required: the items to be clustered (<strong>File-Vectors</strong>), a similarity measure (designated <strong>Simile</strong>), and a cutoff threshold (the <strong>Floor-Value</strong>).</p>
+</section>
+<section id="simile-a-similarity-measure-between-two-files" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="simile-a-similarity-measure-between-two-files"><span class="header-section-number">2.2</span> Simile: a similarity measure between two files</h2>
+<p>Simile is a correlation measure defined on the interval <span class="math inline">[0, 1]</span>. It is defined as the number of strings present in <em>both</em> files (the intersection) divided by the number of unique strings present in <em>either</em> file (the union), and is therefore equivalent to the Jaccard index computed over the corresponding string sets. Writing <span class="math inline">S_1</span> and <span class="math inline">S_2</span> for the string sets of the two files:</p>
+<p><span id="eq-simile"><span class="math display">\boxed{\,\text{Simile} = \frac{\left| S_1 \cap S_2 \right|}{\left| S_1 \cup S_2 \right|}\,} \tag{1}</span></span></p>
+<p>The union may be decomposed as the intersection plus the elements belonging to exactly one of the two sets, which gives the equivalent form:</p>
+<p><span class="math display">\text{Simile} = \frac{\left| S_1 \cap S_2 \right|}{\underbrace{\left| S_1 \cap S_2 \right|}_{\text{in both files}} + \underbrace{\left\{ \left| S_1 \cup S_2 \right| - \left| S_1 \cap S_2 \right| \right\}}_{\text{in exactly one file}}}</span></p>
+<p>The denominator is now a sum of two quantities that are directly countable:</p>
+<ul>
+<li>The first, <span class="math inline">\left| S_1 \cap S_2 \right|</span>, is the number of strings <strong>present in both files</strong>. This is the green region of <a href="#fig-venn" class="quarto-xref">Figure&nbsp;5</a>, and it is identical to the numerator.</li>
+<li>The second, <span class="math inline">\left| S_1 \cup S_2 \right| - \left| S_1 \cap S_2 \right|</span>, is the number of strings <strong>present in exactly one of the two files</strong>. This is the pair of rose regions.</li>
+</ul>
+<p>On File-Vectors, each quantity is one bitwise operation: <strong>AND</strong> (<span class="math inline">\wedge</span>), which yields 1 only where both operands are 1, marks the first; <strong>XOR</strong> (<span class="math inline">\oplus</span>), which yields 1 only where the operands differ, marks the second. Writing <span class="math inline">f_s</span> for the function returning the sum of a vector’s elements, the measure for two vectors <span class="math inline">V_1</span> and <span class="math inline">V_2</span> becomes:</p>
+<p><span id="eq-simile-binary"><span class="math display">\boxed{\,\text{Simile}(V_1, V_2) = \frac{f_s(V_1 \wedge V_2)}{f_s(V_1 \wedge V_2) + f_s(V_1 \oplus V_2)}\,} \tag{2}</span></span></p>
+<div id="fig-venn" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two overlapping circles on a rectangular universe; the intersection is shaded green, the non-overlapping parts rose, and the surrounding rectangle amber.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig3b-venn.svg" class="img-fluid figure-img" alt="Two overlapping circles on a rectangular universe; the intersection is shaded green, the non-overlapping parts rose, and the surrounding rectangle amber.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Simile as a set relation over the universe S of all extracted strings. The amber region holds strings appearing in neither file but occurring elsewhere in the corpus.
+</figcaption>
+</figure>
+</div>
+<p>On a binary vector, <span class="math inline">f_s</span> returns the count of its 1’s, conventionally the <strong>Hamming weight</strong> or <strong>population count</strong>, which on modern hardware is a single instruction. For two 8-bit vectors sharing 3 strings and differing in 2 positions, <span class="math inline">\text{Simile} = \frac{3}{3+2} = 0.6</span> (<a href="#fig-simile-example" class="quarto-xref">Figure&nbsp;6</a>).</p>
+<div id="fig-simile-example" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A worked table of two binary vectors and their AND and XOR rows; columns are tinted green, rose, or amber according to whether each string is in both files, exactly one, or neither.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simile-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig3-simile-example.svg" class="img-fluid figure-img" alt="A worked table of two binary vectors and their AND and XOR rows; columns are tinted green, rose, or amber according to whether each string is in both files, exactly one, or neither.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simile-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Worked Simile computation. Columns are coloured green where the string is present in both files, rose where present in exactly one, and amber where absent from both.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="simile-between-a-file-and-a-cluster" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="simile-between-a-file-and-a-cluster"><span class="header-section-number">2.3</span> Simile between a file and a cluster</h2>
+<p>Pairwise similarity is insufficient on its own, since the streaming algorithm must compare an incoming vector against entire <em>clusters</em>. The definition is therefore extended: the Simile between a vector and a cluster <strong>pools the pairwise counts across the members</strong> — total shared strings over total compared strings. For a cluster <span class="math inline">C</span> containing <span class="math inline">N</span> File-Vectors <span class="math inline">\{C_1, \ldots, C_N\}</span>:</p>
+<p><span id="eq-simile-cluster"><span class="math display">\boxed{\,\text{Simile}(V, C) = \frac{\displaystyle\sum_{i=1}^{N} f_s(V \wedge C_i)}{\displaystyle\sum_{i=1}^{N} f_s(V \wedge C_i) + \sum_{i=1}^{N} f_s(V \oplus C_i)}\,} \tag{3}</span></span></p>
+<p>where <span class="math inline">C_i</span> denotes the <span class="math inline">i</span>-th File-Vector in the cluster and <span class="math inline">N</span> the cluster cardinality. The pooled form preserves the range <span class="math inline">[0, 1]</span>, reduces to <a href="#eq-simile-binary" class="quarto-xref">Equation&nbsp;2</a> for <span class="math inline">N = 1</span>, and reflects all of the cluster’s members rather than the single closest one. It is a <em>weighted mean</em> of the pairwise Similes: writing <span class="math inline">u_i = f_s(V \wedge C_i) + f_s(V \oplus C_i)</span> for the number of strings in the union of <span class="math inline">V</span> and <span class="math inline">C_i</span>, the definition equals <span class="math inline">\sum_i u_i\, \text{Simile}(V, C_i) \,/\, \sum_i u_i</span>, so member <span class="math inline">i</span> carries the weight <span class="math inline">w_i = u_i / \sum_j u_j</span> — its share of all compared strings. A member that shares more compared strings carries more evidence and counts proportionally more, whereas an equal-weight arithmetic mean would give a three-string member the same vote as a three-thousand-string one. The pooled form is also what collapses into the constant-size per-cluster summary that the optimizations below exploit; the equal-weight mean admits no summary smaller than the member list itself.</p>
+</section>
+<section id="the-streaming-algorithm" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="the-streaming-algorithm"><span class="header-section-number">2.4</span> The streaming algorithm</h2>
+<p>The clustering procedure operates as a single pass over the incoming stream of File-Vectors. For each new vector:</p>
+<ol type="1">
+<li>Compute the Simile against every existing cluster.</li>
+<li>If the maximum Simile is greater than or equal to the Floor-Value, assign the vector to the corresponding cluster.</li>
+<li>Otherwise, instantiate a new cluster with this vector as its sole initial member.</li>
+</ol>
+<p>The procedure requires no iteration, no re-clustering, and no retention of the full pairwise distance matrix in memory. Each sample is assigned exactly once, which is the defining property of the <em>streaming</em> formulation and the principal reason it remains tractable at industrial scale (<a href="#fig-streaming-flow" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<div id="fig-streaming-flow" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Flowchart: a queue of three binary column vectors flows into a compute-Simile box, then a decision diamond; yes adds to the best cluster, no creates a new cluster.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-streaming-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig4-streaming-flow.svg" class="img-fluid figure-img" alt="Flowchart: a queue of three binary column vectors flows into a compute-Simile box, then a decision diamond; yes adds to the best cluster, no creates a new cluster.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-streaming-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Assignment procedure for the streaming algorithm. Each incoming File-Vector is either assigned to its best-matching cluster or used to instantiate a new one.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="optimizations" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Optimizations</h1>
+<section id="inherent-computational-complexity" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="inherent-computational-complexity"><span class="header-section-number">3.1</span> Inherent computational complexity</h2>
+<p>Notwithstanding the simplicity of the algorithm, a naive implementation proves computationally prohibitive. With <span class="math inline">N_F</span> files, <span class="math inline">N_C</span> clusters, and <span class="math inline">N_S = \left| S \right|</span> unique strings:</p>
+<ul>
+<li><strong>Space complexity:</strong> <span class="math inline">O(N_F \times N_S)</span>, since the complete vector for every file is retained in memory.</li>
+<li><strong>Time complexity:</strong> <span class="math inline">O(N_F^2 \times N_S)</span>, since each incoming vector is compared against all others, traversing the full vector length in every comparison.</li>
+</ul>
+<p>For a representative workload of 68,000 files and 135,000 unique strings, these bounds correspond to approximately <strong>2 GB of memory and 9 hours of computation</strong>. A workload of this size could be completed by allocating sufficient hardware to it, but not at a cost proportionate to its value, and not on the daily cadence that production operation required.</p>
+</section>
+<section id="binary-representation-and-complexity-reduction" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="binary-representation-and-complexity-reduction"><span class="header-section-number">3.2</span> Binary representation and complexity reduction</h2>
+<p>The reduction in complexity derives from exploiting the binary representation of File-Vectors through three successive optimizations. All three are exact: none alters the resulting clustering, only the computational and memory cost of obtaining it.</p>
+<section id="optimization-1-discard-if-poor" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="optimization-1-discard-if-poor"><span class="header-section-number">3.2.1</span> Optimization 1: discard if poor</h3>
+<p>This optimization applies to clusters containing exactly one File-Vector. Prior to computing a full Simile between a new vector and a singleton cluster, a less expensive question is posed: what is the maximum Simile the pair could attain? Since the 1-count <span class="math inline">f_s(V)</span> of each vector is recorded once at construction time, an upper bound is obtained at negligible cost.</p>
+<p>Dividing numerator and denominator by the intersection term yields:</p>
+<p><span class="math display">\text{Simile}(V_1, V_2) = \frac{f_s(V_1 \wedge V_2)}{f_s(V_1 \wedge V_2) + f_s(V_1 \oplus V_2)} = \frac{1}{1 + \dfrac{f_s(V_1 \oplus V_2)}{f_s(V_1 \wedge V_2)}}</span></p>
+<p>Simile attains its maximum when the <span class="math inline">\wedge</span> term is as large as possible and the <span class="math inline">\oplus</span> term as small as possible. Given only the 1-counts, the extremal cases are:</p>
+<p><span class="math display">f_s(V_1 \wedge V_2)_{\max} = \min\big(f_s(V_1),\, f_s(V_2)\big) \qquad \text{(one string set wholly contained in the other)}</span></p>
+<p><span class="math display">f_s(V_1 \oplus V_2)_{\min} = \big|\, f_s(V_1) - f_s(V_2) \,\big| \qquad \text{(only the surplus strings differ)}</span></p>
+<p>Substituting both bounds, and assuming <span class="math inline">f_s(V_2) \le f_s(V_1)</span> without loss of generality:</p>
+<p><span class="math display">\text{Simile}(V_1, V_2)_{\max} = \frac{1}{1 + \dfrac{f_s(V_1) - f_s(V_2)}{f_s(V_2)}}</span></p>
+<p>Simplifying,</p>
+<p><span id="eq-simile-max"><span class="math display">\boxed{\,\text{Simile}(V_1, V_2)_{\max} = \frac{f_s(V_2)}{f_s(V_1)}\,} \tag{4}</span></span></p>
+<p>The maximum attainable Simile is therefore the <strong>ratio of the smaller 1-count to the larger</strong>, computable in constant time without vector traversal. If <span class="math inline">\text{Simile}_{\max} &lt; \text{Floor-Value}</span>, the full computation is omitted. This single test eliminated approximately <strong>30% of all Simile computations</strong>.</p>
+</section>
+<section id="optimization-2-n_f-rightarrow-n_c" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="optimization-2-n_f-rightarrow-n_c"><span class="header-section-number">3.2.2</span> Optimization 2: <span class="math inline">N_F \rightarrow N_C</span></h3>
+<p>The second optimization is algebraic. The cluster Simile <a href="#eq-simile-cluster" class="quarto-xref">Equation&nbsp;3</a> already aggregates the pairwise counts into summations, but evaluated as written it still requires accessing every member vector individually — each term traverses one member. Expanding <span class="math inline">\oplus</span> into its two one-sided differences, namely strings in <span class="math inline">V</span> but not in <span class="math inline">C_i</span> and strings in <span class="math inline">C_i</span> but not in <span class="math inline">V</span>:</p>
+<p><span class="math display">\text{Simile}(V, C) = \frac{\sum_{i} f_s(V \wedge C_i)}{\sum_{i} f_s(V \wedge C_i) + \sum_{i} f_s(V \wedge \overline{C_i}) + \sum_{i} f_s(\overline{V} \wedge C_i)}</span></p>
+<p>Consider now the sequence of operations. Each term evaluates: <span class="math inline">\wedge</span> <span class="math inline">\rightarrow</span> <span class="math inline">f_s</span> <span class="math inline">\rightarrow</span> summation over members. Because the vectors are binary, this sequence admits reordering to: <strong>summation over members <span class="math inline">\rightarrow</span> multiplication <span class="math inline">\rightarrow</span> count</strong>. This is an instance of the <em>sum of products versus product of sums</em> equivalence, and the reordering is justified by the <strong>distributive law of multiplication over addition</strong>,</p>
+<p><span class="math display">x\,y_1 + x\,y_2 + \cdots + x\,y_N \;=\; x\,(y_1 + y_2 + \cdots + y_N)</span></p>
+<p>applied independently at each string index <span class="math inline">j</span>, in conjunction with the interchange of the two finite summations, which is permitted by the commutativity and associativity of addition. Noting further that for binary vectors <span class="math inline">\wedge</span> is identical to element-wise multiplication:</p>
+<p><span class="math display">\sum_{i=1}^{N} f_s(V \wedge C_i) \;=\; \sum_{i=1}^{N} \sum_{j} V[j]\, C_i[j] \;=\; \sum_{j} V[j] \sum_{i=1}^{N} C_i[j] \;=\; f_s\!\left(V \cdot \sum_{i=1}^{N} C_i\right)</span></p>
+<p>where <span class="math inline">\sum_i C_i</span> denotes the <em>element-wise sum</em> of all member vectors, that is, a single vector of per-string membership counts, and the product is evaluated index by index. Here <span class="math inline">f_s</span> is read as the component sum, <span class="math inline">f_s(x) = \sum_j x[j]</span> — on binary vectors this coincides with the Hamming weight, while <span class="math inline">V \cdot \sum_i C_i</span> is in general integer-valued. The same rewriting applies to every term, so the complete cluster Simile may be expressed solely in terms of the two summation vectors:</p>
+<p><span id="eq-simile-sums"><span class="math display">\boxed{\,\text{Simile}(V, C) = \frac{f_s\!\left(V \cdot \sum_i C_i\right)}{f_s\!\left(V \cdot \sum_i C_i\right) + f_s\!\left(V \cdot \sum_i \overline{C_i}\right) + f_s\!\left(\overline{V} \cdot \sum_i C_i\right)}\,} \tag{5}</span></span></p>
+<p>The consequence is that computing the Simile against a cluster requires no access to the individual member vectors. Retaining only two summation vectors per cluster, <span class="math inline">\sum_i C_i</span> (the One_Count vector) and <span class="math inline">\sum_i \overline{C_i}</span> (the Zero_Count vector), is sufficient. The resulting complexity bounds are:</p>
+<ul>
+<li>Space: <span class="math inline">O(N_F \times N_S) \rightarrow \mathbf{O(N_C \times N_S)}</span></li>
+<li>Time: <span class="math inline">O(N_F^2 \times N_S) \rightarrow \mathbf{O(N_C \times N_F \times N_S)}</span></li>
+</ul>
+<p>Since the number of clusters was substantially smaller than the number of files, this was a considerable improvement, though memory did not fall proportionately: on the 68,000-file workload, <span class="math inline">N_C</span> was observed to be approximately <span class="math inline">N_F/3</span>.</p>
+</section>
+<section id="optimization-3-sparse-matrix" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="optimization-3-sparse-matrix"><span class="header-section-number">3.2.3</span> Optimization 3: sparse matrix</h3>
+<p>The final improvement follows from a property of the data: the strings present in any single cluster constitute a small subset of the exhaustive string set <span class="math inline">S</span>, so the One_Count vector <span class="math inline">\sum_i C_i</span> is highly sparse, with a measured density of approximately <strong>0.06%</strong>. Retaining only its non-zero values therefore offers a substantial saving.</p>
+<p>One obstacle remained: the rewritten formula from Optimization 2 also requires the Zero_Count vector <span class="math inline">\sum_i \overline{C_i}</span>, which is by construction dense precisely where One_Count is sparse. The algebra was therefore extended one step further, proceeding again from that form:</p>
+<p><span class="math display">\text{Simile}(V, C) = \frac{f_s\!\left(V \cdot \sum_i C_i\right)}{f_s\!\left(V \cdot \sum_i C_i\right) + f_s\!\left(V \cdot \sum_i \overline{C_i}\right) + f_s\!\left(\overline{V} \cdot \sum_i C_i\right)}</span></p>
+<p>The first two denominator terms may be combined, since the element-wise sum <span class="math inline">\sum_i C_i + \sum_i \overline{C_i}</span> is a vector containing <span class="math inline">N</span> at every index, each member contributing a 1 to exactly one of the two terms. Denoting this vector <span class="math inline">V_N</span>:</p>
+<p><span class="math display">f_s\!\left(V \cdot \sum_i C_i\right) + f_s\!\left(V \cdot \sum_i \overline{C_i}\right) = f_s(V \cdot V_N) = N \cdot f_s(V)</span></p>
+<p>which reduces the expression to its final form:</p>
+<p><span id="eq-simile-final"><span class="math display">\boxed{\,\text{Simile}(V, C) = \frac{f_s\!\left(V \cdot \sum_i C_i\right)}{N \cdot f_s(V) + f_s\!\left(\overline{V} \cdot \sum_i C_i\right)}\,} \tag{6}</span></span></p>
+<p>The dense Zero_Count vector has been eliminated: <span class="math inline">N</span> is a single integer per cluster and <span class="math inline">f_s(V)</span> is already available. Every remaining term references only <span class="math inline">\sum_i C_i</span>, and any index at which it holds a zero contributes nothing to the summations. A linked-list sparse representation storing only non-zero values therefore reduces both memory consumption and computation time.</p>
+</section>
+<section id="the-result" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="the-result"><span class="header-section-number">3.2.4</span> The result</h3>
+<p>The combined effect of the three optimizations on the same 68,000-file workload was as follows:</p>
+<ul>
+<li><strong>Memory: approximately 2 GB reduced to approximately 20 MB</strong>, a factor of 100.</li>
+<li><strong>Time: approximately 9 hours reduced to approximately 12 minutes</strong>, a factor of 45.</li>
+</ul>
+<p>The output is unchanged. All three optimizations are exact, so the clustering produced after them is identical to the clustering produced before. What changed is the cost of obtaining it, which is what determines whether the method can be run daily on a growing corpus rather than occasionally on a favourable one.</p>
+</section>
+</section>
+</section>
+<section id="results-and-comparison" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Results and comparison</h1>
+<section id="comparison-with-hierarchical-clustering" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="comparison-with-hierarchical-clustering"><span class="header-section-number">4.1</span> Comparison with hierarchical clustering</h2>
+<p>Streaming clustering addresses both of the objections raised earlier. Each sample is examined once and assigned immediately, so no pairwise matrix is ever formed and no re-clustering occurs. The cost is a known trade-off: the result depends on the order of arrival, and an assignment once made is never revisited, so the partition is not guaranteed optimal in the sense a hierarchical method would provide. In this application that trade-off is acceptable, since the objective is to group samples closely enough to support a shared generic signature, not to recover a canonical taxonomy (<a href="#fig-complexity" class="quarto-xref">Figure&nbsp;8</a>).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Hierarchical</th>
+<th>Streaming (naive)</th>
+<th>Streaming (optimized)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Space</td>
+<td><span class="math inline">O(N_F^2)</span></td>
+<td><span class="math inline">O(N_F \times N_S)</span></td>
+<td><span class="math inline">O(N_C \times N_S)</span>, sparse</td>
+</tr>
+<tr class="even">
+<td>Time</td>
+<td><span class="math inline">O(N_F^3)</span></td>
+<td><span class="math inline">O(N_F^2 \times N_S)</span></td>
+<td><span class="math inline">O(N_C \times N_F \times N_S)</span>, sparse</td>
+</tr>
+<tr class="odd">
+<td>Passes over the data</td>
+<td>Many</td>
+<td>One</td>
+<td>One</td>
+</tr>
+<tr class="even">
+<td>Accepts new samples incrementally</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Measured on 68,000 files</td>
+<td>Not feasible</td>
+<td>≈ 2 GB, ≈ 9 hours</td>
+<td>≈ 20 MB, ≈ 12 minutes</td>
+</tr>
+</tbody>
+</table>
+<div id="fig-complexity" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Log-scale curves of computational cost against corpus size for hierarchical, naive streaming, and optimized streaming; the optimized curve is lowest, with a dotted line at the 68,000-file corpus.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-complexity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig0-complexity-comparison.svg" class="img-fluid figure-img" alt="Log-scale curves of computational cost against corpus size for hierarchical, naive streaming, and optimized streaming; the optimized curve is lowest, with a dotted line at the 68,000-file corpus.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-complexity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Asymptotic scaling of the three approaches with corpus size, all curves plotted on a common baseline and assuming one unit of cost per elementary index operation. The optimized streaming curve incorporates the measured 0.06% matrix density. The dotted line marks the 68,000-file corpus used for the timing measurements.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="experimental-evaluation" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="experimental-evaluation"><span class="header-section-number">4.2</span> Experimental evaluation</h2>
+<p>The system was evaluated on a corpus of <strong>194,802 samples</strong> with a Floor-Value of 75%. The procedure produced well-populated groupings: the largest cluster contained <strong>32,499 samples</strong>, just <strong>403 clusters</strong> lay entirely within the first half of the covered samples, and the full set resolved into <strong>44,909 clusters</strong>. The observed cluster quality supports the central hypothesis: string-based similarity captures family relationships among malware variants to a degree sufficient both for generic signature construction and for disposing of non-malicious clusters in bulk (<a href="#fig-cluster-results" class="quarto-xref">Figure&nbsp;9</a>).</p>
+<div id="fig-cluster-results" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of cluster sizes against cumulative sample coverage; a few large clusters cover most of the corpus.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cluster-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig5-cluster-results.svg" class="img-fluid figure-img" alt="Bar chart of cluster sizes against cumulative sample coverage; a few large clusters cover most of the corpus.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Cluster size against percentage sample coverage for the 194,802-sample evaluation. A small number of large clusters account for the majority of samples.
+</figcaption>
+</figure>
+</div>
+<p>The operational effect was evident in analyst throughput. Relative to the preceding normalized-name approach, streaming clustering enabled a single analyst to process nearly <strong>ten times as many samples per day</strong> (approximately 307 against 33). The largest gain was in clearing samples as non-malicious, which rose from approximately 14 to 268 per day, since an entire cluster determined to be clean could be dispensed with in a single decision. In one such case, analysis of 15 clean or disputed clusters cleared 64,120 samples (<a href="#fig-throughput" class="quarto-xref">Figure&nbsp;10</a>).</p>
+<div id="fig-throughput" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Grouped bar chart of analyst throughput in samples per person-day before and after streaming clustering, split into cleared-as-non-malicious and signature-written.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-throughput-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig6-throughput-comparison.svg" class="img-fluid figure-img" alt="Grouped bar chart of analyst throughput in samples per person-day before and after streaming clustering, split into cleared-as-non-malicious and signature-written.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-throughput-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Analyst throughput under streaming clustering compared with the preceding normalized-name workflow, measured in samples handled per person-day. <em>Cleared as non-malicious</em> denotes samples determined to require no signature; <em>signature written</em> denotes samples for which a definition was authored and shipped.
+</figcaption>
+</figure>
+</div>
+<section id="detections-per-signature" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="detections-per-signature"><span class="header-section-number">4.2.1</span> Detections per signature</h3>
+<p>The clearest measure of the method’s value is the number of detections obtained per signature authored. Across the malicious clusters, signatures fell into two categories. Where cluster coherence permitted a hand-written <em>generic</em> signature, one signature covered a large number of samples. Where it did not, samples were covered in bulk by script-generated <em>automated</em> signatures, each of which covers essentially one sample.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nature of signatures</th>
+<th>Clusters</th>
+<th>Signatures</th>
+<th>Detections</th>
+<th>Detections per signature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Generic</td>
+<td>10</td>
+<td>28</td>
+<td>8,719</td>
+<td><strong>307.43</strong></td>
+</tr>
+<tr class="even">
+<td>Automated</td>
+<td>4</td>
+<td>1,525</td>
+<td>1,557</td>
+<td>1.02</td>
+</tr>
+</tbody>
+</table>
+<p>Twenty-eight generic signatures produced 8,719 detections, while 1,525 automated signatures produced 1,557: a comparable order of detections from roughly <strong>one fifty-fourth as many signatures</strong>, or <strong>307 detections per signature against 1.02</strong>. This is the mechanism by which the method attacks all three consequences identified at the outset. Detections protect the customer; signatures occupy the definition file and lengthen every scan. Raising the ratio between them increases coverage while holding definition content approximately constant.</p>
+<p>Several qualifications arise from operational experience:</p>
+<ul>
+<li>The method successfully clustered many files processed with unsupported packers, as the residual strings remained discriminative.</li>
+<li>Installer files constituted the principal weakness, with cluster quality varying considerably.</li>
+<li>Execution over sample sets restricted to malicious files yielded the highest-quality generic signatures.</li>
+<li>String extraction became the limiting stage of the pipeline, processing approximately 10,000 files per hour.</li>
+</ul>
+</section>
+</section>
+<section id="relation-to-existing-work" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="relation-to-existing-work"><span class="header-section-number">4.3</span> Relation to existing work</h2>
+<p>The ingredients are long-established. Binary presence/absence vectors compared by the Jaccard index are the classic set-of-words model from information retrieval, applied to near-duplicate document detection at web scale since the late 1990s <span class="citation" data-cites="broder1997resemblance charikar2002similarity"><a href="#ref-broder1997resemblance" role="doc-biblioref">[1]</a>, <a href="#ref-charikar2002similarity" role="doc-biblioref">[2]</a></span>. The clustering schema is Hartigan’s Leader algorithm <span class="citation" data-cites="hartigan1975clustering"><a href="#ref-hartigan1975clustering" role="doc-biblioref">[3]</a></span>: assign each arriving item to its best-matching cluster if a threshold is met, otherwise start a new one, carrying the same two limitations noted earlier, order dependence and threshold sensitivity. This work arrived at both independently, from the constraints of the problem; given presence/absence features, a corpus too large to hold pairwise, and a stream that does not stop, the design space is narrow.</p>
+<p>Contemporaneous malware work reached the same objective by a different route. BitShred <span class="citation" data-cites="jang2011bitshred"><a href="#ref-jang2011bitshred" role="doc-biblioref">[4]</a></span> also computes Jaccard similarity over bit vectors, but reduces dimensionality by <em>feature hashing</em>, trading a bounded error rate for fixed-size fingerprints; MutantX-S <span class="citation" data-cites="hu2013mutantxs"><a href="#ref-hu2013mutantxs" role="doc-biblioref">[5]</a></span> applied the same trick to million-dimensional n-gram vectors and then clustered hierarchically over prototypes rather than over all samples. Complementary work addressed the downstream step rather than this one: Griffin et al. <span class="citation" data-cites="griffin2009automatic"><a href="#ref-griffin2009automatic" role="doc-biblioref">[6]</a></span> automated the generation of string signatures for samples already known to be malicious and already grouped into families, taking as input the clusters that a method like this one produces.</p>
+<p>The contribution here is therefore neither the representation nor the clustering schema, but the exact algebraic reduction that makes their combination tractable: expressing cluster-level similarity through summation vectors so that member vectors need never be retained, then eliminating the dense complement term so that sparsity can be exploited. Where the hashing approaches trade accuracy for scale, this route preserves the exact result.</p>
+</section>
+<section id="patent-disclosure-and-citation-impact" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="patent-disclosure-and-citation-impact"><span class="header-section-number">4.4</span> Patent disclosure and citation impact</h2>
+<p>The method described here was filed with the USPTO and granted in 2013.</p>
+<p>It has since accumulated <strong>69 forward citations</strong>, placing it in roughly the <strong>92nd to 94th percentile</strong> among the approximately 8,000 US malware and malicious-software patents filed around that time. Citing organisations include Palo Alto Networks, Cisco, McAfee, and CrowdStrike, indicating that string-based clustering has remained an established technique within malware analysis.</p>
+<p>Citation count and peer cohort are both taken from PatSnap; the percentile is an estimate obtained by fitting a log-normal distribution to that cohort, the standard approach in the patent citation literature.</p>
+</section>
+</section>
+<section id="conclusions" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Conclusions</h1>
+<p>Two properties of this work merit emphasis. The first is <strong>efficiency</strong>: the final complexity is what separates a research prototype from a system that can run in production daily. The second is <strong>generality</strong>: no component of the core algorithm is specific to malware, and the method applies wherever strings can serve as representative features of an item, including documents, logs, and binaries of any kind.</p>
+<p>The broader conclusion is that when a problem appears computationally intractable, the remedy is more often a better representation than more hardware. A binary encoding, an algebraic reordering of operations, and the exploitation of sparsity were together sufficient here.</p>
+</section>
+<section id="how-to-cite" class="level1 unnumbered">
+<h1 class="unnumbered">How to cite</h1>
+<p>If you found this useful, please cite as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">aja2026clustering</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Aja S.},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>   = {2026},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>    = {https://aja-ekapada.github.io/clustering/}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-broder1997resemblance" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Z. Broder, <span>“On the resemblance and containment of documents,”</span> in <em>Proceedings, compression and complexity of SEQUENCES 1997</em>, IEEE Computer Society, 1997, pp. 21–29. doi: <a href="https://doi.org/10.1109/SEQUEN.1997.666900">10.1109/SEQUEN.1997.666900</a>.</div>
+</div>
+<div id="ref-charikar2002similarity" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. S. Charikar, <span>“Similarity estimation techniques from rounding algorithms,”</span> in <em>Proceedings of the 34th annual ACM symposium on theory of computing (STOC ’02)</em>, 2002, pp. 380–388. doi: <a href="https://doi.org/10.1145/509907.509965">10.1145/509907.509965</a>.</div>
+</div>
+<div id="ref-hartigan1975clustering" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J. A. Hartigan, <em>Clustering algorithms</em>. New York: John Wiley &amp; Sons, 1975.</div>
+</div>
+<div id="ref-jang2011bitshred" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J. Jang, D. Brumley, and S. Venkataraman, <span>“BitShred: Feature hashing malware for scalable triage and semantic analysis,”</span> in <em>Proceedings of the 18th ACM conference on computer and communications security (CCS ’11)</em>, 2011, pp. 309–320. doi: <a href="https://doi.org/10.1145/2046707.2046742">10.1145/2046707.2046742</a>.</div>
+</div>
+<div id="ref-hu2013mutantxs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">X. Hu, S. Bhatkar, K. Griffin, and K. G. Shin, <span>“MutantX-s: Scalable malware clustering based on static features,”</span> in <em>2013 USENIX annual technical conference (USENIX ATC ’13)</em>, San Jose, CA, 2013, pp. 187–198.</div>
+</div>
+<div id="ref-griffin2009automatic" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">K. Griffin, S. Schneider, X. Hu, and T. Chiueh, <span>“Automatic generation of string signatures for malware detection,”</span> in <em>Recent advances in intrusion detection (RAID 2009)</em>, 2009, pp. 101–120.</div>
+</div>
+</div>
+</section>
+<section id="glossary" class="level1 unnumbered">
+<h1 class="unnumbered">Glossary</h1>
+<p>The following domain terms are used throughout this post and are defined here for readers outside the security industry.</p>
+<p><strong>Malware</strong> — any malicious software, including viruses, worms, Trojan horses, and spyware. The term is a contraction of <em>malicious software</em>.</p>
+<p><strong>Malware sample</strong> — a single, uniquely identifiable copy of a malware specimen, typically an executable file collected in the wild and submitted to a security vendor for analysis.</p>
+<p><strong>Variant / family</strong> — malware authors seldom write code from scratch, instead modifying, repacking, or mutating existing code. The resulting related versions are termed <em>variants</em>, and the group to which they belong a <em>family</em>. This redundancy is the property that clustering exploits.</p>
+<p><strong>Signature</strong> — a pattern, such as a hash or byte sequence, by which an antivirus engine recognizes a known malware specimen. Conventionally, one signature detected one sample.</p>
+<p><strong>Generic signature</strong> — a single signature constructed to detect an entire cluster or family of related samples rather than one specific file. Achieving broader coverage with fewer signatures is the principal objective of this work.</p>
+<p><strong>Definition content</strong> — the signature database distributed to customers by an antivirus product and updated periodically. Its size directly affects download bandwidth, disk consumption, and the duration of a <em>scan</em>, the process of evaluating a machine’s files against it.</p>
+<p><strong>Static strings</strong> — human-readable text embedded within an executable file, including DLL names, API names, file paths, registry entries, and URLs. The term <em>static</em> indicates that they are read directly from the file without executing it.</p>
+<p><strong>Packer</strong> — a utility that compresses or encrypts an executable, frequently employed by malware authors to obscure their code. Packed files are more difficult to analyze, although residual strings often persist.</p>
+<p><strong>Cleared as non-malicious</strong> — an analyst triage outcome in which a sample is determined to be clean, corrupt, or otherwise not a threat, and is therefore dispensed with without a signature being written. Referred to internally as <em>junking</em>.</p>
+<p><strong>Signature written</strong> — a sample for which a detection signature has been authored and distributed to customers, so the product will thereafter recognise it. Referred to internally as a sample having been <em>deffed</em>, from <em>definition</em>.</p>
+<p><strong>False positive</strong> — an erroneous match between a signature and a benign file. This is the principal constraint on generic signature construction: coverage must be broad without extending to legitimate software.</p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes",
+  "datePublished": "2026-08-11",
+  "author": { "@type": "Person", "name": "Aja S." }
+}
+</script>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/aja-ekapada\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="preferred_color_scheme">
+<input type="hidden" id="giscus-alt-theme" value="preferred_color_scheme">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "aja-ekapada/aja-ekapada.github.io";
+    script.dataset.repoId = "R_kgDOT0r62A";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOT0r62M4DDHuT";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Aja S.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aja-ekapada/aja-ekapada.github.io/blob/main/clustering/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/aja-ekapada/aja-ekapada.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aja-ekapada/aja-ekapada.github.io">
+      <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

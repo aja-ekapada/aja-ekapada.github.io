@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="430" viewBox="0 0 660 430" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="660" height="430" fill="white"/>
+<text x="330" y="22" text-anchor="middle" font-size="14" font-weight="bold">Mean cosine_sim per bucket vs. training steps</text>
+<text x="330" y="40" text-anchor="middle" font-size="12" fill="#666">Partial Sweep, averaged over all configurations</text>
+<text x="58.0" y="337" text-anchor="middle" fill="#444" font-size="11">500</text>
+<text x="158.0" y="337" text-anchor="middle" fill="#444" font-size="11">1000</text>
+<text x="258.0" y="337" text-anchor="middle" fill="#444" font-size="11">1500</text>
+<text x="358.0" y="337" text-anchor="middle" fill="#444" font-size="11">2000</text>
+<line x1="58" y1="304.1" x2="358" y2="304.1" stroke="#e6e6e6"/>
+<text x="52" y="308.1" text-anchor="end" fill="#444" font-size="11">0.20</text>
+<line x1="58" y1="238.1" x2="358" y2="238.1" stroke="#e6e6e6"/>
+<text x="52" y="242.1" text-anchor="end" fill="#444" font-size="11">0.23</text>
+<line x1="58" y1="172.2" x2="358" y2="172.2" stroke="#e6e6e6"/>
+<text x="52" y="176.2" text-anchor="end" fill="#444" font-size="11">0.25</text>
+<line x1="58" y1="106.3" x2="358" y2="106.3" stroke="#e6e6e6"/>
+<text x="52" y="110.3" text-anchor="end" fill="#444" font-size="11">0.28</text>
+<rect x="58" y="62" width="300" height="260" fill="none" stroke="#888"/>
+<text x="208" y="354" text-anchor="middle" font-size="12">training steps</text>
+<text transform="translate(14,192) rotate(-90)" text-anchor="middle" font-size="12">mean cosine_sim</text>
+<polyline points="58.0,295.4 158.0,288.6 258.0,290.0 358.0,287.9" fill="none" stroke="#1b1b1b" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="58.0" cy="295.4" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="158.0" cy="288.6" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="258.0" cy="290.0" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<circle cx="358.0" cy="287.9" r="4.5" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<polyline points="58.0,148.1 158.0,154.3 258.0,150.3 358.0,158.0" fill="none" stroke="#7f7f7f" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="58.0" cy="148.1" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="158.0" cy="154.3" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="258.0" cy="150.3" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<circle cx="358.0" cy="158.0" r="4.5" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<polyline points="58.0,257.4 158.0,253.5 258.0,259.2 358.0,263.6" fill="none" stroke="#7b3294" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="58.0" cy="257.4" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="158.0" cy="253.5" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="258.0" cy="259.2" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<circle cx="358.0" cy="263.6" r="4.5" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<polyline points="58.0,189.1 158.0,190.9 258.0,194.2 358.0,195.6" fill="none" stroke="#c9a227" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="58.0" cy="189.1" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="158.0" cy="190.9" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="258.0" cy="194.2" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<circle cx="358.0" cy="195.6" r="4.5" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<polyline points="58.0,99.8 158.0,104.8 258.0,104.5 358.0,104.2" fill="none" stroke="#8c564b" stroke-width="2.0" stroke-opacity="0.85"/>
+<circle cx="58.0" cy="99.8" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="158.0" cy="104.8" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="258.0" cy="104.5" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<circle cx="358.0" cy="104.2" r="4.5" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<rect x="378" y="66" width="274" height="91" fill="white" fill-opacity="0.92" stroke="#bbb"/>
+<circle cx="390.4" cy="78.0" r="4" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.5"/>
+<text x="400" y="82">identity_only: 0.2061 at 2000</text>
+<circle cx="390.4" cy="95.0" r="4" fill="#7f7f7f" stroke="#7f7f7f" stroke-width="1.5"/>
+<text x="400" y="99">product_conditioning: 0.2554 at 2000</text>
+<circle cx="390.4" cy="112.0" r="4" fill="#7b3294" stroke="#7b3294" stroke-width="1.5"/>
+<text x="400" y="116">style_shift: 0.2154 at 2000</text>
+<circle cx="390.4" cy="129.0" r="4" fill="#c9a227" stroke="#c9a227" stroke-width="1.5"/>
+<text x="400" y="133">outfit_shift: 0.2411 at 2000</text>
+<circle cx="390.4" cy="146.0" r="4" fill="#8c564b" stroke="#8c564b" stroke-width="1.5"/>
+<text x="400" y="150">context_shift: 0.2758 at 2000</text>
+<text x="58" y="402" font-size="10" fill="#666" text-anchor="start">Mean over the six Partial Sweep configurations at each step (five at 2000: lr1e-4/r16 n10 stops at 1500);</text>
+<text x="58" y="416" font-size="10" fill="#666" text-anchor="start">includes the non-learning lr5e-5/r8 cell.</text>
+</svg>

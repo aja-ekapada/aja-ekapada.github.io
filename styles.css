@@ -1,0 +1,180 @@
+/* ---- Reading width & rhythm ---------------------------------------- */
+/* Math-heavy long-form reads better in a slightly narrower measure. */
+.page-columns {
+  --mermaid-font-family: inherit;
+}
+
+p,
+.callout,
+ol,
+ul {
+  line-height: 1.65;
+}
+
+/* ---- Headings ------------------------------------------------------ */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Bootstrap renders h4 in a lighter secondary colour and weight; match it to
+   h1–h3 (which inherit the body colour) so the numbered #### sub-subsection
+   headings read as the same black. */
+h4 {
+  color: var(--bs-body-color, #373a3c);
+  font-size: 1.1rem;
+}
+
+/* The auto-numbering span (e.g. "4.7.3.1") is themed a muted grey; make it
+   inherit the heading's colour so the digits match the heading text. */
+.header-section-number {
+  color: inherit;
+}
+
+h1.title {
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  font-weight: 400;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+/* ---- Display math: let wide equations scroll instead of overflow --- */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* Boxed final results (\boxed{}) get a little breathing room. */
+.katex-display > .katex {
+  white-space: normal;
+}
+
+/* ---- Tables -------------------------------------------------------- */
+table {
+  font-size: 0.95rem;
+}
+
+/* Compact the wide 4-column QV-comparison table so each cell fits on one line:
+   smaller font, tight column padding, no wrapping (scrolls if ever too wide). */
+#tbl-qv-comparison { overflow-x: auto; }
+#tbl-qv-comparison table { font-size: 0.78rem; }
+#tbl-qv-comparison th,
+#tbl-qv-comparison td {
+  padding: 0.2rem 0.4rem;
+}
+
+/* The 4-column Black-Scholes / DDPM unification table: smaller font and tight
+   padding, but cells may wrap (they hold short LaTeX, not single-line text);
+   scroll horizontally only if it still overflows. */
+#tbl-comparison { overflow-x: auto; }
+#tbl-comparison table { font-size: 0.78rem; }
+#tbl-comparison th,
+#tbl-comparison td { padding: 0.2rem 0.45rem; }
+
+/* The 3-column Score-based-SDEs vs DDPM table (post 01, Part 4): its Objective
+   row holds long single-line KaTeX that cannot wrap, so scroll horizontally
+   rather than overflow the page; same compact type as the other wide tables. */
+#tbl-sde-vs-ddpm { overflow-x: auto; }
+#tbl-sde-vs-ddpm table { font-size: 0.78rem; }
+#tbl-sde-vs-ddpm th,
+#tbl-sde-vs-ddpm td { padding: 0.2rem 0.45rem; }
+
+/* ---- Lists --------------------------------------------------------- */
+/* Nested bullets in the article body render as filled discs (default is a
+   hollow circle); scoped to content so the TOC/sidebar is untouched. */
+#quarto-document-content ul ul { list-style-type: disc; }
+
+/* ---- Code ---------------------------------------------------------- */
+div.sourceCode {
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* ---- Figures ------------------------------------------------------- */
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Lift each article figure onto a "card": a thin bordered, rounded, white-matted
+   panel with a soft drop-shadow, so the figure reads as pasted on top of the
+   page rather than flush with it. Scoped to the document body so the series-list
+   thumbnails and navbar icons are untouched. */
+#quarto-document-content figure img {
+  border: 1px solid #e3e0d8;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+/* ---- Listing (landing page) ---------------------------------------- */
+.quarto-listing {
+  margin-top: 1.5rem;
+}
+
+.listing-title {
+  font-weight: 600;
+}
+
+/* ---- References ---------------------------------------------------- */
+#refs {
+  font-size: 0.92rem;
+}
+
+/* ---- Series list at top of each post ------------------------------- */
+/* Each post embeds the same #listing-posts-mini table the landing page uses,
+   so it must be styled identically site-wide. These rules mirror the landing
+   page's inline <style> for that id (header hidden, tight rows, theme link
+   colours), plus a highlight for the current post. */
+#listing-posts-mini table { margin-bottom: 0; }
+#listing-posts-mini table thead { display: none; }
+#listing-posts-mini table td { padding-top: 0.15rem; padding-bottom: 0.15rem; border: 0; }
+#listing-posts-mini { margin: 0.25rem 0 0.5rem; }
+#listing-posts-mini a { color: var(--bs-body-color, #373a3c); text-decoration: none; }
+#listing-posts-mini a:hover { color: var(--bs-link-color, #2761e3); text-decoration: underline; }
+#listing-posts-mini .listing-title a,
+#listing-posts-mini .listing-title { font-weight: 500; }
+#listing-posts-mini .listing-date,
+#listing-posts-mini .listing-date a { color: var(--bs-secondary-color, #6c757d); white-space: nowrap; }
+
+/* Lead-in label above the embedded listing (per-post only). */
+.series-list-head {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bs-secondary-color, #6c757d);
+}
+/* Current post: highlighted, bold, not a link. */
+#listing-posts-mini tr.current { cursor: default; }
+#listing-posts-mini tr.current .listing-title {
+  font-weight: 700;
+  color: var(--bs-emphasis-color, #1a1a1a);
+}
+#listing-posts-mini .series-here {
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+/* ---- Keyword highlighting (semantic; colour only) ----
+   Three keyword families, distinguished purely by colour (text otherwise normal):
+     .kw-math  maths / stochastic-calculus machinery  -> purple
+     .kw-fin   quantitative-finance terms             -> amber
+     .kw-ai    generative-AI / diffusion terms        -> teal
+   Usage in prose:  [Itô's lemma]{.kw-math}  [hedging]{.kw-fin}  [score]{.kw-ai} */
+.kw-math { color: #6f42c1; }
+.kw-fin  { color: #9a6700; }
+.kw-ai   { color: #0b7285; }

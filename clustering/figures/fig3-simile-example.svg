@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+<text x="20" y="24" font-size="15" fill="#3c919e" text-anchor="start" font-weight="bold" font-style="normal">∧ counts strings shared by both files; ⊕ counts strings present in exactly one</text>
+<rect x="40" y="44" width="140" height="36" fill="#3c919e" rx="2"/>
+<text x="110.0" y="69" font-size="15" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">V₁</text>
+<rect x="188" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="211.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="240" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="263.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="292" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="315.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="344" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="367.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="396" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="419.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="448" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="471.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="500" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="523.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="552" y="44" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="575.5" y="69" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="40" y="86" width="140" height="36" fill="#3c919e" rx="2"/>
+<text x="110.0" y="111" font-size="15" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">V₂</text>
+<rect x="188" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="211.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="240" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="263.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="292" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="315.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="344" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="367.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="396" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="419.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="448" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="471.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="500" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="523.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="552" y="86" width="47" height="36" fill="#f2f2f2" rx="2"/>
+<text x="575.5" y="111" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="40" y="128" width="140" height="36" fill="#3c9e58" rx="2"/>
+<text x="110.0" y="153" font-size="15" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">V₁ ∧ V₂</text>
+<rect x="188" y="128" width="47" height="36" fill="#c9e5d2" rx="2"/>
+<text x="211.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="240" y="128" width="47" height="36" fill="#c9e5d2" rx="2"/>
+<text x="263.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="292" y="128" width="47" height="36" fill="#c9e5d2" rx="2"/>
+<text x="315.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="344" y="128" width="47" height="36" fill="#e9dfc7" rx="2"/>
+<text x="367.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="396" y="128" width="47" height="36" fill="#e6cfdd" rx="2"/>
+<text x="419.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="448" y="128" width="47" height="36" fill="#e9dfc7" rx="2"/>
+<text x="471.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="500" y="128" width="47" height="36" fill="#e9dfc7" rx="2"/>
+<text x="523.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="552" y="128" width="47" height="36" fill="#e6cfdd" rx="2"/>
+<text x="575.5" y="153" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="40" y="170" width="140" height="36" fill="#9e3c7a" rx="2"/>
+<text x="110.0" y="195" font-size="15" fill="white" text-anchor="middle" font-weight="bold" font-style="normal">V₁ ⊕ V₂</text>
+<rect x="188" y="170" width="47" height="36" fill="#c9e5d2" rx="2"/>
+<text x="211.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="240" y="170" width="47" height="36" fill="#c9e5d2" rx="2"/>
+<text x="263.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="292" y="170" width="47" height="36" fill="#c9e5d2" rx="2"/>
+<text x="315.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="344" y="170" width="47" height="36" fill="#e9dfc7" rx="2"/>
+<text x="367.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="396" y="170" width="47" height="36" fill="#e6cfdd" rx="2"/>
+<text x="419.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="448" y="170" width="47" height="36" fill="#e9dfc7" rx="2"/>
+<text x="471.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="500" y="170" width="47" height="36" fill="#e9dfc7" rx="2"/>
+<text x="523.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">0</text>
+<rect x="552" y="170" width="47" height="36" fill="#e6cfdd" rx="2"/>
+<text x="575.5" y="195" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold" font-style="normal">1</text>
+<rect x="40" y="217" width="15" height="13" fill="#c9e5d2" rx="2"/>
+<text x="61" y="228" font-size="12.5" fill="#444" text-anchor="start" font-weight="normal" font-style="normal">match — present in both</text>
+<rect x="298" y="217" width="15" height="13" fill="#e6cfdd" rx="2"/>
+<text x="319" y="228" font-size="12.5" fill="#444" text-anchor="start" font-weight="normal" font-style="normal">mis-match — present in one</text>
+<rect x="556" y="217" width="15" height="13" fill="#e9dfc7" rx="2"/>
+<text x="577" y="228" font-size="12.5" fill="#444" text-anchor="start" font-weight="normal" font-style="normal">neither — absent from both</text>
+<text x="40" y="262" font-size="15" fill="#2e7a44" text-anchor="start" font-weight="bold" font-style="normal">fₛ(V₁ ∧ V₂) = 3</text>
+<text x="220" y="262" font-size="15" fill="#7e3a5f" text-anchor="start" font-weight="bold" font-style="normal">fₛ(V₁ ⊕ V₂) = 2</text>
+<text x="40" y="298" font-size="19" fill="#333" text-anchor="start" font-weight="bold" font-style="normal">Simile = 3 / (3 + 2) = 0.6</text>
+</svg>
