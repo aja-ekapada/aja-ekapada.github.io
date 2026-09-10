@@ -9,7 +9,8 @@
   {
     "listing": "/continuous-time-generative-models/index.html",
     "items": [
-      "/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html"
+      "/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html",
+      "/continuous-time-generative-models/02-variational-vs-score-matching/index.html"
     ]
   },
   {
@@ -17,7 +18,8 @@
     "items": [
       "/flux-lora-likeness/index.html",
       "/clustering/index.html",
-      "/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html"
+      "/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html",
+      "/continuous-time-generative-models/02-variational-vs-score-matching/index.html"
     ]
   }
 ]
