@@ -39,26 +39,6 @@
 <td><span class="listing-date">Sep 10, 2026</span></td>
 <td><span class="title listing-title">Variational Bounds and Score Matching: Two Routes to Denoising Diffusion</span><span class="series-here"> — you are here</span></td>
 </tr>
-<tr class="odd">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">SDE-Based Generative Models: The Merger</span></td>
-</tr>
-<tr class="even">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">Flow Matching: Continuous Normalizing Flows for Practitioners</span></td>
-</tr>
-<tr class="odd">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">Langevin Dynamics, Fokker-Planck, and Diffusion Sampling</span></td>
-</tr>
-<tr class="even">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">Conditional Generation: From Importance Sampling to Classifier-Free Guidance</span></td>
-</tr>
-<tr class="odd">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">The EDM Design Space: One Noise Level Behind Both</span></td>
-</tr>
 </tbody>
 </table>
 
@@ -5221,26 +5201,6 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/clustering/
 <tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Sep 10, 2026</span></td>
 <td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">Variational Bounds and Score Matching: Two Routes to Denoising Diffusion</a></td>
-</tr>
-<tr class="odd">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">SDE-Based Generative Models: The Merger</span></td>
-</tr>
-<tr class="even">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">Flow Matching: Continuous Normalizing Flows for Practitioners</span></td>
-</tr>
-<tr class="odd">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">Langevin Dynamics, Fokker-Planck, and Diffusion Sampling</span></td>
-</tr>
-<tr class="even">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">Conditional Generation: From Importance Sampling to Classifier-Free Guidance</span></td>
-</tr>
-<tr class="odd">
-<td><span class="listing-date">forthcoming</span></td>
-<td><span class="title listing-title">The EDM Design Space: One Noise Level Behind Both</span></td>
 </tr>
 </tbody>
 </table>
