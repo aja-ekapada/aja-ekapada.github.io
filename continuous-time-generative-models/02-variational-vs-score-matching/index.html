@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aja S.">
-<meta name="description" content="The two routes to denoising diffusion — the ELBO of DDPM and denoising score matching — derived in full, with the noise-conditional score network and annealed Langevin sampling.">
+<meta name="description" content="From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.">
 
-<title>Variational Bounds and Score Matching: Two Routes to Denoising Diffusion – Aja S.</title>
+<title>The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion – Aja S.</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -136,6 +136,14 @@ div.csl-indent {
   "url": "https://aja-ekapada.github.io"
 }
 </script>
+<style>
+/* Render the auto-numbered Part (level-1) labels as "Part N —" in the body and the TOC. */
+h1 > .header-section-number::before,
+#TOC > ul > li > a > .header-section-number::before { content: "Part "; }
+h1 > .header-section-number::after,
+#TOC > ul > li > a > .header-section-number::after { content: " \2014"; }
+h1 > .header-section-number, h2 > .header-section-number, h3 > .header-section-number { color: var(--bs-body-color) !important; }
+</style>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -182,14 +190,14 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Variational Bounds and Score Matching: Two Routes to Denoising Diffusion – Aja S.">
-<meta property="og:description" content="The two routes to denoising diffusion — the ELBO of DDPM and denoising score matching — derived in full, with the noise-conditional score network and annealed Langevin sampling.">
+<meta property="og:title" content="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion – Aja S.">
+<meta property="og:description" content="From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.">
 <meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/index_files/figure-html/fig-score-field-output-1.png">
 <meta property="og:site_name" content="Aja S.">
 <meta property="og:image:height" content="1050">
 <meta property="og:image:width" content="1289">
-<meta name="twitter:title" content="Variational Bounds and Score Matching: Two Routes to Denoising Diffusion – Aja S.">
-<meta name="twitter:description" content="The two routes to denoising diffusion — the ELBO of DDPM and denoising score matching — derived in full, with the noise-conditional score network and annealed Langevin sampling.">
+<meta name="twitter:title" content="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion – Aja S.">
+<meta name="twitter:description" content="From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.">
 <meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/index_files/figure-html/fig-score-field-output-1.png">
 <meta name="twitter:image-height" content="1050">
 <meta name="twitter:image-width" content="1289">
@@ -323,8 +331,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Variational Bounds and Score Matching: Two Routes to Denoising Diffusion</h1>
-<p class="subtitle lead">DDPM’s variational bound and Vincent’s denoising score matching, and why both end at the same regression.</p>
+<h1 class="title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</h1>
+<p class="subtitle lead">How two methods, each inspired by a branch of statistical physics, became the foundations of modern image generation.</p>
   <div class="quarto-categories">
     <div class="quarto-category">stochastic calculus</div>
     <div class="quarto-category">diffusion models</div>
@@ -340,7 +348,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    The two routes to denoising diffusion — the ELBO of DDPM and denoising score matching — derived in full, with the noise-conditional score network and annealed Langevin sampling.
+    From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.
   </div>
 </div>
 
@@ -380,13 +388,13 @@ window.Quarto = {
 </tr>
 </thead>
 <tbody class="list">
-<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<tr class="current odd">
+<td><span class="listing-date">Sep 10, 2026</span></td>
+<td><span class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</span><span class="series-here"> — you are here</span></td>
+</tr>
+<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Aug 10, 2026</span></td>
 <td><a href="../01-ito-bs-to-ddpm/index.html" class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</a></td>
-</tr>
-<tr class="current even">
-<td><span class="listing-date">Sep 10, 2026</span></td>
-<td><span class="title listing-title">Variational Bounds and Score Matching: Two Routes to Denoising Diffusion</span><span class="series-here"> — you are here</span></td>
 </tr>
 </tbody>
 </table>
@@ -1111,7 +1119,7 @@ dX_t = \nabla_x \log p_0(X_t)\, dt + \sqrt{2}\, dW_t
 \frac{\partial p}{\partial t}\bigg|_{p = p_0} = 0
 </span></p>
 <p>So <span class="math inline">p_0</span> does not change under the dynamics. That the law of <span class="math inline">X_t</span> converges to it from any starting point is the ergodicity result of Roberts and Tweedie <span class="citation" data-cites="roberts1996exponential"><a href="#ref-roberts1996exponential" role="doc-biblioref">[21]</a></span>.</p>
-<p>Approximate sample paths of this Langevin diffusion can be generated by the Euler–Maruyama method, the discrete-time scheme for SDEs, with a fixed time step <span class="math inline">\varepsilon &gt; 0</span>. That discretization is known as the <strong>unadjusted Langevin algorithm (ULA)</strong> <span class="citation" data-cites="roberts1996exponential"><a href="#ref-roberts1996exponential" role="doc-biblioref">[21]</a></span>.</p>
+<p>Approximate sample paths of this Langevin diffusion can be generated by the Euler-Maruyama method, the discrete-time scheme for SDEs, with a fixed time step <span class="math inline">\varepsilon &gt; 0</span>. That discretization is known as the <strong>unadjusted Langevin algorithm (ULA)</strong> <span class="citation" data-cites="roberts1996exponential"><a href="#ref-roberts1996exponential" role="doc-biblioref">[21]</a></span>.</p>
 <p>Initialize <span class="math inline">x^{(0)} \sim \pi</span> from any distribution, and repeat for <span class="math inline">k \leftarrow 1, 2, \ldots, K</span>,</p>
 <p><span class="math display">
 \begin{aligned}
@@ -1280,8 +1288,8 @@ Table&nbsp;1: What each quantity costs in backward passes. Ordinary training and
 </section>
 <section id="denoising-score-matching-the-tractable-route-to-score-estimation" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Denoising ≡ score matching: the tractable route to score estimation</h1>
-<p>The shift from density estimation to score estimation removes the partition-function barrier, but it immediately exposes a second fundamental obstacle: although the score <span class="math inline">\nabla_x \log p(x)</span> is the quantity we want to estimate, the estimation target — the score of the true data distribution — is itself unknown. We only have samples <span class="math inline">x \sim p_0</span>, not an analytical expression for <span class="math inline">p_0(x)</span>, so we cannot evaluate its gradient and train a network against it. The problem is circular: score estimation avoids the impossible normalization constant and replaces it with another quantity that is just as inaccessible, the gradient of an unknown high-dimensional density.</p>
-<p>Researchers therefore explored several ways around this problem. As we saw in Part 2, Hyvärinen’s score matching <span class="citation" data-cites="hyvarinen2005estimation"><a href="#ref-hyvarinen2005estimation" role="doc-biblioref">[19]</a></span> provided a major theoretical breakthrough by showing that, under suitable conditions, the score-matching objective could be rewritten so that it did not require knowing the data density itself; Song et al.’s <strong>sliced score matching</strong> <span class="citation" data-cites="song2019sliced"><a href="#ref-song2019sliced" role="doc-biblioref">[23]</a></span> later reduced the computational burden of estimating high-dimensional scores; and <strong>kernelized score matching</strong> <span class="citation" data-cites="sriperumbudur2017density"><a href="#ref-sriperumbudur2017density" role="doc-biblioref">[24]</a></span> and the related nonparametric approach of Li and Turner <span class="citation" data-cites="li2018gradient"><a href="#ref-li2018gradient" role="doc-biblioref">[25]</a></span> attempted to make score estimation practical directly from samples. These methods were important, but they did not yet provide a scalable solution for modern high-dimensional generation: the objectives could be computationally expensive, kernel and nonparametric methods suffered from poor scaling with dimensionality and sample size, and estimating the score accurately over the full data space remained difficult.</p>
+<p>ISM in Part 2 handled the unknown <span class="math inline">\nabla_x \log p_0</span> problem by sidestepping the density question entirely. The approach it produced carries several density-related pitfalls. It is also computationally impractical, at <span class="math inline">O(d)</span> backward passes per training example. The target density was eliminated, not resolved.</p>
+<p>This Part takes a different route. Rather than removing the unknown density entirely, we construct one. First we use the given training points to create the empirical distribution, which puts a spike at each training point and has no gradient anywhere. Then convolving it with a Gaussian kernel turns it into the Parzen density <span class="math inline">p_\sigma</span>, a smooth, full-dimensional density with a gradient field to match. But that alone does not make the target computationally efficient, as the score of <span class="math inline">p_\sigma</span> is still a sum over every training point. The step that makes it practical is switching the target from the marginal score to the conditional score of the Gaussian kernel, which is available in closed form. Vincent’s theorem shows the two objectives share a minimizer, so nothing is given up in the exchange. After all this, we arrive at a plain regression onto a target we can compute, at one backward pass per example instead of <span class="math inline">d</span>. And because <span class="math inline">p_\sigma</span> is smooth and supported everywhere, the density-related pitfalls of Part 2 dissolve. The cost: a new parameter, <span class="math inline">\sigma</span>, and the bias it introduces.</p>
 <section id="intuition" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="intuition"><span class="header-section-number">3.1</span> Intuition</h2>
 <div id="fig-fog-lamps" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Black-and-white photograph of a straight road at night in thick fog. Ornate street lamps on both sides throw cones of light that spread and blur into the fog; the lamp posts are dim silhouettes, the glow is what stands out.">
@@ -1349,7 +1357,7 @@ Table&nbsp;2: Notation for the denoising score matching derivation, with Vincent
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">p_\sigma(\tilde{x}) = \frac{1}{n}\sum_{i=1}^n p_\sigma(\tilde{x} \mid x^{(i)})</span></td>
-<td style="text-align: left;">Parzen density estimate <span class="citation" data-cites="parzen1962estimation"><a href="#ref-parzen1962estimation" role="doc-biblioref">[26]</a></span> based on the training set; obtainable by marginalizing <span class="math inline">p_\sigma(x, \tilde{x})</span></td>
+<td style="text-align: left;">Parzen density estimate <span class="citation" data-cites="parzen1962estimation"><a href="#ref-parzen1962estimation" role="doc-biblioref">[23]</a></span> based on the training set; obtainable by marginalizing <span class="math inline">p_\sigma(x, \tilde{x})</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">p_\theta(x)</span></td>
@@ -1399,7 +1407,7 @@ Figure&nbsp;12: From samples to the empirical distribution. <strong>Left:</stron
 </div>
 </div>
 </div>
-<p>To fix that deficiency, we use kernel density estimation (KDE) <span class="citation" data-cites="parzen1962estimation"><a href="#ref-parzen1962estimation" role="doc-biblioref">[26]</a></span>. KDE is the application of kernel smoothing for probability density estimation, a non-parametric method to estimate the pdf of a random variable based on kernels as weights. KDE answers a fundamental data smoothing problem where inferences about the population are made based on a finite data sample, something we desire here as we are looking for an appropriate replacement of <span class="math inline">p_0</span> using the data samples.</p>
+<p>To fix that deficiency, we use kernel density estimation (KDE) <span class="citation" data-cites="parzen1962estimation"><a href="#ref-parzen1962estimation" role="doc-biblioref">[23]</a></span>. KDE is the application of kernel smoothing for probability density estimation, a non-parametric method to estimate the pdf of a random variable based on kernels as weights. KDE answers a fundamental data smoothing problem where inferences about the population are made based on a finite data sample, something we desire here as we are looking for an appropriate replacement of <span class="math inline">p_0</span> using the data samples.</p>
 <p>To do it, we take a sample and perturb it using additive Gaussian noise of covariance <span class="math inline">\sigma^{2}I</span> yielding corrupted input:</p>
 <p><span class="math display">
 \tilde{x} \;=\; x + \sigma\epsilon, \qquad \epsilon \sim \mathcal{N}\big(0,\, I\big)
@@ -1740,7 +1748,7 @@ s^{\star}(\tilde{x}) = \frac{\mathbb{E}[x\mid\tilde{x}]-\tilde{x}}{\sigma^{2}}
 <p><span id="eq-tweedie"><span class="math display">
 \boxed{\nabla_{\tilde{x}}\log p_\sigma(\tilde{x})\;=\;\frac{\mathbb{E}[x\mid\tilde{x}]-\tilde{x}}{\sigma^{2}}\qquad\Longleftrightarrow\qquad \mathbb{E}[x\mid\tilde{x}]\;=\;\tilde{x}+\sigma^{2}\,\nabla_{\tilde{x}}\log p_\sigma(\tilde{x})}
 \tag{26}</span></span></p>
-<p>That is Tweedie’s formula presented by Efron <span class="citation" data-cites="efron2011tweedie"><a href="#ref-efron2011tweedie" role="doc-biblioref">[27]</a></span>. <span class="math inline">\square</span></p>
+<p>That is Tweedie’s formula presented by Efron <span class="citation" data-cites="efron2011tweedie"><a href="#ref-efron2011tweedie" role="doc-biblioref">[24]</a></span>. <span class="math inline">\square</span></p>
 <p>It says that the best estimate of the clean sample behind <span class="math inline">\tilde{x}</span>, <span class="math inline">\mathbb{E}[x\mid\tilde{x}]</span>, and the score of the Parzen density <span class="math inline">\nabla_{\tilde{x}}\log p_\sigma(\tilde{x})</span> determine each other exactly: the score is the displacement from <span class="math inline">\tilde{x}</span> to that estimate, divided by <span class="math inline">\sigma^{2}</span>. If we estimate one, we can compute the other.</p>
 <p>Two points are worth clarifying. First, the correction that moves <span class="math inline">\tilde{x}</span> back toward the clean data is not the score itself but the score multiplied by <span class="math inline">\sigma^{2}</span>. Second, the best estimate of its clean version is <span class="math inline">\mathbb{E}[x\mid\tilde{x}]</span>, the posterior mean — not the particular <span class="math inline">x</span> that generated it (<a href="#fig-tweedie-denoiser" class="quarto-xref">Figure&nbsp;14</a>).</p>
 <div id="cell-fig-tweedie-denoiser" class="cell" data-execution_count="13">
@@ -1856,7 +1864,7 @@ Table&nbsp;4: The three score-matching objectives compared. All three estimate t
 </section>
 <section id="sec-annealed-langevin" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Modeling using multiple noise perturbations</h1>
-<p>As we saw in the previous Part, in Vincent’s paper, a single number controls the noise, and it is pulled in two directions at once (<a href="#fig-sigma-dilemma" class="quarto-xref">Figure&nbsp;15</a>). A small <span class="math inline">\sigma</span> is the low bias, high variance case. It keeps <span class="math inline">p_\sigma</span> close to <span class="math inline">p_0</span> and the learned score close to the data score, but it fails for two reasons. First, <span class="math inline">\sigma</span> controls how far the noise travels, and a small <span class="math inline">\sigma</span> means the regions with no density remain so, providing no training signal to a from-scratch sampler in those regions. Second, the regression target <span class="math inline">-\epsilon/\sigma</span> blows up, resulting in high estimator variance. A large <span class="math inline">\sigma</span> is the high bias, low variance case. It fixes both by filling the empty regions with some density, improving the signal, and keeping the target bounded as the estimator variance is low. What it gives up, however, is fidelity due to high bias, which results in <span class="math inline">p_\sigma</span> being far from <span class="math inline">p_0</span> and fine details blurred away in the generated sample. No single value is good to handle all three issues simultaneously.</p>
+<p>As we saw in the previous Part, in Vincent’s paper, a single number controls the noise, and it is pulled in two directions at once (<a href="#fig-sigma-dilemma" class="quarto-xref">Figure&nbsp;15</a>). A small <span class="math inline">\sigma</span> is the low-bias, high-variance case. It keeps <span class="math inline">p_\sigma</span> close to <span class="math inline">p_0</span> and the learned score close to the data score, but it fails for two reasons. First, <span class="math inline">\sigma</span> controls how far the noise travels, and a small <span class="math inline">\sigma</span> means the regions with no density remain so, providing no training signal to a from-scratch sampler in those regions. Second, the regression target <span class="math inline">-\epsilon/\sigma</span> blows up, resulting in high estimator variance. A large <span class="math inline">\sigma</span> is the high-bias, low-variance case. It fixes both by filling the empty regions with some density, improving the signal, and keeping the target bounded as the estimator variance is low. What it gives up, however, is fidelity due to high bias, which results in <span class="math inline">p_\sigma</span> being far from <span class="math inline">p_0</span> and fine details blurred away in the generated sample. No single value is good to handle all three issues simultaneously.</p>
 <div id="cell-fig-sigma-dilemma" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div id="fig-sigma-dilemma" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three one-dimensional panels, each with a solid smoothed curve, a dashed two-hump true density, and eight dots on the axis. Left: the solid curve is a row of narrow spikes at the dots with empty gaps between them. Middle: the solid curve has two broad humps roughly following the dashed curve. Right: the solid curve is a single wide low mound far from the dashed humps.">
@@ -1872,7 +1880,7 @@ Figure&nbsp;15: The <span class="math inline">\sigma</span> dilemma. The same ei
 </div>
 </div>
 <p>Vincent’s paper takes it as a fixed hyperparameter and lives with the compromise.</p>
-<p>Song and Ermon resolved this issue using the noise-conditional score network (NCSN) <span class="citation" data-cites="song2019generative"><a href="#ref-song2019generative" role="doc-biblioref">[6]</a></span>, which uses multiple <span class="math inline">\sigma</span> values, in particular a <em>geometric ladder</em> <span class="math inline">\sigma_1 &gt; \sigma_2 &gt; \cdots &gt; \sigma_L</span>. In this Part <span class="math inline">\sigma_i</span> is the <span class="math inline">i</span>-th noise level and <span class="math inline">L</span> the number of levels, following Song and Ermon. Neither carries its Part-1 meaning here. There <span class="math inline">\sigma_i</span> was the learned reverse step’s standard deviation and <span class="math inline">L</span> the variational bound. The maximum <span class="math inline">\sigma_1</span> is chosen as approximately equal to the maximum pairwise distance between data points, as Song and Ermon recommend <span class="citation" data-cites="song2020improved"><a href="#ref-song2020improved" role="doc-biblioref">[28]</a></span>, and the minimum <span class="math inline">\sigma_L</span> small enough such that noise in the final samples is negligible. The intermediate levels use a geometric progression with sufficient length as adjacent scales need sufficient overlap for annealed Langevin dynamics to transition between them:</p>
+<p>Song and Ermon resolved this issue using the noise-conditional score network (NCSN) <span class="citation" data-cites="song2019generative"><a href="#ref-song2019generative" role="doc-biblioref">[6]</a></span>, which uses multiple <span class="math inline">\sigma</span> values, in particular a <em>geometric ladder</em> <span class="math inline">\sigma_1 &gt; \sigma_2 &gt; \cdots &gt; \sigma_L</span>. In this Part <span class="math inline">\sigma_i</span> is the <span class="math inline">i</span>-th noise level and <span class="math inline">L</span> the number of levels, following Song and Ermon. Neither carries its Part-1 meaning here. There <span class="math inline">\sigma_i</span> was the learned reverse step’s standard deviation and <span class="math inline">L</span> the variational bound. The maximum <span class="math inline">\sigma_1</span> is chosen as approximately equal to the maximum pairwise distance between data points, as Song and Ermon recommend <span class="citation" data-cites="song2020improved"><a href="#ref-song2020improved" role="doc-biblioref">[25]</a></span>, and the minimum <span class="math inline">\sigma_L</span> small enough such that noise in the final samples is negligible. The intermediate levels use a geometric progression with sufficient length as adjacent scales need sufficient overlap for annealed Langevin dynamics to transition between them:</p>
 <p><span class="math display">
 \sigma_1 &gt; \sigma_2 &gt; \sigma_3 &gt; \cdots &gt; \sigma_{L-1} &gt; \sigma_L, \qquad \frac{\sigma_1}{\sigma_2} = \frac{\sigma_2}{\sigma_3} = \cdots = \frac{\sigma_{L-1}}{\sigma_L}
 </span></p>
@@ -1956,13 +1964,13 @@ Figure&nbsp;16: Annealed Langevin dynamics walks down the noise ladder. Each row
 </section>
 <section id="why-this-matters" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Why This Matters</h1>
-<p>If I have to put my finger on it, there were three decisive conceptual breakthroughs behind modern diffusion generation. The first was the realization that generative modeling could be reformulated in terms of score estimation rather than density estimation, thus eliminating the need to compute the intractable normalization constant of the true data distribution (<a href="#sec-how-the-score-helps" class="quarto-xref">Section&nbsp;2.2.3</a>). The second was denoising score matching (<a href="#sec-dsm-objective" class="quarto-xref">Section&nbsp;3.8</a>), which made the score tractably learnable from data. The third was the unification of variational and score-based methods by Song et al.&nbsp;using SDEs <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[2]</a></span>. The first removed the partition-function/normalization barrier, the second made score estimation practical, and the third induced a generic framework which made applying hundred-year-old mathematical toolkits to the diffusion problem possible, opening a plethora of new directions. Once these two fundamental obstacles were overcome and the SDE framework was introduced, much of the subsequent diffusion stack can be understood as an elaboration, scaling, and refinement of this framework. We covered the first two extensively in this post, while post #3 covers the third in full detail.</p>
+<p>If I have to put my finger on it, there were three decisive conceptual breakthroughs behind modern diffusion generation. The first was the realization that generative modeling could be reformulated in terms of score rather than density estimation, thus eliminating the need to compute the intractable partition function of the EBM (<a href="#sec-how-the-score-helps" class="quarto-xref">Section&nbsp;2.2.3</a>). The second was denoising score matching (<a href="#sec-dsm-objective" class="quarto-xref">Section&nbsp;3.8</a>), which made score matching computationally practical. The third was the unification of variational and score-based methods by Song et al.&nbsp;using SDEs <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[2]</a></span>, which induced a generic framework and made applying hundred-year-old mathematical toolkits to the diffusion problem possible, opening a plethora of new directions. With all three in place, much of the subsequent diffusion stack can be understood as an elaboration, scaling, and refinement of that framework. We covered the first two extensively in this post, while post #3 covers the third in full detail.</p>
 <p><strong>Where this goes next:</strong> Post #3 brings the two sides together. The variational chain of Part 1 and the score-based construction of Parts 2 to 4 turn out to be two discretizations of a single continuous-time object, and once that object is written as an SDE the whole apparatus of stochastic calculus applies to it. The quantities the two routes learn — DDPM’s noise prediction and the score-based model’s score — turn out to be equivalent parameterizations of one underlying object.</p>
 <section id="how-to-cite" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="how-to-cite">How to cite</h2>
 <p>If you found this useful, please cite as:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">aja2026tworoutes</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {Variational Bounds and Score Matching: Two Routes to Denoising Diffusion},</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion},</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Aja S.},</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>   = {2026},</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>    = {https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/},</span>
@@ -2038,30 +2046,21 @@ Figure&nbsp;16: Annealed Langevin dynamics walks down the noise ladder. Each row
 <div id="ref-kramers1940brownian" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[22] </div><div class="csl-right-inline">H. A. Kramers, <span>“Brownian motion in a field of force and the diffusion model of chemical reactions,”</span> <em>Physica</em>, vol. 7, no. 4, pp. 284–304, 1940.</div>
 </div>
-<div id="ref-song2019sliced" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Y. Song, S. Garg, J. Shi, and S. Ermon, <span>“Sliced score matching: A scalable approach to density and score estimation,”</span> in <em>Uncertainty in artificial intelligence (UAI)</em>, 2019. Available: <a href="https://arxiv.org/abs/1905.07088">https://arxiv.org/abs/1905.07088</a></div>
-</div>
-<div id="ref-sriperumbudur2017density" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[24] </div><div class="csl-right-inline">B. Sriperumbudur, K. Fukumizu, A. Gretton, A. Hyvärinen, and R. Kumar, <span>“Density estimation in infinite dimensional exponential families,”</span> <em>Journal of Machine Learning Research</em>, vol. 18, no. 57, pp. 1–59, 2017.</div>
-</div>
-<div id="ref-li2018gradient" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[25] </div><div class="csl-right-inline">Y. Li and R. E. Turner, <span>“Gradient estimators for implicit models,”</span> in <em>International conference on learning representations (ICLR)</em>, 2018. Available: <a href="https://arxiv.org/abs/1705.07107">https://arxiv.org/abs/1705.07107</a></div>
-</div>
 <div id="ref-parzen1962estimation" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[26] </div><div class="csl-right-inline">E. Parzen, <span>“On estimation of a probability density function and mode,”</span> <em>The Annals of Mathematical Statistics</em>, vol. 33, no. 3, pp. 1065–1076, 1962.</div>
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">E. Parzen, <span>“On estimation of a probability density function and mode,”</span> <em>The Annals of Mathematical Statistics</em>, vol. 33, no. 3, pp. 1065–1076, 1962.</div>
 </div>
 <div id="ref-efron2011tweedie" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[27] </div><div class="csl-right-inline">B. Efron, <span>“Tweedie’s formula and selection bias,”</span> <em>Journal of the American Statistical Association</em>, vol. 106, no. 496, pp. 1602–1614, 2011, doi: <a href="https://doi.org/10.1198/jasa.2011.tm11181">10.1198/jasa.2011.tm11181</a>.</div>
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">B. Efron, <span>“Tweedie’s formula and selection bias,”</span> <em>Journal of the American Statistical Association</em>, vol. 106, no. 496, pp. 1602–1614, 2011, doi: <a href="https://doi.org/10.1198/jasa.2011.tm11181">10.1198/jasa.2011.tm11181</a>.</div>
 </div>
 <div id="ref-song2020improved" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[28] </div><div class="csl-right-inline">Y. Song and S. Ermon, <span>“Improved techniques for training score-based generative models,”</span> in <em>Advances in neural information processing systems</em>, 2020.</div>
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">Y. Song and S. Ermon, <span>“Improved techniques for training score-based generative models,”</span> in <em>Advances in neural information processing systems</em>, 2020.</div>
 </div>
 </div>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Variational Bounds and Score Matching: Two Routes to Denoising Diffusion",
+  "headline": "The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion",
   "datePublished": "2026",
   "author": { "@type": "Person", "name": "Aja S." },
   "publisher": { "@type": "Organization", "name": "Continuous-Time Generative Models" }

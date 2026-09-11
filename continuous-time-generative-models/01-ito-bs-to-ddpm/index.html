@@ -450,13 +450,13 @@ window.Quarto = {
 </tr>
 </thead>
 <tbody class="list">
-<tr class="current odd">
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-date">Sep 10, 2026</span></td>
+<td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a></td>
+</tr>
+<tr class="current even">
 <td><span class="listing-date">Aug 10, 2026</span></td>
 <td><span class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</span><span class="series-here"> — you are here</span></td>
-</tr>
-<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Sep 10, 2026</span></td>
-<td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">Variational Bounds and Score Matching: Two Routes to Denoising Diffusion</a></td>
 </tr>
 </tbody>
 </table>
@@ -1702,7 +1702,7 @@ Figure&nbsp;13: The forward (noising) process, illustrated on a 2-D toy dataset 
 <h2 data-number="4.6" class="anchored" data-anchor-id="sec-ddpm-setup"><span class="header-section-number">4.6</span> Assumptions</h2>
 <p>The forward process rests on a few modeling choices and collecting them upfront keeps the construction — and its limitations — transparent.</p>
 <ul>
-<li><strong>Standardized data:</strong> <span class="math inline">\mathbb{E}[x_0] = 0</span> and <span class="math inline">\operatorname{Var}(x_0) = I</span> (the dataset is centred and whitened to meet this).</li>
+<li><strong>Standardized data:</strong> <span class="math inline">\mathbb{E}[x_0] = 0</span> and <span class="math inline">\operatorname{Var}(x_0) = I</span> (the dataset is centered and whitened to meet this).</li>
 <li><strong>Prior <span class="math inline">p(x_N)</span> / <span class="math inline">p(x_{t=1})</span>:</strong> The schedule is chosen so that the noisiest state — <span class="math inline">x_N</span> in discrete time, <span class="math inline">x_{t=1}</span> in continuous time — is <span class="math inline">\approx \mathcal{N}(0, I)</span>, the fixed, data-independent distribution the reverse process starts from and the endpoint the construction is engineered to reach (not to be confused with a Bayesian prior).</li>
 </ul>
 <p>These are idealizations: real data is only approximately standardized, and a finite number of steps leaves <span class="math inline">x_N</span> only <em>approximately</em> Gaussian.</p>
