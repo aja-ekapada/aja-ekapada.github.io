@@ -2,30 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aja-ekapada.github.io/research/index.html</loc>
-    <lastmod>2026-09-10T08:33:04.992Z</lastmod>
+    <lastmod>2026-10-07T21:30:32.882Z</lastmod>
   </url>
   <url>
-    <loc>https://aja-ekapada.github.io/flux-lora-likeness/index.html</loc>
-    <lastmod>2026-09-11T13:18:01.998Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/index.html</loc>
-    <lastmod>2026-09-30T18:26:27.029Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aja-ekapada.github.io/clustering/index.html</loc>
-    <lastmod>2026-08-31T11:18:29.374Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html</loc>
-    <lastmod>2026-09-30T18:26:30.032Z</lastmod>
+    <loc>https://aja-ekapada.github.io/flux-persona-in-template/index.html</loc>
+    <lastmod>2026-10-07T22:01:06.127Z</lastmod>
   </url>
   <url>
     <loc>https://aja-ekapada.github.io/continuous-time-generative-models/index.html</loc>
     <lastmod>2026-09-25T03:57:25.302Z</lastmod>
   </url>
   <url>
+    <loc>https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html</loc>
+    <lastmod>2026-09-30T18:26:30.032Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aja-ekapada.github.io/clustering/index.html</loc>
+    <lastmod>2026-08-31T11:18:29.374Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/index.html</loc>
+    <lastmod>2026-09-30T18:26:27.029Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aja-ekapada.github.io/flux-lora-likeness/index.html</loc>
+    <lastmod>2026-09-11T13:18:01.998Z</lastmod>
+  </url>
+  <url>
     <loc>https://aja-ekapada.github.io/index.html</loc>
-    <lastmod>2026-09-30T19:08:50.271Z</lastmod>
+    <lastmod>2026-10-07T21:30:32.882Z</lastmod>
   </url>
 </urlset>
