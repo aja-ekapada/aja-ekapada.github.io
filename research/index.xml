@@ -15564,16 +15564,16 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">T. Dettmers, A. Pagnoni, A. Holtzman, and L. Zettlemoyer, <span>“<span>QLoRA</span>: Efficient finetuning of quantized <span>LLMs</span>.”</span> 2023. Available: <a href="https://arxiv.org/abs/2305.14314">https://arxiv.org/abs/2305.14314</a></div>
 </div>
 <div id="ref-bianchi2023stereotypes" class="csl-entry">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline"><span class="nocase">F. Bianchi <em>et al.</em></span>, <span>“Easily accessible text-to-image generation amplifies demographic stereotypes at large scale,”</span> in <em>Proceedings of the 2023 ACM conference on fairness, accountability, and transparency (FAccT)</em>, 2023. Available: <a href="https://arxiv.org/abs/2211.03759">https://arxiv.org/abs/2211.03759</a></div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline"><span class="nocase">F. Bianchi <em>et al.</em></span>, <span>“Easily accessible text-to-image generation amplifies demographic stereotypes at large scale,”</span> in <em><span class="nocase">Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency (FAccT)</span></em>, 2023. Available: <a href="https://arxiv.org/abs/2211.03759">https://arxiv.org/abs/2211.03759</a></div>
 </div>
 <div id="ref-aws_comparefaces" class="csl-entry">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Amazon Web Services, <span>“Amazon rekognition <span>API</span> reference: <span>CompareFaces</span>.”</span> AWS documentation. Available: <a href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CompareFaces.html">https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CompareFaces.html</a></div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">Amazon Web Services, <span>“<span>Amazon Rekognition</span> <span>API</span> reference: <span>CompareFaces</span>.”</span> AWS documentation. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CompareFaces.html">https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CompareFaces.html</a></div>
 </div>
 <div id="ref-radford2021clip" class="csl-entry">
 <div class="csl-left-margin">[8] </div><div class="csl-right-inline"><span class="nocase">A. Radford <em>et al.</em></span>, <span>“Learning transferable visual models from natural language supervision.”</span> 2021. Available: <a href="https://arxiv.org/abs/2103.00020">https://arxiv.org/abs/2103.00020</a></div>
 </div>
 <div id="ref-cherti2023openclip" class="csl-entry">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline"><span class="nocase">M. Cherti <em>et al.</em></span>, <span>“Reproducible scaling laws for contrastive language-image learning,”</span> in <em>Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (CVPR)</em>, 2023. Available: <a href="https://arxiv.org/abs/2212.07143">https://arxiv.org/abs/2212.07143</a></div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline"><span class="nocase">M. Cherti <em>et al.</em></span>, <span>“Reproducible scaling laws for contrastive language-image learning,”</span> in <em><span class="nocase">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</span></em>, 2023. Available: <a href="https://arxiv.org/abs/2212.07143">https://arxiv.org/abs/2212.07143</a></div>
 </div>
 <div id="ref-hessel2021clipscore" class="csl-entry">
 <div class="csl-left-margin">[10] </div><div class="csl-right-inline">J. Hessel, A. Holtzman, M. Forbes, R. Le Bras, and Y. Choi, <span>“<span>CLIPScore</span>: A reference-free evaluation metric for image captioning,”</span> in <em>Proceedings of EMNLP 2021</em>, 2021. Available: <a href="https://arxiv.org/abs/2104.08718">https://arxiv.org/abs/2104.08718</a></div>
@@ -15594,16 +15594,16 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
 <div class="csl-left-margin">[15] </div><div class="csl-right-inline"><span class="nocase">Y. Lipman <em>et al.</em></span>, <span>“Flow matching for generative modeling.”</span> 2022. Available: <a href="https://arxiv.org/abs/2210.02747">https://arxiv.org/abs/2210.02747</a></div>
 </div>
 <div id="ref-bfl_flux1dev" class="csl-entry">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Black Forest Labs, <span>“<span class="nocase">FLUX.1-dev</span> model card.”</span> Hugging Face. Available: <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev">https://huggingface.co/black-forest-labs/FLUX.1-dev</a></div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Black Forest Labs, <span>“<span class="nocase">FLUX.1-dev</span> model card.”</span> Hugging Face, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev">https://huggingface.co/black-forest-labs/FLUX.1-dev</a></div>
 </div>
 <div id="ref-chen2016checkpointing" class="csl-entry">
 <div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Chen, B. Xu, C. Zhang, and C. Guestrin, <span>“Training deep nets with sublinear memory cost.”</span> 2016. Available: <a href="https://arxiv.org/abs/1604.06174">https://arxiv.org/abs/1604.06174</a></div>
 </div>
 <div id="ref-ostris_aitoolkit" class="csl-entry">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline"><span class="nocase">ostris</span>, <span>“Ai-toolkit: Flow matching schedulers and <span class="nocase">timestep_type</span>.”</span> GitHub repository and DeepWiki summary. Available: <a href="https://github.com/ostris/ai-toolkit">https://github.com/ostris/ai-toolkit</a></div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline"><span class="nocase">ostris</span>, <span>“<span class="nocase">ai-toolkit</span>: Flow matching schedulers and <span class="nocase">timestep_type</span>.”</span> GitHub repository; DeepWiki summary, <a href="https://deepwiki.com/ostris/ai-toolkit/8.2-flow-matching-schedulers" class="uri">https://deepwiki.com/ostris/ai-toolkit/8.2-flow-matching-schedulers</a>. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://github.com/ostris/ai-toolkit">https://github.com/ostris/ai-toolkit</a></div>
 </div>
 <div id="ref-ho2022cfg" class="csl-entry">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">J. Ho and T. Salimans, <span>“Classifier-free diffusion guidance.”</span> 2022. Available: <a href="https://arxiv.org/abs/2207.12598">https://arxiv.org/abs/2207.12598</a></div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">J. Ho and T. Salimans, <span>“Classifier-free diffusion guidance,”</span> in <em><span class="nocase">NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications</span></em>, 2021. Available: <a href="https://arxiv.org/abs/2207.12598">https://arxiv.org/abs/2207.12598</a></div>
 </div>
 <div id="ref-kalajdzievski2023rslora" class="csl-entry">
 <div class="csl-left-margin">[20] </div><div class="csl-right-inline">D. Kalajdzievski, <span>“A rank stabilization scaling factor for fine-tuning with <span>LoRA</span>.”</span> 2023. Available: <a href="https://arxiv.org/abs/2312.03732">https://arxiv.org/abs/2312.03732</a></div>
@@ -15615,7 +15615,7 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
 <div class="csl-left-margin">[22] </div><div class="csl-right-inline">D. Shenaj, F. Errica, and A. Carta, <span>“Not all layers are created equal: Adaptive <span>LoRA</span> ranks for personalized image generation.”</span> 2026. Available: <a href="https://arxiv.org/abs/2603.21884">https://arxiv.org/abs/2603.21884</a></div>
 </div>
 <div id="ref-segmind_fluxguide" class="csl-entry">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Segmind, <span>“Easy flux <span>LoRA</span> training guide.”</span> Blog post. Available: <a href="https://blog.segmind.com/easy-flux-lora-training-guide/">https://blog.segmind.com/easy-flux-lora-training-guide/</a></div>
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Segmind, <span>“Easy <span>Flux</span> <span>LoRA</span> training guide.”</span> Blog post, 2025. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://blog.segmind.com/easy-flux-lora-training-guide/">https://blog.segmind.com/easy-flux-lora-training-guide/</a></div>
 </div>
 <div id="ref-wu2009experiments" class="csl-entry">
 <div class="csl-left-margin">[24] </div><div class="csl-right-inline">C. F. J. Wu and M. S. Hamada, <em>Experiments: Planning, analysis, and optimization</em>. Wiley, 2009.</div>
@@ -15633,7 +15633,7 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
 <div class="csl-left-margin">[28] </div><div class="csl-right-inline"><span>“<span>EliGen</span>: Entity-level controlled image generation with regional attention.”</span> 2025. Available: <a href="https://arxiv.org/abs/2501.01097">https://arxiv.org/abs/2501.01097</a></div>
 </div>
 <div id="ref-bghira_simpletuner635" class="csl-entry">
-<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><span class="nocase">bghira</span>, <span>“<span>FLUX</span> <span>LoRA</span> optimal training.”</span> SimpleTuner GitHub discussion #635. Available: <a href="https://github.com/bghira/SimpleTuner/discussions/635">https://github.com/bghira/SimpleTuner/discussions/635</a></div>
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><span class="nocase">bghira</span>, <span>“<span>FLUX</span> <span>LoRA</span> optimal training.”</span> SimpleTuner GitHub discussion #635, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://github.com/bghira/SimpleTuner/discussions/635">https://github.com/bghira/SimpleTuner/discussions/635</a></div>
 </div>
 <div id="ref-aghajanyan2021intrinsic" class="csl-entry">
 <div class="csl-left-margin">[30] </div><div class="csl-right-inline">A. Aghajanyan, S. Gupta, and L. Zettlemoyer, <span>“Intrinsic dimensionality explains the effectiveness of language model fine-tuning,”</span> in <em>Proceedings of ACL 2021</em>, 2021. Available: <a href="https://arxiv.org/abs/2012.13255">https://arxiv.org/abs/2012.13255</a></div>
@@ -15645,13 +15645,13 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
 <div class="csl-left-margin">[32] </div><div class="csl-right-inline">L. Li, K. Jamieson, G. DeSalvo, A. Rostamizadeh, and A. Talwalkar, <span>“Hyperband: A novel bandit-based approach to hyperparameter optimization,”</span> <em>Journal of Machine Learning Research</em>, vol. 18, 2018, Available: <a href="https://jmlr.org/papers/volume18/16-558/16-558.pdf">https://jmlr.org/papers/volume18/16-558/16-558.pdf</a></div>
 </div>
 <div id="ref-hang2023minsnr" class="csl-entry">
-<div class="csl-left-margin">[33] </div><div class="csl-right-inline">T. Hang <em>et al.</em>, <span>“Efficient diffusion training via <span>Min-SNR</span> weighting strategy,”</span> in <em>Proceedings of the IEEE/CVF international conference on computer vision (ICCV)</em>, 2023. Available: <a href="https://arxiv.org/abs/2303.09556">https://arxiv.org/abs/2303.09556</a></div>
+<div class="csl-left-margin">[33] </div><div class="csl-right-inline">T. Hang <em>et al.</em>, <span>“Efficient diffusion training via <span>Min-SNR</span> weighting strategy,”</span> in <em><span class="nocase">Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)</span></em>, 2023. Available: <a href="https://arxiv.org/abs/2303.09556">https://arxiv.org/abs/2303.09556</a></div>
 </div>
 <div id="ref-esser2024sd3" class="csl-entry">
 <div class="csl-left-margin">[34] </div><div class="csl-right-inline"><span class="nocase">P. Esser <em>et al.</em></span>, <span>“Scaling rectified flow transformers for high-resolution image synthesis.”</span> 2024. Available: <a href="https://arxiv.org/abs/2403.03206">https://arxiv.org/abs/2403.03206</a></div>
 </div>
 <div id="ref-fasterdit2024" class="csl-entry">
-<div class="csl-left-margin">[35] </div><div class="csl-right-inline"><span>“<span>FasterDiT</span>: Towards faster diffusion transformers training without architecture modification.”</span> OpenReview. Available: <a href="https://openreview.net/pdf?id=cqRgoDFaGN">https://openreview.net/pdf?id=cqRgoDFaGN</a></div>
+<div class="csl-left-margin">[35] </div><div class="csl-right-inline"><span>“<span>FasterDiT</span>: Towards faster diffusion transformers training without architecture modification.”</span> OpenReview, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://openreview.net/pdf?id=cqRgoDFaGN">https://openreview.net/pdf?id=cqRgoDFaGN</a></div>
 </div>
 <div id="ref-curriculum2026sampling" class="csl-entry">
 <div class="csl-left-margin">[36] </div><div class="csl-right-inline"><span>“Curriculum sampling: A two-phase curriculum for efficient training of flow matching.”</span> 2026. Available: <a href="https://arxiv.org/abs/2603.12517">https://arxiv.org/abs/2603.12517</a></div>
@@ -15672,16 +15672,16 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
 <div class="csl-left-margin">[41] </div><div class="csl-right-inline"><span class="nocase">D. Biderman <em>et al.</em></span>, <span>“<span>LoRA</span> learns less and forgets less.”</span> 2024. Available: <a href="https://arxiv.org/abs/2405.09673">https://arxiv.org/abs/2405.09673</a></div>
 </div>
 <div id="ref-fooocus_3561" class="csl-entry">
-<div class="csl-left-margin">[42] </div><div class="csl-right-inline"><span class="nocase">lllyasviel</span>, <span>“<span>FLUX</span> doesn’t understand specifics.”</span> Fooocus GitHub discussion #3561. Available: <a href="https://github.com/lllyasviel/Fooocus/discussions/3561">https://github.com/lllyasviel/Fooocus/discussions/3561</a></div>
+<div class="csl-left-margin">[42] </div><div class="csl-right-inline"><span class="nocase">lllyasviel</span>, <span>“<span>FLUX</span> doesn’t understand specifics.”</span> Fooocus GitHub discussion #3561, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://github.com/lllyasviel/Fooocus/discussions/3561">https://github.com/lllyasviel/Fooocus/discussions/3561</a></div>
 </div>
 <div id="ref-grother2019frvt" class="csl-entry">
-<div class="csl-left-margin">[43] </div><div class="csl-right-inline">P. Grother, M. Ngan, and K. Hanaoka, <span>“Face recognition vendor test (<span>FRVT</span>) part 3: Demographic effects,”</span> National Institute of Standards; Technology, NISTIR 8280, 2019. doi: <a href="https://doi.org/10.6028/NIST.IR.8280">10.6028/NIST.IR.8280</a>.</div>
+<div class="csl-left-margin">[43] </div><div class="csl-right-inline">P. Grother, M. Ngan, and K. Hanaoka, <span>“<span>Face Recognition Vendor Test</span> (<span>FRVT</span>) part 3: Demographic effects,”</span> <span>National Institute of Standards and Technology</span>, NISTIR 8280, 2019. doi: <a href="https://doi.org/10.6028/NIST.IR.8280">10.6028/NIST.IR.8280</a>.</div>
 </div>
 <div id="ref-buolamwini2018gendershades" class="csl-entry">
-<div class="csl-left-margin">[44] </div><div class="csl-right-inline">J. Buolamwini and T. Gebru, <span>“Gender shades: Intersectional accuracy disparities in commercial gender classification,”</span> in <em>Proceedings of the 1st conference on fairness, accountability and transparency (FAT*), PMLR 81</em>, 2018. Available: <a href="https://proceedings.mlr.press/v81/buolamwini18a.html">https://proceedings.mlr.press/v81/buolamwini18a.html</a></div>
+<div class="csl-left-margin">[44] </div><div class="csl-right-inline">J. Buolamwini and T. Gebru, <span>“Gender shades: Intersectional accuracy disparities in commercial gender classification,”</span> in <em><span class="nocase">Proceedings of the 1st Conference on Fairness, Accountability and Transparency (FAT*), PMLR 81</span></em>, 2018. Available: <a href="https://proceedings.mlr.press/v81/buolamwini18a.html">https://proceedings.mlr.press/v81/buolamwini18a.html</a></div>
 </div>
 <div id="ref-bouthillier2021variance" class="csl-entry">
-<div class="csl-left-margin">[45] </div><div class="csl-right-inline"><span class="nocase">X. Bouthillier, P. Delaunay, M. Bronzi, <em>et al.</em></span>, <span>“Accounting for variance in machine learning benchmarks,”</span> in <em>Proceedings of machine learning and systems (MLSys)</em>, 2021. Available: <a href="https://arxiv.org/abs/2103.03098">https://arxiv.org/abs/2103.03098</a></div>
+<div class="csl-left-margin">[45] </div><div class="csl-right-inline"><span class="nocase">X. Bouthillier, P. Delaunay, M. Bronzi, <em>et al.</em></span>, <span>“Accounting for variance in machine learning benchmarks,”</span> in <em><span class="nocase">Proceedings of Machine Learning and Systems (MLSys)</span></em>, 2021. Available: <a href="https://arxiv.org/abs/2103.03098">https://arxiv.org/abs/2103.03098</a></div>
 </div>
 <div id="ref-cawley2010overfitting" class="csl-entry">
 <div class="csl-left-margin">[46] </div><div class="csl-right-inline">G. C. Cawley and N. L. C. Talbot, <span>“On over-fitting in model selection and subsequent selection bias in performance evaluation,”</span> <em>Journal of Machine Learning Research</em>, vol. 11, pp. 2079–2107, 2010, Available: <a href="https://www.jmlr.org/papers/v11/cawley10a.html">https://www.jmlr.org/papers/v11/cawley10a.html</a></div>
@@ -15711,6 +15711,7 @@ font-style: inherit;">url</span>    = {https://aja-ekapada.github.io/flux-lora-l
   <category>identity personalization</category>
   <guid>https://aja-ekapada.github.io/flux-lora-likeness/</guid>
   <pubDate>Sat, 22 Aug 2026 10:00:00 GMT</pubDate>
+  <media:content url="https://aja-ekapada.github.io/flux-lora-likeness/figures/link_preview.png" medium="image" type="image/png" height="76" width="144"/>
 </item>
 <item>
   <title>Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</title>
