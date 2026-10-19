@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aja S.">
-<meta name="description" content="The SDE framework of score-based generative modeling: the forward SDE as the continuum limit of a finite sequence of noise levels, the Variance-Preserving, Variance-Exploding and sub-VP processes as instances of one linear family, Anderson’s reverse-time SDE derived twice, the probability-flow ODE, denoising score matching for its one unknown, the score, and the reverse diffusion, ancestral and predictor-corrector samplers.">
+<meta name="description" content="How one forward SDE unifies DDPM and score matching: the VP, VE and sub-VP SDEs, Anderson’s reverse-time SDE, the probability-flow ODE, training and sampling.">
 
 <title>SDE-Based Generative Models: The Unification – Aja S.</title>
 <style>
@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -131,9 +132,10 @@ div.csl-indent {
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Continuous-Time Generative Models",
-  "description": "An applied tour of the stochastic-calculus machinery behind modern generative AI.",
-  "url": "https://aja-ekapada.github.io"
+  "name": "Aja S.",
+  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "url": "https://aja-ekapada.github.io/",
+  "inLanguage": "en"
 }
 </script>
 <style>
@@ -191,17 +193,52 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="SDE-Based Generative Models: The Unification – Aja S.">
-<meta property="og:description" content="The SDE framework of score-based generative modeling: the forward SDE as the continuum limit of a finite sequence of noise levels, the Variance-Preserving, Variance-Exploding and sub-VP processes as instances of one linear family, Anderson’s reverse-time SDE derived twice, the probability-flow ODE, denoising score matching for its one unknown, the score, and the reverse diffusion, ancestral and predictor-corrector samplers.">
-<meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/index_files/figure-html/fig-ve-vp-variance-output-1.png">
+<meta property="og:description" content="How one forward SDE unifies DDPM and score matching: the VP, VE and sub-VP SDEs, Anderson’s reverse-time SDE, the probability-flow ODE, training and sampling.">
+<meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png">
 <meta property="og:site_name" content="Aja S.">
-<meta property="og:image:height" content="751">
-<meta property="og:image:width" content="1846">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:alt" content="Two panels over time: the mean coefficient falling from one to zero for VP and sub-VP and flat for VE, and, on a log scale, the kernel variance leveling off at one for VP and sub-VP and growing by orders of magnitude for VE.">
 <meta name="twitter:title" content="SDE-Based Generative Models: The Unification – Aja S.">
-<meta name="twitter:description" content="The SDE framework of score-based generative modeling: the forward SDE as the continuum limit of a finite sequence of noise levels, the Variance-Preserving, Variance-Exploding and sub-VP processes as instances of one linear family, Anderson’s reverse-time SDE derived twice, the probability-flow ODE, denoising score matching for its one unknown, the score, and the reverse diffusion, ancestral and predictor-corrector samplers.">
-<meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/index_files/figure-html/fig-ve-vp-variance-output-1.png">
-<meta name="twitter:image-height" content="751">
-<meta name="twitter:image-width" content="1846">
+<meta name="twitter:description" content="How one forward SDE unifies DDPM and score matching: the VP, VE and sub-VP SDEs, Anderson’s reverse-time SDE, the probability-flow ODE, training and sampling.">
+<meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:image:alt" content="Two panels over time: the mean coefficient falling from one to zero for VP and sub-VP and flat for VE, and, on a log scale, the kernel variance leveling off at one for VP and sub-VP and growing by orders of magnitude for VE.">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/">
+<meta name="citation_title" content="SDE-Based Generative Models: The Unification">
+<meta name="citation_author" content="Aja S.">
+<meta name="citation_publication_date" content="2026-10-16">
+<meta name="citation_cover_date" content="2026-10-16">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-10-16">
+<meta name="citation_fulltext_html_url" content="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Continuous-Time Generative Models">
+<meta name="citation_reference" content="citation_title=Score-based generative modeling through stochastic differential equations;,citation_author=Yang Song;,citation_author=Jascha Sohl-Dickstein;,citation_author=Diederik P. Kingma;,citation_author=Abhishek Kumar;,citation_author=Stefano Ermon;,citation_author=Ben Poole;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2011.13456;,citation_conference_title=International conference on learning representations (ICLR);">
+<meta name="citation_reference" content="citation_title=Denoising diffusion probabilistic models;,citation_author=Jonathan Ho;,citation_author=Ajay Jain;,citation_author=Pieter Abbeel;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_fulltext_html_url=https://arxiv.org/abs/2006.11239;,citation_volume=33;,citation_journal_title=Advances in Neural Information Processing Systems;">
+<meta name="citation_reference" content="citation_title=Generative modeling by estimating gradients of the data distribution;,citation_author=Yang Song;,citation_author=Stefano Ermon;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://arxiv.org/abs/1907.05600;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
+<meta name="citation_reference" content="citation_title=Elucidating the design space of diffusion-based generative models;,citation_author=Tero Karras;,citation_author=Miika Aittala;,citation_author=Timo Aila;,citation_author=Samuli Laine;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.00364;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
+<meta name="citation_reference" content="citation_title=Reverse-time diffusion equation models;,citation_author=Brian D. O. Anderson;,citation_publication_date=1982;,citation_cover_date=1982;,citation_year=1982;,citation_issue=3;,citation_doi=10.1016/0304-4149(82)90051-5;,citation_volume=12;,citation_journal_title=Stochastic Processes and their Applications;">
+<meta name="citation_reference" content="citation_title=On transforming a certain class of stochastic processes by absolutely continuous substitution of measures;,citation_author=Igor V. Girsanov;,citation_publication_date=1960;,citation_cover_date=1960;,citation_year=1960;,citation_issue=3;,citation_volume=5;,citation_journal_title=Theory of Probability and Its Applications;">
+<meta name="citation_reference" content="citation_title=Time reversal of diffusions;,citation_author=Ulrich G. Haussmann;,citation_author=Étienne Pardoux;,citation_publication_date=1986;,citation_cover_date=1986;,citation_year=1986;,citation_issue=4;,citation_doi=10.1214/aop/1176992362;,citation_volume=14;,citation_journal_title=The Annals of Probability;">
+<meta name="citation_reference" content="citation_title=Brownian motion and stochastic calculus;,citation_author=Ioannis Karatzas;,citation_author=Steven E. Shreve;,citation_publication_date=1991;,citation_cover_date=1991;,citation_year=1991;">
+<meta name="citation_reference" content="citation_title=Flow matching for generative modeling;,citation_author=Yaron Lipman;,citation_author=Ricky T. Q. Chen;,citation_author=Heli Ben-Hamu;,citation_author=Maximilian Nickel;,citation_author=Matt Le;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2210.02747;,citation_conference_title=International conference on learning representations (ICLR);">
+<meta name="citation_reference" content="citation_title=Stochastic differential equations: An introduction with applications;,citation_author=Bernt Øksendal;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;">
+<meta name="citation_reference" content="citation_title=Consistency models;,citation_author=Yang Song;,citation_author=Prafulla Dhariwal;,citation_author=Mark Chen;,citation_author=Ilya Sutskever;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2303.01469;,citation_conference_title=International conference on machine learning (ICML);">
+<meta name="citation_reference" content="citation_title=A connection between score matching and denoising autoencoders;,citation_author=Pascal Vincent;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=7;,citation_doi=10.1162/NECO_a_00142;,citation_volume=23;,citation_journal_title=Neural Computation;">
+<meta name="citation_reference" content="citation_title=Continuous markov processes and stochastic equations;,citation_author=Gisiro Maruyama;,citation_publication_date=1955;,citation_cover_date=1955;,citation_year=1955;,citation_volume=4;,citation_journal_title=Rendiconti del Circolo Matematico di Palermo;">
+<meta name="citation_reference" content="citation_title=Tweedie’s formula and selection bias;,citation_author=Bradley Efron;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=496;,citation_doi=10.1198/jasa.2011.tm11181;,citation_volume=106;,citation_journal_title=Journal of the American Statistical Association;">
+<meta name="citation_reference" content="citation_title=Improved denoising diffusion probabilistic models;,citation_author=Alexander Quinn Nichol;,citation_author=Prafulla Dhariwal;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2102.09672;,citation_volume=139;,citation_conference_title=Proceedings of the 38th international conference on machine learning (ICML);,citation_series_title=Proceedings of machine learning research;">
+<meta name="citation_reference" content="citation_title=Diffusion models beat GANs on image synthesis;,citation_author=Prafulla Dhariwal;,citation_author=Alexander Nichol;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.05233;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
+<meta name="citation_reference" content="citation_title=High-resolution image synthesis with latent diffusion models;,citation_author=Robin Rombach;,citation_author=Andreas Blattmann;,citation_author=Dominik Lorenz;,citation_author=Patrick Esser;,citation_author=Björn Ommer;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.10752;,citation_conference_title=Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (CVPR);">
+<meta name="citation_reference" content="citation_title=Sliced score matching: A scalable approach to density and score estimation;,citation_author=Yang Song;,citation_author=Sahaj Garg;,citation_author=Jiaxin Shi;,citation_author=Stefano Ermon;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://arxiv.org/abs/1905.07088;,citation_conference_title=Uncertainty in artificial intelligence (UAI);">
+<meta name="citation_reference" content="citation_title=A stochastic estimator of the trace of the influence matrix for laplacian smoothing splines;,citation_author=Michael F. Hutchinson;,citation_publication_date=1990;,citation_cover_date=1990;,citation_year=1990;,citation_issue=2;,citation_doi=10.1080/03610919008812866;,citation_volume=19;,citation_journal_title=Communications in Statistics - Simulation and Computation;">
+<meta name="citation_reference" content="citation_title=Partial differential equations;,citation_author=Lawrence C. Evans;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_volume=19;,citation_series_title=Graduate studies in mathematics;">
+<meta name="citation_reference" content="citation_title=Note on the derivatives with respect to a parameter of the solutions of a system of differential equations;,citation_author=Thomas H. Gronwall;,citation_publication_date=1919;,citation_cover_date=1919;,citation_year=1919;,citation_issue=4;,citation_volume=20;,citation_journal_title=Annals of Mathematics;">
+<meta name="citation_reference" content="citation_title=GANs trained by a two time-scale update rule converge to a local Nash equilibrium;,citation_author=Martin Heusel;,citation_author=Hubert Ramsauer;,citation_author=Thomas Unterthiner;,citation_author=Bernhard Nessler;,citation_author=Sepp Hochreiter;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_volume=30;,citation_conference_title=Advances in neural information processing systems;">
+<meta name="citation_reference" content="citation_title=Maximum likelihood training of score-based diffusion models;,citation_author=Yang Song;,citation_author=Conor Durkan;,citation_author=Iain Murray;,citation_author=Stefano Ermon;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2101.09258;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -370,7 +407,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    The SDE framework of score-based generative modeling: the forward SDE as the continuum limit of a finite sequence of noise levels, the Variance-Preserving, Variance-Exploding and sub-VP processes as instances of one linear family, Anderson’s reverse-time SDE derived twice, the probability-flow ODE, denoising score matching for its one unknown, the score, and the reverse diffusion, ancestral and predictor-corrector samplers.
+    How one forward SDE unifies DDPM and score matching: the VP, VE and sub-VP SDEs, Anderson’s reverse-time SDE, the probability-flow ODE, training and sampling.
   </div>
 </div>
 
@@ -2553,9 +2590,28 @@ d\varphi(X_t) = \Big(f \cdot \nabla_x \varphi + \tfrac{1}{2} \operatorname{tr}\!
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "SDE-Based Generative Models: The Unification",
-  "datePublished": "2026",
-  "author": { "@type": "Person", "name": "Aja S." },
-  "publisher": { "@type": "Organization", "name": "Continuous-Time Generative Models" }
+  "description": "How one forward SDE unifies DDPM and score matching: the VP, VE and sub-VP SDEs, Anderson's reverse-time SDE, the probability-flow ODE, training and sampling.",
+  "image": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png",
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-19",
+  "url": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/",
+  "mainEntityOfPage": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Continuous-Time Generative Models",
+    "url": "https://aja-ekapada.github.io/continuous-time-generative-models/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Aja S.",
+    "url": "https://aja-ekapada.github.io/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Aja S.",
+    "url": "https://aja-ekapada.github.io/"
+  }
 }
 </script>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aja S.">
-<meta name="description" content="Itô’s lemma yields both the Black-Scholes equation and DDPM’s forward diffusion process from one rule, (dW)² = dt — a rigorous, self-contained tour of stochastic calculus connecting quantitative finance and generative AI.">
+<meta name="description" content="Itô’s lemma yields both the Black-Scholes equation and the perturbation kernel of DDPM’s forward process from one rule of stochastic calculus, (dW)² = dt.">
 
 <title>Itô’s Lemma: From Black-Scholes to Diffusion Models – Aja S.</title>
 <style>
@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -137,9 +138,10 @@ div.csl-indent {
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Continuous-Time Generative Models",
-  "description": "An applied tour of the stochastic-calculus machinery behind modern generative AI.",
-  "url": "https://aja-ekapada.github.io"
+  "name": "Aja S.",
+  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "url": "https://aja-ekapada.github.io/",
+  "inLanguage": "en"
 }
 </script>
 <style>
@@ -197,17 +199,60 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Itô’s Lemma: From Black-Scholes to Diffusion Models – Aja S.">
-<meta property="og:description" content="Itô’s lemma yields both the Black-Scholes equation and DDPM’s forward diffusion process from one rule, (dW)² = dt — a rigorous, self-contained tour of stochastic calculus connecting quantitative finance and generative AI.">
-<meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/index_files/figure-html/fig-gbm-vs-vpsde-output-1.png">
+<meta property="og:description" content="Itô’s lemma yields both the Black-Scholes equation and the perturbation kernel of DDPM’s forward process from one rule of stochastic calculus, (dW)² = dt.">
+<meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/share.png">
 <meta property="og:site_name" content="Aja S.">
-<meta property="og:image:height" content="735">
-<meta property="og:image:width" content="2079">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:alt" content="Sample paths of geometric Brownian motion clustered near one, beside VP-SDE sample paths that start at one and spread around zero over a shaded band that widens to plus or minus one.">
 <meta name="twitter:title" content="Itô’s Lemma: From Black-Scholes to Diffusion Models – Aja S.">
-<meta name="twitter:description" content="Itô’s lemma yields both the Black-Scholes equation and DDPM’s forward diffusion process from one rule, (dW)² = dt — a rigorous, self-contained tour of stochastic calculus connecting quantitative finance and generative AI.">
-<meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/index_files/figure-html/fig-gbm-vs-vpsde-output-1.png">
-<meta name="twitter:image-height" content="735">
-<meta name="twitter:image-width" content="2079">
+<meta name="twitter:description" content="Itô’s lemma yields both the Black-Scholes equation and the perturbation kernel of DDPM’s forward process from one rule of stochastic calculus, (dW)² = dt.">
+<meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/share.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:image:alt" content="Sample paths of geometric Brownian motion clustered near one, beside VP-SDE sample paths that start at one and spread around zero over a shaded band that widens to plus or minus one.">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/">
+<meta name="citation_title" content="Itô’s Lemma: From Black-Scholes to Diffusion Models">
+<meta name="citation_author" content="Aja S.">
+<meta name="citation_publication_date" content="2026-08-10">
+<meta name="citation_cover_date" content="2026-08-10">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-08-10">
+<meta name="citation_fulltext_html_url" content="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Continuous-Time Generative Models">
+<meta name="citation_reference" content="citation_title=Denoising diffusion probabilistic models;,citation_author=Jonathan Ho;,citation_author=Ajay Jain;,citation_author=Pieter Abbeel;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_fulltext_html_url=https://arxiv.org/abs/2006.11239;,citation_volume=33;,citation_journal_title=Advances in Neural Information Processing Systems;">
+<meta name="citation_reference" content="citation_title=Score-based generative modeling through stochastic differential equations;,citation_author=Yang Song;,citation_author=Jascha Sohl-Dickstein;,citation_author=Diederik P. Kingma;,citation_author=Abhishek Kumar;,citation_author=Stefano Ermon;,citation_author=Ben Poole;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2011.13456;,citation_conference_title=International conference on learning representations (ICLR);">
+<meta name="citation_reference" content="citation_title=The pricing of options and corporate liabilities;,citation_author=Fischer Black;,citation_author=Myron Scholes;,citation_publication_date=1973;,citation_cover_date=1973;,citation_year=1973;,citation_issue=3;,citation_volume=81;,citation_journal_title=Journal of Political Economy;">
+<meta name="citation_reference" content="citation_title=Options, futures, and other derivatives;,citation_author=John C. Hull;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;">
+<meta name="citation_reference" content="citation_title=Brownian motion and stochastic calculus;,citation_author=Ioannis Karatzas;,citation_author=Steven E. Shreve;,citation_publication_date=1991;,citation_cover_date=1991;,citation_year=1991;">
+<meta name="citation_reference" content="citation_title=Stochastic differential equations: An introduction with applications;,citation_author=Bernt Øksendal;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;">
+<meta name="citation_reference" content="citation_title=Stochastic integral;,citation_author=Kiyosi Itô;,citation_publication_date=1944;,citation_cover_date=1944;,citation_year=1944;,citation_fulltext_html_url=https://projecteuclid.org/journals/proceedings-of-the-japan-academy-series-a-mathematical-sciences/volume-20/issue-8/Stochastic-integral/10.3792/pia/1195572786.full;,citation_issue=8;,citation_doi=10.3792/pia/1195572786;,citation_volume=20;,citation_journal_title=Proceedings of the Imperial Academy;">
+<meta name="citation_reference" content="citation_title=On a stochastic integral equation;,citation_author=Kiyosi Itô;,citation_publication_date=1946;,citation_cover_date=1946;,citation_year=1946;,citation_fulltext_html_url=https://projecteuclid.org/journals/proceedings-of-the-japan-academy-series-a-mathematical-sciences/volume-22/issue-2/On-a-stochastic-integral-equation/10.3792/pja/1195572371.full;,citation_issue=2;,citation_doi=10.3792/pja/1195572371;,citation_volume=22;,citation_journal_title=Proceedings of the Japan Academy;">
+<meta name="citation_reference" content="citation_title=A connection between score matching and denoising autoencoders;,citation_author=Pascal Vincent;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=7;,citation_doi=10.1162/NECO_a_00142;,citation_volume=23;,citation_journal_title=Neural Computation;">
+<meta name="citation_reference" content="citation_title=Theory of rational option pricing;,citation_author=Robert C. Merton;,citation_publication_date=1973;,citation_cover_date=1973;,citation_year=1973;,citation_issue=1;,citation_doi=10.2307/3003143;,citation_volume=4;,citation_journal_title=The Bell Journal of Economics and Management Science;">
+<meta name="citation_reference" content="citation_title=On the theory of the brownian motion;,citation_author=George E. Uhlenbeck;,citation_author=Leonard S. Ornstein;,citation_publication_date=1930;,citation_cover_date=1930;,citation_year=1930;,citation_issue=5;,citation_doi=10.1103/PhysRev.36.823;,citation_volume=36;,citation_journal_title=Physical Review;">
+<meta name="citation_reference" content="citation_title=An equilibrium characterization of the term structure;,citation_author=Oldrich Vasicek;,citation_publication_date=1977;,citation_cover_date=1977;,citation_year=1977;,citation_issue=2;,citation_doi=10.1016/0304-405X(77)90016-2;,citation_volume=5;,citation_journal_title=Journal of Financial Economics;">
+<meta name="citation_reference" content="citation_title=Reverse-time diffusion equation models;,citation_author=Brian D. O. Anderson;,citation_publication_date=1982;,citation_cover_date=1982;,citation_year=1982;,citation_issue=3;,citation_doi=10.1016/0304-4149(82)90051-5;,citation_volume=12;,citation_journal_title=Stochastic Processes and their Applications;">
+<meta name="citation_reference" content="citation_title=A brief account of microscopical observations made in the months of june, july and august 1827, on the particles contained in the pollen of plants; and on the general existence of active molecules in organic and inorganic bodies;,citation_author=Robert Brown;,citation_publication_date=1828;,citation_cover_date=1828;,citation_year=1828;,citation_issue=21;,citation_doi=10.1080/14786442808674769;,citation_volume=4;,citation_journal_title=The Philosophical Magazine;">
+<meta name="citation_reference" content="citation_title=Calculus of variations;,citation_author=I. M. Gelfand;,citation_author=S. V. Fomin;,citation_publication_date=2000;,citation_cover_date=2000;,citation_year=2000;">
+<meta name="citation_reference" content="citation_title=Option pricing: A simplified approach;,citation_author=John C. Cox;,citation_author=Stephen A. Ross;,citation_author=Mark Rubinstein;,citation_publication_date=1979;,citation_cover_date=1979;,citation_year=1979;,citation_issue=3;,citation_doi=10.1016/0304-405X(79)90015-1;,citation_volume=7;,citation_journal_title=Journal of Financial Economics;">
+<meta name="citation_reference" content="citation_title=Notes on random functions;,citation_author=R. E. A. C. Paley;,citation_author=Norbert Wiener;,citation_author=Antoni Zygmund;,citation_publication_date=1933;,citation_cover_date=1933;,citation_year=1933;,citation_issue=1;,citation_volume=37;,citation_journal_title=Mathematische Zeitschrift;">
+<meta name="citation_reference" content="citation_title=Über die von der molekularkinetischen theorie der wärme geforderte bewegung von in ruhenden flüssigkeiten suspendierten teilchen;,citation_author=Albert Einstein;,citation_publication_date=1905;,citation_cover_date=1905;,citation_year=1905;,citation_issue=8;,citation_doi=10.1002/andp.19053220806;,citation_volume=322;,citation_journal_title=Annalen der Physik;">
+<meta name="citation_reference" content="citation_title=CS236: Deep generative models;,citation_author=Stefano Ermon;,citation_author=Aditya Grover;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://deepgenerativemodels.github.io/;,citation_publisher=Stanford University course;">
+<meta name="citation_reference" content="citation_title=Deep generative models: Lecture notes;,citation_author=Aditya Grover;,citation_author=Stefano Ermon;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://github.com/deepgenerativemodels/notes;,citation_publisher=Stanford CS236 course notes;">
+<meta name="citation_reference" content="citation_title=Estimation of non-normalized statistical models by score matching;,citation_author=Aapo Hyvärinen;,citation_publication_date=2005;,citation_cover_date=2005;,citation_year=2005;,citation_volume=6;,citation_journal_title=Journal of Machine Learning Research;">
+<meta name="citation_reference" content="citation_title=Generative modeling by estimating gradients of the data distribution;,citation_author=Yang Song;,citation_author=Stefano Ermon;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://arxiv.org/abs/1907.05600;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
+<meta name="citation_reference" content="citation_title=Deep unsupervised learning using nonequilibrium thermodynamics;,citation_author=Jascha Sohl-Dickstein;,citation_author=Eric A. Weiss;,citation_author=Niru Maheswaranathan;,citation_author=Surya Ganguli;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://arxiv.org/abs/1503.03585;,citation_conference_title=International conference on machine learning (ICML);">
+<meta name="citation_reference" content="citation_title=Applied stochastic differential equations;,citation_author=Simo Särkkä;,citation_author=Arno Solin;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_doi=10.1017/9781108186735;,citation_series_title=Institute of mathematical statistics textbooks;">
+<meta name="citation_reference" content="citation_title=Stochastic calculus for finance II: Continuous-time models;,citation_author=Steven E. Shreve;,citation_publication_date=2004;,citation_cover_date=2004;,citation_year=2004;">
+<meta name="citation_reference" content="citation_title=The mathematics of financial derivatives: A student introduction;,citation_author=Paul Wilmott;,citation_author=Sam Howison;,citation_author=Jeff Dewynne;,citation_publication_date=1995;,citation_cover_date=1995;,citation_year=1995;">
+<meta name="citation_reference" content="citation_title=Sur la théorie du mouvement brownien;,citation_author=Paul Langevin;,citation_publication_date=1908;,citation_cover_date=1908;,citation_year=1908;,citation_volume=146;,citation_journal_title=Comptes Rendus de l’Académie des Sciences;">
+<meta name="citation_reference" content="citation_title=On a formula concerning stochastic differentials;,citation_author=Kiyosi Itô;,citation_publication_date=1951;,citation_cover_date=1951;,citation_year=1951;,citation_volume=3;,citation_journal_title=Nagoya Mathematical Journal;">
+<meta name="citation_reference" content="citation_title=The sveriges riksbank prize in economic sciences in memory of alfred nobel 1997: Robert c. Merton and myron s. scholes;,citation_author=The Royal Swedish Academy of Sciences;,citation_publication_date=1997;,citation_cover_date=1997;,citation_year=1997;,citation_fulltext_html_url=https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/;,citation_publisher=Press release, NobelPrize.org;">
+<meta name="citation_reference" content="citation_title=Continuous markov processes and stochastic equations;,citation_author=Gisiro Maruyama;,citation_publication_date=1955;,citation_cover_date=1955;,citation_year=1955;,citation_volume=4;,citation_journal_title=Rendiconti del Circolo Matematico di Palermo;">
+<meta name="citation_reference" content="citation_title=A new representation for stochastic integrals and equations;,citation_author=Ruslan L. Stratonovich;,citation_publication_date=1966;,citation_cover_date=1966;,citation_year=1966;,citation_issue=2;,citation_volume=4;,citation_journal_title=SIAM Journal on Control;">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -411,7 +456,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Itô’s lemma yields both the Black-Scholes equation and DDPM’s forward diffusion process from one rule, (dW)² = dt — a rigorous, self-contained tour of stochastic calculus connecting quantitative finance and generative AI.
+    Itô’s lemma yields both the Black-Scholes equation and the perturbation kernel of DDPM’s forward process from one rule of stochastic calculus, (dW)² = dt.
   </div>
 </div>
 
@@ -3007,9 +3052,28 @@ df = \Big(\frac{\partial f}{\partial t} + \mu \cdot \nabla_x f + \tfrac{1}{2}\, 
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Itô's Lemma: From Black-Scholes to Diffusion Models",
+  "description": "Itô's lemma yields both the Black-Scholes equation and the perturbation kernel of DDPM's forward process from one rule of stochastic calculus, (dW)² = dt.",
+  "image": "https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/share.png",
   "datePublished": "2026-08-10",
-  "author": { "@type": "Person", "name": "Aja S." },
-  "publisher": { "@type": "Organization", "name": "Aja S." }
+  "dateModified": "2026-10-16",
+  "url": "https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/",
+  "mainEntityOfPage": "https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Continuous-Time Generative Models",
+    "url": "https://aja-ekapada.github.io/continuous-time-generative-models/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Aja S.",
+    "url": "https://aja-ekapada.github.io/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Aja S.",
+    "url": "https://aja-ekapada.github.io/"
+  }
 }
 </script>
 

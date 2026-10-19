@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aja S.">
-<meta name="description" content="From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.">
+<meta name="description" content="Two routes to denoising diffusion from first principles: the variational bound behind DDPM (Sohl-Dickstein, Ho) and score matching (Hyvärinen, Vincent, Song).">
 
-<title>The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion – Aja S.</title>
+<title>ELBO and Score Matching: Two Routes to Diffusion – Aja S.</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -131,9 +132,10 @@ div.csl-indent {
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Continuous-Time Generative Models",
-  "description": "An applied tour of the stochastic-calculus machinery behind modern generative AI.",
-  "url": "https://aja-ekapada.github.io"
+  "name": "Aja S.",
+  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "url": "https://aja-ekapada.github.io/",
+  "inLanguage": "en"
 }
 </script>
 <style>
@@ -190,18 +192,56 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion – Aja S.">
-<meta property="og:description" content="From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.">
-<meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/index_files/figure-html/fig-score-field-output-1.png">
+<meta property="og:title" content="ELBO and Score Matching: Two Routes to Diffusion">
+<meta property="og:description" content="Two routes to denoising diffusion from first principles: the variational bound behind DDPM (Sohl-Dickstein, Ho) and score matching (Hyvärinen, Vincent, Song).">
+<meta property="og:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/share.png">
 <meta property="og:site_name" content="Aja S.">
-<meta property="og:image:height" content="1050">
-<meta property="og:image:width" content="1289">
-<meta name="twitter:title" content="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion – Aja S.">
-<meta name="twitter:description" content="From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.">
-<meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/index_files/figure-html/fig-score-field-output-1.png">
-<meta name="twitter:image-height" content="1050">
-<meta name="twitter:image-width" content="1289">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:alt" content="A two-dimensional score field whose arrows point toward the centers of two density modes, with a dashed path that follows the arrows from a sparse corner into one mode.">
+<meta name="twitter:title" content="ELBO and Score Matching: Two Routes to Diffusion">
+<meta name="twitter:description" content="Two routes to denoising diffusion from first principles: the variational bound behind DDPM (Sohl-Dickstein, Ho) and score matching (Hyvärinen, Vincent, Song).">
+<meta name="twitter:image" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/share.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:image:alt" content="A two-dimensional score field whose arrows point toward the centers of two density modes, with a dashed path that follows the arrows from a sparse corner into one mode.">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/">
+<meta name="citation_title" content="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion">
+<meta name="citation_author" content="Aja S.">
+<meta name="citation_publication_date" content="2026-09-10">
+<meta name="citation_cover_date" content="2026-09-10">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-09-10">
+<meta name="citation_fulltext_html_url" content="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Continuous-Time Generative Models">
+<meta name="citation_reference" content="citation_title=Score-based generative modeling through stochastic differential equations;,citation_author=Yang Song;,citation_author=Jascha Sohl-Dickstein;,citation_author=Diederik P. Kingma;,citation_author=Abhishek Kumar;,citation_author=Stefano Ermon;,citation_author=Ben Poole;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2011.13456;,citation_conference_title=International conference on learning representations (ICLR);">
+<meta name="citation_reference" content="citation_title=A connection between score matching and denoising autoencoders;,citation_author=Pascal Vincent;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=7;,citation_doi=10.1162/NECO_a_00142;,citation_volume=23;,citation_journal_title=Neural Computation;">
+<meta name="citation_reference" content="citation_title=Denoising diffusion probabilistic models;,citation_author=Jonathan Ho;,citation_author=Ajay Jain;,citation_author=Pieter Abbeel;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_fulltext_html_url=https://arxiv.org/abs/2006.11239;,citation_volume=33;,citation_journal_title=Advances in Neural Information Processing Systems;">
+<meta name="citation_reference" content="citation_title=Generative modeling by estimating gradients of the data distribution;,citation_author=Yang Song;,citation_author=Stefano Ermon;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://arxiv.org/abs/1907.05600;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
+<meta name="citation_reference" content="citation_title=Estimation of non-normalized statistical models by score matching;,citation_author=Aapo Hyvärinen;,citation_publication_date=2005;,citation_cover_date=2005;,citation_year=2005;,citation_volume=6;,citation_journal_title=Journal of Machine Learning Research;">
+<meta name="citation_reference" content="citation_title=Die mittlere energie rotierender elektrischer dipole im strahlungsfeld;,citation_author=Adriaan D. Fokker;,citation_publication_date=1914;,citation_cover_date=1914;,citation_year=1914;,citation_issue=5;,citation_volume=348;,citation_journal_title=Annalen der Physik;">
+<meta name="citation_reference" content="citation_title=Über einen satz der statistischen dynamik und seine erweiterung in der quantentheorie;,citation_author=Max Planck;,citation_publication_date=1917;,citation_cover_date=1917;,citation_year=1917;,citation_journal_title=Sitzungsberichte der Preussischen Akademie der Wissenschaften;">
+<meta name="citation_reference" content="citation_title=Deep unsupervised learning using nonequilibrium thermodynamics;,citation_author=Jascha Sohl-Dickstein;,citation_author=Eric A. Weiss;,citation_author=Niru Maheswaranathan;,citation_author=Surya Ganguli;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_fulltext_html_url=https://arxiv.org/abs/1503.03585;,citation_conference_title=International conference on machine learning (ICML);">
+<meta name="citation_reference" content="citation_title=On the theory of stochastic processes, with particular reference to applications;,citation_author=William Feller;,citation_publication_date=1949;,citation_cover_date=1949;,citation_year=1949;,citation_conference_title=Proceedings of the [first] berkeley symposium on mathematical statistics and probability;,citation_conference=University of California Press;">
+<meta name="citation_reference" content="citation_title=Auto-encoding variational bayes;,citation_author=Diederik P. Kingma;,citation_author=Max Welling;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;,citation_conference_title=International conference on learning representations;">
+<meta name="citation_reference" content="citation_title=Sur la théorie du mouvement brownien;,citation_author=Paul Langevin;,citation_publication_date=1908;,citation_cover_date=1908;,citation_year=1908;,citation_volume=146;,citation_journal_title=Comptes Rendus de l’Académie des Sciences;">
+<meta name="citation_reference" content="citation_title=Improved techniques for training score-based generative models;,citation_author=Yang Song;,citation_author=Stefano Ermon;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_conference_title=Advances in neural information processing systems;">
+<meta name="citation_reference" content="citation_title=On estimation of a probability density function and mode;,citation_author=Emanuel Parzen;,citation_publication_date=1962;,citation_cover_date=1962;,citation_year=1962;,citation_issue=3;,citation_volume=33;,citation_journal_title=The Annals of Mathematical Statistics;">
+<meta name="citation_reference" content="citation_title=Tweedie’s formula and selection bias;,citation_author=Bradley Efron;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=496;,citation_doi=10.1198/jasa.2011.tm11181;,citation_volume=106;,citation_journal_title=Journal of the American Statistical Association;">
+<meta name="citation_reference" content="citation_title=Equation of state calculations by fast computing machines;,citation_author=Nicholas Metropolis;,citation_author=Arianna W. Rosenbluth;,citation_author=Marshall N. Rosenbluth;,citation_author=Augusta H. Teller;,citation_author=Edward Teller;,citation_publication_date=1953;,citation_cover_date=1953;,citation_year=1953;,citation_issue=6;,citation_doi=10.1063/1.1699114;,citation_volume=21;,citation_journal_title=The Journal of Chemical Physics;">
+<meta name="citation_reference" content="citation_title=Training products of experts by minimizing contrastive divergence;,citation_author=Geoffrey E. Hinton;,citation_publication_date=2002;,citation_cover_date=2002;,citation_year=2002;,citation_issue=8;,citation_doi=10.1162/089976602760128018;,citation_volume=14;,citation_journal_title=Neural Computation;">
+<meta name="citation_reference" content="citation_title=Monte carlo sampling methods using markov chains and their applications;,citation_author=W. Keith Hastings;,citation_publication_date=1970;,citation_cover_date=1970;,citation_year=1970;,citation_issue=1;,citation_doi=10.1093/biomet/57.1.97;,citation_volume=57;,citation_journal_title=Biometrika;">
+<meta name="citation_reference" content="citation_title=Methods of reducing sample size in monte carlo computations;,citation_author=Herman Kahn;,citation_author=Andy W. Marshall;,citation_publication_date=1953;,citation_cover_date=1953;,citation_year=1953;,citation_issue=5;,citation_doi=10.1287/opre.1.5.263;,citation_volume=1;,citation_journal_title=Journal of the Operations Research Society of America;">
+<meta name="citation_reference" content="citation_title=An introduction to variational methods for graphical models;,citation_author=Michael I. Jordan;,citation_author=Zoubin Ghahramani;,citation_author=Tommi S. Jaakkola;,citation_author=Lawrence K. Saul;,citation_publication_date=1999;,citation_cover_date=1999;,citation_year=1999;,citation_issue=2;,citation_doi=10.1023/A:1007665907178;,citation_volume=37;,citation_journal_title=Machine Learning;">
+<meta name="citation_reference" content="citation_title=Statistical analysis of non-lattice data;,citation_author=Julian Besag;,citation_publication_date=1975;,citation_cover_date=1975;,citation_year=1975;,citation_issue=3;,citation_doi=10.2307/2987782;,citation_volume=24;,citation_journal_title=Journal of the Royal Statistical Society: Series D (The Statistician);">
+<meta name="citation_reference" content="citation_title=The neural autoregressive distribution estimator;,citation_author=Hugo Larochelle;,citation_author=Iain Murray;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_conference_title=Proceedings of the 14th international conference on artificial intelligence and statistics (AISTATS);">
+<meta name="citation_reference" content="citation_title=Exponential convergence of langevin distributions and their discrete approximations;,citation_author=Gareth O. Roberts;,citation_author=Richard L. Tweedie;,citation_publication_date=1996;,citation_cover_date=1996;,citation_year=1996;,citation_issue=4;,citation_volume=2;,citation_journal_title=Bernoulli;">
+<meta name="citation_reference" content="citation_title=Brownian motion in a field of force and the diffusion model of chemical reactions;,citation_author=Hendrik A. Kramers;,citation_publication_date=1940;,citation_cover_date=1940;,citation_year=1940;,citation_issue=4;,citation_volume=7;,citation_journal_title=Physica;">
+<meta name="citation_reference" content="citation_title=Reverse-time diffusion equation models;,citation_author=Brian D. O. Anderson;,citation_publication_date=1982;,citation_cover_date=1982;,citation_year=1982;,citation_issue=3;,citation_doi=10.1016/0304-4149(82)90051-5;,citation_volume=12;,citation_journal_title=Stochastic Processes and their Applications;">
+<meta name="citation_reference" content="citation_title=A tutorial on energy-based learning;,citation_author=Yann LeCun;,citation_author=Sumit Chopra;,citation_author=Raia Hadsell;,citation_author=Marc’Aurelio Ranzato;,citation_author=Fu Jie Huang;,citation_publication_date=2006;,citation_cover_date=2006;,citation_year=2006;,citation_inbook_title=Predicting structured data;">
+<meta name="citation_reference" content="citation_title=Monte carlo theory, methods and examples;,citation_author=Art B. Owen;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -351,7 +391,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    From Sohl-Dickstein’s diffusion probabilistic models to Ho’s DDPM; from Hyvärinen’s ISM to Vincent’s DSM to Song’s NCSN — the two lineages of denoising diffusion, built from first principles.
+    Two routes to denoising diffusion from first principles: the variational bound behind DDPM (Sohl-Dickstein, Ho) and score matching (Hyvärinen, Vincent, Song).
   </div>
 </div>
 
@@ -526,7 +566,7 @@ D_{\mathrm{KL}}(p_0 \,\|\, q_\theta) = -\,\mathbb{E}_{p_0}\big[\log q_\theta(x_0
 \boxed{\hat\theta = \arg\max_{\theta}\, \frac{1}{n}\sum_{i=1}^{n} \log q_\theta\big(x^{(i)}\big)}
 \tag{2}</span></span></p>
 <p>When <span class="math inline">\mathbb{E}_{p_0}\big|\log q_\theta(x_0)\big|</span> is finite, the law of large numbers makes this average converge to <span class="math inline">\mathbb{E}_{p_0}[\log q_\theta(x_0)]</span> as <span class="math inline">n \to \infty</span> <span class="citation" data-cites="owen2013monte"><a href="#ref-owen2013monte" role="doc-biblioref">[8]</a></span>. Maximum likelihood is therefore the finite-sample form of KL minimization, and the negative average log-likelihood is the loss associated with the KL divergence.</p>
-<p>We fit <span class="math inline">\mu_\theta</span> by minimizing the expected negative log-likelihood over the data, where the model density of a data point is <span class="math inline">q_\theta(x_0) = \int q_\theta(x_{0:N})\, dx_{1:N}</span>. Like Kingma and Welling’s variational autoencoder <span class="citation" data-cites="kingma2013auto"><a href="#ref-kingma2013auto" role="doc-biblioref">[9]</a></span>, that integral is intractable because it integrates over all latent trajectories <span class="math inline">x_{1:N}</span>, so we use a variational bound on the negative log-likelihood instead <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[1]</a></span>. Further reparameterization converts that mean-prediction problem into noise <span class="math inline">\epsilon_\theta</span> prediction, and <span class="math inline">\epsilon_\theta</span> is what the network learns. A single network conditioned on the step index represents all <span class="math inline">N</span> reverse steps.</p>
+<p>We fit <span class="math inline">\mu_\theta</span> by minimizing the expected negative log-likelihood over the data, where the model density of a data point is <span class="math inline">q_\theta(x_0) = \int q_\theta(x_{0:N})\, dx_{1:N}</span>. Like Kingma and Welling’s variational autoencoder <span class="citation" data-cites="kingma2013auto"><a href="#ref-kingma2013auto" role="doc-biblioref">[9]</a></span>, that integral is intractable because it integrates over all latent trajectories <span class="math inline">x_{1:N}</span>, so we use a variational bound on the negative log-likelihood instead <span class="citation" data-cites="sohldickstein2015deep ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[1]</a>, <a href="#ref-sohldickstein2015deep" role="doc-biblioref">[6]</a></span>. Further reparameterization converts that mean-prediction problem into noise <span class="math inline">\epsilon_\theta</span> prediction, and <span class="math inline">\epsilon_\theta</span> is what the network learns. A single network conditioned on the step index represents all <span class="math inline">N</span> reverse steps.</p>
 <p>The next section walks through the derivation in full, because seeing the full derivation is the cleanest evidence that “predict the noise” is not a heuristic but the parameterization the variational bound itself produces.</p>
 </section>
 </section>
@@ -2241,9 +2281,28 @@ Figure&nbsp;16: Annealed Langevin dynamics descends through the noise levels. Ea
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion",
-  "datePublished": "2026",
-  "author": { "@type": "Person", "name": "Aja S." },
-  "publisher": { "@type": "Organization", "name": "Continuous-Time Generative Models" }
+  "description": "Two routes to denoising diffusion from first principles: the variational bound behind DDPM (Sohl-Dickstein, Ho) and score matching (Hyvärinen, Vincent, Song).",
+  "image": "https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/share.png",
+  "datePublished": "2026-09-10",
+  "dateModified": "2026-10-19",
+  "url": "https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/",
+  "mainEntityOfPage": "https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Continuous-Time Generative Models",
+    "url": "https://aja-ekapada.github.io/continuous-time-generative-models/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Aja S.",
+    "url": "https://aja-ekapada.github.io/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Aja S.",
+    "url": "https://aja-ekapada.github.io/"
+  }
 }
 </script>
 
