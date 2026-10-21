@@ -20,10 +20,10 @@
 <generator>quarto-1.9.38</generator>
 <lastBuildDate>Fri, 16 Oct 2026 10:00:00 GMT</lastBuildDate>
 <item>
-  <title>SDE-Based Generative Models: The Unification</title>
+  <title>SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/</link>
-  <description><![CDATA[ How one forward SDE unifies DDPM and score matching: the VP, VE and sub-VP SDEs, Anderson’s reverse-time SDE, the probability-flow ODE, training and sampling. ]]></description>
+  <description><![CDATA[ The forward SDE of Song, the reverse-time SDE of Anderson and the probability-flow ODE of Maoutsa and Song, built from first principles. ]]></description>
   <category>stochastic calculus</category>
   <category>diffusion models</category>
   <category>generative AI</category>
@@ -57,7 +57,7 @@
   <title>The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/</link>
-  <description><![CDATA[ Two routes to denoising diffusion from first principles: the variational bound behind DDPM (Sohl-Dickstein, Ho) and score matching (Hyvärinen, Vincent, Song). ]]></description>
+  <description><![CDATA[ The variational bound of Sohl-Dickstein and Ho, and the score matching of Hyvärinen, Vincent and Song, built from first principles. ]]></description>
   <category>stochastic calculus</category>
   <category>diffusion models</category>
   <category>generative AI</category>
@@ -103,7 +103,7 @@
   <title>Itô’s Lemma: From Black-Scholes to Diffusion Models</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/</link>
-  <description><![CDATA[ Itô’s lemma yields both the Black-Scholes equation and the perturbation kernel of DDPM’s forward process from one rule of stochastic calculus, (dW)² = dt. ]]></description>
+  <description><![CDATA[ Brownian motion, quadratic variation, the Itô integral, SDEs and the Fokker-Planck equation, built from first principles. ]]></description>
   <category>stochastic calculus</category>
   <category>diffusion models</category>
   <category>generative AI</category>
