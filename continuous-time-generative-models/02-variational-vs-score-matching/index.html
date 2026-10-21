@@ -1058,7 +1058,7 @@ Z(\theta) = \int \exp(-E_\theta(x))\, dx
 <h2 data-number="2.2" class="anchored" data-anchor-id="sec-the-score"><span class="header-section-number">2.2</span> The score</h2>
 <section id="intuition-electric-fields" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="intuition-electric-fields"><span class="header-section-number">2.2.1</span> Intuition: electric fields</h3>
-<p>Before defining the score formally, it helps to borrow a picture from electrostatics, where the same two-object relationship — a scalar field and its gradient — appears in a setting most readers already have intuition for.</p>
+<p>Before defining the score formally, it helps to borrow an analogy from electrostatics, where the same relationship between a scalar field and its gradient appears in a setting most readers already have intuition for.</p>
 <p>In electrostatics, a distribution of charge sets up a scalar potential <span class="math inline">\phi(x)</span> — one number at each point in space. Its value measures how much potential energy a positive test charge would have there: high near like charges it is repelled from, low near opposite charges it is drawn toward. From that potential comes a vector field <span class="math inline">\mathcal{E}(x)</span> — the electric field — defined as the negative of its gradient, <span class="math inline">\mathcal{E} = -\nabla_x \phi</span>. The field has a direction and a magnitude at each point: it points “downhill,” toward lower potential, and it is strong where the potential varies sharply and weak where the potential is flat (<a href="#fig-electric-field" class="quarto-xref">Figure&nbsp;4</a>).</p>
 <p>The key relationship is that the field is the negative gradient of the potential. Knowing the potential everywhere, we get the field by differentiating. The field tells us, at any point, which way is downhill in potential most steeply and how steep that descent is. A test charge released into the field feels a force along it and drifts accordingly — it is pushed by the local gradient, without ever needing to know the global shape of the potential.</p>
 <div id="cell-fig-electric-field" class="cell" data-execution_count="4">
@@ -1956,7 +1956,7 @@ s^{\star}(\tilde{x}) = \frac{\mathbb{E}[x\mid\tilde{x}]-\tilde{x}}{\sigma^{2}}
 <img src="index_files/figure-html/fig-tweedie-denoiser-output-1.png" alt="A scatter of dots in two clusters with a diamond marker above the right cluster. Faint lines connect the diamond to every dot, thicker to nearby dots and barely visible to the distant left cluster. A bold arrow from the diamond ends at an open circle amid the right cluster, labelled as the posterior mean." width="620" height="487" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tweedie-denoiser-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Tweedie’s formula as a picture. A noisy observation <span class="math inline">\tilde{x}</span> (diamond) is connected to every clean training sample; each line’s weight is the posterior probability that this sample produced <span class="math inline">\tilde{x}</span>. The bold arrow is their weighted average: it points to the posterior mean <span class="math inline">\mathbb{E}[x \mid \tilde{x}]</span>, not to any single sample, and equals the displacement <span class="math inline">\sigma^2 \nabla_{\tilde{x}} \log p_\sigma(\tilde{x})</span>. The clean samples are the source, on average — the optimal denoiser and the score determine each other.
+Figure&nbsp;14: Tweedie’s formula as a weighted average of the training samples. A noisy observation <span class="math inline">\tilde{x}</span> (diamond) is connected to every clean training sample; each line’s weight is the posterior probability that this sample produced <span class="math inline">\tilde{x}</span>. The bold arrow is their weighted average: it points to the posterior mean <span class="math inline">\mathbb{E}[x \mid \tilde{x}]</span>, not to any single sample, and equals the displacement <span class="math inline">\sigma^2 \nabla_{\tilde{x}} \log p_\sigma(\tilde{x})</span>. The clean samples are the source, on average — the optimal denoiser and the score determine each other.
 </figcaption>
 </figure>
 </div>
@@ -2284,7 +2284,7 @@ Figure&nbsp;16: Annealed Langevin dynamics descends through the noise levels. Ea
   "description": "The variational bound of Sohl-Dickstein and Ho, and the score matching of Hyvärinen, Vincent and Song, built from first principles.",
   "image": "https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/share.png",
   "datePublished": "2026-09-10",
-  "dateModified": "2026-10-19",
+  "dateModified": "2026-10-21",
   "url": "https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/",
   "mainEntityOfPage": "https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/",
   "inLanguage": "en",

@@ -228,7 +228,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Stochastic differential equations: An introduction with applications;,citation_author=Bernt Øksendal;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;">
 <meta name="citation_reference" content="citation_title=Consistency models;,citation_author=Yang Song;,citation_author=Prafulla Dhariwal;,citation_author=Mark Chen;,citation_author=Ilya Sutskever;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2303.01469;,citation_conference_title=International conference on machine learning (ICML);">
 <meta name="citation_reference" content="citation_title=A connection between score matching and denoising autoencoders;,citation_author=Pascal Vincent;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=7;,citation_doi=10.1162/NECO_a_00142;,citation_volume=23;,citation_journal_title=Neural Computation;">
-<meta name="citation_reference" content="citation_title=Continuous markov processes and stochastic equations;,citation_author=Gisiro Maruyama;,citation_publication_date=1955;,citation_cover_date=1955;,citation_year=1955;,citation_volume=4;,citation_journal_title=Rendiconti del Circolo Matematico di Palermo;">
+<meta name="citation_reference" content="citation_title=Continuous Markov processes and stochastic equations;,citation_author=Gisiro Maruyama;,citation_publication_date=1955;,citation_cover_date=1955;,citation_year=1955;,citation_volume=4;,citation_journal_title=Rendiconti del Circolo Matematico di Palermo;">
 <meta name="citation_reference" content="citation_title=Tweedie’s formula and selection bias;,citation_author=Bradley Efron;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=496;,citation_doi=10.1198/jasa.2011.tm11181;,citation_volume=106;,citation_journal_title=Journal of the American Statistical Association;">
 <meta name="citation_reference" content="citation_title=Improved denoising diffusion probabilistic models;,citation_author=Alexander Quinn Nichol;,citation_author=Prafulla Dhariwal;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2102.09672;,citation_volume=139;,citation_conference_title=Proceedings of the 38th international conference on machine learning (ICML);,citation_series_title=Proceedings of machine learning research;">
 <meta name="citation_reference" content="citation_title=Diffusion models beat GANs on image synthesis;,citation_author=Prafulla Dhariwal;,citation_author=Alexander Nichol;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.05233;,citation_conference_title=Advances in neural information processing systems (NeurIPS);">
@@ -1606,7 +1606,7 @@ Figure&nbsp;7: The short-time reverse kernel for the two-mode example at <span c
 </section>
 <section id="sec-pf-ode" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> The probability-flow ODE</h1>
-<p>The solution of the reverse-time SDE is not the only process with the marginals <span class="math inline">p_t</span>. A deterministic one exists, as Maoutsa et al.&nbsp;showed for an SDE with a constant diffusion coefficient <span class="citation" data-cites="maoutsa2020interacting"><a href="#ref-maoutsa2020interacting" role="doc-biblioref">[16]</a></span> and Song et al.&nbsp;for each SDE of the form <a href="#eq-forward-sde" class="quarto-xref">Equation&nbsp;1</a>. It solves the equation that Song et al.&nbsp;named the <strong>probability-flow ODE</strong></p>
+<p>The solution of the reverse-time SDE is not the only process with the marginals <span class="math inline">p_t</span>. Song et al.&nbsp;show that a deterministic one exists for each SDE of the form <a href="#eq-forward-sde" class="quarto-xref">Equation&nbsp;1</a>, an idea they credit to Maoutsa et al. <span class="citation" data-cites="maoutsa2020interacting"><a href="#ref-maoutsa2020interacting" role="doc-biblioref">[16]</a></span>. It solves the equation they named the <strong>probability-flow ODE</strong></p>
 <p><span id="eq-pf-ode"><span class="math display">
 \boxed{\frac{dx_t}{dt} = f(x_t, t) - \tfrac{1}{2}\, g(t)^2\, \nabla_x \log p_t(x_t)}
 \tag{25}</span></span></p>
@@ -2466,7 +2466,7 @@ d\varphi(X_t) = \Big(f \cdot \nabla_x \varphi + \tfrac{1}{2} \operatorname{tr}\!
 <div class="csl-left-margin">[9] </div><div class="csl-right-inline">Y. Song, P. Dhariwal, M. Chen, and I. Sutskever, <span>“Consistency models,”</span> in <em>International conference on machine learning (ICML)</em>, 2023. Available: <a href="https://arxiv.org/abs/2303.01469">https://arxiv.org/abs/2303.01469</a></div>
 </div>
 <div id="ref-maruyama1955continuous" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">G. Maruyama, <span>“Continuous markov processes and stochastic equations,”</span> <em>Rendiconti del Circolo Matematico di Palermo</em>, vol. 4, pp. 48–90, 1955.</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">G. Maruyama, <span>“Continuous <span>M</span>arkov processes and stochastic equations,”</span> <em>Rendiconti del Circolo Matematico di Palermo</em>, vol. 4, pp. 48–90, 1955.</div>
 </div>
 <div id="ref-nichol2021improved" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Q. Nichol and P. Dhariwal, <span>“Improved denoising diffusion probabilistic models,”</span> in <em>Proceedings of the 38th international conference on machine learning (ICML)</em>, in Proceedings of machine learning research, vol. 139. 2021, pp. 8162–8171. Available: <a href="https://arxiv.org/abs/2102.09672">https://arxiv.org/abs/2102.09672</a></div>
@@ -2510,7 +2510,7 @@ d\varphi(X_t) = \Big(f \cdot \nabla_x \varphi + \tfrac{1}{2} \operatorname{tr}\!
   "description": "The forward SDE of Song, the reverse-time SDE of Anderson and the probability-flow ODE of Maoutsa and Song, built from first principles.",
   "image": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png",
   "datePublished": "2026-10-16",
-  "dateModified": "2026-10-20",
+  "dateModified": "2026-10-21",
   "url": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/",
   "mainEntityOfPage": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/",
   "inLanguage": "en",
