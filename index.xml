@@ -18,7 +18,24 @@
 <width>96</width>
 </image>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Fri, 16 Oct 2026 10:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 22 Oct 2026 10:00:00 GMT</lastBuildDate>
+<item>
+  <title>Flow-Based Generative Models: When Probability Flows Like a Fluid</title>
+  <dc:creator>Aja S.</dc:creator>
+  <link>https://aja-ekapada.github.io/continuous-time-generative-models/04-flow-matching/</link>
+  <description><![CDATA[ The normalizing flows of Tabak, the neural ODEs of Chen, and the flow matching of Lipman, built from first principles. ]]></description>
+  <category>diffusion models</category>
+  <category>generative AI</category>
+  <category>normalizing flows</category>
+  <category>continuous normalizing flows</category>
+  <category>flow matching</category>
+  <category>fluid mechanics</category>
+  <category>continuity equation</category>
+  <category>probability-flow ODE</category>
+  <guid>https://aja-ekapada.github.io/continuous-time-generative-models/04-flow-matching/</guid>
+  <pubDate>Thu, 22 Oct 2026 10:00:00 GMT</pubDate>
+  <media:content url="https://aja-ekapada.github.io/continuous-time-generative-models/04-flow-matching/share.png" medium="image" type="image/png" height="76" width="144"/>
+</item>
 <item>
   <title>SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</title>
   <dc:creator>Aja S.</dc:creator>

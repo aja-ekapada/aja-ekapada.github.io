@@ -364,6 +364,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sec-ve-vp-why" id="toc-sec-ve-vp-why" class="nav-link" data-scroll-target="#sec-ve-vp-why"><span class="header-section-number">6</span> Why This Matters</a>
   <ul class="collapse">
+  <li><a href="#what-comes-next" id="toc-what-comes-next" class="nav-link" data-scroll-target="#what-comes-next"><span class="header-section-number">6.1</span> What comes next</a></li>
   <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
   <ul class="collapse">
   <li><a href="#sec-sde-existence" id="toc-sec-sde-existence" class="nav-link" data-scroll-target="#sec-sde-existence">A.1 Existence and uniqueness of strong solutions</a></li>
@@ -441,15 +442,19 @@ window.Quarto = {
 </tr>
 </thead>
 <tbody class="list">
-<tr class="current odd">
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-date">Oct 22, 2026</span></td>
+<td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
+</tr>
+<tr class="current even">
 <td><span class="listing-date">Oct 16, 2026</span></td>
 <td><span class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</span><span class="series-here"> — you are here</span></td>
 </tr>
-<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Sep 10, 2026</span></td>
 <td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a></td>
 </tr>
-<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Aug 10, 2026</span></td>
 <td><a href="../01-ito-bs-to-ddpm/index.html" class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</a></td>
 </tr>
@@ -965,7 +970,7 @@ f_{\mathrm{lin}}(t) = -\tfrac12 \beta(t), \qquad g(t)^2 = \beta(t)\big(1 - \bar\
 \tag{16}</span></span></p>
 <p>This is the sub-VP perturbation kernel. <span class="math inline">\square</span></p>
 <p>Sub-VP shares the VP mean, and its variance is the VP variance squared. For <span class="math inline">\bar\alpha(t) \in (0, 1)</span>, <span class="math inline">(1 - \bar\alpha)^2 &lt; 1 - \bar\alpha</span>, so the sub-VP variance lies strictly below the VP variance at each intermediate time. The two meet at both ends: at <span class="math inline">0</span> when <span class="math inline">t = 0</span>, and at <span class="math inline">1</span> as <span class="math inline">\bar\alpha \to 0</span>. Sub-VP therefore has the same initial condition, the data, and reaches the same prior <span class="math inline">\mathcal{N}(0, I)</span> with less noise in between.</p>
-<p>This is the bound the name captures. In Song et al.’s experiments on CIFAR-10, a dataset of <span class="math inline">32 \times 32</span> colour images, it gives higher likelihoods than VP for each model compared <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. The likelihood here is the density the trained model assigns to held-out test images, computed by the exact method of post #4.</p>
+<p>This is the bound the name captures. In Song et al.’s experiments on CIFAR-10, a dataset of <span class="math inline">32 \times 32</span> colour images, it gives higher likelihoods than VP for each model compared <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. The likelihood here is the density the trained model assigns to held-out test images, computed by the exact method of post #5.</p>
 <p>On CIFAR-10 sub-VP reached <span class="math inline">2.99</span> bits per dimension <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>, the negative base-2 log-likelihood of a test image divided by its number of pixel values, so lower is better. The integer pixel values were first dequantized, by adding uniform noise, so that the data has a density.</p>
 </section>
 </section>
@@ -1761,7 +1766,7 @@ p_{0t}(x_t \mid x_0) = \big(2\pi\Sigma(t)\big)^{-d/2}\, e^{-\lVert y \rVert^2/(2
 <section id="sec-ddpm-from-dsm" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="sec-ddpm-from-dsm"><span class="header-section-number">4.2</span> The noise-prediction loss shared by the ELBO and DSM</h2>
 <p>Post #2 trained the two lineages with different objectives. The variational route bounded the log-likelihood by the evidence lower bound (ELBO) and, by dropping its time-dependent weights, reached DDPM’s simple objective, a noise-prediction loss. The score-based route trained by DSM, which post #2 also rewrote as a noise-prediction loss, at a different perturbation of the data. Whether the two routes lead to one loss was left open.</p>
-<p>They do. On DDPM’s own perturbation, the weighted DSM objective <a href="#eq-dsm" class="quarto-xref">Equation&nbsp;26</a> with the weighting <span class="math inline">\lambda(t) = 1 - \bar\alpha(t)</span> is DDPM’s simple objective, once the network’s output is parameterized as a noise prediction. The two lineages therefore train on the same loss and differ only in the weighting <span class="math inline">\lambda(t)</span> and in how the network’s output is parameterized. The full ELBO, with its weights kept, corresponds in the continuous-time limit to another choice of <span class="math inline">\lambda</span>, Song et al.’s likelihood weighting <span class="math inline">\lambda(t) = g(t)^2</span> <span class="citation" data-cites="song2021maximum"><a href="#ref-song2021maximum" role="doc-biblioref">[17]</a></span>, which is <span class="math inline">\beta(t)</span> for the VP SDE. Section 2.5 of post #5 develops it.</p>
+<p>They do. On DDPM’s own perturbation, the weighted DSM objective <a href="#eq-dsm" class="quarto-xref">Equation&nbsp;26</a> with the weighting <span class="math inline">\lambda(t) = 1 - \bar\alpha(t)</span> is DDPM’s simple objective, once the network’s output is parameterized as a noise prediction. The two lineages therefore train on the same loss and differ only in the weighting <span class="math inline">\lambda(t)</span> and in how the network’s output is parameterized. The full ELBO, with its weights kept, corresponds in the continuous-time limit to another choice of <span class="math inline">\lambda</span>, Song et al.’s likelihood weighting <span class="math inline">\lambda(t) = g(t)^2</span> <span class="citation" data-cites="song2021maximum"><a href="#ref-song2021maximum" role="doc-biblioref">[17]</a></span>, which is <span class="math inline">\beta(t)</span> for the VP SDE. Section 2.5 of post #6 develops it.</p>
 <p>Showing that the weighting <span class="math inline">\lambda(t) = 1 - \bar\alpha(t)</span> gives the simple objective requires two steps. DDPM’s simple objective averages over <span class="math inline">N</span> discrete steps, while <a href="#eq-dsm" class="quarto-xref">Equation&nbsp;26</a> averages over continuous time, so the first subsection below converts the simple objective to continuous time, and the second derives the result from <a href="#eq-dsm" class="quarto-xref">Equation&nbsp;26</a>.</p>
 <section id="sec-simple-continuous" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="sec-simple-continuous"><span class="header-section-number">4.2.1</span> Converting DDPM’s simple objective to continuous time</h3>
@@ -2023,18 +2028,15 @@ Figure&nbsp;10: The last step of reverse diffusion sampling on a grid of <span c
 <h1 data-number="6"><span class="header-section-number">6</span> Why This Matters</h1>
 <p>Song et al.’s largest contribution <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span> is not a new model but a framework, made of the forward SDE, the reverse-time SDE, the score as a drift correction and the probability-flow ODE. The VP and VE derivations that occupy so much of the paper are the evidence for it, since they show the two lineages to be one equation with two choices of coefficients.</p>
 <p>The methods that followed are written in this framework. Karras et al.’s Elucidating the Design Space of Diffusion-Based Generative Models (EDM) framework <span class="citation" data-cites="karras2022elucidating"><a href="#ref-karras2022elucidating" role="doc-biblioref">[7]</a></span> rewrites the forward SDE in terms of a noise level and a signal scale. Lipman et al.’s flow matching <span class="citation" data-cites="lipman2023flow"><a href="#ref-lipman2023flow" role="doc-biblioref">[8]</a></span> learns, by regression and without solving the ODE, the velocity field of an ODE whose solution has a chosen marginal path, the role the probability-flow ODE plays here. Song et al.’s consistency models <span class="citation" data-cites="song2023consistency"><a href="#ref-song2023consistency" role="doc-biblioref">[9]</a></span> learn the map from each point of a probability-flow ODE trajectory to the point that trajectory reaches at <span class="math inline">t_{\min}</span>, so a sample needs one network evaluation.</p>
-<p><strong>Forward and reverse processes form the backbone of the series.</strong> Everything that follows is a variation on one strategy: <em>learn something about the easy forward process, then run it backward to generate.</em> The forward direction is always simple to run. All the modeling effort goes into the one quantity the reverse pass needs but the forward pass discards. Here that quantity is the score; in flow matching (post #4) it is a velocity field; in conditional generation (post #6) it is a conditional score. Same structure, different realization.</p>
+<p><strong>Forward and reverse processes form the backbone of the series.</strong> Everything that follows is a variation on one strategy: <em>learn something about the easy forward process, then run it backward to generate.</em> The forward direction is always simple to run. All the modeling effort goes into the one quantity the reverse pass needs but the forward pass discards. Here that quantity is the score; in flow matching (<a href="../04-flow-matching/index.html#sec-fm-loss">post #4</a>) it is a velocity field; in conditional generation (post #8) it is a conditional score. Same structure, different realization.</p>
 <p><strong>The noise schedule is a design choice.</strong> Within one SDE family, the schedule <span class="math inline">\beta(t)</span> or <span class="math inline">\sigma(t)</span> fixes <span class="math inline">m(t)</span> and <span class="math inline">\Sigma(t)</span> (<a href="#tbl-sde-moments" class="quarto-xref">Table&nbsp;1</a>), and so decides how the noise levels are spread over <span class="math inline">[0, T]</span>. That spread decides where training and sampling spend their effort, as the linear and cosine schedules of <a href="#sec-vp-schedules" class="quarto-xref">Section&nbsp;1.2.3</a> show. Karras et al.&nbsp;separated the two roles the schedule plays, the noise levels seen in training and the time grid used in sampling, and tuned each on its own <span class="citation" data-cites="karras2022elucidating"><a href="#ref-karras2022elucidating" role="doc-biblioref">[7]</a></span>. Post #7 analyzes that design space.</p>
 <p><strong>VP became the default; VE and sub-VP keep their roles.</strong> The DDPM lineage, including guided diffusion <span class="citation" data-cites="dhariwal2021diffusion"><a href="#ref-dhariwal2021diffusion" role="doc-biblioref">[18]</a></span>, which guides sampling with the gradient of a classifier, and latent diffusion <span class="citation" data-cites="rombach2022high"><a href="#ref-rombach2022high" role="doc-biblioref">[19]</a></span>, which runs the diffusion in the latent space of an autoencoder, is built on the VP form.</p>
 <p>VE and sub-VP keep the strengths the last two rows of <a href="#tbl-sde-moments" class="quarto-xref">Table&nbsp;1</a> show, sample quality for VE and likelihood for sub-VP. EDM keeps the VE form and rescales the network’s input at each noise level <span class="citation" data-cites="karras2022elucidating"><a href="#ref-karras2022elucidating" role="doc-biblioref">[7]</a></span>.</p>
 <p><strong>Different coefficients, the same machinery.</strong> Post #1 opened with Itô’s lemma, used it to price an option, and then used it again to derive the DDPM perturbation kernel. This post used the same lemma for each kernel (<a href="#sec-linear-sde-general" class="quarto-xref">Section&nbsp;1.1</a>), the equivalence between marginal paths and the Fokker-Planck equation behind the reverse-time SDE and the probability-flow ODE (<a href="#sec-anderson-derivation" class="quarto-xref">Section&nbsp;2.2</a> and <a href="#sec-pf-ode" class="quarto-xref">Section&nbsp;3</a>), and the change of measure behind risk-neutral pricing for the reverse drift (<a href="#sec-anderson-girsanov" class="quarto-xref">Section&nbsp;2.3</a>). VP, VE and sub-VP differ only in <span class="math inline">f</span> and <span class="math inline">g</span>. Changing the coefficients changes the model, while the score, the training objective and the samplers stay the same.</p>
-<p><strong>Where this goes next:</strong> The rest of the series builds on this framework.</p>
-<ul>
-<li>Post #4 develops the probability-flow ODE further. As a continuous normalizing flow, it gives exact likelihoods through the instantaneous change of variables, and flow matching trains such a flow directly.</li>
-<li>Post #5 returns to the corrector of the predictor-corrector sampler, Langevin dynamics, and shows how an error in the learned score bounds the error of the generated distribution.</li>
-<li>Post #6 writes the score of a conditional distribution through Bayes’ rule and uses it to guide generation toward a class or a prompt, by classifier guidance and classifier-free guidance.</li>
-<li>Post #7 places VP and VE as two paths through one design space, writes the probability-flow ODE in the noise level, motivates EDM’s sampling schedule, and derives its network preconditioning.</li>
-</ul>
+<section id="what-comes-next" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="what-comes-next"><span class="header-section-number">6.1</span> What comes next</h2>
+<p><a href="../04-flow-matching/index.html#sec-pf-precursor">Post #4</a> develops the probability-flow ODE further. As a continuous normalizing flow, it gives exact likelihoods through the instantaneous change of variables, and flow matching trains such a flow directly.</p>
+</section>
 <section id="appendix" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="appendix">Appendix</h2>
 <section id="sec-sde-existence" class="level3 unnumbered">
@@ -2510,7 +2512,7 @@ d\varphi(X_t) = \Big(f \cdot \nabla_x \varphi + \tfrac{1}{2} \operatorname{tr}\!
   "description": "The forward SDE of Song, the reverse-time SDE of Anderson and the probability-flow ODE of Maoutsa and Song, built from first principles.",
   "image": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png",
   "datePublished": "2026-10-16",
-  "dateModified": "2026-10-21",
+  "dateModified": "2026-10-22",
   "url": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/",
   "mainEntityOfPage": "https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/",
   "inLanguage": "en",
