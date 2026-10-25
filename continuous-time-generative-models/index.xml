@@ -76,7 +76,7 @@
   <title>Itô’s Lemma: From Black-Scholes to Diffusion Models</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/</link>
-  <description><![CDATA[ Brownian motion, quadratic variation, the Itô integral, SDEs and the Fokker-Planck equation, built from first principles. ]]></description>
+  <description><![CDATA[ Brownian motion, quadratic variation, Itô integral, SDEs, Itô’s lemma, Black-Scholes, generative models, DDPM’s perturbation kernel and Fokker-Planck equation. ]]></description>
   <category>stochastic calculus</category>
   <category>diffusion models</category>
   <category>generative AI</category>

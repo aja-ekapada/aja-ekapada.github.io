@@ -28,6 +28,17 @@ h4 {
   font-size: 1.1rem;
 }
 
+/* ##### headings (unnumbered under number-depth 4, outside the TOC; post 1's model families and divergences,
+   2026-10-23): one step below h4, at the body size, semibold and spaced like h4. Bootstrap otherwise gives them
+   h4's size in normal weight with no space above, so they read as a line glued to the paragraph before. */
+h5 {
+  color: var(--bs-body-color, #373a3c);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 1.5rem;
+}
+
 /* The auto-numbering span (e.g. "4.7.3.1") is themed a muted grey; make it
    inherit the heading's colour so the digits match the heading text. */
 .header-section-number {
@@ -166,6 +177,13 @@ figcaption {
 #listing-posts-mini .series-here {
   font-style: italic;
   font-size: 0.85em;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+/* Legend under the series list: the cross-post reference format P2:§3.8 */
+#listing-posts-mini .series-list-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
   color: var(--bs-secondary-color, #6c757d);
 }
 
