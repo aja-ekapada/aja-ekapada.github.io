@@ -22,13 +22,17 @@
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/04-flow-matching/</link>
   <description><![CDATA[ The normalizing flows of Tabak, the neural ODEs of Chen, and the flow matching of Lipman, built from first principles. ]]></description>
+  <category>fluid mechanics</category>
+  <category>continuity equation</category>
+  <category>optimal transport</category>
   <category>diffusion models</category>
   <category>generative AI</category>
   <category>normalizing flows</category>
+  <category>flow models</category>
   <category>continuous normalizing flows</category>
+  <category>neural ODEs</category>
   <category>flow matching</category>
-  <category>fluid mechanics</category>
-  <category>continuity equation</category>
+  <category>conditional flow matching</category>
   <category>probability-flow ODE</category>
   <guid>https://aja-ekapada.github.io/continuous-time-generative-models/04-flow-matching/</guid>
   <pubDate>Thu, 22 Oct 2026 10:00:00 GMT</pubDate>
@@ -40,16 +44,19 @@
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/</link>
   <description><![CDATA[ The forward SDE of Song, the reverse-time SDE of Anderson and the probability-flow ODE of Maoutsa and Song, built from first principles. ]]></description>
   <category>stochastic calculus</category>
-  <category>diffusion models</category>
-  <category>generative AI</category>
   <category>linear SDEs</category>
   <category>Fokker-Planck equation</category>
-  <category>VP-SDE</category>
-  <category>VE-SDE</category>
-  <category>score matching</category>
-  <category>probability-flow ODE</category>
   <category>Girsanov&#39;s theorem</category>
   <category>risk-neutral pricing</category>
+  <category>diffusion models</category>
+  <category>generative AI</category>
+  <category>VP-SDE</category>
+  <category>VE-SDE</category>
+  <category>reverse-time SDE</category>
+  <category>probability-flow ODE</category>
+  <category>score matching</category>
+  <category>denoising score matching</category>
+  <category>predictor-corrector sampling</category>
   <guid>https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/</guid>
   <pubDate>Fri, 16 Oct 2026 10:00:00 GMT</pubDate>
   <media:content url="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png" medium="image" type="image/png" height="76" width="144"/>
@@ -59,14 +66,16 @@
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/</link>
   <description><![CDATA[ The variational bound of Sohl-Dickstein and Ho, and the score matching of Hyvärinen, Vincent and Song, built from first principles. ]]></description>
-  <category>stochastic calculus</category>
   <category>diffusion models</category>
   <category>generative AI</category>
-  <category>DDPM</category>
+  <category>variational autoencoders</category>
   <category>ELBO</category>
+  <category>DDPM</category>
+  <category>energy-based models</category>
   <category>score matching</category>
   <category>denoising score matching</category>
-  <category>Langevin MCMC</category>
+  <category>Tweedie&#39;s formula</category>
+  <category>Langevin dynamics</category>
   <category>NCSN</category>
   <guid>https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/</guid>
   <pubDate>Thu, 10 Sep 2026 10:00:00 GMT</pubDate>
@@ -78,12 +87,18 @@
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/</link>
   <description><![CDATA[ Brownian motion, quadratic variation, Itô integral, SDEs, Itô’s lemma, Black-Scholes, generative models, DDPM’s perturbation kernel and Fokker-Planck equation. ]]></description>
   <category>stochastic calculus</category>
-  <category>diffusion models</category>
-  <category>generative AI</category>
+  <category>Brownian motion</category>
   <category>Itô&#39;s lemma</category>
+  <category>Fokker-Planck equation</category>
   <category>Black-Scholes</category>
   <category>options pricing</category>
+  <category>diffusion models</category>
+  <category>generative AI</category>
+  <category>variational autoencoders</category>
+  <category>normalizing flows</category>
+  <category>energy-based models</category>
   <category>DDPM</category>
+  <category>VP-SDE</category>
   <guid>https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/</guid>
   <pubDate>Mon, 10 Aug 2026 10:00:00 GMT</pubDate>
   <media:content url="https://aja-ekapada.github.io/continuous-time-generative-models/01-ito-bs-to-ddpm/share.png" medium="image" type="image/png" height="76" width="144"/>
