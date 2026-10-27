@@ -130,10 +130,7 @@ div.csl-indent {
 <style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
-
-
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -525,7 +522,6 @@ window.Quarto = {
     <div class="quarto-category">Black-Scholes</div>
     <div class="quarto-category">options pricing</div>
     <div class="quarto-category">diffusion models</div>
-    <div class="quarto-category">generative AI</div>
     <div class="quarto-category">variational autoencoders</div>
     <div class="quarto-category">normalizing flows</div>
     <div class="quarto-category">energy-based models</div>
@@ -2074,19 +2070,19 @@ Table&nbsp;2: DDPM, SMLD and score-based SDEs
 <td style="text-align: left;">Density</td>
 <td style="text-align: left;">lower bound only (ELBO)</td>
 <td style="text-align: left;">not available (score only)</td>
-<td style="text-align: left;">exact <span class="math inline">\log p_\theta(x_0)</span> via PF-ODE</td>
+<td style="text-align: left;">exact <span class="math inline">\log p_\theta(x_0)</span> via the probability-flow ODE</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sampling</td>
 <td style="text-align: left;">ancestral</td>
 <td style="text-align: left;">annealed Langevin dynamics</td>
-<td style="text-align: left;">reverse diffusion, probability flow, and Predictor-Corrector (PC) samplers</td>
+<td style="text-align: left;">reverse diffusion, probability-flow ODE, and Predictor-Corrector (PC) samplers</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Representation</td>
 <td style="text-align: left;">stochastic latents <span class="math inline">x_i</span>; not invertible</td>
 <td style="text-align: left;">none; samples are stochastic</td>
-<td style="text-align: left;">invertible PF-ODE latent</td>
+<td style="text-align: left;">invertible probability-flow ODE latent</td>
 </tr>
 </tbody>
 </table>
@@ -2107,12 +2103,12 @@ Table&nbsp;2: DDPM, SMLD and score-based SDEs
 <li><span class="math inline">\mu(t)</span>, <span class="math inline">\Sigma(t)</span>: The kernel mean factor and covariance (the kernel mean is <span class="math inline">\mu(t)\,x_0</span>), which solve linear ODEs in <span class="math inline">f</span> and <span class="math inline">g</span>.</li>
 <li><span class="math inline">\lambda(t)</span>, <span class="math inline">\lambda(\sigma_\ell)</span>: A positive weighting of each time, <span class="math inline">\lambda : [0,1] \to \mathbb{R}_{&gt;0}</span>, or of each noise level; Song and Ermon use <span class="math inline">\lambda(\sigma) = \sigma^2</span>.</li>
 <li>SGD: Stochastic gradient descent.</li>
-<li>PF-ODE: The probability-flow ODE.</li>
+<li>Probability-flow ODE: A deterministic ODE whose solution has, at every time, the same marginal density as the forward SDE’s. <a href="../03-the-unification/index.html#sec-pf-ode">Post #3</a> derives it.</li>
 <li>Annealed Langevin dynamics: Langevin steps that follow the score at each noise level in turn, from the largest level to the smallest.</li>
 <li>Ancestral sampling: The sampling of <a href="#sec-vae-sampling" class="quarto-xref">§5.1.2.2</a> applied to the learned reverse steps in sequence, <span class="math inline">i = N, \ldots, 1</span>, the procedure of the Sampling subsection below.</li>
 <li>Reverse diffusion: A discretization of the reverse-time SDE, taking one noisy step per time increment.</li>
 <li>Predictor-Corrector (PC): A reverse-time-SDE step followed by score-based corrector steps at the same noise level.</li>
-<li>Invertible PF-ODE latent: The ODE is deterministic and reversible, so each <span class="math inline">x_0</span> maps to a unique endpoint that maps back to it; that endpoint serves as a latent code, and the change-of-variables formula along the flow turns it into an exact <span class="math inline">\log p_\theta(x_0)</span>.</li>
+<li>Invertible probability-flow ODE latent: The ODE is deterministic and reversible, so each <span class="math inline">x_0</span> maps to a unique endpoint that maps back to it; that endpoint serves as a latent code, and the change-of-variables formula along the flow turns it into an exact <span class="math inline">\log p_\theta(x_0)</span>.</li>
 </ul>
 <p>Each stochastic gradient step samples a fresh triple: a data point <span class="math inline">x_0 \sim p_0</span>, a step index <span class="math inline">i</span> (uniform over <span class="math inline">1,\dots,N</span>), a noise-level index <span class="math inline">\ell</span> (uniform over <span class="math inline">1,\dots,L</span>) or a time <span class="math inline">t</span> (uniform over <span class="math inline">[0,1]</span>), and a noise vector <span class="math inline">\epsilon \sim \mathcal{N}(0,I)</span>.</p>
 </section>

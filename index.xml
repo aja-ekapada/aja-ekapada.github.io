@@ -28,11 +28,8 @@
   <category>continuity equation</category>
   <category>optimal transport</category>
   <category>diffusion models</category>
-  <category>generative AI</category>
   <category>normalizing flows</category>
   <category>flow models</category>
-  <category>continuous normalizing flows</category>
-  <category>neural ODEs</category>
   <category>flow matching</category>
   <category>conditional flow matching</category>
   <category>probability-flow ODE</category>
@@ -51,7 +48,6 @@
   <category>Girsanov&#39;s theorem</category>
   <category>risk-neutral pricing</category>
   <category>diffusion models</category>
-  <category>generative AI</category>
   <category>VP-SDE</category>
   <category>VE-SDE</category>
   <category>reverse-time SDE</category>
@@ -83,7 +79,6 @@
   <link>https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/</link>
   <description><![CDATA[ The variational bound of Sohl-Dickstein and Ho, and the score matching of Hyvärinen, Vincent and Song, built from first principles. ]]></description>
   <category>diffusion models</category>
-  <category>generative AI</category>
   <category>variational autoencoders</category>
   <category>ELBO</category>
   <category>DDPM</category>
@@ -119,8 +114,6 @@
   <category>security</category>
   <category>malware</category>
   <category>clustering</category>
-  <category>algorithms</category>
-  <category>patents</category>
   <guid>https://aja-ekapada.github.io/clustering/</guid>
   <pubDate>Tue, 11 Aug 2026 10:00:00 GMT</pubDate>
   <media:content url="https://aja-ekapada.github.io/clustering/figures/link_preview.png" medium="image" type="image/png" height="76" width="144"/>
@@ -137,7 +130,6 @@
   <category>Black-Scholes</category>
   <category>options pricing</category>
   <category>diffusion models</category>
-  <category>generative AI</category>
   <category>variational autoencoders</category>
   <category>normalizing flows</category>
   <category>energy-based models</category>

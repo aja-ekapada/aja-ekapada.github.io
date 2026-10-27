@@ -149,6 +149,15 @@ figcaption {
   font-weight: 600;
 }
 
+/* The research and series landing pages (body class lp-sub) have no table of contents, so with page-layout: full
+   Quarto spreads their content over the empty margin column (column-page). The home page's TOC confines its
+   content to column-page-left; this gives the two sub-pages the same width, so all three columns match, in the title
+   banner (its title and subtitle) as in the body. */
+body.lp-sub main.column-page,
+body.lp-sub .quarto-title-banner .quarto-title.column-page {
+  grid-column: page-start / body-content-end;
+}
+
 /* Listing cards of the series and research listings (_listing-blurb.ejs.md): one full-width bordered box with two
    rows, the head (date inline before the title, both bold and at one size; subtitle; tags) and the blurb below a
    divider. The box's border replaces Quarto's separator line under each card. */
@@ -174,6 +183,11 @@ div.quarto-post.series-card .card-head {
 div.quarto-post.series-card .card-head .listing-categories {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+/* The tags are labels, not filters: the listings set `categories: false` and the template drops Quarto's click
+   handler, so the pointer stays an arrow. */
+div.quarto-post.series-card .listing-category {
+  cursor: default;
 }
 div.quarto-post.series-card .listing-blurb {
   border-top: 1px solid #adb5bd;
