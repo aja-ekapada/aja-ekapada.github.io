@@ -724,10 +724,10 @@ g(t_{i+1}) - g(t_i) \;=\; g'(\tau_i)\,(t_{i+1} - t_i)
 <p><strong>The smooth case was deterministic; this one is not.</strong> In <a href="#sec-smooth-qv" class="quarto-xref">§1.4</a> the mean-value theorem fixed each increment at a definite value, so the partition sum was an ordinary number we could squeeze to zero. For Brownian motion there is no mean-value theorem (<span class="math inline">W</span> is nowhere differentiable), and the increments <span class="math inline">\Delta W_i = W_{t_{i+1}} - W_{t_i}</span> are <em>random</em>, which makes the sum <span class="math inline">S = \sum_i (\Delta W_i)^2</span> itself a random variable.</p>
 <p>Thus, a pointwise squeeze is unavailable and “<span class="math inline">[W]_t</span>” must be read as a probabilistic limit. So we show <span class="math inline">S</span> concentrates on a single deterministic value in <span class="math inline">L^2</span> (i.e.&nbsp;in mean square: <span class="math inline">\mathbb{E}[(S - t)^2] \to 0</span>), in four steps:</p>
 <ol type="1">
-<li>Compute its <strong>mean</strong> (linearity of expectation, telescoping to <span class="math inline">t</span>)</li>
-<li>Compute its <strong>variance</strong> (Gaussian fourth moments, plus independent increments so variances add)</li>
-<li><strong>Shrink the mesh</strong> to send the variance to <span class="math inline">0</span> via the same inequality <span class="math inline">\sum_i (\Delta t_i)^2 \le \|\Pi\|\,t</span> as before, the difference being that it now eliminates a variance, not the sum itself</li>
-<li><strong>Conclude</strong> that mean <span class="math inline">t</span> with vanishing variance forces <span class="math inline">S \to t</span></li>
+<li>Computing its <strong>mean</strong> (linearity of expectation, telescoping to <span class="math inline">t</span>)</li>
+<li>Computing its <strong>variance</strong> (Gaussian fourth moments, plus independent increments so variances add)</li>
+<li><strong>Shrinking the mesh</strong> to send the variance to <span class="math inline">0</span> via the same inequality <span class="math inline">\sum_i (\Delta t_i)^2 \le \|\Pi\|\,t</span> as before, the difference being that it now eliminates a variance, not the sum itself</li>
+<li><strong>Concluding</strong> that mean <span class="math inline">t</span> with vanishing variance forces <span class="math inline">S \to t</span></li>
 </ol>
 <p>For <span class="math inline">W_t</span>, each increment satisfies <span class="math inline">\Delta W_i \sim \mathcal{N}(0, \Delta t_i)</span>, the common starting point for all four steps.</p>
 <p><strong>Step 1 — the mean:</strong></p>
@@ -1186,7 +1186,7 @@ df \;=\; \left(\frac{\partial f}{\partial t} \;+\; \mu\, \frac{\partial f}{\part
 <section id="the-deterministic-limit-sigma-to-0" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="the-deterministic-limit-sigma-to-0"><span class="header-section-number">2.2.3</span> The deterministic limit (<span class="math inline">\sigma \to 0</span>)</h3>
 <p>A correct stochastic chain rule must reduce to the ordinary one when the noise is switched off. That is the sanity check.</p>
-<p>Set <span class="math inline">\sigma = 0</span>. The SDE loses its diffusion term,</p>
+<p>With <span class="math inline">\sigma = 0</span>, the SDE loses its diffusion term,</p>
 <p><span class="math display">
 dX_t = \mu\, dt
 </span></p>
@@ -1462,7 +1462,7 @@ Figure&nbsp;9: Payoff at expiry <span class="math inline">t = T</span> for Europ
 <section id="sec-option-value" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-option-value"><span class="header-section-number">3.3</span> The option value process</h2>
 <p>Given the terminal payoff of <a href="#eq-call-payoff" class="quarto-xref">Eq.&nbsp;20</a> as the boundary condition, pricing the option requires finding the SDE its <em>value</em> obeys, and Itô’s lemma provides it, applied to <span class="math inline">V(S, t)</span> under the same GBM stock dynamics we used for <span class="math inline">\log S</span> in <a href="#sec-log-gbm" class="quarto-xref">§2.4.1</a>.</p>
-<p>Let <span class="math inline">V(S, t)</span> denote the <strong>per-share</strong> value of a European call option on <span class="math inline">S</span> with strike <span class="math inline">K</span> and maturity <span class="math inline">T</span>. (Real option contracts typically represent multiple shares; the pricing is done per share throughout this derivation and scales linearly with quantity.) Assume <span class="math inline">V</span> is twice continuously differentiable in <span class="math inline">S</span> and once in <span class="math inline">t</span> for <span class="math inline">t &lt; T</span>, the hypothesis of <a href="#eq-itos-lemma" class="quarto-xref">Eq.&nbsp;13</a>; the closed-form solution of <a href="#sec-bs-solution" class="quarto-xref">§3.7.1</a> confirms it for the call, the payoff’s kink at <span class="math inline">S = K</span> smoothing out instantly for <span class="math inline">t &lt; T</span>. Apply Itô’s lemma to <span class="math inline">V</span> under the GBM dynamics of <a href="#eq-gbm" class="quarto-xref">Eq.&nbsp;10</a> (constant drift <span class="math inline">\mu</span>, constant volatility <span class="math inline">\sigma</span>):</p>
+<p>Let <span class="math inline">V(S, t)</span> denote the <strong>per-share</strong> value of a European call option on <span class="math inline">S</span> with strike <span class="math inline">K</span> and maturity <span class="math inline">T</span>. (Real option contracts typically represent multiple shares; the pricing is done per share throughout this derivation and scales linearly with quantity.) Assume <span class="math inline">V</span> is twice continuously differentiable in <span class="math inline">S</span> and once in <span class="math inline">t</span> for <span class="math inline">t &lt; T</span>, the hypothesis of <a href="#eq-itos-lemma" class="quarto-xref">Eq.&nbsp;13</a>; the closed-form solution of <a href="#sec-bs-solution" class="quarto-xref">§3.7.1</a> confirms it for the call, the payoff’s kink at <span class="math inline">S = K</span> smoothing out instantly for <span class="math inline">t &lt; T</span>. Applying Itô’s lemma to <span class="math inline">V</span> under the GBM dynamics of <a href="#eq-gbm" class="quarto-xref">Eq.&nbsp;10</a> (constant drift <span class="math inline">\mu</span>, constant volatility <span class="math inline">\sigma</span>),</p>
 <p><span id="eq-itos-on-V"><span class="math display">
 dV = \left(\frac{\partial V}{\partial t} + \mu S \frac{\partial V}{\partial S} + \frac{1}{2}\sigma^2 S^2 \frac{\partial^2 V}{\partial S^2}\right) dt + \sigma S \frac{\partial V}{\partial S}\, dW_t
 \tag{22}</span></span></p>
@@ -2561,7 +2561,7 @@ x_t = \sqrt{\bar\alpha(t)}\, x_0 + \sqrt{1 - \bar\alpha(t)}\, \epsilon
 <section id="fokker-planck-equation" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="fokker-planck-equation"><span class="header-section-number">8.2</span> Fokker-Planck equation</h2>
 <p>We state the result for an SDE on <span class="math inline">\mathbb{R}^d</span> first, then specialize to the VP-SDE. The state is a vector, and its density is coupled across coordinates through the data, so the equation is derived in <span class="math inline">d</span> dimensions rather than one coordinate at a time.</p>
-<p>Write the process as <span class="math inline">X_t \in \mathbb{R}^d</span> (capital, to mark it as the random state) with realized value <span class="math inline">x</span>, the argument of its density <span class="math inline">p(x, t)</span>. Let it solve</p>
+<p>We write the process as <span class="math inline">X_t \in \mathbb{R}^d</span> (capital, to mark it as the random state) with realized value <span class="math inline">x</span>, the argument of its density <span class="math inline">p(x, t)</span>. Let it solve</p>
 <p><span class="math display">
 dX_t = \mu(X_t, t)\, dt + \sigma(t)\, dW_t
 </span></p>
@@ -2838,7 +2838,7 @@ Table&nbsp;3: Side-by-side comparison of the Black-Scholes PDE derivation and th
 R_n \;=\; \sum_{k=1}^{n} \xi_k, \qquad R_0 = 0
 </span></p>
 <p>By independence its variance is <span class="math inline">\operatorname{Var}(R_n) = n</span>: the walk spreads like <span class="math inline">\sqrt{n}</span>.</p>
-<p><strong>The diffusive scaling:</strong> To pack <span class="math inline">N</span> steps into one unit of time we rescale time by <span class="math inline">1/N</span> and space by <span class="math inline">1/\sqrt{N}</span>. The <span class="math inline">\sqrt{N}</span> is forced by the variance growing like the step count. Define the continuous, piecewise-linear process</p>
+<p><strong>The diffusive scaling:</strong> To pack <span class="math inline">N</span> steps into one unit of time we rescale time by <span class="math inline">1/N</span> and space by <span class="math inline">1/\sqrt{N}</span>. The <span class="math inline">\sqrt{N}</span> is forced by the variance growing like the step count. We define the continuous, piecewise-linear process</p>
 <p><span class="math display">
 W^{(N)}_t \;=\; \frac{1}{\sqrt{N}}\, R_{\lfloor N t \rfloor}, \qquad t \in [0, 1]
 </span></p>
@@ -2847,7 +2847,7 @@ W^{(N)}_t \;=\; \frac{1}{\sqrt{N}}\, R_{\lfloor N t \rfloor}, \qquad t \in [0, 1
 <p><strong>Starts at zero:</strong></p>
 <p><span class="math inline">W^{(N)}_0 = R_0/\sqrt{N} = 0</span> for each <span class="math inline">N</span>, property 1, exactly.</p>
 <p><strong>Gaussian at each time:</strong></p>
-<p>Fix <span class="math inline">t &gt; 0</span> and write <span class="math inline">n = \lfloor N t \rfloor</span>. Then</p>
+<p>Fixing <span class="math inline">t &gt; 0</span> and writing <span class="math inline">n = \lfloor N t \rfloor</span>, we have</p>
 <p><span class="math display">
 W^{(N)}_t = \frac{R_n}{\sqrt{N}}
 </span></p>
@@ -2874,7 +2874,7 @@ W^{(N)}_t - W^{(N)}_s \xrightarrow{d} \mathcal{N}(0, t - s)
 <h3 class="unnumbered anchored" data-anchor-id="sec-bs-pde-solution">A.2 Solving the Black-Scholes PDE: heat-equation transform sketch</h3>
 <p>This appendix sketches the standard route from the Black-Scholes PDE <a href="#eq-bs-pde" class="quarto-xref">Eq.&nbsp;19</a> to the closed-form formula <a href="#eq-bs-formula" class="quarto-xref">Eq.&nbsp;27</a>. The procedure converts the Black-Scholes PDE into the constant-coefficient heat equation, solves it with the Gaussian heat kernel, and transforms back. The treatment follows Wilmott, Howison and Dewynne <span class="citation" data-cites="wilmott1995mathematics"><a href="#ref-wilmott1995mathematics" role="doc-biblioref">[15]</a></span>.</p>
 <p><strong>Step 1 — change of variables:</strong></p>
-<p>Introduce dimensionless coordinates</p>
+<p>We introduce the dimensionless coordinates</p>
 <p><span class="math display">
 x \;=\; \log\!\big(S/K\big), \qquad \tau \;=\; \tfrac{1}{2}\sigma^2\, (T - t)
 </span></p>
@@ -2919,7 +2919,7 @@ d_1 = \frac{x}{\sqrt{2\tau}} + (\alpha + 1)\sqrt{2\tau} \qquad d_2 = \frac{x}{\s
 </span></p>
 <p>each affine in <span class="math inline">x</span> with slope <span class="math inline">1/\sqrt{2\tau}</span>; the back-transform in Step 6 turns them into the familiar <span class="math inline">d_1, d_2</span> of <a href="#eq-bs-formula" class="quarto-xref">Eq.&nbsp;27</a>.</p>
 <p><strong>Step 6 — transform back to <span class="math inline">(S, t)</span>:</strong></p>
-<p>Multiply through by the prefactor <span class="math inline">K\, e^{-\alpha x - \beta \tau}</span>. The exponential terms in <span class="math inline">u</span> pair against <span class="math inline">e^{-\alpha x - \beta \tau}</span> to yield <span class="math inline">S</span> and <span class="math inline">K\, e^{-r(T - t)}</span> factors respectively. Substituting <span class="math inline">x = \log(S/K)</span>, <span class="math inline">\tau = \tfrac{1}{2}\sigma^2(T - t)</span> in <span class="math inline">d_1, d_2</span> produces</p>
+<p>We multiply through by the prefactor <span class="math inline">K\, e^{-\alpha x - \beta \tau}</span>. The exponential terms in <span class="math inline">u</span> pair against <span class="math inline">e^{-\alpha x - \beta \tau}</span> to yield <span class="math inline">S</span> and <span class="math inline">K\, e^{-r(T - t)}</span> factors respectively. Substituting <span class="math inline">x = \log(S/K)</span>, <span class="math inline">\tau = \tfrac{1}{2}\sigma^2(T - t)</span> in <span class="math inline">d_1, d_2</span> produces</p>
 <p><span class="math display">
 d_1 \;=\; \frac{\log(S/K) + (r + \tfrac{1}{2}\sigma^2)(T - t)}{\sigma\sqrt{T - t}}, \qquad
 d_2 \;=\; d_1 - \sigma\sqrt{T - t}
@@ -3034,7 +3034,7 @@ dV_t \;-\; \Delta_t\,dS_t \;=\; r\,\big(V_t - \Delta_t S_t\big)\,dt
 \tag{47}</span></span></p>
 <p>The integral preserves the <span class="math inline">L^2</span> norm.</p>
 <p><strong>Step 3 — extension to general integrands:</strong></p>
-<p>For each adapted <span class="math inline">H</span> with <span class="math inline">\mathbb{E}\!\int_0^T H_s^2\, ds &lt; \infty</span>, choose simple processes <span class="math inline">H^{(n)} \to H</span> in <span class="math inline">L^2</span>. By the isometry <a href="#eq-ito-isometry" class="quarto-xref">Eq.&nbsp;47</a> the integrals <span class="math inline">\int H^{(n)}\, dW</span> form a Cauchy sequence in <span class="math inline">L^2(\Omega)</span>, which is complete, so they converge to a limit that does not depend on the approximating sequence. Define <span class="math inline">\int_0^T H_s\, dW_s</span> as that limit. The isometry passes to the limit, so it holds for each such <span class="math inline">H</span>.</p>
+<p>For each adapted <span class="math inline">H</span> with <span class="math inline">\mathbb{E}\!\int_0^T H_s^2\, ds &lt; \infty</span>, we choose simple processes <span class="math inline">H^{(n)} \to H</span> in <span class="math inline">L^2</span>. By the isometry <a href="#eq-ito-isometry" class="quarto-xref">Eq.&nbsp;47</a> the integrals <span class="math inline">\int H^{(n)}\, dW</span> form a Cauchy sequence in <span class="math inline">L^2(\Omega)</span>, which is complete, so they converge to a limit that does not depend on the approximating sequence. We define <span class="math inline">\int_0^T H_s\, dW_s</span> as that limit. The isometry passes to the limit, so it holds for each such <span class="math inline">H</span>.</p>
 <p><strong>Step 4 — the integral is a martingale:</strong></p>
 <p>For simple <span class="math inline">H</span> and <span class="math inline">s \le t</span>,</p>
 <p><span class="math display">
@@ -3205,11 +3205,11 @@ dX^k_t = \mu_k\, dt + \sum_{i=1}^{m} G_{ki}\, dW^i_t
 <p><span id="eq-dw-cross"><span class="math display">
 \boxed{dW^i\, dW^j = \delta_{ij}\, dt}
 \tag{48}</span></span></p>
-<p>with <span class="math inline">\delta_{ij}</span> the Kronecker delta, equal to <span class="math inline">1</span> if <span class="math inline">i = j</span> and <span class="math inline">0</span> otherwise. The diagonal case <span class="math inline">i = j</span> is <a href="#eq-dwsquared" class="quarto-xref">Eq.&nbsp;3</a> applied to the component <span class="math inline">W^i</span>. For <span class="math inline">i \neq j</span> the content is again an integral statement. Take a partition <span class="math inline">\Pi</span> of <span class="math inline">[0, t]</span>, write <span class="math inline">\Delta W^i_k = W^i_{t_{k+1}} - W^i_{t_k}</span> for the increment of component <span class="math inline">i</span> over the <span class="math inline">k</span>-th interval, and let <span class="math inline">f</span> be a bounded, Riemann-integrable deterministic weight on <span class="math inline">[0, t]</span>. Then</p>
+<p>with <span class="math inline">\delta_{ij}</span> the Kronecker delta, equal to <span class="math inline">1</span> if <span class="math inline">i = j</span> and <span class="math inline">0</span> otherwise. The diagonal case <span class="math inline">i = j</span> is <a href="#eq-dwsquared" class="quarto-xref">Eq.&nbsp;3</a> applied to the component <span class="math inline">W^i</span>. For <span class="math inline">i \neq j</span> the content is again an integral statement. We take a partition <span class="math inline">\Pi</span> of <span class="math inline">[0, t]</span> and write <span class="math inline">\Delta W^i_k = W^i_{t_{k+1}} - W^i_{t_k}</span> for the increment of component <span class="math inline">i</span> over the <span class="math inline">k</span>-th interval. Let <span class="math inline">f</span> be a bounded, Riemann-integrable deterministic weight on <span class="math inline">[0, t]</span>. Then</p>
 <p><span class="math display">
 \int_0^t f(s)\, dW^i_s\, dW^j_s \;:=\; \lim_{\|\Pi\| \to 0} \sum_{k=0}^{n-1} f(t_k)\, \Delta W^i_k\, \Delta W^j_k \;=\; 0
 </span></p>
-<p>with convergence in <span class="math inline">L^2</span>. The proof is the mean-and-variance argument of <a href="#eq-dwsq-integral" class="quarto-xref">Eq.&nbsp;4</a>. Write <span class="math inline">S = \sum_k f(t_k)\, \Delta W^i_k\, \Delta W^j_k</span> for the partition sum.</p>
+<p>with convergence in <span class="math inline">L^2</span>. The proof is the mean-and-variance argument of <a href="#eq-dwsq-integral" class="quarto-xref">Eq.&nbsp;4</a>. We write <span class="math inline">S = \sum_k f(t_k)\, \Delta W^i_k\, \Delta W^j_k</span> for the partition sum.</p>
 <p><strong>Step 1 — the mean:</strong></p>
 <p>By linearity of expectation,</p>
 <p><span class="math display">
@@ -3271,7 +3271,7 @@ dX^k_t = \mu_k\, dt + \sum_{i=1}^{m} G_{ki}\, dW^i_t
 </section>
 <section id="sec-ito-multid-lemma" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="sec-ito-multid-lemma">A.8.2 Itô’s lemma for a vector state</h4>
-<p>Let <span class="math inline">f(x, t)</span> be twice continuously differentiable in <span class="math inline">x</span> and once in <span class="math inline">t</span>, and write</p>
+<p>Let <span class="math inline">f(x, t)</span> be twice continuously differentiable in <span class="math inline">x</span> and once in <span class="math inline">t</span>. We write its partial derivatives as</p>
 <p><span class="math display">
 \partial_k f = \frac{\partial f}{\partial x_k}, \qquad \partial_{kl} f = \frac{\partial^2 f}{\partial x_k\, \partial x_l}
 </span></p>
