@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Standalone applied studies in image and video generation, such as FLUX LoRA likeness and persona-in-template ad generation.">
+<meta name="description" content="Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation, such as FLUX LoRA studies.">
 
 <title>Research – Aja S.</title>
 <style>
@@ -83,9 +83,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-project","listing-csl","listing-execute","listing-website","listing-filters","listing-format","listing-engines","listing-language","listing-comments","listing-title","listing-pagetitle","listing-subtitle","listing-description","listing-image","listing-image-alt","listing-author","listing-date","listing-date-format","listing-categories","listing-bibliography","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -159,18 +159,18 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../styles.css">
 <link rel="alternate" type="application/rss+xml" title="Research – Aja S." href="index.xml" data-external="1"><meta property="og:title" content="Research – Aja S.">
-<meta property="og:description" content="Standalone applied studies in image and video generation, such as FLUX LoRA likeness and persona-in-template ad generation.">
+<meta property="og:description" content="Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation, such as FLUX LoRA studies.">
 <meta property="og:image" content="https://aja-ekapada.github.io/research/share.png">
 <meta property="og:site_name" content="Aja S.">
 <meta property="og:image:height" content="630">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:alt" content="Card reading Research, standalone applied studies in image and video generation, beside faint stochastic sample paths.">
+<meta property="og:image:alt" content="Card reading Research, applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation, beside faint stochastic sample paths.">
 <meta name="twitter:title" content="Research – Aja S.">
-<meta name="twitter:description" content="Standalone applied studies in image and video generation, such as FLUX LoRA likeness and persona-in-template ad generation.">
+<meta name="twitter:description" content="Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation, such as FLUX LoRA studies.">
 <meta name="twitter:image" content="https://aja-ekapada.github.io/research/share.png">
 <meta name="twitter:image-height" content="630">
 <meta name="twitter:image-width" content="1200">
-<meta name="twitter:image:alt" content="Card reading Research, standalone applied studies in image and video generation, beside faint stochastic sample paths.">
+<meta name="twitter:image:alt" content="Card reading Research, applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation, beside faint stochastic sample paths.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://aja-ekapada.github.io/research/">
 </head>
@@ -224,10 +224,10 @@ window.Quarto = {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
       <h1 class="title">Research</h1>
-            <p class="subtitle lead">Standalone applied studies in image and video generation.</p>
+            <p class="subtitle lead">Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation.</p>
                   <div>
         <div class="description">
-          Standalone applied studies in image and video generation, such as FLUX LoRA likeness and persona-in-template ad generation.
+          Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation, such as FLUX LoRA studies.
         </div>
       </div>
                 </div>
@@ -256,18 +256,34 @@ window.Quarto = {
 
 
 <style>
+/* Trim vertical whitespace below the title banner and above the first content block, as the series landing page
+   does. The theme sets banner padding-bottom 2.5em, banner margin-bottom 1em, AND header margin-block-end 1rem;
+   all three have to be overridden, plus the empty (no author/date) meta block collapsed. */
+.quarto-title-banner { padding-block-end: 0.6rem !important; margin-bottom: 0 !important; }
+/* A partition line under the page's title and subtitle, as long as the content column and as thin as the home
+   page's section-subtitle lines, and 50% darker than they are; the same on the home, research and series pages. */
+.quarto-title-banner .quarto-title { border-bottom: 1px solid #38393a; padding-bottom: 0.6rem; }
+.quarto-title-banner .subtitle, .quarto-title-banner .subtitle.lead { margin-bottom: 0 !important; }
+#title-block-header { margin-block-end: 0 !important; }
+#title-block-header .quarto-title-meta { display: none !important; }
 #title-block-header .description { display: none !important; }  /* description: is for search and previews only */
+main#quarto-document-content.quarto-banner-title-block,
+main#quarto-document-content { margin-top: 0 !important; padding-top: 0 !important; }
+/* Plain intro paragraphs: a 21px gap below the banner (as on the series page). */
+main#quarto-document-content > p:first-of-type { margin-top: 1.25rem; }
 </style>
-<p>Each study works through a single concrete problem end to end: the design, the experiments, the analysis, and what held up and what didn’t. Latest first.</p>
-<div id="listing-research-posts" class="quarto-listing quarto-listing-container-default">
+<p>These applied research studies tackle concrete machine learning problems, from identity-preserving fine-tuning and controlled image generation to scalable clustering of large malware corpora. Each study (except clustering) follows an end-to-end workflow spanning problem formulation, experimental design, model adaptation, hyperparameter optimization, quantitative evaluation, and error analysis.</p>
+<p>The work applies foundation models such as FLUX.1-dev using parameter-efficient fine-tuning with low-rank adaptation (LoRA) and controlled generation with ControlNet. Experiments are evaluated against explicit metrics, including face similarity and image-text similarity. Findings are grounded in systematic experiments and reproducible evaluation, with documented trade-offs, limitations, and failure modes.</p>
+<div id="listing-research-posts" class="quarto-listing quarto-listing-container-custom">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q29udHJvbE5ldCUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNjb25kaXRpb25pbmclMkNpZGVudGl0eSUyMHBlcnNvbmFsaXphdGlvbg==" data-listing-date-sort="1791367200000" data-listing-file-modified-sort="1791410466127" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="165" data-listing-word-count-sort="32980">
+<div class="quarto-post series-card" data-index="0" data-categories="Q29udHJvbE5ldCUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNjb25kaXRpb25pbmclMkNpZGVudGl0eSUyMHBlcnNvbmFsaXphdGlvbg==" data-listing-date-sort="1791367200000" data-listing-file-modified-sort="1793080000319" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="165" data-listing-word-count-sort="32980">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="../flux-persona-in-template/index.html" class="no-external">FLUX persona-in-template ad generation</a>
+<span class="listing-date">Oct 7, 2026</span> <a href="../flux-persona-in-template/index.html" class="no-external">FLUX Persona-in-Template Ad Generation</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../flux-persona-in-template/index.html" class="no-external">A scored characterization of a LoRA + ControlNet conditioning scheme — how identity fidelity trades against the spatial structure (canny, depth and pose) of a creative ad template.</a>
+<a href="../flux-persona-in-template/index.html" class="no-external">A scored characterization of how a LoRA + ControlNet conditioning scheme trades identity fidelity against the spatial structure (canny, depth and pose) of a creative ad template.</a>
 </div>
 <div class="listing-categories">
 
@@ -283,21 +299,16 @@ window.Quarto = {
 
 </div>
 </div>
-<div class="metadata">
-<a href="../flux-persona-in-template/index.html" class="no-external">
-<div class="listing-date">
-Oct 7, 2026
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="TG9SQSUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNoeXBlcnBhcmFtZXRlciUyMHNlYXJjaCUyQ2lkZW50aXR5JTIwcGVyc29uYWxpemF0aW9u" data-listing-date-sort="1787392800000" data-listing-file-modified-sort="1791412614093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15055">
+<div class="quarto-post series-card" data-index="1" data-categories="TG9SQSUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNoeXBlcnBhcmFtZXRlciUyMHNlYXJjaCUyQ2lkZW50aXR5JTIwcGVyc29uYWxpemF0aW9u" data-listing-date-sort="1787392800000" data-listing-file-modified-sort="1793080000040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15055">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="../flux-lora-likeness/index.html" class="no-external">FLUX LoRA influencer-likeness research</a>
+<span class="listing-date">Aug 22, 2026</span> <a href="../flux-lora-likeness/index.html" class="no-external">FLUX LoRA Influencer-Likeness Research</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../flux-lora-likeness/index.html" class="no-external">A three-stage hyperparameter study — Pilot, Partial Sweep, Full Sweep — of how learning rate, rank, training steps, dataset size, timestep sampling, dropout and inference scale trade identity fidelity against prompt adherence for one subject.</a>
+<a href="../flux-lora-likeness/index.html" class="no-external">A three-stage hyperparameter study (Pilot, Partial Sweep, Full Sweep) of how learning rate, rank, training steps, dataset size, timestep sampling, dropout and inference scale trade identity fidelity against prompt adherence for one subject.</a>
 </div>
 <div class="listing-categories">
 
@@ -313,18 +324,13 @@ Oct 7, 2026
 
 </div>
 </div>
-<div class="metadata">
-<a href="../flux-lora-likeness/index.html" class="no-external">
-<div class="listing-date">
-Aug 22, 2026
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="c2VjdXJpdHklMkNtYWx3YXJlJTJDY2x1c3RlcmluZyUyQ2FsZ29yaXRobXMlMkNwYXRlbnRz" data-listing-date-sort="1786442400000" data-listing-file-modified-sort="1791412915300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4491">
+<div class="quarto-post series-card" data-index="2" data-categories="c2VjdXJpdHklMkNtYWx3YXJlJTJDY2x1c3RlcmluZyUyQ2FsZ29yaXRobXMlMkNwYXRlbnRz" data-listing-date-sort="1786442400000" data-listing-file-modified-sort="1793080135046" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4491">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="../clustering/index.html" class="no-external">Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</a>
+<span class="listing-date">Aug 11, 2026</span> <a href="../clustering/index.html" class="no-external">Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</a>
 </h3>
 <div class="listing-subtitle">
 <a href="../clustering/index.html" class="no-external">A retrospective account of work I did in one of my previous roles on large-scale malware clustering, subsequently granted as a US patent.</a>
@@ -343,12 +349,6 @@ Aug 22, 2026
 
 </div>
 </div>
-<div class="metadata">
-<a href="../clustering/index.html" class="no-external">
-<div class="listing-date">
-Aug 11, 2026
-</div>
-</a>
 </div>
 </div>
 </div>

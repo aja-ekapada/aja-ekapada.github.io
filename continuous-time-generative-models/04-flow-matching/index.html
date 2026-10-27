@@ -130,13 +130,16 @@ div.csl-indent {
 <style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -528,21 +531,21 @@ window.Quarto = {
 </tr>
 </thead>
 <tbody class="list">
-<tr class="current odd">
-<td><span class="listing-date">Oct 22, 2026</span></td>
-<td><span class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</span><span class="series-here"> — you are here</span></td>
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-date">Aug 10, 2026</span></td>
+<td><a href="../01-ito-bs-to-ddpm/index.html" class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</a></td>
 </tr>
 <tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Oct 16, 2026</span></td>
-<td><a href="../03-the-unification/index.html" class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a></td>
-</tr>
-<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Sep 10, 2026</span></td>
 <td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a></td>
 </tr>
-<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Aug 10, 2026</span></td>
-<td><a href="../01-ito-bs-to-ddpm/index.html" class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</a></td>
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-date">Oct 16, 2026</span></td>
+<td><a href="../03-the-unification/index.html" class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a></td>
+</tr>
+<tr class="current even">
+<td><span class="listing-date">Oct 22, 2026</span></td>
+<td><span class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</span><span class="series-here"> — you are here</span></td>
 </tr>
 </tbody>
 </table>
@@ -565,10 +568,9 @@ window.Quarto = {
 <p>A normalizing flow transforms a simple density through a sequence of invertible maps and gives exact likelihoods <span class="citation" data-cites="tabak2013family"><a href="#ref-tabak2013family" role="doc-biblioref">[1]</a></span>. Each map needs a Jacobian determinant that is inexpensive to compute, which restricts the maps.</p>
 <p>A flow model removes that restriction by solving an ODE from noise <span class="citation" data-cites="chen2018neural"><a href="#ref-chen2018neural" role="doc-biblioref">[2]</a></span>, and derives both its name and its mathematics from Euler’s description of a moving fluid <span class="citation" data-cites="euler1757principes"><a href="#ref-euler1757principes" role="doc-biblioref">[3]</a></span>. It samples with the Euler method and computes exact likelihoods through the instantaneous change of variables. Chen et al.&nbsp;trained flow models by maximum likelihood, which solves the ODE at each training step. FFJORD <span class="citation" data-cites="grathwohl2019ffjord"><a href="#ref-grathwohl2019ffjord" role="doc-biblioref">[4]</a></span> and RNODE <span class="citation" data-cites="finlay2020train"><a href="#ref-finlay2020train" role="doc-biblioref">[5]</a></span> reduced that cost without removing it. The likelihood also leaves the path of distributions between noise and data unspecified.</p>
 <p>Flow matching <span class="citation" data-cites="lipman2023flow liu2023rectified albergo2023building"><a href="#ref-lipman2023flow" role="doc-biblioref">[6]</a>, <a href="#ref-liu2023rectified" role="doc-biblioref">[7]</a>, <a href="#ref-albergo2023building" role="doc-biblioref">[8]</a></span> fixes that path and learns, by regression, a velocity field for which the solution of the ODE started from noise has those distributions. Training never solves the ODE. The velocity field of post #3’s probability-flow ODE was already learned this way, through the score, but only on the path that the forward SDE fixes.</p>
-<p>The regression target, the velocity field of the whole path, is unknown. Lipman et al.&nbsp;therefore build the path from simpler paths, one per data point, whose velocity fields are known in closed form, and prove that the two regressions have the same gradient. Through the continuity equation, the Fokker-Planck equation with no diffusion term, the post proves that the average of these simpler velocity fields carries noise to data.</p>
-<p>The simplest way to reach a single data point is a straight line from a noise sample, traversed at constant speed, and the regression target is then the difference between the data point and the noise sample. Lipman et al.&nbsp;train on the path these lines give, which is Gaussian at each time given the data point. The perturbation kernels of the diffusion SDEs, with time reversed, are Gaussian in the same way, among them the kernel of the VP SDE.</p>
+<p>The regression target, the velocity field of the whole path, is unknown. Lipman et al.&nbsp;therefore build the path from simpler paths, one per data point, whose velocity fields are known in closed form. Through the continuity equation, the Fokker-Planck equation with no diffusion term, the post proves that an average of these simpler velocity fields, weighted by how probable each data point is given the current point, carries noise to data. Lipman et al.&nbsp;then prove that the two regressions have the same gradient, because their objectives differ by a constant.</p>
+<p>Lipman et al.&nbsp;train on simpler paths that are Gaussian at each time given the data point. The perturbation kernels of the VP SDE and of the Variance-Exploding (VE) SDE, with time reversed, are Gaussian in this way, so the two diffusion paths are instances of these Gaussian paths. The simplest instance reaches a single data point along a straight line from a noise sample, traversed at constant speed, and the regression target is then the difference between the data point and the noise sample.</p>
 <p>These Gaussian paths keep three pitfalls. The learned trajectories still bend, noise and data are paired independently, and the source must be Gaussian.</p>
-<p><strong>Thesis:</strong> Generation needs only a velocity field that carries noise to data along some path of distributions. Flow matching learns that field by regression whenever the path is a mixture of simpler paths, one per data point, whose velocities are known in closed form. This post derives the regression and the Gaussian paths it trains on, among them the paths of diffusion, from first principles.</p>
 <p>The presentation of flows, flow models and flow matching in Parts 3 to 6 follows Holderrieth and Erives’s MIT lecture notes <span class="citation" data-cites="holderrieth2025introduction"><a href="#ref-holderrieth2025introduction" role="doc-biblioref">[9]</a></span>, and Lipman et al.’s guide covers the same ground with code <span class="citation" data-cites="lipman2024flowguide"><a href="#ref-lipman2024flowguide" role="doc-biblioref">[10]</a></span>.</p>
 <section id="roadmap" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="roadmap">Roadmap</h2>
@@ -609,7 +611,7 @@ window.Quarto = {
 <section id="sec-limit-curved" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="sec-limit-curved"><span class="header-section-number">1.1.2</span> Curved and uneven trajectories</h3>
 <p>How many steps a solver needs depends on the shape of the trajectories it follows. Each step of the Euler method <span class="citation" data-cites="euler1768institutionum"><a href="#ref-euler1768institutionum" role="doc-biblioref">[14]</a></span> follows the velocity at the start of the step, so the step is exact only when that velocity stays fixed, that is, when the trajectory is a straight line traversed at constant speed. The more a trajectory bends or changes speed, the larger the error of each step, and the more steps a sampler needs to keep the error small.</p>
-<p>Diffusion paths fall short of this. On the path of the VP SDE, the default for diffusion models, a noisy sample is a weighted sum of a data point and a noise sample, with weights whose squares sum to one, so with the data point and the noise sample held fixed its trajectory is an arc. On the path of the Variance-Exploding (VE) SDE the corresponding trajectory is a straight segment, but its speed changes over time.</p>
+<p>Diffusion paths fall short of this. On the path of the VP SDE, the default for diffusion models, a noisy sample is a weighted sum of a data point and a noise sample, with weights whose squares sum to one, so with the data point and the noise sample held fixed its trajectory is an arc. On the path of the VE SDE the corresponding trajectory is a straight segment, but its speed changes over time.</p>
 <p>Lipman et al.&nbsp;contrast these paths with the straight, constant-speed trajectories of an optimal-transport path <span class="citation" data-cites="lipman2023flow"><a href="#ref-lipman2023flow" role="doc-biblioref">[6]</a></span>, named after optimal transport, the least-cost way to rearrange one distribution into another <span class="citation" data-cites="monge1781 kantorovich1942translocation"><a href="#ref-monge1781" role="doc-biblioref">[15]</a>, <a href="#ref-kantorovich1942translocation" role="doc-biblioref">[16]</a></span>. <a href="#sec-fm-paths-compared" class="quarto-xref">§6.4</a> draws the VP and optimal-transport trajectories side by side, and P5:§4.4 bounds the error of one Euler step by the trajectory’s acceleration.</p>
 <p>A sampler, however, follows a velocity field that averages, at each point, the velocities of the trajectories through it, so its own trajectories bend even on the optimal-transport path (<a href="#sec-fm-pitfall-curved" class="quarto-xref">§6.5.1</a>). They bend less there than on the VP path <span class="citation" data-cites="liu2023rectified"><a href="#ref-liu2023rectified" role="doc-biblioref">[7]</a></span>.</p>
 </section>
@@ -633,7 +635,7 @@ window.Quarto = {
 <section id="sec-flow-landmarks" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="sec-flow-landmarks"><span class="header-section-number">1.3</span> Landmark papers</h2>
 <p>The papers this post and post #5 develop descend from two independent lines of work, normalizing flows and diffusion models, rather than from a single chain. The two lines meet in three methods of 2023, and three branches grow from those methods. <a href="#fig-flow-timeline" class="quarto-xref">Figure&nbsp;1</a> below draws these dependencies, with each line running from a work to one that builds on it.</p>
-<div id="cell-fig-flow-timeline" class="cell" data-execution_count="1">
+<div id="cell-fig-flow-timeline" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div id="fig-flow-timeline" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram with two columns of points joined by vertical lines. The left column, headed Normalizing flows, lists Tabak and Turner 2013, Rezende and Mohamed 2015 and Chen et al. 2018. The right column, headed Diffusion, starts from a note on the diffusion models of posts 1 and 2 and lists Song et al. 2021 and De Bortoli et al. 2021. Lines from Chen et al. and Song et al. meet a dashed horizontal line joining Albergo and Vanden-Eijnden, Lipman et al. and Liu et al., all 2023. Below, Albergo, Boffi and Vanden-Eijnden 2025 hangs from Albergo and Vanden-Eijnden, Pooladian et al. 2023 and Tong et al. 2024 from Lipman et al., and Shi et al. 2023 from both Liu et al. and De Bortoli et al. Each point shows authors, year, title and a short grey phrase stating the work's contribution; a legend maps five colours to five threads.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -731,7 +733,7 @@ f: \mathbb{R}^d \to \mathbb{R}^d, \qquad h \mapsto h + u \tanh(w^\top h + b)
 <p>The lack of a closed-form inverse decides what a planar flow can be used for. <a href="#eq-nf-logdensity" class="quarto-xref">Eq.&nbsp;2</a> gives <span class="math inline">\log p^{(K)}</span> at a point <span class="math inline">h_K</span> through the points <span class="math inline">h_0, \ldots, h_{K-1}</span> that lead to it. For a sample the flow generates, those points are computed on the way forward, from <span class="math inline">h_0 \sim p^{(0)}</span> through each layer, so <a href="#eq-nf-logdensity" class="quarto-xref">Eq.&nbsp;2</a> needs no inverse. For a given <span class="math inline">x \in \mathbb{R}^d</span>, such as a training image, only <span class="math inline">h_K = x</span> is known. Recovering <span class="math inline">h_{K-1} = f_K^{-1}(x)</span>, and so on back to <span class="math inline">h_0</span>, needs the inverse of each layer, which for a planar layer means solving a scalar equation for <span class="math inline">w^\top h</span> numerically <span class="citation" data-cites="rezende2015variational"><a href="#ref-rezende2015variational" role="doc-biblioref">[20]</a></span>.</p>
 <p>Planar flows therefore suit variational inference, which fits a flow to an intractable target distribution, such as a Bayesian posterior, using the flow’s own samples, their densities and the unnormalized target density. They do not suit training on data, which needs the density at each training image and so a numerical solve for each layer at each training step <span class="citation" data-cites="rezende2015variational grathwohl2019ffjord"><a href="#ref-grathwohl2019ffjord" role="doc-biblioref">[4]</a>, <a href="#ref-rezende2015variational" role="doc-biblioref">[20]</a></span>.</p>
 <p>A few planar layers already turn a Gaussian into a density with several modes. Because <a href="#eq-nf-logdensity" class="quarto-xref">Eq.&nbsp;2</a> runs forward, plotting the density <span class="math inline">p^{(k)}</span> after <span class="math inline">k</span> layers needs no inverse either. A fine grid of base points <span class="math inline">h_0</span> is pushed through the first <span class="math inline">k</span> layers, and <a href="#eq-nf-logdensity" class="quarto-xref">Eq.&nbsp;2</a> gives <span class="math inline">\log p^{(k)}</span> at each image <span class="math inline">h_k</span>. <a href="#fig-planar-flows" class="quarto-xref">Figure&nbsp;2</a> below shows the result for four planar layers in two dimensions, each with <span class="math inline">w^\top u &gt; -1</span>, a condition that makes the layer invertible with a differentiable inverse <span class="citation" data-cites="rezende2015variational"><a href="#ref-rezende2015variational" role="doc-biblioref">[20]</a></span>.</p>
-<div id="cell-fig-planar-flows" class="cell" data-execution_count="2">
+<div id="cell-fig-planar-flows" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div id="fig-planar-flows" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four square panels of shaded densities. The first is a single round mode. The second splits it into a left and a right mode joined by a faint band. The third shows four modes at the corners of a square, joined by faint bands. The fourth shows the four modes sheared, two of them stretched into thin diagonal streaks.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -839,7 +841,7 @@ v: \mathbb{R}^d \times [0, 1] \to \mathbb{R}^d, \qquad (x, t) \mapsto v_t(x)
 </span></p>
 <p>which rotates a particle at a distance <span class="math inline">r</span> from the origin by the angle <span class="math inline">\omega(r)\, t</span> in time <span class="math inline">t</span> while keeping the distance from the origin fixed.</p>
 <p><a href="#fig-flow-grid" class="quarto-xref">Figure&nbsp;3</a> below shows the flow as a deformed square grid, a device of D’Arcy Thompson <span class="citation" data-cites="thompson1917growth"><a href="#ref-thompson1917growth" role="doc-biblioref">[53]</a></span>. The grid is made of fluid particles. It starts as a square at <span class="math inline">t = 0</span>, and the flow deforms it as time passes. Each panel shows where the grid is at time <span class="math inline">t</span>, which is <span class="math inline">\phi_t(x)</span> for each point <span class="math inline">x</span> of the initial grid. The arrows are the fluid velocity <span class="math inline">v_t(x)</span> at the points <span class="math inline">x</span> of a fixed lattice, the same in each panel.</p>
-<div id="cell-fig-flow-grid" class="cell" data-execution_count="3">
+<div id="cell-fig-flow-grid" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div id="fig-flow-grid" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three square panels with the same arrows circling the center, longest just outside it. Left: a square grid. Middle and right: the grid lines wind into a spiral around the center, tightest there, without crossing.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -855,7 +857,7 @@ Figure&nbsp;3: The flow <span class="math inline">\phi_t(x)</span> at <span clas
 </div>
 <p>Particles near the core turn faster than those farther out, so the straight grid lines wind into a spiral that is tightest at the core.</p>
 <p>In <a href="#fig-vortex-crosses" class="quarto-xref">Figure&nbsp;4</a> below, we follow fluid particles, drawn as dots, through the same vortex for <span class="math inline">t \in [0, 1]</span>. Each dot carries an arrow along the fluid velocity <span class="math inline">v_t(x)</span> at its position <span class="math inline">x</span>, which is tangent to the circle the particle travels on and proportional in length to its speed.</p>
-<div id="cell-fig-vortex-crosses" class="cell" data-execution_count="4">
+<div id="cell-fig-vortex-crosses" class="cell" data-execution_count="5">
 <div id="fig-vortex-crosses" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-vortex-crosses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1187,7 +1189,7 @@ p_1(x) = p_{\mathrm{data}}(x)
 <p>A two-dimensional example after Holderrieth and Erives <span class="citation" data-cites="holderrieth2025introduction"><a href="#ref-holderrieth2025introduction" role="doc-biblioref">[9]</a></span> shows the two paths, with a Gaussian <span class="math inline">p_{\mathrm{init}}</span> and a <span class="math inline">p_{\mathrm{data}}</span> shaped into a spiral by a Lamb-Oseen vortex.</p>
 <p><strong>Initial distribution <span class="math inline">p_{\mathrm{init}}</span>:</strong> The standard Gaussian <span class="math inline">\mathcal{N}(0, I)</span> on <span class="math inline">\mathbb{R}^2</span>.</p>
 <p><strong>Data distribution <span class="math inline">p_{\mathrm{data}}</span>:</strong> A spiral built from a disk using a Lamb-Oseen vortex, as <a href="#fig-pdata-support" class="quarto-xref">Figure&nbsp;5</a> and <a href="#fig-pdata-anim" class="quarto-xref">Figure&nbsp;6</a> show below. The disk has radius <span class="math inline">\rho = 1.2</span> and center <span class="math inline">c = (1.5, 0)</span> (left panel of <a href="#fig-pdata-support" class="quarto-xref">Figure&nbsp;5</a>). Each of its points is carried by the flow <span class="math inline">\phi_1</span> of the Lamb-Oseen vortex of <a href="#sec-lamb-oseen" class="quarto-xref">§3.1.1</a>, with <span class="math inline">\kappa = 40.5</span> and <span class="math inline">r_c = 1.2</span>, which turns a point at distance <span class="math inline">r</span> from the origin by the angle <span class="math inline">\omega(r)</span>.</p>
-<div id="cell-fig-pdata-support" class="cell" data-execution_count="5">
+<div id="cell-fig-pdata-support" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div id="fig-pdata-support" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two plots with axes from minus 3 to 3. Left: a filled disk centered at (1.5, 0) with dashed lines through its center and at its left and right edges, 0.3 and 2.7. Right: the same area wound into a spiral arm of several turns around the origin, with a dashed circle of radius 1.2 at the center.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1203,7 +1205,7 @@ Figure&nbsp;5: The support of <span class="math inline">p_{\mathrm{data}}</span>
 </div>
 <p>The angle <span class="math inline">\omega(r)</span> is largest near the origin and falls off with distance, so the side of the disk nearest the origin winds into the inner turns of the spiral and the far side forms its outer end (right panel).</p>
 <p><a href="#fig-pdata-anim" class="quarto-xref">Figure&nbsp;6</a> below animates the construction, turning each point of the disk by the fraction <span class="math inline">s</span> of its angle <span class="math inline">\omega(r)</span> as <span class="math inline">s</span> runs from <span class="math inline">0</span> to <span class="math inline">1</span>.</p>
-<div id="cell-fig-pdata-anim" class="cell" data-execution_count="6">
+<div id="cell-fig-pdata-anim" class="cell" data-execution_count="7">
 <div id="fig-pdata-anim" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="6">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pdata-anim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1225,7 +1227,7 @@ p_{\mathrm{data}}(r, \vartheta) = \begin{cases} 1 / (\pi \rho^2), &amp; (r,\ \va
 p_t(\cdot \mid x_1) = \mathcal{N}\big(t\, x_1,\ (1 - t)^2 I\big)
 </span></p>
 <p>At <span class="math inline">t = 0</span> it is <span class="math inline">\mathcal{N}(0, I) = p_{\mathrm{init}}</span>. At <span class="math inline">t = 1</span> its variance is zero, and a Gaussian with zero variance is the Dirac delta <span class="math inline">\delta(\cdot - x_1)</span>, so both boundary conditions of <a href="#eq-cond-path-bc" class="quarto-xref">Eq.&nbsp;9</a> hold. A sample of it is <span class="math inline">t\, x_1 + (1 - t)\, \epsilon</span> with <span class="math inline">\epsilon \sim \mathcal{N}(0, I)</span>. The path contracts the Gaussian onto <span class="math inline">x_1</span>, as its mean <span class="math inline">t\, x_1</span> runs along the segment from the origin to <span class="math inline">x_1</span> and its standard deviation <span class="math inline">1 - t</span> falls from one to zero. The left animation of <a href="#fig-fm-paths" class="quarto-xref">Figure&nbsp;7</a> below shows this path for one fixed <span class="math inline">x_1</span>, marked by the star, and the right animation the marginal path <span class="math inline">p_t</span>.</p>
-<div id="cell-fig-fm-paths" class="cell" data-execution_count="7">
+<div id="cell-fig-fm-paths" class="cell" data-execution_count="8">
 <div id="fig-fm-paths" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fm-paths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1274,7 +1276,7 @@ u_t(x) = \int u_t(x \mid x_1)\, p_t(x_1 \mid x)\, dx_1
 <h4 data-number="4.2.2.1" class="anchored" data-anchor-id="sec-fm-marg-field-example"><span class="header-section-number">4.2.2.1</span> The marginal velocity as a posterior average</h4>
 <p>For the spiral example of <a href="#sec-fm-paths-example" class="quarto-xref">§4.1.1</a>, the conditional path <span class="math inline">\mathcal{N}\big(t\, x_1, (1 - t)^2 I\big)</span> is the distribution of <span class="math inline">X_t = t\, x_1 + (1 - t)\, X_0</span> with <span class="math inline">X_0 \sim p_{\mathrm{init}}</span>. This <span class="math inline">X_t</span> satisfies <span class="math inline">\frac{d}{dt} X_t = x_1 - X_0 = (x_1 - X_t)/(1 - t)</span>, so <span class="math inline">u_t(x \mid x_1) = (x_1 - x)/(1 - t)</span> is a conditional velocity field of the path, since the ODE has a unique solution (<a href="#sec-cnf-ode" class="quarto-xref">§3.1</a>).</p>
 <p>By <a href="#eq-marginal-velocity" class="quarto-xref">Eq.&nbsp;15</a>, the marginal velocity field at a point <span class="math inline">x</span> is the average of these fields under the posterior <span class="math inline">p_t(x_1 \mid x)</span>, which is proportional to <span class="math inline">\mathcal{N}\big(x;\ t\, x_1, (1 - t)^2 I\big)\, p_{\mathrm{data}}(x_1)</span>. As a function of <span class="math inline">x_1</span>, the Gaussian factor is proportional to <span class="math inline">\mathcal{N}\big(x_1;\ x / t,\ ((1 - t)/t)^2 I\big)</span>, so the posterior is <span class="math inline">p_{\mathrm{data}}</span> reweighted by a Gaussian centered at <span class="math inline">x / t</span> with standard deviation <span class="math inline">(1 - t)/t</span>. The average at one point <span class="math inline">x</span> and two times is drawn as arrows, as <a href="#fig-posterior-average" class="quarto-xref">Figure&nbsp;8</a> shows below.</p>
-<div id="cell-fig-posterior-average" class="cell" data-execution_count="8">
+<div id="cell-fig-posterior-average" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div id="fig-posterior-average" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two square panels with axes from minus 3 to 3, each showing a grey spiral band and a black dot at (1, -0.8). Left: thin teal arrows run from the dot to points all over the spiral, most of them clearly visible, and a short thick arrow points up and to the left, toward a point between the arms. Right: most thin arrows are faint, the visible ones end on the nearby part of the next arm out, below and to the right of the dot, and the short thick arrow points the same way.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1300,7 +1302,7 @@ Figure&nbsp;8: The marginal velocity field <span class="math inline">u_t</span> 
 \boxed{\partial_t p_t(x) + \nabla_x \cdot \big( p_t(x)\, v_t(x) \big) = 0}
 \tag{16}</span></span></p>
 <p>The product <span class="math inline">p_t(x)\, v_t(x)</span> is the <strong>probability flux</strong>, the probability mass that crosses a unit area per unit time. In a time <span class="math inline">\Delta t</span>, the probability that crosses a unit area perpendicular to <span class="math inline">v_t(x)</span> is the mass of the particles within the length <span class="math inline">\lVert v_t(x) \rVert\, \Delta t</span> behind it, <span class="math inline">p_t(x)\, \lVert v_t(x) \rVert\, \Delta t</span>, so per unit time the flux is <span class="math inline">p_t(x)\, \lVert v_t(x) \rVert</span>, along <span class="math inline">v_t(x)</span>. <a href="#fig-flux" class="quarto-xref">Figure&nbsp;9</a> below shows this flux (left) and its net outflow from a small box (right).</p>
-<div id="cell-fig-flux" class="cell" data-execution_count="9">
+<div id="cell-fig-flux" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div id="fig-flux" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Left: dots scattered at a density, a horizontal cylinder whose right end is a shaded unit disk, an arrow labelled v pointing right, and a double arrow along the cylinder labelled length norm of v times delta t. Right: a rectangular box with a thin arrow entering on the left and a thicker arrow leaving on the right, labelled flux in and flux out, with the text net outflow per unit volume tends to the divergence.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1807,7 +1809,7 @@ u_t(x \mid x_1) = -\frac{x - t\, x_1}{1 - t} + x_1
 <section id="sec-fm-paths-compared" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="sec-fm-paths-compared"><span class="header-section-number">6.4</span> Diffusion and optimal-transport paths compared</h2>
 <p>Under a Gaussian conditional path, each <span class="math inline">x_0 \sim p_{\mathrm{init}}</span> moves along the trajectory <span class="math inline">\sigma_t\, x_0 + m_t</span> of the conditional flow. <a href="#fig-fm-cond-trajectories" class="quarto-xref">Figure&nbsp;10</a> below draws these trajectories for the VP path and the optimal-transport path, for one <span class="math inline">x_1</span> and the same twelve <span class="math inline">x_0 \sim p_{\mathrm{init}}</span>, with markers at <span class="math inline">t = 1/4</span>, <span class="math inline">1/2</span> and <span class="math inline">3/4</span>.</p>
-<div id="cell-fig-fm-cond-trajectories" class="cell" data-execution_count="10">
+<div id="cell-fig-fm-cond-trajectories" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div id="fig-fm-cond-trajectories" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels with the same twelve starting dots and one star. Left: curved paths from each dot to the star, with the first two markers on each path close to its start and the third near its middle. Right: straight segments from each dot to the star, with the markers evenly spaced along each segment.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1926,7 +1928,7 @@ X_t = \sqrt{t^2\sigma_{\mathrm{data}}^2 + (1 - t)^2}\; x_0
 </span></p>
 <p>It ends at <span class="math inline">X_1 = \sigma_{\mathrm{data}} x_0</span>, and the segment between its ends is <span class="math inline">(1 - t + t\sigma_{\mathrm{data}})\, x_0</span>. Since <span class="math inline">(1 - t + t\sigma_{\mathrm{data}})^2 = V(t) + 2t(1 - t)\sigma_{\mathrm{data}}</span>, which exceeds <span class="math inline">V(t)</span> for <span class="math inline">t \in (0, 1)</span>, each trajectory with <span class="math inline">x_0 \ne 0</span> runs strictly closer to zero than that segment, so it is curved for each <span class="math inline">\sigma_{\mathrm{data}} &gt; 0</span>. For <span class="math inline">\sigma_{\mathrm{data}} = 1</span>, where <span class="math inline">p_{\mathrm{init}} = p_{\mathrm{data}}</span>, the segment is the constant <span class="math inline">x_0</span>, but the trajectory passes through <span class="math inline">x_0 / \sqrt{2}</span> at <span class="math inline">t = 1/2</span>. The flow contracts toward zero and expands again, because each <span class="math inline">x_0</span> is paired with points <span class="math inline">x_1</span> of both signs, whose velocities partly cancel in the average.</p>
 <p>With <span class="math inline">p_{\mathrm{init}} = \mathcal{N}(0, 1)</span> and <span class="math inline">p_{\mathrm{data}}</span> an equal mixture of two narrow Gaussians at <span class="math inline">\pm 2</span>, the posterior mean of <span class="math inline">x_1</span> has a closed form as well, by the same formula of Albergo and Vanden-Eijnden. So the segments and the trajectories of <span class="math inline">u_t</span> can both be drawn in one dimension, as <a href="#fig-fm-crossing" class="quarto-xref">Figure&nbsp;11</a> shows below.</p>
-<div id="cell-fig-fm-crossing" class="cell" data-execution_count="11">
+<div id="cell-fig-fm-crossing" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div id="fig-fm-crossing" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels with time on the horizontal axis. Left: straight grey segments from scattered starting points on the left to two clusters near plus and minus two on the right, many of them crossing. Right: smooth teal curves from evenly spread starting points that stay nearly level at first, then split, the upper half bending up to the cluster near plus two and the lower half bending down to the cluster near minus two, without crossing.">
 <figure class="quarto-float quarto-float-fig figure">

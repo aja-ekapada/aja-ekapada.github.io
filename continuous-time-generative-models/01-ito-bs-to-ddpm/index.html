@@ -130,13 +130,16 @@ div.csl-indent {
 <style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -573,21 +576,21 @@ window.Quarto = {
 </tr>
 </thead>
 <tbody class="list">
-<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Oct 22, 2026</span></td>
-<td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
+<tr class="current odd">
+<td><span class="listing-date">Aug 10, 2026</span></td>
+<td><span class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</span><span class="series-here"> — you are here</span></td>
 </tr>
 <tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Oct 16, 2026</span></td>
-<td><a href="../03-the-unification/index.html" class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a></td>
-</tr>
-<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Sep 10, 2026</span></td>
 <td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a></td>
 </tr>
-<tr class="current even">
-<td><span class="listing-date">Aug 10, 2026</span></td>
-<td><span class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</span><span class="series-here"> — you are here</span></td>
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-date">Oct 16, 2026</span></td>
+<td><a href="../03-the-unification/index.html" class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a></td>
+</tr>
+<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-date">Oct 22, 2026</span></td>
+<td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
 </tr>
 </tbody>
 </table>
@@ -596,8 +599,10 @@ window.Quarto = {
 </div>
 <p>The first time I saw the forward process of a diffusion model written as an SDE by Song et al. <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>, what struck me was not the idea but the notation. Change a few words, "noise schedule" for "volatility", and it was an equation I had solved many times before. The process is presented as something new, a device for training image generators that adds a little Gaussian noise step after step until the data dissolves into pure noise. But the equation underneath was one I had spent years with in a different domain. I had seen that drift-plus-noise structure before; I had taken that same <span class="math inline">N \to \infty</span> limit before; I had used that same lemma to reduce a state-dependent SDE to one I could solve.</p>
 <p>That lemma is Itô’s. In quantitative finance it is the engine behind the Black-Scholes equation: feed it a stochastic stock price, hedge away the randomness, and a deterministic PDE for the option’s fair value remains. In a diffusion model it performs two operations that look unrelated. Applied one way it turns the noised state into a Gaussian that can be sampled in a single step; applied another it yields a PDE for how that noise spreads. Same lemma, two fields, half a century apart.</p>
-<p>What connects them is a single rule of stochastic calculus, <span class="math inline">(dW)^2 = dt</span>, the one fact for which ordinary calculus has no term. Pricing derivatives, I had taken its consequences for granted. In image generation, the very same correction term reappears at the heart of the diffusion machinery. This post builds that rule from first principles, uses it to solve geometric Brownian motion and the Ornstein-Uhlenbeck process, and then applies it three times: to derive the Black-Scholes equation, to give the DDPM forward process its closed-form perturbation kernel, and to derive that process’s Fokker-Planck equation. One identity, carried to two ends of a bridge that quantitative finance and generative AI did not know they shared.</p>
-<p>Between the finance and the diffusion halves, the post sets out what a generative model is. It learns from data through a model family, a divergence that measures how far the model is from the data, and an optimization procedure that minimizes it, and it then answers queries such as sampling and density estimation. Variational autoencoders, normalizing flows and energy-based models illustrate the framework. Diffusion models follow, with their two lineages and DDPM, whose forward process the last two applications of Itô’s lemma analyze.</p>
+<p>What connects them is a single rule of stochastic calculus, <span class="math inline">(dW)^2 = dt</span>, the one fact for which ordinary calculus has no term. Pricing derivatives, I had taken its consequences for granted. In image generation, the very same correction term reappears at the heart of the diffusion machinery.</p>
+<p>This post lays the mathematical foundation for the series. It develops Brownian motion and that rule from first principles, derives Itô’s lemma from them, and solves geometric Brownian motion and the Ornstein-Uhlenbeck process with it. The lemma then derives the Black-Scholes equation through hedging and the no-arbitrage condition.</p>
+<p>Between the finance and the diffusion halves, the post sets out what a generative model is. It learns from data through a model family, a divergence that measures how far the model is from the data, and an optimization procedure that minimizes it, and it then answers queries such as sampling and density estimation. Variational autoencoders, normalizing flows and energy-based models illustrate the framework. Diffusion models follow, with their two lineages and DDPM.</p>
+<p>The post then writes DDPM’s forward process as a Variance-Preserving SDE and returns to Itô’s lemma twice, to derive its closed-form perturbation kernel and the Fokker-Planck equation for the density of the noised state. A closing comparison sets the three derivations (Black-Scholes, the perturbation kernel and the Fokker-Planck equation) side by side. One identity, <span class="math inline">(dW)^2 = dt</span>, carried to two ends of a bridge that quantitative finance and generative AI did not know they shared.</p>
 <section id="roadmap" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="roadmap">Roadmap</h2>
 <p>This post is structured in ten parts:</p>
@@ -620,7 +625,7 @@ window.Quarto = {
 <section id="sec-two-views" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-two-views"><span class="header-section-number">1.1</span> The physics</h2>
 <p>In 1827 the botanist Robert Brown watched particles released from pollen grains jitter randomly in water <span class="citation" data-cites="brown1828"><a href="#ref-brown1828" role="doc-biblioref">[3]</a></span>. In 1905 Einstein explained it <span class="citation" data-cites="einstein1905"><a href="#ref-einstein1905" role="doc-biblioref">[4]</a></span>: invisible water molecules bombard the particle, and the accumulation of countless random collisions produces a random, continuous path (<a href="#fig-bm-jar" class="quarto-xref">Figure&nbsp;1</a>).</p>
-<div id="cell-fig-bm-jar" class="cell" data-execution_count="1">
+<div id="cell-fig-bm-jar" class="cell" data-execution_count="2">
 <div id="fig-bm-jar" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bm-jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -633,7 +638,7 @@ Figure&nbsp;1: A particle released from a pollen grain, suspended in water and d
 </div>
 </div>
 <p>The mathematics describing such a path, and, crucially, describing how the probability of finding the particle at each location spreads over time, comes in two complementary forms: an equation for the random trajectory of one particle (the <strong>Langevin equation</strong> <span class="citation" data-cites="langevin1908theory"><a href="#ref-langevin1908theory" role="doc-biblioref">[5]</a></span>), and an equation for the evolving probability cloud of where it might be (the <strong>Fokker-Planck equation</strong>). These two views (one trajectory, one distribution) are the same physics seen two ways (<a href="#fig-two-views" class="quarto-xref">Figure&nbsp;2</a>).</p>
-<div id="cell-fig-two-views" class="cell" data-execution_count="2">
+<div id="cell-fig-two-views" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div id="fig-two-views" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels sharing a position axis. Left: many irregular sample paths fanning out from a common start at zero, with a dashed square-root-t envelope tracing their typical spread, with a few paths highlighted. Right: a probability cloud dark and concentrated near time zero, spreading and fading into a widening band, the same dashed envelope tracing its typical spread, with a colourbar for probability density.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -660,7 +665,7 @@ Figure&nbsp;2: The two complementary descriptions of the same diffusing particle
 <li>Increments over non-overlapping intervals are independent</li>
 <li>The sample paths <span class="math inline">t \mapsto W_t</span> are continuous (almost surely)</li>
 </ol>
-<div id="cell-fig-bm-paths" class="cell" data-execution_count="3">
+<div id="cell-fig-bm-paths" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div id="fig-bm-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five irregular curves starting together at zero at time 0 and varying up and down to different values by time 1. A shaded cone widening as the square root of t encloses the paths, and three Gaussian density curves drawn sideways at t=0.25, 0.6, and 1 grow progressively broader, showing the variance increasing with time.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -841,7 +846,7 @@ Table&nbsp;1: Where the smooth and Brownian quadratic-variation derivations dive
 <section id="smooth-functions" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="smooth-functions"><span class="header-section-number">1.6.1</span> Smooth functions</h3>
 <p>A differentiable function has a well-defined slope at each point. Geometrically that means it is <em>locally linear</em>: over a small step <span class="math inline">\Delta t</span> its increment is <span class="math inline">f'(t)\,\Delta t = O(\Delta t)</span>, proportional to the step. Zoom in on even a high-curvature region, and the curve bends less and less, settling toward its tangent line (<a href="#fig-smooth-zoom" class="quarto-xref">Figure&nbsp;4</a>). For <span class="math inline">f</span> twice differentiable, the departure from the tangent over a window of width <span class="math inline">\Delta t</span> is the curvature term <span class="math inline">\tfrac{1}{2} f''\,(\Delta t)^2 = O(\Delta t^2)</span>; it shrinks faster than the window, so the squared increment is negligible next to <span class="math inline">\Delta t</span>, which is why a smooth path has zero quadratic variation.</p>
-<div id="cell-fig-smooth-zoom" class="cell" data-execution_count="4">
+<div id="cell-fig-smooth-zoom" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div id="fig-smooth-zoom" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels at the same axis scale. Left: a deep, sharply-curved upward parabola well above its horizontal dashed tangent at the minimum, with a dotted box around the bottom. Right: the boxed minimum region magnified, where the parabola is much shallower and lies close to the same tangent line with only a gentle remaining bend.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -860,7 +865,7 @@ Figure&nbsp;4: <strong>Left:</strong> a parabola with its horizontal tangent at 
 <section id="brownian-motion-1" class="level3" data-number="1.6.2">
 <h3 data-number="1.6.2" class="anchored" data-anchor-id="brownian-motion-1"><span class="header-section-number">1.6.2</span> Brownian motion</h3>
 <p>The quadratic-variation result <span class="math inline">[W]_t = t</span> (<a href="#eq-qv-bm" class="quarto-xref">Eq.&nbsp;2</a>) is the algebraic statement that a Brownian increment scales as <span class="math inline">\Delta W \sim \sqrt{\Delta t}</span>. That square-root scaling has an immediate geometric consequence: the slope of a chord over a step is <span class="math inline">\Delta W / \Delta t \sim 1/\sqrt{\Delta t} \to \infty</span> as <span class="math inline">\Delta t \to 0</span>, so the difference quotient blows up rather than converging to a finite slope, and the path is not continuously differentiable. In fact a classical theorem of Paley, Wiener and Zygmund <span class="citation" data-cites="paley1933notes"><a href="#ref-paley1933notes" role="doc-biblioref">[6]</a></span> establishes the stronger property that Brownian paths are almost surely <strong>nowhere differentiable</strong>; the scaling here is the intuition behind that result, not a proof of it. <a href="#fig-brownian-path" class="quarto-xref">Figure&nbsp;5</a> makes this visible through <em>statistical self-similarity</em> <span class="citation" data-cites="karatzas1991brownian"><a href="#ref-karatzas1991brownian" role="doc-biblioref">[7]</a></span>: zooming into any sub-interval and rescaling by the same <span class="math inline">\sqrt{\Delta t}</span> law reproduces a path just as irregular as the original, so there is no scale at which the path ever straightens out.</p>
-<div id="cell-fig-brownian-path" class="cell" data-execution_count="5">
+<div id="cell-fig-brownian-path" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div id="fig-brownian-path" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels. Left: an irregular Brownian path from t=0 to t=1 with a small dashed box marking a short sub-interval. Right: the contents of that box, magnified twentyfold in time and by root-twenty in height; the magnified segment is just as irregular as the full path, with a similar vertical range, illustrating that Brownian motion looks the same at each scale.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1069,7 +1074,7 @@ Figure&nbsp;5: <strong>Left:</strong> a Brownian sample path on <span class="mat
 <li><strong>Drift (<span class="math inline">\mu</span>):</strong> The instantaneous expected rate of return per unit time, <span class="math inline">\mathbb{E}[dS_t/S_t] = \mu\, dt</span>. <span class="math inline">\mu = 0.15</span> means a <span class="math inline">15\%</span> per-year expected return (with <span class="math inline">t</span> measured in years); the <em>continuously-compounded</em> growth rate is the smaller <span class="math inline">\mu - \tfrac{1}{2}\sigma^2</span> (the Itô correction, derived below).</li>
 <li><strong>Volatility (<span class="math inline">\sigma</span>):</strong> The standard deviation of the return per unit time. <span class="math inline">\sigma = 0.20</span> means <span class="math inline">20\%</span> per-year volatility.</li>
 </ul>
-<div id="cell-fig-gbm-paths" class="cell" data-execution_count="6">
+<div id="cell-fig-gbm-paths" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div id="fig-gbm-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Left: eight sample paths of geometric Brownian motion starting at 1 and rising or falling over one year, with the exponential expected-value curve as a dashed line. Right: a horizontal histogram of the endpoint values matching an overlaid lognormal density that is asymmetric, a short lower tail above zero and a long upper tail.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1099,7 +1104,7 @@ Figure&nbsp;6: Sample paths of geometric Brownian motion with <span class="math 
 <li><strong>Volatility (<span class="math inline">\sigma</span>):</strong> The constant volatility of the noise, units <span class="math inline">\text{state}/\sqrt{\text{time}}</span>.</li>
 </ul>
 <p><strong>The mean-reversion intuition:</strong> If <span class="math inline">X_t &gt; \bar\mu</span>, the drift <span class="math inline">\kappa(\bar\mu - X_t) &lt; 0</span> pushes <span class="math inline">X_t</span> back down. If <span class="math inline">X_t &lt; \bar\mu</span>, the drift pushes it back up. The noise term <span class="math inline">\sigma\, dW_t</span> keeps the process jittering around <span class="math inline">\bar\mu</span> rather than converging to it (<a href="#fig-ou-paths" class="quarto-xref">Figure&nbsp;7</a>).</p>
-<div id="cell-fig-ou-paths" class="cell" data-execution_count="7">
+<div id="cell-fig-ou-paths" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div id="fig-ou-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Left panel: five sample paths of an Ornstein-Uhlenbeck process starting from spread-out points between -2.3 and +2.3, all pulled toward zero and converging into a shaded band by about t=1.5. Right panel: a horizontal histogram aligned with the band, matching an overlaid bell curve, showing the stationary distribution the paths reach regardless of starting point.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1292,7 +1297,7 @@ d(\log S_t) \;=\; \left(\mu - \tfrac{1}{2}\sigma^2\right) dt + \sigma\, dW_t
 <p>The level grows at the full rate <span class="math inline">\mu</span> even as the typical log-return grows at <span class="math inline">\mu - \tfrac{1}{2}\sigma^2</span>.</p>
 <p>So log-returns have mean <span class="math inline">(\mu - \tfrac{1}{2}\sigma^2)\, t</span> and variance <span class="math inline">\sigma^2 t</span>, variance <em>linear</em> in time (characteristic of Brownian motion), so the standard deviation grows like <span class="math inline">\sigma\sqrt{t}</span>. Equivalently, the price <span class="math inline">S_t</span> itself is lognormally distributed: its logarithm is Gaussian, which forces <span class="math inline">S_t &gt; 0</span> always (essential, because stock prices can’t go negative).</p>
 <p>The <span class="math inline">-\tfrac{1}{2}\sigma^2</span> term is the <strong>Itô correction in action</strong> (<a href="#fig-ito-correction" class="quarto-xref">Figure&nbsp;8</a>). Naive chain-rule reasoning would give <span class="math inline">d(\log S) = dS/S = \mu\, dt + \sigma\, dW</span>, missing the <span class="math inline">-\tfrac{1}{2}\sigma^2\, dt</span> contribution that the <span class="math inline">(dW)^2 = dt</span> rule supplies. The mean of the log-return is therefore not <span class="math inline">\mu\, t</span> but <span class="math inline">(\mu - \tfrac{1}{2}\sigma^2)\, t</span>; the gap is sometimes referred to in finance as the <strong>volatility drag</strong>.</p>
-<div id="cell-fig-ito-correction" class="cell" data-execution_count="8">
+<div id="cell-fig-ito-correction" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div id="fig-ito-correction" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Plot from t=0 to t=2 with two irregular curves starting together at zero. An upper dashed curve is the naive prediction mu*t plus sigma*W; a lower solid curve is the simulated log price. They move together but steadily separate, and the widening gap between them is shaded, representing the Ito correction one-half sigma squared t.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1425,7 +1430,7 @@ Z_t \;=\; (X_0 - \bar\mu)\, e^{-\kappa t} \;+\; \sigma \int_0^t e^{-\kappa(t - s
 \tag{21}</span></span></p>
 <p>The holder exercises if <span class="math inline">S_T &lt; K</span>, gaining <span class="math inline">K - S_T</span>; otherwise the option expires worthless.</p>
 <p>The kinked “hockey-stick” shape (<a href="#fig-option-payoffs" class="quarto-xref">Figure&nbsp;9</a>) is the structural signature of an option: identically zero on the unfavourable side of the strike, linear on the favourable side.</p>
-<div id="cell-fig-option-payoffs" class="cell" data-execution_count="9">
+<div id="cell-fig-option-payoffs" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div id="fig-option-payoffs" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two side-by-side line plots. Left panel (call): payoff is zero for stock prices below 100 and rises linearly with slope 1 above 100. Right panel (put): payoff is zero for stock prices above 100 and rises linearly with slope -1 below 100. Each panel has a dashed vertical line marking the strike K = 100.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1629,7 +1634,7 @@ d_1 = \frac{\log(S/K) + (r + \tfrac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}, \qua
 <p>Within this framework, a <strong>generative model</strong> approximates <span class="math inline">p_0</span> by a distribution <span class="math inline">p_\theta</span> with parameters <span class="math inline">\theta</span>, which it obtains by <strong>learning</strong> from <span class="math inline">\mathcal{D}</span>, so that the learned model can be used for <strong>inference</strong>, e.g.&nbsp;sampling. In practice <span class="math inline">p_\theta</span> is usually built from deep neural networks, and such models are called <strong>deep generative models</strong> <span class="citation" data-cites="ermon2023cs236"><a href="#ref-ermon2023cs236" role="doc-biblioref">[16]</a></span>.</p>
 <section id="learning" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="learning"><span class="header-section-number">4.1</span> Learning</h2>
-<div id="cell-fig-genmodel-learning" class="cell" data-execution_count="10">
+<div id="cell-fig-genmodel-learning" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div id="fig-genmodel-learning" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two bell curves on a data-space axis: a rose data density and a teal model density, with an arrow labelled minimize the divergence pushing the model toward the data.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1672,7 +1677,7 @@ Figure&nbsp;10: Learning: choose a family <span class="math inline">\mathcal{M}=
 \boxed{\theta^* = \arg\min_{\theta}\, D(p_0 \,\|\, p_\theta)}
 \tag{28}</span></span></p>
 <p>If <span class="math inline">p_0 \in \mathcal{M}</span>, the minimum value is zero and <span class="math inline">p_{\theta^*} = p_0</span>. Otherwise <span class="math inline">p_{\theta^*}</span> is the member of <span class="math inline">\mathcal{M}</span> closest to <span class="math inline">p_0</span> as measured by <span class="math inline">D</span>, not <span class="math inline">p_0</span> itself, as <a href="#fig-family-reach" class="quarto-xref">Figure&nbsp;11</a> shows below.</p>
-<div id="cell-fig-family-reach" class="cell" data-execution_count="11">
+<div id="cell-fig-family-reach" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div id="fig-family-reach" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels, each with a shaded oval labelled M for the model family. Left, titled p0 in M: a single point inside the oval labelled p theta star equals p0, with the note D of p0 from p theta star equals zero. Right, titled p0 not in M: a point p0 outside the oval joined by a dashed line to the nearest point of the oval, labelled p theta star, with the note D of p0 from p theta star greater than zero.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1755,7 +1760,7 @@ D_{\mathrm{KL}}(p_0 \,\|\, p_\theta) = -\,\mathbb{E}_{p_0}\big[\log p_\theta(x)\
 \theta \leftarrow \theta - \eta\, \nabla_\theta \hat{\mathcal{L}}(\theta)
 </span></p>
 <p>where <span class="math inline">\hat{\mathcal{L}}(\theta)</span> is the minibatch loss estimate and <span class="math inline">\eta &gt; 0</span> is the learning rate. Repeating this update over many iterations gradually reduces the loss, allowing the network to learn patterns in the data, as illustrated in <a href="#fig-training-loop" class="quarto-xref">Figure&nbsp;12</a>.</p>
-<div id="cell-fig-training-loop" class="cell" data-execution_count="12">
+<div id="cell-fig-training-loop" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div id="fig-training-loop" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A loop of shapes joined by arrows. Along the top, left to right: a box minibatch of data x, a trapezoid network with weights theta, a box outputs, and an oval loss L hat of theta. A curved arrow labelled backpropagation, gradient of L hat with respect to theta, runs from the loss down to a box at the bottom labelled update theta gets theta minus eta times the gradient, and an arrow labelled new theta runs from that box up into the network. In the middle of the loop: repeated over many iterations.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1814,7 +1819,7 @@ Figure&nbsp;12: One iteration of training a neural network. A minibatch of data 
 <h2 data-number="5.1" class="anchored" data-anchor-id="variational-autoencoders"><span class="header-section-number">5.1</span> Variational autoencoders</h2>
 <p>VAEs are latent-variable models, so they model <span class="math inline">x</span> through an unobserved latent variable <span class="math inline">z \in \mathbb{R}^{d_z}</span> with a simple prior, usually the standard Gaussian <span class="math inline">p(z) = \mathcal{N}(z;\ 0,\ I)</span>, where <span class="math inline">I</span> is the identity matrix, here <span class="math inline">d_z \times d_z</span>; throughout this Part it has the dimension of the vector it accompanies.</p>
 <p>An encoder <span class="math inline">q_\phi(z \mid x)</span> infers <span class="math inline">z</span> from <span class="math inline">x</span>. It is usually the Gaussian <span class="math inline">\mathcal{N}\big(z;\ \mu_\phi(x),\ \operatorname{diag}(\sigma_\phi(x)^2)\big)</span>, whose mean <span class="math inline">\mu_\phi: \mathbb{R}^d \to \mathbb{R}^{d_z}</span> and standard deviations <span class="math inline">\sigma_\phi: \mathbb{R}^d \to (0, \infty)^{d_z}</span> are estimated using a network with parameters <span class="math inline">\phi</span>. Here <span class="math inline">\operatorname{diag}(v)</span> is the diagonal matrix with the vector <span class="math inline">v</span> on its diagonal, and the square is taken elementwise, so the coordinates of <span class="math inline">z</span> are independent given <span class="math inline">x</span>. The encoder narrows <span class="math inline">x</span> to a lower-dimensional code <span class="math inline">z</span>, as <a href="#fig-vae" class="quarto-xref">Figure&nbsp;13</a> shows below.</p>
-<div id="cell-fig-vae" class="cell" data-execution_count="13">
+<div id="cell-fig-vae" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div id="fig-vae" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A row of shapes joined by arrows: a box x, a narrowing trapezoid labelled Encoder, two boxes mu phi of x and sigma phi of x, an oval labelled sample that also receives epsilon from N of 0 and I above it, a small box z, a widening trapezoid labelled Decoder, two boxes mu theta of z and sigma theta of z, an oval labelled sample that also receives epsilon prime from N of 0 and I above it, and a box x prime. Above z, a box z sampled from p of z sends a dashed arrow labelled generation into the decoder.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1863,7 +1868,7 @@ Figure&nbsp;13: Computation graph of a variational autoencoder, after Lai et al.
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-normalizing-flows"><span class="header-section-number">5.2</span> Normalizing flows</h2>
 <p>A simple distribution such as a Gaussian is easy to evaluate and sample, but it is not complex enough to model the distributions of images or text. An invertible transformation, often a composition of simpler ones, converts a simple distribution into a complex one and back.</p>
 <p>A normalizing flow does so through an invertible map <span class="math inline">f_\theta: \mathbb{R}^d \to \mathbb{R}^d</span>, differentiable with a differentiable inverse, which takes <span class="math inline">z</span> to <span class="math inline">x = f_\theta(z)</span> <span class="citation" data-cites="tabak2010density tabak2013family"><a href="#ref-tabak2010density" role="doc-biblioref">[61]</a>, <a href="#ref-tabak2013family" role="doc-biblioref">[62]</a></span>. It is like a VAE whose decoder is a deterministic, invertible map rather than a stochastic Gaussian conditional. Its inverse <span class="math inline">f_\theta^{-1}</span> takes <span class="math inline">x</span> back to <span class="math inline">z</span>, as <a href="#fig-normalizing-flow" class="quarto-xref">Figure&nbsp;14</a> shows below.</p>
-<div id="cell-fig-normalizing-flow" class="cell" data-execution_count="14">
+<div id="cell-fig-normalizing-flow" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div id="fig-normalizing-flow" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two density curves side by side. Left: a single bell-shaped curve labelled simple, p of z equals N of z, 0, 1. Right: a curve with two peaks and a dip at zero labelled complex, p theta of x. Between them, an upper arrow pointing right labelled x equals f theta of z, sampling, and a lower arrow pointing left labelled z equals f theta inverse of x, density evaluation.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1913,7 +1918,7 @@ Figure&nbsp;14: A normalizing flow <span class="citation" data-cites="tabak2010d
 <section id="energy-based-models" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="energy-based-models"><span class="header-section-number">5.3</span> Energy-based models</h2>
 <p>EBMs <span class="citation" data-cites="lecun2006tutorial"><a href="#ref-lecun2006tutorial" role="doc-biblioref">[63]</a></span> define <span class="math inline">p_\theta(x) = e^{-E_\theta(x)} / Z(\theta)</span> <span class="citation" data-cites="ackley1985learning"><a href="#ref-ackley1985learning" role="doc-biblioref">[64]</a></span> through an energy function <span class="math inline">E_\theta: \mathbb{R}^d \to \mathbb{R}</span>, where the <strong>partition function</strong> <span class="math inline">Z(\theta) = \int_{\mathbb{R}^d} e^{-E_\theta(x)}\, dx</span> is assumed finite but is in general intractable. The network outputs a single number, the energy, as <a href="#fig-energy-based" class="quarto-xref">Figure&nbsp;15</a> shows below.</p>
-<div id="cell-fig-energy-based" class="cell" data-execution_count="15">
+<div id="cell-fig-energy-based" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div id="fig-energy-based" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A row of shapes joined by arrows: a box x, a narrowing trapezoid labelled Energy network E theta, a box E theta of x, a dashed rectangle labelled e to the minus E theta of x over Z of theta, and a box p theta of x. Below the dashed rectangle: Z of theta, intractable integral over R d.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1992,7 +1997,7 @@ Figure&nbsp;15: Computation graph of an energy-based model, after Lai et al. <sp
 <h2 data-number="6.1" class="anchored" data-anchor-id="what-are-diffusion-models"><span class="header-section-number">6.1</span> What are diffusion models?</h2>
 <p>Diffusion models are a class of latent-variable generative models <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span>, whose latent variables are the noised states <span class="math inline">x_1, \ldots, x_N</span>. A diffusion model has two components: the forward process and the reverse process. The forward process progressively adds noise to the training data until nothing but noise remains. The reverse process <strong>learns</strong> to undo that noising. <strong>Sampling</strong> starts from noise and applies the learned reverse process step by step, producing new data such as images that resemble the training data.</p>
 <p>Two parallel approaches to diffusion models developed independently, differing primarily in the divergence they target and the loss they use for training. The variational track targets the KL divergence <span class="math inline">D_{\mathrm{KL}}(p_0 \,\|\, p_\theta)</span> and minimizes the negative ELBO. It runs from Sohl-Dickstein et al.’s nonequilibrium-thermodynamics formulation <span class="citation" data-cites="sohldickstein2015deep"><a href="#ref-sohldickstein2015deep" role="doc-biblioref">[41]</a></span> to Ho et al.’s DDPM <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span>, where the bound is reparameterized as noise prediction. The score-based track targets the Fisher divergence, the expected squared distance between the data score and the model’s. It minimizes a score-matching loss, which averages that divergence over noise levels. It runs from Hyvärinen’s score matching <span class="citation" data-cites="hyvarinen2005estimation"><a href="#ref-hyvarinen2005estimation" role="doc-biblioref">[21]</a></span> through Vincent’s denoising score matching <span class="citation" data-cites="vincent2011denoising"><a href="#ref-vincent2011denoising" role="doc-biblioref">[29]</a></span> to Song and Ermon’s score matching with Langevin dynamics (SMLD) <span class="citation" data-cites="song2019generative"><a href="#ref-song2019generative" role="doc-biblioref">[47]</a></span>. Song et al.&nbsp;unified the two into a single framework in 2021 <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. <a href="#fig-diffusion-lineage" class="quarto-xref">Figure&nbsp;16</a> places these landmarks on a common timeline.</p>
-<div id="cell-fig-diffusion-lineage" class="cell" data-execution_count="16">
+<div id="cell-fig-diffusion-lineage" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div id="fig-diffusion-lineage" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A vertical timeline from 2005 to 2021. A left column of rose boxes holds the variational track: Sohl-Dickstein, Ho. A right column of teal boxes holds the score-based track: Hyvärinen, Vincent, Song and Ermon. Arrows from both columns converge on a wide amber box at 2021 labelled Song et al., Score-based SDE.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2114,7 +2119,7 @@ Table&nbsp;2: DDPM, SMLD and score-based SDEs
 <section id="sec-ddpm" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="sec-ddpm"><span class="header-section-number">6.2</span> Denoising Diffusion Probabilistic Models</h2>
 <p><strong>Denoising Diffusion Probabilistic Models (DDPM)</strong> <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span> are discrete-time diffusion models with roots in nonequilibrium thermodynamics. Like other diffusion models they generate new samples through one central idea: <em>learn to undo noise</em>. If a model can remove a small amount of noise from a slightly noisy sample, then, starting from pure noise and applying this repeatedly, it recovers a clean sample (<a href="#fig-ddpm-chain" class="quarto-xref">Figure&nbsp;17</a>).</p>
-<div id="cell-fig-ddpm-chain" class="cell" data-execution_count="17">
+<div id="cell-fig-ddpm-chain" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div id="fig-ddpm-chain" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A horizontal row of five ovals labelled x0 (data) through xN (noise). Teal arrows along the top point left to right (the forward process); rose arrows along the bottom point right to left (the learned reverse Markov chain).">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2131,7 +2136,7 @@ Figure&nbsp;17: DDPM as a pair of Markov chains. The forward process, with trans
 <section id="forward-process-noising" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="forward-process-noising"><span class="header-section-number">6.2.1</span> Forward process (noising)</h3>
 <p>A fixed, parameter-free procedure that progressively adds Gaussian noise to a data sample <span class="math inline">x_0 \sim p_0</span>, producing a sequence <span class="math inline">x_0, x_1, \ldots, x_N</span> in which each <span class="math inline">x_i</span> is a noisier version of <span class="math inline">x_{i-1}</span> and the endpoint <span class="math inline">x_N</span> is close to pure noise, a sample from a fixed, data-independent distribution (<a href="#fig-forward-noising" class="quarto-xref">Figure&nbsp;18</a>). How much noise enters at each step is set by a noise schedule. This forward process is not an analogy to a diffusion; it <em>is</em> one.</p>
-<div id="cell-fig-forward-noising" class="cell" data-execution_count="18">
+<div id="cell-fig-forward-noising" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div id="fig-forward-noising" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five scatter-plot panels in a row. The leftmost shows two interleaving crescent-shaped clusters of points in two colours (the data). Moving right, the clusters blur and spread as noise is added; the rightmost panel is a single round Gaussian blob with the two colours fully mixed.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2315,7 +2320,7 @@ x_i - x_{i-1} \;\approx\; -\tfrac{1}{2}\beta(t)\, x_{i-1}\, \Delta t \;+\; \sqrt
 \end{aligned}
 </span></p>
 <p>Both are linear SDEs: the drift is linear in the state variable, and the diffusion is either linear in the state variable (GBM) or independent of it (VP-SDE). The drift sign is the essential difference: GBM has a positive expected return (<span class="math inline">+\mu S</span>), DDPM forward has a contracting drift (<span class="math inline">-\tfrac{1}{2}\beta(t) x</span>) that pulls <span class="math inline">x</span> toward zero. Combined with the diffusion term injecting noise, this drives <span class="math inline">x_t</span> toward a standard normal as <span class="math inline">t \to 1</span> (<a href="#fig-gbm-vs-vpsde" class="quarto-xref">Figure&nbsp;19</a>).</p>
-<div id="cell-fig-gbm-vs-vpsde" class="cell" data-execution_count="19">
+<div id="cell-fig-gbm-vs-vpsde" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div id="fig-gbm-vs-vpsde" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two side-by-side line plots. Left: GBM sample paths clustered near 1, drifting slowly. Right: VP-SDE sample paths starting at 1, pulled toward a dashed zero line while spreading into a shaded band that widens to plus-or-minus one, showing convergence to a unit-variance Gaussian.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2467,7 +2472,7 @@ p_{01}(x_{t=1} \mid x_0) \approx \mathcal{N}(0, I)
 \boxed{p(x_N) \;\approx\; \mathcal{N}(0, I)}
 \tag{42}</span></span></p>
 <p>The data <span class="math inline">x_0</span> is <em>almost</em> completely forgotten: every starting point flows to <em>nearly</em> the same standard Gaussian, the approximation tightening as <span class="math inline">\int_0^1 \beta\, ds</span> is made larger (<a href="#fig-prior" class="quarto-xref">Figure&nbsp;20</a>). The idealized exact value <span class="math inline">\bar\alpha(1) = 0</span> is never attained on <span class="math inline">[0, 1]</span>. It is approached only as the schedule’s total noise <span class="math inline">\int_0^1 \beta(s)\, ds</span> grows without bound.</p>
-<div id="cell-fig-prior" class="cell" data-execution_count="20">
+<div id="cell-fig-prior" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div id="fig-prior" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A plot over t from 0 to 1 with two curves. A rose curve labelled mean factor starts at 1 and decays smoothly toward 0; a violet curve labelled variance starts at 0 and rises toward 1. They cross near the middle, showing data being replaced by noise until the perturbation kernel is a standard Gaussian.">
 <figure class="quarto-float quarto-float-fig figure">

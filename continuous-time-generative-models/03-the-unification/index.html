@@ -133,7 +133,7 @@ div.csl-indent {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -447,20 +447,20 @@ window.Quarto = {
 </thead>
 <tbody class="list">
 <tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Oct 22, 2026</span></td>
-<td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
+<td><span class="listing-date">Aug 10, 2026</span></td>
+<td><a href="../01-ito-bs-to-ddpm/index.html" class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</a></td>
 </tr>
-<tr class="current even">
-<td><span class="listing-date">Oct 16, 2026</span></td>
-<td><span class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</span><span class="series-here"> — you are here</span></td>
-</tr>
-<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
 <td><span class="listing-date">Sep 10, 2026</span></td>
 <td><a href="../02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a></td>
 </tr>
+<tr class="current odd">
+<td><span class="listing-date">Oct 16, 2026</span></td>
+<td><span class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</span><span class="series-here"> — you are here</span></td>
+</tr>
 <tr class="even" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
-<td><span class="listing-date">Aug 10, 2026</span></td>
-<td><a href="../01-ito-bs-to-ddpm/index.html" class="title listing-title">Itô's Lemma: From Black-Scholes to Diffusion Models</a></td>
+<td><span class="listing-date">Oct 22, 2026</span></td>
+<td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
 </tr>
 </tbody>
 </table>
@@ -477,18 +477,19 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>DDPM and score matching with Langevin dynamics appear to be two different models, but they share one goal, which is to reverse a noising process. Each perturbs the data at a finite sequence of noise levels and learns to remove the noise one level at a time. They differ in how the noise grows from level to level, in what the network is trained to output and in how samples are generated. This post shows that all three differences are choices within one framework.</p>
+<p>Denoising Diffusion Probabilistic Models (DDPM) and score matching with Langevin dynamics appear to be two different models, but they share one goal, which is to reverse a noising process. Each perturbs the data at a finite sequence of noise levels and learns to remove the noise one level at a time. They differ in how the noise grows from level to level, in what the network is trained to output and in how samples are generated. This post shows that all three differences are choices within one framework.</p>
 <p>Post #2 developed the two routes to denoising diffusion. The variational route, built on an ELBO loss, led to a denoising network trained by a noise-prediction loss, and to ancestral sampling. The score-based route began with plain score matching and ended with denoising score matching over a finite sequence of noise levels, since no single level serves both fidelity and signal, and sampled with annealed Langevin dynamics.</p>
-<p>Post #3 picks up from there. Song et al. <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span> unified the two lineages by letting the noise level become a continuum indexed by time and the forward process a stochastic differential equation (SDE), and the two predecessors became two instances of one general form, the Variance-Preserving and Variance-Exploding SDEs.</p>
-<p>In both, the drift is linear in the state and the diffusion coefficient depends on time alone, so Itô’s lemma derives one Gaussian perturbation kernel for the whole family, with a closed-form mean and variance. The noise schedule of the Variance-Preserving SDE, such as DDPM’s linear schedule <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span> or the cosine schedule <span class="citation" data-cites="nichol2021improved"><a href="#ref-nichol2021improved" role="doc-biblioref">[3]</a></span>, sets how fast that variance grows. Song et al.’s sub-VP SDE is a third instance, whose variance never exceeds the Variance-Preserving one. Side by side, the three SDEs fall into two variance regimes, bounded and exploding.</p>
-<p>The forward SDE turns data into noise. Generation needs the opposite direction, from noise back to an image, so the question is how to run the SDE backward. Anderson’s 1982 theorem <span class="citation" data-cites="anderson1982reverse"><a href="#ref-anderson1982reverse" role="doc-biblioref">[4]</a></span> answers it. Under regularity conditions, the solution of the forward SDE, run backward in time, solves another SDE, the reverse-time SDE. Besides the forward coefficients, it needs one more quantity, the score <span class="math inline">\nabla_x \log p_t</span>. The post derives the theorem twice, once through the equivalence between the marginals of an SDE’s solution and the Fokker-Planck equation, and once through Bayes’ rule, whose reweighting is the change of measure of Girsanov’s theorem <span class="citation" data-cites="girsanov1960transforming"><a href="#ref-girsanov1960transforming" role="doc-biblioref">[5]</a></span>, the one behind risk-neutral pricing.</p>
-<p>The continuous view also yields an equation the discrete view could not express, the probability-flow ODE. It is the member without noise of a family of SDEs whose solutions share the forward marginals, the reverse-time SDE among them. Its solution is deterministic, so generation becomes solving an ODE.</p>
+<p>This post picks up from there. Song et al. <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span> unified the two lineages by letting the noise level become a continuum indexed by time and the forward process a stochastic differential equation (SDE), and the two predecessors became two instances of one general form, the Variance-Preserving and Variance-Exploding SDEs.</p>
+<p>In both, the drift is linear in the state and the diffusion coefficient depends on time alone, so Itô’s lemma derives one Gaussian perturbation kernel for the whole family, with a closed-form mean and variance. The noise schedule of the Variance-Preserving SDE, such as DDPM’s linear schedule <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span> or the cosine schedule <span class="citation" data-cites="nichol2021improved"><a href="#ref-nichol2021improved" role="doc-biblioref">[3]</a></span>, sets how fast that variance grows. Song et al.’s sub-VP SDE is a third instance, whose variance never exceeds the Variance-Preserving one.</p>
+<p>Side by side, the three SDEs fall into two variance regimes. The Variance-Exploding SDE has no drift and a growing variance, while the Variance-Preserving and sub-VP SDEs have a mean-reverting drift and a bounded variance.</p>
+<p>The forward SDE turns data into noise. Generation needs the opposite direction, from noise back to an image, so the question is how to run the SDE backward. Anderson’s 1982 theorem <span class="citation" data-cites="anderson1982reverse"><a href="#ref-anderson1982reverse" role="doc-biblioref">[4]</a></span> answers it. Under regularity conditions, the solution of the forward SDE, run backward in time, solves another SDE, the reverse-time SDE. Besides the forward coefficients, it needs one more quantity, the score <span class="math inline">\nabla_x \log p_t</span>.</p>
+<p>The post derives the theorem twice, once through the equivalence between the marginals of an SDE’s solution and the Fokker-Planck equation, and once through Bayes’ rule, whose reweighting is the change of measure of Girsanov’s theorem <span class="citation" data-cites="girsanov1960transforming"><a href="#ref-girsanov1960transforming" role="doc-biblioref">[5]</a></span>, the one behind risk-neutral pricing.</p>
+<p>The continuous view also yields an equation the discrete view could not express, the probability-flow ordinary differential equation (ODE). It is the member without noise of a family of SDEs whose solutions share the forward marginals, the reverse-time SDE among them. Its solution is deterministic, so generation becomes solving an ODE.</p>
 <p>The score is learned by denoising score matching <span class="citation" data-cites="vincent2011denoising"><a href="#ref-vincent2011denoising" role="doc-biblioref">[6]</a></span>, a regression on the known score of the perturbation kernel, weighted over time. With DDPM’s weighting it reduces to DDPM’s noise-prediction loss <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span>, so the variational and score-based routes train with the same loss. The regression needs the kernel’s score in closed form, which the linear SDEs above provide. For an SDE with a nonlinear drift the kernel is in general unknown, and sliced score matching <span class="citation" data-cites="song2019sliced"><a href="#ref-song2019sliced" role="doc-biblioref">[7]</a></span>, which needs no target score, replaces denoising score matching.</p>
 <p>Generation solves the reverse-time SDE with the learned score. Reverse diffusion sampling is its Euler-Maruyama discretization, post #2’s ancestral sampler is a second discretization of the same equation, and the predictor-corrector sampler adds Langevin correction steps. A final application of Tweedie’s formula <span class="citation" data-cites="efron2011tweedie"><a href="#ref-efron2011tweedie" role="doc-biblioref">[8]</a></span> removes the noise that the last sampling step injects. Every sampler uses the model only through its score, so once the score is learned any sampler can be used, thus training and sampling are decoupled.</p>
 <p>The post ends with why the unification matters. More than any single model, Song et al.’s main contribution is a common framework: the forward SDE, the score-based reverse-time SDE, and the deterministic probability-flow ODE. A generative model written in this framework inherits a century of mathematics on diffusion processes, from the Fokker-Planck equation to Itô calculus and Girsanov’s theorem.</p>
 <p>The noise schedule becomes a design choice rather than the defining feature of a model, and the methods that followed, Karras et al.’s EDM <span class="citation" data-cites="karras2022elucidating"><a href="#ref-karras2022elucidating" role="doc-biblioref">[9]</a></span>, flow matching <span class="citation" data-cites="lipman2023flow"><a href="#ref-lipman2023flow" role="doc-biblioref">[10]</a></span> and consistency models <span class="citation" data-cites="song2023consistency"><a href="#ref-song2023consistency" role="doc-biblioref">[11]</a></span>, are built on the same framework.</p>
-<p>Post #1 built the forward process, post #2 reversed it by two methods, and post #3 unifies the two methods as one forward SDE and its time reversal.</p>
-<p><strong>Thesis:</strong> The two lineages are two instances of the same unified framework and can be obtained as discretizations of two separate SDEs. This post builds this framework and the instances from first principles.</p>
+<p>Post #1 built the forward process, post #2 reversed it by two methods, and this post unifies the two methods as one forward SDE and its reverse-time SDE.</p>
 <section id="roadmap" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="roadmap">Roadmap</h2>
 <ul>
@@ -542,7 +543,7 @@ dx_t = \underbrace{\boxed{f_{\mathrm{lin}}(t)\, x_t}}_{\text{linear drift}}\, dt
 </section>
 <section id="deriving-the-perturbation-kernel-using-itôs-lemma" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="deriving-the-perturbation-kernel-using-itôs-lemma"><span class="header-section-number">1.1.2</span> Deriving the perturbation kernel using Itô’s lemma</h3>
-<p>The kernel follows from solving <a href="#eq-linear-sde" class="quarto-xref">Eq.&nbsp;2</a> explicitly, with the stochastic counterpart of the integrating factor that solves a linear ordinary differential equation (ODE). <a href="../01-ito-bs-to-ddpm/index.html#eq-itos-lemma">Itô’s lemma</a> of post #1, applied to a transformed state, removes the drift. The driftless SDE then integrates directly to an Itô integral, whose distribution gives the kernel of the transformed state, and the reverse transform returns the kernel of <span class="math inline">x_t</span>.</p>
+<p>The kernel follows from solving <a href="#eq-linear-sde" class="quarto-xref">Eq.&nbsp;2</a> explicitly, with the stochastic counterpart of the integrating factor that solves a linear ODE. <a href="../01-ito-bs-to-ddpm/index.html#eq-itos-lemma">Itô’s lemma</a> of post #1, applied to a transformed state, removes the drift. The driftless SDE then integrates directly to an Itô integral, whose distribution gives the kernel of the transformed state, and the reverse transform returns the kernel of <span class="math inline">x_t</span>.</p>
 <p>The state is a <span class="math inline">d</span>-vector, but the SDE acts on each coordinate separately. Write <span class="math inline">x^k_t</span> and <span class="math inline">W^k_t</span> for the <span class="math inline">k</span>-th components of <span class="math inline">x_t</span> and <span class="math inline">W_t</span>, <span class="math inline">k = 1, \ldots, d</span>. A symbol with the superscript <span class="math inline">k</span> is a scalar, and the same symbol without it is the <span class="math inline">d</span>-vector.</p>
 <section id="removing-the-drift-with-itôs-lemma" class="level4" data-number="1.1.2.1">
 <h4 data-number="1.1.2.1" class="anchored" data-anchor-id="removing-the-drift-with-itôs-lemma"><span class="header-section-number">1.1.2.1</span> Removing the drift with Itô’s lemma</h4>
@@ -664,7 +665,7 @@ p_{0t}(x_t \mid x_0) = \mathcal{N}\Big(x_t;\; e^{F(t)}\, x_0,\; e^{2F(t)} \Big(\
 </section>
 <section id="sec-vp-sde" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-vp-sde"><span class="header-section-number">1.2</span> VP-SDE: DDPM forward process</h2>
-<p>The forward process of Denoising Diffusion Probabilistic Models (DDPM) of Ho et al. <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span> was built in post #1, and its continuum limit is the <strong>Variance-Preserving (VP)</strong> SDE of Song et al. <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. The first choice recovers it.</p>
+<p>The DDPM forward process of Ho et al. <span class="citation" data-cites="ho2020denoising"><a href="#ref-ho2020denoising" role="doc-biblioref">[2]</a></span> was built in post #1, and its continuum limit is the <strong>Variance-Preserving (VP)</strong> SDE of Song et al. <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. The first choice recovers it.</p>
 <p>With a noise schedule <span class="math inline">\beta: [0, T] \to (0, \infty)</span>, which sets the rate at which noise is injected, the VP-SDE is</p>
 <p><span id="eq-vp"><span class="math display">
 \boxed{dx_t = -\tfrac{1}{2}\beta(t)\, x_t\, dt + \sqrt{\beta(t)}\; dW_t}
@@ -738,7 +739,7 @@ m(t) = \sqrt{\bar\alpha(t)}
 x_{t+\Delta t} = x_t - \tfrac12 \beta(t)\, x_t\, \Delta t + \sqrt{\beta(t)\, \Delta t}\; z, \qquad z \sim \mathcal{N}(0, I)
 </span></p>
 <p>All paths have the same initial condition <span class="math inline">x_0</span>, and their histograms at three times are compared with the kernel at those times in <a href="#fig-kernel-check" class="quarto-xref">Figure&nbsp;1</a> below.</p>
-<div id="cell-fig-kernel-check" class="cell" data-execution_count="1">
+<div id="cell-fig-kernel-check" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div id="fig-kernel-check" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three overlapping histograms with matching smooth curves. The earliest is a narrow peak near 1.5; the later ones are wider and shifted toward zero.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -755,7 +756,7 @@ Figure&nbsp;1: A check of the VP perturbation kernel. Histograms of <span class=
 <p>At each time the histograms match the kernel. As <span class="math inline">t</span> grows, <span class="math inline">\bar\alpha(t)</span> falls and the peak moves toward zero and widens. The simulation needs 50, 150 and 400 Euler-Maruyama steps to reach these times, while the kernel gives the distribution directly.</p>
 <p><strong>Simulating the VP forward process:</strong></p>
 <p>Here we follow a two-mode data distribution through the VP-SDE into the standard normal prior, as <a href="#fig-forward-sde-paths" class="quarto-xref">Figure&nbsp;2</a> shows below.</p>
-<div id="cell-fig-forward-sde-paths" class="cell" data-execution_count="2">
+<div id="cell-fig-forward-sde-paths" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div id="fig-forward-sde-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Sample paths over time from left to right. At the left the paths start in two narrow groups at plus and minus two; moving right they become increasingly irregular and mix into a single band centered at zero. A light background shading shows two ridges merging into one. A narrow right panel shows a histogram of the end points with a smooth bell-shaped curve centered at zero.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -780,7 +781,7 @@ Figure&nbsp;2: Sample paths of the forward VP-SDE for a two-mode data distributi
 <p>with a small offset <span class="math inline">s</span>.</p>
 <p><strong>Comparing the two schedules:</strong></p>
 <p>Here we plot <span class="math inline">\bar\alpha</span> against <span class="math inline">t = i/N</span> for the linear schedule and for the cosine schedule with <span class="math inline">s = 0.008</span>, as <a href="#fig-schedules" class="quarto-xref">Figure&nbsp;3</a> shows below.</p>
-<div id="cell-fig-schedules" class="cell" data-execution_count="3">
+<div id="cell-fig-schedules" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div id="fig-schedules" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two decreasing curves from 1 to 0. The linear-schedule curve falls steeply and is near zero by t of about 0.7; the cosine curve falls gently and reaches zero only at the end.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -902,7 +903,7 @@ x_T \mid x_0 \sim \mathcal{N}(x_0, \sigma_{\max}^2 I)
 <p>Averaging over <span class="math inline">x_0</span> leaves <span class="math inline">p_T \approx \mathcal{N}(0, \sigma_{\max}^2 I)</span> because <span class="math inline">\sigma_{\max}</span> swamps the data scale, the typical size of one coordinate of <span class="math inline">x_0</span>. This is the <span class="math inline">x_0</span>-free prior that serves as the sampler’s initial condition.</p>
 <p><strong>Simulating the VE forward process:</strong></p>
 <p>Here we follow the same two-mode data through the VE-SDE, as <a href="#fig-ve-forward-paths" class="quarto-xref">Figure&nbsp;4</a> shows below.</p>
-<div id="cell-fig-ve-forward-paths" class="cell" data-execution_count="4">
+<div id="cell-fig-ve-forward-paths" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div id="fig-ve-forward-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Paths start near plus and minus two and stay nearly flat until about t = 0.6, then spread rapidly to values between minus twenty and twenty. A narrow right panel shows a wide bell-shaped histogram centered at zero.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1086,7 +1087,7 @@ Table&nbsp;1: Coefficients, schedules and perturbation-kernel moments of the VP,
 </div>
 <p><strong>Comparing the three perturbation kernels:</strong></p>
 <p>Here we plot the mean coefficient and the variance of the perturbation kernel over time for the VP, sub-VP and VE SDEs, as <a href="#fig-ve-vp-variance" class="quarto-xref">Figure&nbsp;5</a> shows below.</p>
-<div id="cell-fig-ve-vp-variance" class="cell" data-execution_count="5">
+<div id="cell-fig-ve-vp-variance" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div id="fig-ve-vp-variance" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels over t from 0 to 1. The left panel shows the mean coefficient: one curve falling from 1 to 0 for VP and sub-VP, and a flat line at 1 for VE. The right panel is a log-scale plot of the variance. The VP curve rises and flattens at variance 1. The dashed sub-VP curve starts far below it and joins it near 1 at the end. The VE curve rises steeply and continues climbing several orders of magnitude.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1135,7 +1136,7 @@ Figure&nbsp;5: The perturbation kernel over time for the VP, sub-VP and VE proce
 <p>Solved backward from the initial condition <span class="math inline">\bar x_T \sim p_T</span>, the reverse-time SDE has a solution <span class="math inline">\bar x_t</span> with the forward marginal <span class="math inline">p_t</span> for each <span class="math inline">t</span>, so <span class="math inline">\bar x_0</span> follows the data distribution <span class="math inline">p_0</span>.</p>
 <p><strong>Simulating the reverse-time SDE:</strong></p>
 <p>Here we solve the reverse-time SDE backward for the two-mode example of <a href="#fig-forward-sde-paths" class="quarto-xref">Figure&nbsp;2</a>, driven by the exact score, as <a href="#fig-reverse-sde-paths" class="quarto-xref">Figure&nbsp;6</a> shows below.</p>
-<div id="cell-fig-reverse-sde-paths" class="cell" data-execution_count="6">
+<div id="cell-fig-reverse-sde-paths" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div id="fig-reverse-sde-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Sample paths over a reversed time axis running from one at the left to zero at the right. Paths begin scattered in a single band at the left edge and, moving rightward, separate and end in two narrow groups at plus and minus two at the right edge. A light background shading shows one band splitting into two ridges. A narrow right panel shows a histogram of the generated end points with two peaks at plus and minus two, matching a smooth two-peaked curve.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1584,7 +1585,7 @@ x_t - x_{t+\Delta t} = \big[f - g^2\, \nabla_x \log p_t(x_{t+\Delta t})\big]\, (
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="sec-bayes-example"><span class="header-section-number">2.3.1</span> The reweighting in the two-mode example</h3>
 <p><strong>Computing the reverse kernel:</strong></p>
 <p>Here we compute the reverse kernel for one later state <span class="math inline">y</span> in the two-mode example, as <a href="#fig-bayes-reweighting" class="quarto-xref">Figure&nbsp;7</a> shows below.</p>
-<div id="cell-fig-bayes-reweighting" class="cell" data-execution_count="7">
+<div id="cell-fig-bayes-reweighting" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div id="fig-bayes-reweighting" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A dashed Gaussian curve centered near 0.4, a solid Gaussian curve of the same width shifted right to about 0.55, and a light shaded density rising toward a peak near 1.8 on the right. A dotted vertical line marks the center of the solid curve.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1685,7 +1686,7 @@ Figure&nbsp;7: The short-time reverse kernel for the two-mode example at <span c
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-pf-trajectories"><span class="header-section-number">3.3</span> Probability-flow trajectories</h2>
 <p><strong>Simulating the probability-flow ODE:</strong></p>
 <p>Generating with the probability-flow ODE is an ODE solve, so each initial condition <span class="math inline">x_T</span> leads to a single <span class="math inline">x_0</span>. Here we solve it for the two-mode example of <a href="#fig-reverse-sde-paths" class="quarto-xref">Figure&nbsp;6</a>, with the same initial conditions, as <a href="#fig-pf-ode-paths" class="quarto-xref">Figure&nbsp;8</a> shows below.</p>
-<div id="cell-fig-pf-ode-paths" class="cell" data-execution_count="8">
+<div id="cell-fig-pf-ode-paths" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div id="fig-pf-ode-paths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Smooth trajectories over a reversed time axis from one at the left to zero at the right. The paths start in a single band, stay nearly flat at first, then bend into two groups at plus and minus two. A light background shading shows one band splitting into two ridges. A narrow right panel shows a histogram of the end points with two peaks matching a smooth two-peaked curve.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1981,7 +1982,7 @@ r = \lVert \varepsilon\, s_\theta \rVert / \lVert \sqrt{2\varepsilon}\, z \rVert
 9: <strong>return</strong> <span class="math inline">x_0</span></div>
 <p><strong>Adding corrector steps:</strong></p>
 <p>The two-mode example keeps <span class="math inline">t_0 = 0</span> on this grid, because its exact score, with modes of standard deviation <span class="math inline">0.3</span>, is Lipschitz there. Here we compare, on the two-mode example of <a href="#fig-forward-sde-paths" class="quarto-xref">Figure&nbsp;2</a> with the exact score, the predictor alone on a coarse grid of <span class="math inline">N = 10</span> steps, the same grid with <span class="math inline">M = 3</span> corrector steps per level, and the predictor alone with <span class="math inline">N = 40</span> steps, as <a href="#fig-pc-corrector" class="quarto-xref">Figure&nbsp;9</a> shows below.</p>
-<div id="cell-fig-pc-corrector" class="cell" data-execution_count="9">
+<div id="cell-fig-pc-corrector" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div id="fig-pc-corrector" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three histograms side by side, each under the same two-peaked curve. The left histogram is wider and lower than the curve. The middle histogram follows the curve closely. The right histogram follows it most closely.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2007,7 +2008,7 @@ Figure&nbsp;9: Samples from the two-mode example with the exact score, against t
 <p>Applied at the last noisy state <span class="math inline">x_1</span>, with <span class="math inline">s_\theta(x_1, t_1)</span> in place of the score, it replaces the final step by the posterior mean <span class="math inline">\mathbb{E}[x_0 \mid x_1]</span>, which is reported instead. Post #2’s ancestral sampler applies the same correction in its own idiom: line 3 of Algorithm 5 sets <span class="math inline">z = 0</span> on the final step, returning the mean rather than a perturbed value.</p>
 <p><strong>Denoising the last step:</strong></p>
 <p>Here we compare the last step of reverse diffusion sampling with and without this correction, on a grid of <span class="math inline">N = 25</span> steps with the exact score, for data on five discrete levels like pixel intensities, as <a href="#fig-final-denoising" class="quarto-xref">Figure&nbsp;10</a> shows below.</p>
-<div id="cell-fig-final-denoising" class="cell" data-execution_count="10">
+<div id="cell-fig-final-denoising" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div id="fig-final-denoising" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two histograms. The left shows five low, wide peaks centered on the levels from minus two to two. The right shows five narrow spikes at the levels.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2041,6 +2042,7 @@ Figure&nbsp;10: The last step of reverse diffusion sampling on a grid of <span c
 <section id="what-comes-next" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="what-comes-next"><span class="header-section-number">6.1</span> What comes next</h2>
 <p><a href="../04-flow-matching/index.html#sec-pf-precursor">Post #4</a> develops the probability-flow ODE further. As a continuous normalizing flow, a normalizing flow (<a href="../01-ito-bs-to-ddpm/index.html#sec-normalizing-flows">P1:§5.2</a>) whose invertible map is obtained by solving an ODE <span class="citation" data-cites="chen2018neural"><a href="#ref-chen2018neural" role="doc-biblioref">[21]</a></span>, it gives exact likelihoods through the instantaneous change of variables, and flow matching trains such a flow directly.</p>
+<hr>
 </section>
 <section id="appendix" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="appendix">Appendix</h2>
@@ -2195,7 +2197,7 @@ f(x, t) = \frac{\Sigma\, \big(Q_1(x) - Q_2(x)\big)}{\nu_2 - \nu_1}
 <p><strong>The converse and the series’ choice:</strong> An affine drift gives a Gaussian kernel. The integrating-factor solution of <a href="#sec-linear-sde-general" class="quarto-xref">§1.1</a> carries over with <span class="math inline">c(t)</span> present: the transform leaves the deterministic drift <span class="math inline">e^{-F(t)}\, c(t)</span>, which adds <span class="math inline">e^{F(t)} \int_0^t e^{-F(s)}\, c(s)\, ds</span> to the mean and leaves the variance unchanged. In one dimension, then, a Gaussian kernel for each initial condition and an affine drift are equivalent. The series’ forward processes have <span class="math inline">c = 0</span>, which gives the linear SDE <a href="#eq-linear-sde" class="quarto-xref">Eq.&nbsp;2</a>.</p>
 <p><strong>Simulating a non-affine drift:</strong></p>
 <p>Here we simulate the SDE <span class="math inline">dx_t = -x_t^3\, dt + dW_t</span>, whose drift is not affine, and compare two of its kernels with Gaussians of the same mean and variance, as <a href="#fig-nonaffine-kernel" class="quarto-xref">Figure&nbsp;11</a> shows below.</p>
-<div id="cell-fig-nonaffine-kernel" class="cell" data-execution_count="11">
+<div id="cell-fig-nonaffine-kernel" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div id="fig-nonaffine-kernel" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two histograms with Gaussian curves. The left histogram is flatter on top than its curve; the right one is slightly asymmetric.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2234,7 +2236,7 @@ Figure&nbsp;11: Kernels of the SDE <span class="math inline">dx_t = -x_t^3\, dt 
 <p>is a <span class="math inline">d</span>-dimensional standard Brownian motion. Equivalently <span class="math inline">dW_t = d\tilde W_t + \psi_t\, dt</span>: the same noise, viewed under <span class="math inline">\mathbb{Q}</span>, carries an extra drift <span class="math inline">\psi_t\, dt</span>. For <span class="math inline">d = 1</span> this is the scalar form the finance interpretation below uses.</p>
 <p><strong>Reweighting Brownian paths:</strong></p>
 <p>Here we reweight the endpoints of Brownian paths by <span class="math inline">Z_T</span> for <span class="math inline">d = 1</span> and a constant <span class="math inline">\psi</span>, as <a href="#fig-girsanov-reweight" class="quarto-xref">Figure&nbsp;12</a> shows below.</p>
-<div id="cell-fig-girsanov-reweight" class="cell" data-execution_count="12">
+<div id="cell-fig-girsanov-reweight" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div id="fig-girsanov-reweight" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two histograms of the same width: a grey one centered at zero and a teal one centered at one, with a bell curve over the teal one.">
 <figure class="quarto-float quarto-float-fig figure">

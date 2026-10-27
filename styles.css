@@ -39,6 +39,16 @@ h5 {
   margin-top: 1.5rem;
 }
 
+/* Horizontal separators that the theme draws in #dee2e6 (the line under each ## heading, the line above the page
+   appendix) take #6f7173, that grey made 50% darker, as the landing pages' section-subtitle lines do (user decision
+   2026-10-26). Box borders (callouts, tag chips) keep the theme's colour. */
+h2, .h2 {
+  border-bottom-color: #6f7173;
+}
+#quarto-appendix.default {
+  border-top-color: #6f7173;
+}
+
 /* The auto-numbering span (e.g. "4.7.3.1") is themed a muted grey; make it
    inherit the heading's colour so the digits match the heading text. */
 .header-section-number {
@@ -137,6 +147,65 @@ figcaption {
 
 .listing-title {
   font-weight: 600;
+}
+
+/* Listing cards of the series and research listings (_listing-blurb.ejs.md): one full-width bordered box with two
+   rows, the head (date inline before the title, both bold and at one size; subtitle; tags) and the blurb below a
+   divider. The box's border replaces Quarto's separator line under each card. */
+div.quarto-post.series-card {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+/* Lifted off the page like the article figures' cards, with a soft shadow (halved on 2026-10-26, so the cards do not
+   compete with the text around them). */
+div.quarto-post.series-card .body {
+  flex-basis: 100%;
+  border: 1px solid #adb5bd;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 7px rgba(0, 0, 0, 0.06);
+  background: var(--bs-body-bg, #fff);
+  overflow: hidden;
+}
+div.quarto-post.series-card .card-head {
+  padding: 0.75rem 1rem;
+}
+/* Quarto pads the tag block by 5px below its tags' own 4px margin; without the padding the tags sit as far from the
+   divider as the text of the other rows sits from theirs (text carries its line spacing above and below). */
+div.quarto-post.series-card .card-head .listing-categories {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+div.quarto-post.series-card .listing-blurb {
+  border-top: 1px solid #adb5bd;
+  padding: 0.75rem 1rem;
+}
+div.quarto-post.series-card .listing-blurb > :last-child {
+  margin-bottom: 0;
+}
+div.quarto-post.series-card .listing-title,
+div.quarto-post.series-card .listing-title a {
+  font-weight: 700;
+}
+/* 85% of the h3 size Bootstrap gives the title: calc(1.27rem + 0.24vw), and 1.45rem from 1200px up. */
+div.quarto-post.series-card .listing-title {
+  font-size: calc(1.0795rem + 0.204vw);
+}
+@media (min-width: 1200px) {
+  div.quarto-post.series-card .listing-title {
+    font-size: 1.2325rem;
+  }
+}
+div.quarto-post.series-card .listing-title .listing-date {
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--bs-secondary-color, #6c757d);
+  margin-right: 0.5em;
+  white-space: nowrap;
+}
+
+/* A post's summary in the series listing, from its `blurb:` field (_listing-blurb.ejs.md). */
+.listing-blurb p {
+  margin-bottom: 0.6rem;
 }
 
 /* ---- References ---------------------------------------------------- */

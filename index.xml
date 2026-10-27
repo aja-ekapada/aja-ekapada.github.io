@@ -8,7 +8,7 @@
 <title>Aja S.</title>
 <link>https://aja-ekapada.github.io/</link>
 <atom:link href="https://aja-ekapada.github.io/index.xml" rel="self" type="application/rss+xml"/>
-<description>Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.</description>
+<description>Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.</description>
 <language>en</language>
 <image>
 <url>https://aja-ekapada.github.io/favicon.png</url>
@@ -64,10 +64,10 @@
   <media:content url="https://aja-ekapada.github.io/continuous-time-generative-models/03-the-unification/share.png" medium="image" type="image/png" height="76" width="144"/>
 </item>
 <item>
-  <title>FLUX persona-in-template ad generation</title>
+  <title>FLUX Persona-in-Template Ad Generation</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/flux-persona-in-template/</link>
-  <description><![CDATA[ A staged search of ControlNet conditioning on FLUX.1-dev with a persona-LoRA (twenty-one sweeps, 2,716 scored rows), measured against floors, ceilings and seed noise. The ControlNet scales are the only configurations on the identity-versus-structure trade-off, and the values the search selects are one step inside the identity cliff. ]]></description>
+  <description><![CDATA[ A staged search of ControlNet scales on FLUX.1-dev with a persona-LoRA (21 sweeps, 2,716 scored rows) that maps identity fidelity against template structure. ]]></description>
   <category>ControlNet</category>
   <category>FLUX</category>
   <category>diffusion models</category>
@@ -98,10 +98,10 @@
   <media:content url="https://aja-ekapada.github.io/continuous-time-generative-models/02-variational-vs-score-matching/share.png" medium="image" type="image/png" height="76" width="144"/>
 </item>
 <item>
-  <title>FLUX LoRA influencer-likeness research</title>
+  <title>FLUX LoRA Influencer-Likeness Research</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/flux-lora-likeness/</link>
-  <description><![CDATA[ A three-stage FLUX.1-dev LoRA hyperparameter study on one subject, scored on face_sim and image-prompt cosine_sim against two test sets: the identity/prompt-adherence trade-off is real but weak, training steps matter more than learning rate, and twenty images is the working point. ]]></description>
+  <description><![CDATA[ A three-stage FLUX.1-dev LoRA hyperparameter study on one subject. Training steps matter more than learning rate, and twenty images is the working point. ]]></description>
   <category>LoRA</category>
   <category>FLUX</category>
   <category>diffusion models</category>
@@ -115,7 +115,7 @@
   <title>Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</title>
   <dc:creator>Aja S.</dc:creator>
   <link>https://aja-ekapada.github.io/clustering/</link>
-  <description><![CDATA[ A single-pass streaming clustering algorithm that cut malware-corpus analysis from 9 hours to 12 minutes — later granted as a US patent. ]]></description>
+  <description><![CDATA[ A single-pass streaming clustering algorithm that cut malware-corpus analysis from 9 hours to 12 minutes, later granted as a US patent. ]]></description>
   <category>security</category>
   <category>malware</category>
   <category>clustering</category>

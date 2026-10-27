@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Applied research on image and video generation, and a series on the mathematics behind diffusion models and generative AI, built from first principles.">
+<meta name="description" content="Empirical research in image and video generation, and the mathematical foundations of diffusion models and generative AI, derived from first principles.">
 
 <title>Generative AI Research and Its Mathematics – Aja S.</title>
 <style>
@@ -103,9 +103,9 @@ div.csl-indent {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-project","listing-csl","listing-execute","listing-website","listing-filters","listing-format","listing-engines","listing-language","listing-comments","listing-title","listing-pagetitle","listing-subtitle","listing-description","listing-image","listing-image-alt","listing-author","listing-date","listing-date-format","listing-categories","listing-bibliography","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -159,9 +159,9 @@ div.csl-indent {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-project","listing-csl","listing-execute","listing-website","listing-filters","listing-format","listing-engines","listing-language","listing-comments","listing-crossref","listing-title","listing-subtitle","listing-description","listing-image","listing-image-alt","listing-author","listing-date","listing-order","listing-date-format","listing-categories","listing-blurb","listing-citation","listing-google-scholar","listing-appendix-cite-as","listing-bibliography","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-pagetitle"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -183,7 +183,7 @@ div.csl-indent {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -235,14 +235,14 @@ window.Quarto = {
 
 <link rel="stylesheet" href="styles.css">
 <link rel="alternate" type="application/rss+xml" title="Aja S." href="index.xml" data-external="1"><meta property="og:title" content="Generative AI Research and Its Mathematics">
-<meta property="og:description" content="Applied research on image and video generation, and a series on the mathematics behind diffusion models and generative AI, built from first principles.">
+<meta property="og:description" content="Empirical research in image and video generation, and the mathematical foundations of diffusion models and generative AI, derived from first principles.">
 <meta property="og:image" content="https://aja-ekapada.github.io/share.png">
 <meta property="og:site_name" content="Aja S.">
 <meta property="og:image:height" content="630">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:alt" content="Card with the site name Aja S. and its tagline beside faint stochastic sample paths.">
 <meta name="twitter:title" content="Generative AI Research and Its Mathematics">
-<meta name="twitter:description" content="Applied research on image and video generation, and a series on the mathematics behind diffusion models and generative AI, built from first principles.">
+<meta name="twitter:description" content="Empirical research in image and video generation, and the mathematical foundations of diffusion models and generative AI, derived from first principles.">
 <meta name="twitter:image" content="https://aja-ekapada.github.io/share.png">
 <meta name="twitter:image-height" content="630">
 <meta name="twitter:image-width" content="1200">
@@ -300,10 +300,10 @@ window.Quarto = {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
       <h1 class="title">Aja S.</h1>
-            <p class="subtitle lead">Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.</p>
+            <p class="subtitle lead">Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.</p>
                   <div>
         <div class="description">
-          Applied research on image and video generation, and a series on the mathematics behind diffusion models and generative AI, built from first principles.
+          Empirical research in image and video generation, and the mathematical foundations of diffusion models and generative AI, derived from first principles.
         </div>
       </div>
                 </div>
@@ -341,13 +341,22 @@ window.Quarto = {
 <style>
 /* Trim vertical whitespace below the title banner and above the first content block. */
 .quarto-title-banner { padding-block-end: 0.6rem !important; margin-bottom: 0 !important; }
+/* A partition line under the page's title and subtitle, as long as the content column and as thin as the home
+   page's section-subtitle lines, and 50% darker than they are; the same on the home, research and series pages. */
+.quarto-title-banner .quarto-title { border-bottom: 1px solid #38393a; padding-bottom: 0.6rem; }
+/* The first section heading sits as far below the line as the research and series pages' first paragraph (21px). */
+main#quarto-document-content > section:first-of-type > h2 { margin-top: 1.25rem !important; }
 .quarto-title-banner .subtitle, .quarto-title-banner .subtitle.lead { margin-bottom: 0 !important; }
 #title-block-header { margin-block-end: 0 !important; }
 #title-block-header .quarto-title-meta { display: none !important; }
 #title-block-header .description { display: none !important; }  /* description: is for search and previews only */
 main#quarto-document-content { margin-top: 0 !important; padding-top: 0 !important; }
-/* Each section's own subtitle line, mirroring that landing page's banner subtitle. */
-.section-sub { color: var(--bs-secondary-color, #6c757d); font-size: 1.05rem; display: block; margin-bottom: 0.6rem; }
+/* Each section's own subtitle line, mirroring that landing page's banner subtitle. It sits directly under the
+   section heading, at the ratio a post's subtitle has to its title (21.25px under 34px, 0.625), and the heading's
+   divider line moves below it, so heading and subtitle read as one title block. */
+section.level2 > h2:has(+ p > .section-sub) { border-bottom: none; padding-bottom: 0; margin-bottom: 0.3rem; }
+section.level2 > h2 + p:has(> .section-sub) { border-bottom: 1px solid #6f7173; padding-bottom: 0.6rem; margin-bottom: 1rem; }
+.section-sub { color: var(--bs-secondary-color, #6c757d); font-size: 1.03rem; display: block; margin-bottom: 0; }
 .section-more { font-size: 0.95rem; }
 /* Compact "Posts" quick-list: drop the table header, tighten rows (copied from the CTGM page). */
 #listing-posts-mini table { margin-bottom: 0; }
@@ -362,17 +371,19 @@ main#quarto-document-content { margin-top: 0 !important; padding-top: 0 !importa
 </style>
 <section id="research" class="level2">
 <h2 class="anchored" data-anchor-id="research">Research</h2>
-<p><span class="section-sub">Standalone applied studies in image and video generation.</span></p>
-<p>Each study works through a single concrete problem end to end: the design, the experiments, the analysis, and what held up and what didn’t. Latest first.</p>
-<div id="listing-research-posts" class="quarto-listing quarto-listing-container-default">
+<p><span class="section-sub">Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation.</span></p>
+<p>These applied research studies tackle concrete machine learning problems, from identity-preserving fine-tuning and controlled image generation to scalable clustering of large malware corpora. Each study (except clustering) follows an end-to-end workflow spanning problem formulation, experimental design, model adaptation, hyperparameter optimization, quantitative evaluation, and error analysis.</p>
+<p>The work applies foundation models such as FLUX.1-dev using parameter-efficient fine-tuning with low-rank adaptation (LoRA) and controlled generation with ControlNet. Experiments are evaluated against explicit metrics, including face similarity and image-text similarity. Findings are grounded in systematic experiments and reproducible evaluation, with documented trade-offs, limitations, and failure modes.</p>
+<div id="listing-research-posts" class="quarto-listing quarto-listing-container-custom">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q29udHJvbE5ldCUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNjb25kaXRpb25pbmclMkNpZGVudGl0eSUyMHBlcnNvbmFsaXphdGlvbg==" data-listing-date-sort="1791367200000" data-listing-file-modified-sort="1791410466127" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="165" data-listing-word-count-sort="32980">
+<div class="quarto-post series-card" data-index="0" data-categories="Q29udHJvbE5ldCUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNjb25kaXRpb25pbmclMkNpZGVudGl0eSUyMHBlcnNvbmFsaXphdGlvbg==" data-listing-date-sort="1791367200000" data-listing-file-modified-sort="1793080000319" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="165" data-listing-word-count-sort="32980">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="./flux-persona-in-template/index.html" class="no-external">FLUX persona-in-template ad generation</a>
+<span class="listing-date">Oct 7, 2026</span> <a href="./flux-persona-in-template/index.html" class="no-external">FLUX Persona-in-Template Ad Generation</a>
 </h3>
 <div class="listing-subtitle">
-<a href="./flux-persona-in-template/index.html" class="no-external">A scored characterization of a LoRA + ControlNet conditioning scheme — how identity fidelity trades against the spatial structure (canny, depth and pose) of a creative ad template.</a>
+<a href="./flux-persona-in-template/index.html" class="no-external">A scored characterization of how a LoRA + ControlNet conditioning scheme trades identity fidelity against the spatial structure (canny, depth and pose) of a creative ad template.</a>
 </div>
 <div class="listing-categories">
 
@@ -388,21 +399,16 @@ main#quarto-document-content { margin-top: 0 !important; padding-top: 0 !importa
 
 </div>
 </div>
-<div class="metadata">
-<a href="./flux-persona-in-template/index.html" class="no-external">
-<div class="listing-date">
-Oct 7, 2026
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="TG9SQSUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNoeXBlcnBhcmFtZXRlciUyMHNlYXJjaCUyQ2lkZW50aXR5JTIwcGVyc29uYWxpemF0aW9u" data-listing-date-sort="1787392800000" data-listing-file-modified-sort="1791412614093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15055">
+<div class="quarto-post series-card" data-index="1" data-categories="TG9SQSUyQ0ZMVVglMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNoeXBlcnBhcmFtZXRlciUyMHNlYXJjaCUyQ2lkZW50aXR5JTIwcGVyc29uYWxpemF0aW9u" data-listing-date-sort="1787392800000" data-listing-file-modified-sort="1793080000040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15055">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="./flux-lora-likeness/index.html" class="no-external">FLUX LoRA influencer-likeness research</a>
+<span class="listing-date">Aug 22, 2026</span> <a href="./flux-lora-likeness/index.html" class="no-external">FLUX LoRA Influencer-Likeness Research</a>
 </h3>
 <div class="listing-subtitle">
-<a href="./flux-lora-likeness/index.html" class="no-external">A three-stage hyperparameter study — Pilot, Partial Sweep, Full Sweep — of how learning rate, rank, training steps, dataset size, timestep sampling, dropout and inference scale trade identity fidelity against prompt adherence for one subject.</a>
+<a href="./flux-lora-likeness/index.html" class="no-external">A three-stage hyperparameter study (Pilot, Partial Sweep, Full Sweep) of how learning rate, rank, training steps, dataset size, timestep sampling, dropout and inference scale trade identity fidelity against prompt adherence for one subject.</a>
 </div>
 <div class="listing-categories">
 
@@ -418,18 +424,13 @@ Oct 7, 2026
 
 </div>
 </div>
-<div class="metadata">
-<a href="./flux-lora-likeness/index.html" class="no-external">
-<div class="listing-date">
-Aug 22, 2026
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="c2VjdXJpdHklMkNtYWx3YXJlJTJDY2x1c3RlcmluZyUyQ2FsZ29yaXRobXMlMkNwYXRlbnRz" data-listing-date-sort="1786442400000" data-listing-file-modified-sort="1791412915300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4491">
+<div class="quarto-post series-card" data-index="2" data-categories="c2VjdXJpdHklMkNtYWx3YXJlJTJDY2x1c3RlcmluZyUyQ2FsZ29yaXRobXMlMkNwYXRlbnRz" data-listing-date-sort="1786442400000" data-listing-file-modified-sort="1793080135046" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4491">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="./clustering/index.html" class="no-external">Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</a>
+<span class="listing-date">Aug 11, 2026</span> <a href="./clustering/index.html" class="no-external">Scaling Malware Analysis: A Streaming Clustering Method Reducing Computation from 9 Hours to 12 Minutes</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./clustering/index.html" class="no-external">A retrospective account of work I did in one of my previous roles on large-scale malware clustering, subsequently granted as a US patent.</a>
@@ -448,12 +449,6 @@ Aug 22, 2026
 
 </div>
 </div>
-<div class="metadata">
-<a href="./clustering/index.html" class="no-external">
-<div class="listing-date">
-Aug 11, 2026
-</div>
-</a>
 </div>
 </div>
 </div>
@@ -463,17 +458,9 @@ Aug 11, 2026
 </section>
 <section id="continuous-time-generative-models" class="level2">
 <h2 class="anchored" data-anchor-id="continuous-time-generative-models">Continuous-Time Generative Models</h2>
-<p><span class="section-sub">The continuous-time mathematics behind diffusion and flow models, built from first principles.</span></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>This is a working series on the continuous-time stochastic-process family that underlies modern generative AI (diffusion models, score-based SDEs, flow matching, Langevin sampling, and conditional generation), explained by someone who used the same toolkit in quantitative finance. Each topic is derived rather than described. Note: it doesn’t cover other families like autoregressive models, GANs, or masked-token methods.</p>
-</div>
-</div>
-</div>
+<p><span class="section-sub">Mathematical foundations of generative modeling, covering diffusion, flow matching, stochastic differential equations, and sampling algorithms from first principles.</span></p>
+<p>This series develops the mathematical foundations of modern generative AI through first-principles derivations, drawing on stochastic calculus and stochastic processes. Topics include diffusion models, score-based stochastic differential equations (SDEs), flow matching, optimal transport, Langevin sampling, and the design space of diffusion models.</p>
+<p>The focus is on deriving training objectives, understanding the underlying probabilistic dynamics, and analyzing sampling algorithms, including accelerated generation through ordinary differential equation (ODE) solvers, distillation, and consistency models. The emphasis is on mathematical reasoning that explains why these methods work, not just how they are implemented.</p>
 <p><strong>Posts</strong></p>
 <div id="listing-posts-mini" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table table-hover">
@@ -492,40 +479,7 @@ Title
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNjb250aW51b3VzJTIwbm9ybWFsaXppbmclMjBmbG93cyUyQ25ldXJhbCUyME9ERXMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793053544148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="147" data-listing-word-count-sort="29392" data-listing-title-sort="Flow-Based Generative Models: When Probability Flows Like a Fluid" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-date">Oct 22, 2026</span>
-</td>
-<td>
-<a href="./continuous-time-generative-models/04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDcmlzay1uZXV0cmFsJTIwcHJpY2luZyUyQ2RpZmZ1c2lvbiUyMG1vZGVscyUyQ2dlbmVyYXRpdmUlMjBBSSUyQ1ZQLVNERSUyQ1ZFLVNERSUyQ3JldmVyc2UtdGltZSUyMFNERSUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREUlMkNzY29yZSUyMG1hdGNoaW5nJTJDZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZyUyQ3ByZWRpY3Rvci1jb3JyZWN0b3IlMjBzYW1wbGluZw==" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793053544154" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="143" data-listing-word-count-sort="28426" data-listing-title-sort="SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-date">Oct 16, 2026</span>
-</td>
-<td>
-<a href="./continuous-time-generative-models/03-the-unification/index.html" class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a>
-</td>
-
-</tr>
-
-<tr data-index="2" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793053544158" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="169" data-listing-word-count-sort="33793" data-listing-title-sort="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-date">Sep 10, 2026</span>
-</td>
-<td>
-<a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNnZW5lcmF0aXZlJTIwQUklMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793053544164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="180" data-listing-word-count-sort="35961" data-listing-title-sort="Itô's Lemma: From Black-Scholes to Diffusion Models" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNnZW5lcmF0aXZlJTIwQUklMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793080345008" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="181" data-listing-word-count-sort="36004" data-listing-title-sort="Itô's Lemma: From Black-Scholes to Diffusion Models" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Aug 10, 2026</span>
@@ -536,71 +490,145 @@ Title
 
 </tr>
 
+<tr data-index="1" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793080345009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="170" data-listing-word-count-sort="33829" data-listing-title-sort="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Sep 10, 2026</span>
+</td>
+<td>
+<a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="title listing-title">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDcmlzay1uZXV0cmFsJTIwcHJpY2luZyUyQ2RpZmZ1c2lvbiUyMG1vZGVscyUyQ2dlbmVyYXRpdmUlMjBBSSUyQ1ZQLVNERSUyQ1ZFLVNERSUyQ3JldmVyc2UtdGltZSUyMFNERSUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREUlMkNzY29yZSUyMG1hdGNoaW5nJTJDZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZyUyQ3ByZWRpY3Rvci1jb3JyZWN0b3IlMjBzYW1wbGluZw==" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793080345010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="143" data-listing-word-count-sort="28412" data-listing-title-sort="SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 16, 2026</span>
+</td>
+<td>
+<a href="./continuous-time-generative-models/03-the-unification/index.html" class="title listing-title">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNjb250aW51b3VzJTIwbm9ybWFsaXppbmclMjBmbG93cyUyQ25ldXJhbCUyME9ERXMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793080345012" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="147" data-listing-word-count-sort="29353" data-listing-title-sort="Flow-Based Generative Models: When Probability Flows Like a Fluid" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 22, 2026</span>
+</td>
+<td>
+<a href="./continuous-time-generative-models/04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a>
+</td>
+
+</tr>
+
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 <p>I used to work in <span class="kw-fin">quantitative finance</span>, but when <span class="kw-ai">generative AI</span> began reshaping whole industries I grew curious enough to investigate how the new models worked. The deeper I went, the more I kept meeting old friends wearing new names. The <span class="kw-ai">“forward process”</span> in a <span class="kw-ai">diffusion</span> paper was an <span class="kw-math">Ornstein-Uhlenbeck process</span> used for modeling <span class="kw-fin">interest rates</span>. The same paper’s <span class="kw-ai">“reverse process”</span>, which generates the image, can be derived by <span class="kw-math">Girsanov’s theorem</span> <span class="citation" data-cites="girsanov1960transforming"><a href="#ref-girsanov1960transforming" role="doc-biblioref">[1]</a></span>, which gives the same <span class="math inline">\mathbb{P}\to\mathbb{Q}</span> <span class="kw-math">change of measure</span> that sits underneath every <span class="kw-fin">option price</span>. The vocabularies had diverged; the mathematics had not. What was new was the application, not the machinery: a familiar toolkit aimed at a new field.</p>
 <p>Digging into why the two lined up so neatly, I found that none of it began in either field. It started with Robert Brown in 1827, watching particles released from pollen grains jitter under a microscope and publishing the account the next year <span class="citation" data-cites="brown1828"><a href="#ref-brown1828" role="doc-biblioref">[2]</a></span>. Einstein explained the jitter in 1905 <span class="citation" data-cites="einstein1905"><a href="#ref-einstein1905" role="doc-biblioref">[3]</a></span>; Norbert Wiener made it rigorous in the 1920s as the <span class="kw-math">Wiener process</span> <span class="citation" data-cites="wiener1923"><a href="#ref-wiener1923" role="doc-biblioref">[4]</a></span>. Kiyosi Itô then built <span class="kw-math">stochastic calculus</span> in the 1940s <span class="citation" data-cites="ito1944stochastic"><a href="#ref-ito1944stochastic" role="doc-biblioref">[5]</a></span>: a chain rule for random paths (<span class="kw-math">Itô’s lemma</span>) and integration against <span class="kw-math">Brownian motion</span>. Its analytic twins, the <span class="kw-math">Fokker-Planck equation</span> <span class="citation" data-cites="fokker1914mittlere planck1917satz"><a href="#ref-fokker1914mittlere" role="doc-biblioref">[6]</a>, <a href="#ref-planck1917satz" role="doc-biblioref">[7]</a></span> for how a density evolves and the <span class="kw-math">Feynman-Kac formula</span> <span class="citation" data-cites="kac1949distributions"><a href="#ref-kac1949distributions" role="doc-biblioref">[8]</a></span> linking such <span class="kw-math">partial differential equations (PDEs)</span> to expectations, complete the framework. Both finance and generative AI are downstream of physicists and mathematicians who were thinking about neither.</p>
-<p>Finance borrowed it early. Louis Bachelier modeled <span class="kw-fin">stock</span> prices as Brownian motion in 1900 <span class="citation" data-cites="bachelier1900"><a href="#ref-bachelier1900" role="doc-biblioref">[9]</a></span>, five years before Einstein’s paper, though it sat ignored for decades. Real adoption came in 1973, when Black, Scholes <span class="citation" data-cites="black1973pricing"><a href="#ref-black1973pricing" role="doc-biblioref">[10]</a></span>, and Merton <span class="citation" data-cites="merton1973rational"><a href="#ref-merton1973rational" role="doc-biblioref">[11]</a></span> priced <span class="kw-fin">options</span> by modeling the stock as <span class="kw-math">geometric Brownian motion</span> and applying Itô’s lemma to a <span class="kw-fin">hedged portfolio</span>; the resulting PDE solves, via Feynman-Kac, to an expected <span class="kw-fin">discounted payoff</span>. From there it spread: the Ornstein-Uhlenbeck process <span class="citation" data-cites="uhlenbeck1930brownian"><a href="#ref-uhlenbeck1930brownian" role="doc-biblioref">[12]</a></span> became the <span class="kw-fin">Vasicek model</span> <span class="citation" data-cites="vasicek1977equilibrium"><a href="#ref-vasicek1977equilibrium" role="doc-biblioref">[13]</a></span> of <span class="kw-fin">mean-reverting rates</span>, and the <span class="kw-math">Hamilton-Jacobi-Bellman equation</span> the backbone of <span class="kw-fin">optimal portfolio choice</span> <span class="citation" data-cites="merton1971optimum"><a href="#ref-merton1971optimum" role="doc-biblioref">[14]</a></span>. A quant lives inside <span class="kw-math">stochastic differential equations (SDEs)</span> and <span class="kw-math">PDE-expectation duality</span> daily, rarely calling them by their physics names.</p>
+<p>Finance borrowed it early. Louis Bachelier modeled <span class="kw-fin">stock</span> prices as Brownian motion in 1900 <span class="citation" data-cites="bachelier1900"><a href="#ref-bachelier1900" role="doc-biblioref">[9]</a></span>, five years before Einstein’s paper, though it sat ignored for decades. Real adoption came in 1973, when Black, Scholes <span class="citation" data-cites="black1973pricing"><a href="#ref-black1973pricing" role="doc-biblioref">[10]</a></span>, and Merton <span class="citation" data-cites="merton1973rational"><a href="#ref-merton1973rational" role="doc-biblioref">[11]</a></span> priced <span class="kw-fin">options</span> by modeling the stock as <span class="kw-math">geometric Brownian motion</span> and applying Itô’s lemma to a <span class="kw-fin">hedged portfolio</span>; the resulting PDE solves, via Feynman-Kac, to an expected <span class="kw-fin">discounted payoff</span>. From there it spread: the Ornstein-Uhlenbeck process <span class="citation" data-cites="uhlenbeck1930brownian"><a href="#ref-uhlenbeck1930brownian" role="doc-biblioref">[12]</a></span> became the <span class="kw-fin">Vasicek model</span> <span class="citation" data-cites="vasicek1977equilibrium"><a href="#ref-vasicek1977equilibrium" role="doc-biblioref">[13]</a></span> of <span class="kw-fin">mean-reverting rates</span>, and the <span class="kw-math">Hamilton-Jacobi-Bellman equation</span> the backbone of <span class="kw-fin">optimal portfolio choice</span> <span class="citation" data-cites="merton1971optimum"><a href="#ref-merton1971optimum" role="doc-biblioref">[14]</a></span>. A quant lives inside <span class="kw-math">SDEs</span> and <span class="kw-math">PDE-expectation duality</span> daily, rarely calling them by their physics names.</p>
 <p><span class="kw-ai">Diffusion models</span> are borrowing it now. A generator defines a <span class="kw-ai">forward process</span> that turns data into noise, then learns to run it backward. Song and colleagues’ 2021 framework <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[15]</a></span> wrote this as an SDE; Anderson’s 1982 result <span class="citation" data-cites="anderson1982reverse"><a href="#ref-anderson1982reverse" role="doc-biblioref">[16]</a></span> on <span class="kw-math">reverse-time diffusions</span> shows the generative process is that SDE run backward, driven by the <span class="kw-ai">score</span>, the <span class="kw-ai">gradient of the log density</span>. The most common forward choice, the <span class="kw-ai">Variance-Preserving SDE</span>, is a time-dependent Ornstein-Uhlenbeck process; the marginal distribution evolves by Fokker-Planck. A quant reading this is not learning new mathematics, but recognizing familiar territory.</p>
 <p>That is why the crossing is easy both ways. The core skill is identical: fluency with <span class="kw-math">stochastic processes</span> and Itô calculus, the instinct to move between an SDE and its PDE, and a feel for how probability flows under <span class="kw-math">drift plus diffusion</span>. A quant who knows why a <span class="kw-math">martingale</span> has no drift and how to discretize an SDE for <span class="kw-math">Monte Carlo</span> already owns the hard part of diffusion; an AI researcher who has tuned <span class="kw-ai">samplers</span> and reasoned about <span class="kw-ai">score matching</span> has practiced the continuous-time skills at the heart of quantitative finance. The new material on each side is real but learnable, sitting atop a shared core.</p>
 <p>So here is my case to both rooms. The barrier is lexical, not conceptual: <span class="kw-fin">“risk-neutral drift”</span> and <span class="kw-ai">“reverse-time drift”</span> are two names for one operation, reshaping the drift by a change of measure, so each field keeps rediscovering what the other knows. Ideas already migrate both ways, but only the hard way, through specialists who stay in one field and learn the other’s dialect to do the work. Bühler, Teichmann and colleagues pulled the <span class="kw-ai">neural network</span>, a tool born in AI, into derivatives <span class="kw-fin">hedging</span> <span class="citation" data-cites="buehler2019deephedging"><a href="#ref-buehler2019deephedging" role="doc-biblioref">[17]</a></span>; Wang, Zariphopoulou and Zhou carried <span class="kw-math">stochastic optimal control</span>, central to quantitative finance, into the AI problem of <span class="kw-ai">reinforcement learning</span> <span class="citation" data-cites="wang2020rlcontinuous"><a href="#ref-wang2020rlcontinuous" role="doc-biblioref">[18]</a></span>. That it works at all is the point: it works <em>because</em> the mathematics is already shared. It could happen far more readily, and by design. The wall between you is thinner than it looks, and some of the best ideas you could borrow are already sitting on the other side.</p>
-<p>Post 1 builds the machinery the rest of the series runs on. It starts from Brownian motion and the single new rule <span class="math inline">(dW)^2 = dt</span>, then develops Itô’s lemma from first principles. It turns that lemma, unchanged, on two problems half a century apart. The first is the Black-Scholes equation, reached through a hedged portfolio and no-arbitrage. Between the two, it sets out what a generative model is, works through variational autoencoders, normalizing flows and energy-based models, and introduces diffusion models. The second is diffusion’s forward process, recast as the Variance-Preserving SDE with its perturbation kernel and Fokker-Planck equation. Quantitative finance and generative AI share an ancestor.</p>
-<p>Post 2 crosses fully to generative AI and follows the two lineages of diffusion modeling. It follows the variational path first, from latent-variable models through the variational autoencoder (VAE), its evidence lower bound, variational inference and hierarchical VAEs, to DDPM as a hierarchical VAE with a fixed encoder, trained by the same bound and sampled ancestrally. It then builds the score-based path from first principles, covering the score, score matching in its explicit, implicit, and denoising forms, Vincent’s theorem and Tweedie’s formula, and Song and Ermon’s score matching with Langevin dynamics, which made score-based sampling work on real data. It closes by weighing what the reformulation from densities to scores bought, and hands both lineages to post 3.</p>
-<p>In post 3 the two lineages become, in continuous time, two instances of one general SDE. The Variance-Exploding and Variance-Preserving SDEs are two regimes of one linear family, driftless with exploding variance or mean-reverting with bounded variance. Anderson’s theorem gives the reverse-time SDE, whose only unknown is the score and whose solution has the distribution of the forward process run backward. It is derived twice, through the Fokker-Planck equation and through Bayes’ rule, whose reweighting is Girsanov’s change of measure. The probability-flow ODE is its deterministic counterpart, whose solution has the same marginals. Denoising score matching learns the score and leads to the same noise-prediction loss as DDPM’s variational bound. Post 2’s ancestral sampler and the reverse diffusion sampler both discretize the reverse-time SDE.</p>
-<p>Post 4 asks whether the velocity field that carries noise to data can be learned directly, without a score. Normalizing flows and their continuous form give exact likelihoods, but the continuous form trains by solving an ODE along a path the likelihood leaves open. Flow matching fixes that path, a probability path that satisfies the continuity equation, and trains the velocity field by a conditional regression that never solves the ODE.</p>
-<p>Now that you have the full context, dive in. Each post is math-first and derives its results in full, building on the posts before it. The throughline is method. At each turn the series examines a practice machine learning usually asserts, such as a loss, a finite sequence of noise levels, a guidance rule, or a network’s preconditioning, and derives it from the continuous-time formulation until it appears to be a consequence rather than a choice. Posts are listed newest first. Read them in order, starting with post 1.</p>
-<div id="listing-posts-full" class="quarto-listing quarto-listing-container-default">
+<p>Now that you have the full context, dive in. Each post is math-first and derives its results in full, building on the posts before it. They are listed below in reading order, starting with post 1, each with a summary of what it covers.</p>
+<div id="listing-posts-full" class="quarto-listing quarto-listing-container-custom">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNjb250aW51b3VzJTIwbm9ybWFsaXppbmclMjBmbG93cyUyQ25ldXJhbCUyME9ERXMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793053544148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="147" data-listing-word-count-sort="29392">
+<div class="quarto-post series-card" data-index="0" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNnZW5lcmF0aXZlJTIwQUklMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793080345008" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="181" data-listing-word-count-sort="36004">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="./continuous-time-generative-models/04-flow-matching/index.html" class="no-external">Flow-Based Generative Models: When Probability Flows Like a Fluid</a>
+<span class="listing-date">Aug 10, 2026</span> <a href="./continuous-time-generative-models/01-ito-bs-to-ddpm/index.html" class="no-external">Itô’s Lemma: From Black-Scholes to Diffusion Models</a>
 </h3>
 <div class="listing-subtitle">
-<a href="./continuous-time-generative-models/04-flow-matching/index.html" class="no-external">How the 18th-century mathematics of Euler made generative models faster to sample and simpler to train.</a>
+<a href="./continuous-time-generative-models/01-ito-bs-to-ddpm/index.html" class="no-external">The math that prices a stock option is the math that helps generate images: Wall Street to AI labs, same machinery, different century.</a>
 </div>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Zmx1aWQlMjBtZWNoYW5pY3M='); return false;">fluid mechanics</div>
+<div class="listing-category" onclick="window.quartoListingCategory('c3RvY2hhc3RpYyUyMGNhbGN1bHVz'); return false;">stochastic calculus</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Y29udGludWl0eSUyMGVxdWF0aW9u'); return false;">continuity equation</div>
+<div class="listing-category" onclick="window.quartoListingCategory('QnJvd25pYW4lMjBtb3Rpb24='); return false;">Brownian motion</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('b3B0aW1hbCUyMHRyYW5zcG9ydA=='); return false;">optimal transport</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SXQlQzMlQjQncyUyMGxlbW1h'); return false;">Itô's lemma</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Rm9ra2VyLVBsYW5jayUyMGVxdWF0aW9u'); return false;">Fokker-Planck equation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QmxhY2stU2Nob2xlcw=='); return false;">Black-Scholes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3B0aW9ucyUyMHByaWNpbmc='); return false;">options pricing</div>
 
 <div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9uJTIwbW9kZWxz'); return false;">diffusion models</div>
 
 <div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhdGl2ZSUyMEFJ'); return false;">generative AI</div>
 
+<div class="listing-category" onclick="window.quartoListingCategory('dmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnM='); return false;">variational autoencoders</div>
+
 <div class="listing-category" onclick="window.quartoListingCategory('bm9ybWFsaXppbmclMjBmbG93cw=='); return false;">normalizing flows</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('ZmxvdyUyMG1vZGVscw=='); return false;">flow models</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZW5lcmd5LWJhc2VkJTIwbW9kZWxz'); return false;">energy-based models</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Y29udGludW91cyUyMG5vcm1hbGl6aW5nJTIwZmxvd3M='); return false;">continuous normalizing flows</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RERQTQ=='); return false;">DDPM</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bmV1cmFsJTIwT0RFcw=='); return false;">neural ODEs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZmxvdyUyMG1hdGNoaW5n'); return false;">flow matching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29uZGl0aW9uYWwlMjBmbG93JTIwbWF0Y2hpbmc='); return false;">conditional flow matching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHktZmxvdyUyME9ERQ=='); return false;">probability-flow ODE</div>
+<div class="listing-category" onclick="window.quartoListingCategory('VlAtU0RF'); return false;">VP-SDE</div>
 
 </div>
 </div>
-<div class="metadata">
-<a href="./continuous-time-generative-models/04-flow-matching/index.html" class="no-external">
-<div class="listing-date">
-Oct 22, 2026
-</div>
-</a>
+<div class="listing-blurb">
+<p>This post lays the mathematical foundation for the entire series. It begins with Brownian motion and the key rule <span class="math inline">(dW)^2=dt</span>, uses them to derive Itô’s lemma from first principles, and solves geometric Brownian motion and the Ornstein-Uhlenbeck process with it. The same result then derives the Black-Scholes equation through hedging and the no-arbitrage condition.</p>
+<p>After that the post introduces generative models, explains variational autoencoders, normalizing flows, and energy-based models, and presents diffusion models, their two lineages and Denoising Diffusion Probabilistic Models (DDPM).</p>
+<p>It then formulates DDPM’s forward process as a Variance-Preserving SDE and returns to Itô’s lemma twice, deriving its perturbation kernel and the Fokker-Planck equation. A closing comparison sets the three derivations side by side, so quantitative finance and generative AI meet through the same mathematics.</p>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDcmlzay1uZXV0cmFsJTIwcHJpY2luZyUyQ2RpZmZ1c2lvbiUyMG1vZGVscyUyQ2dlbmVyYXRpdmUlMjBBSSUyQ1ZQLVNERSUyQ1ZFLVNERSUyQ3JldmVyc2UtdGltZSUyMFNERSUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREUlMkNzY29yZSUyMG1hdGNoaW5nJTJDZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZyUyQ3ByZWRpY3Rvci1jb3JyZWN0b3IlMjBzYW1wbGluZw==" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793053544154" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="143" data-listing-word-count-sort="28426">
+</div>
+<div class="quarto-post series-card" data-index="1" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793080345009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="170" data-listing-word-count-sort="33829">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="./continuous-time-generative-models/03-the-unification/index.html" class="no-external">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a>
+<span class="listing-date">Sep 10, 2026</span> <a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="no-external">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="no-external">How two methods, each inspired by a branch of statistical physics, became the foundations of modern image generation.</a>
+</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9uJTIwbW9kZWxz'); return false;">diffusion models</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhdGl2ZSUyMEFJ'); return false;">generative AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnM='); return false;">variational autoencoders</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RUxCTw=='); return false;">ELBO</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RERQTQ=='); return false;">DDPM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZW5lcmd5LWJhc2VkJTIwbW9kZWxz'); return false;">energy-based models</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c2NvcmUlMjBtYXRjaGluZw=='); return false;">score matching</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZw=='); return false;">denoising score matching</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('VHdlZWRpZSdzJTIwZm9ybXVsYQ=='); return false;">Tweedie's formula</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGFuZ2V2aW4lMjBkeW5hbWljcw=='); return false;">Langevin dynamics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TkNTTg=='); return false;">NCSN</div>
+
+</div>
+</div>
+<div class="listing-blurb">
+<p>This post focuses entirely on generative AI, tracing the two main lineages of diffusion modeling. It begins with the variational route, from latent-variable models to variational autoencoders (VAEs), the evidence lower bound (ELBO), variational inference, and hierarchical VAEs. It then shows how DDPM can be understood as a hierarchical VAE with a fixed encoder, trained with the same variational bound, which reduces to a noise-prediction loss, and sampled through ancestral sampling.</p>
+<p>The second half develops the score-based route from first principles. Energy-based models leave a normalizing constant that cannot be computed, and the score does not depend on it. Explicit and implicit score matching with Langevin sampling work in principle but meet four pitfalls on real data. Denoising score matching resolves them and cuts the cost per example from <span class="math inline">O(d)</span> to <span class="math inline">O(1)</span>. Vincent’s theorem shows it has the same minimizer as score matching on the perturbed data, and Tweedie’s formula ties that minimizer to the posterior mean.</p>
+<p>A single noise level still forces a dilemma. Song and Ermon’s score matching with Langevin dynamics resolves it by perturbing the data at a finite sequence of noise levels, training one noise-conditional score network across them, and sampling with annealed Langevin dynamics. The post closes by weighing what the reformulation from densities to scores bought and what it cost, leaving the unification of the two lineages to post 3.</p>
+</div>
+</div>
+</div>
+<div class="quarto-post series-card" data-index="2" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDcmlzay1uZXV0cmFsJTIwcHJpY2luZyUyQ2RpZmZ1c2lvbiUyMG1vZGVscyUyQ2dlbmVyYXRpdmUlMjBBSSUyQ1ZQLVNERSUyQ1ZFLVNERSUyQ3JldmVyc2UtdGltZSUyMFNERSUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREUlMkNzY29yZSUyMG1hdGNoaW5nJTJDZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZyUyQ3ByZWRpY3Rvci1jb3JyZWN0b3IlMjBzYW1wbGluZw==" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793080345010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="143" data-listing-word-count-sort="28412">
+<div class="body">
+<div class="card-head">
+<h3 class="no-anchor listing-title">
+<span class="listing-date">Oct 16, 2026</span> <a href="./continuous-time-generative-models/03-the-unification/index.html" class="no-external">SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./continuous-time-generative-models/03-the-unification/index.html" class="no-external">How the stochastic calculus of Itô, Fokker and Planck generalizes diffusion models to a single continuous-time framework.</a>
@@ -637,100 +665,55 @@ Oct 22, 2026
 
 </div>
 </div>
-<div class="metadata">
-<a href="./continuous-time-generative-models/03-the-unification/index.html" class="no-external">
-<div class="listing-date">
-Oct 16, 2026
-</div>
-</a>
+<div class="listing-blurb">
+<p>This post brings the two lineages together in continuous time, showing that both are instances of one family of linear SDEs. It presents the Variance-Exploding (VE) and Variance-Preserving (VP) SDEs as its two variance regimes, one with no drift and growing variance, the other with mean-reverting drift and bounded variance.</p>
+<p>Anderson’s theorem then provides the reverse-time SDE, whose one unknown term is the score and whose solution reproduces the forward process in reverse. The post derives this result twice, through the Fokker-Planck equation and through Bayes’ rule, whose reweighting is Girsanov’s change of measure. It then introduces the probability-flow ODE, whose deterministic solution has the same marginals as the solutions of the forward and reverse-time SDEs.</p>
+<p>It shows how denoising score matching learns the score and, with DDPM’s weighting, reduces to DDPM’s noise-prediction loss. It then solves the reverse-time SDE with three samplers. Reverse diffusion sampling and post 2’s ancestral sampling are two discretizations of the same equation, and predictor-corrector sampling adds post 2’s Langevin steps as corrections.</p>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793053544158" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="169" data-listing-word-count-sort="33793">
+</div>
+<div class="quarto-post series-card" data-index="3" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDZ2VuZXJhdGl2ZSUyMEFJJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNjb250aW51b3VzJTIwbm9ybWFsaXppbmclMjBmbG93cyUyQ25ldXJhbCUyME9ERXMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793080345012" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="147" data-listing-word-count-sort="29353">
 <div class="body">
+<div class="card-head">
 <h3 class="no-anchor listing-title">
-<a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="no-external">The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion</a>
+<span class="listing-date">Oct 22, 2026</span> <a href="./continuous-time-generative-models/04-flow-matching/index.html" class="no-external">Flow-Based Generative Models: When Probability Flows Like a Fluid</a>
 </h3>
 <div class="listing-subtitle">
-<a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="no-external">How two methods, each inspired by a branch of statistical physics, became the foundations of modern image generation.</a>
+<a href="./continuous-time-generative-models/04-flow-matching/index.html" class="no-external">How the 18th-century mathematics of Euler made generative models faster to sample and simpler to train.</a>
 </div>
 <div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Zmx1aWQlMjBtZWNoYW5pY3M='); return false;">fluid mechanics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udGludWl0eSUyMGVxdWF0aW9u'); return false;">continuity equation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3B0aW1hbCUyMHRyYW5zcG9ydA=='); return false;">optimal transport</div>
 
 <div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9uJTIwbW9kZWxz'); return false;">diffusion models</div>
 
 <div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhdGl2ZSUyMEFJ'); return false;">generative AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnM='); return false;">variational autoencoders</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RUxCTw=='); return false;">ELBO</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RERQTQ=='); return false;">DDPM</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW5lcmd5LWJhc2VkJTIwbW9kZWxz'); return false;">energy-based models</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2NvcmUlMjBtYXRjaGluZw=='); return false;">score matching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZw=='); return false;">denoising score matching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VHdlZWRpZSdzJTIwZm9ybXVsYQ=='); return false;">Tweedie's formula</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGFuZ2V2aW4lMjBkeW5hbWljcw=='); return false;">Langevin dynamics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TkNTTg=='); return false;">NCSN</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="./continuous-time-generative-models/02-variational-vs-score-matching/index.html" class="no-external">
-<div class="listing-date">
-Sep 10, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkNnZW5lcmF0aXZlJTIwQUklMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793053544164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="180" data-listing-word-count-sort="35961">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./continuous-time-generative-models/01-ito-bs-to-ddpm/index.html" class="no-external">Itô’s Lemma: From Black-Scholes to Diffusion Models</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./continuous-time-generative-models/01-ito-bs-to-ddpm/index.html" class="no-external">The math that prices a stock option is the math that helps generate images: Wall Street to AI labs, same machinery, different century.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3RvY2hhc3RpYyUyMGNhbGN1bHVz'); return false;">stochastic calculus</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnJvd25pYW4lMjBtb3Rpb24='); return false;">Brownian motion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXQlQzMlQjQncyUyMGxlbW1h'); return false;">Itô's lemma</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Rm9ra2VyLVBsYW5jayUyMGVxdWF0aW9u'); return false;">Fokker-Planck equation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QmxhY2stU2Nob2xlcw=='); return false;">Black-Scholes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3B0aW9ucyUyMHByaWNpbmc='); return false;">options pricing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlmZnVzaW9uJTIwbW9kZWxz'); return false;">diffusion models</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhdGl2ZSUyMEFJ'); return false;">generative AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnM='); return false;">variational autoencoders</div>
 
 <div class="listing-category" onclick="window.quartoListingCategory('bm9ybWFsaXppbmclMjBmbG93cw=='); return false;">normalizing flows</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('ZW5lcmd5LWJhc2VkJTIwbW9kZWxz'); return false;">energy-based models</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ZmxvdyUyMG1vZGVscw=='); return false;">flow models</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RERQTQ=='); return false;">DDPM</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udGludW91cyUyMG5vcm1hbGl6aW5nJTIwZmxvd3M='); return false;">continuous normalizing flows</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VlAtU0RF'); return false;">VP-SDE</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bmV1cmFsJTIwT0RFcw=='); return false;">neural ODEs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZmxvdyUyMG1hdGNoaW5n'); return false;">flow matching</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29uZGl0aW9uYWwlMjBmbG93JTIwbWF0Y2hpbmc='); return false;">conditional flow matching</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHktZmxvdyUyME9ERQ=='); return false;">probability-flow ODE</div>
 
 </div>
 </div>
-<div class="metadata">
-<a href="./continuous-time-generative-models/01-ito-bs-to-ddpm/index.html" class="no-external">
-<div class="listing-date">
-Aug 10, 2026
+<div class="listing-blurb">
+<p>This post asks whether the velocity field that transforms noise into data can be learned directly, without first estimating a score. The question matters because diffusion sampling is slow and the forward SDE fixes the path. The post builds from normalizing flows, which provide exact likelihoods but constrain each layer to transformations with computationally tractable Jacobian determinants. Flow models, which trace back to Euler’s description of fluid motion, remove this restriction by describing transformations through an ODE. Their maximum-likelihood training, however, solves that ODE at each training step and leaves the path between noise and data unspecified.</p>
+<p>Flow matching addresses both limitations. It fixes a probability path and learns its velocity field by regression, without solving the ODE. Using the continuity equation, the post shows that a path built from simpler paths, one for each data point, is generated by an average of their velocity fields, weighted by how probable each data point is given the current point. It then proves that regressing on these simpler velocity fields has the same gradient as regressing on the intractable velocity field of the whole path, since the two objectives differ by a constant, so training needs only the closed-form velocity fields of the simpler paths.</p>
+<p>Gaussian paths make the framework concrete, and the VP and VE paths, the perturbation kernels of the two SDEs with time reversed, are two instances of them. The post also develops the path of straight lines traversed at constant speed, which needs fewer sampling steps than the VP path. It ends with the three pitfalls these paths keep.</p>
 </div>
-</a>
 </div>
 </div>
 </div>

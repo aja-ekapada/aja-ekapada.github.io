@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aja S.">
-<meta name="description" content="A staged search of ControlNet conditioning on FLUX.1-dev with a persona-LoRA (twenty-one sweeps, 2,716 scored rows), measured against floors, ceilings and seed noise. The ControlNet scales are the only configurations on the identity-versus-structure trade-off, and the values the search selects are one step inside the identity cliff.">
+<meta name="description" content="A staged search of ControlNet scales on FLUX.1-dev with a persona-LoRA (21 sweeps, 2,716 scored rows) that maps identity fidelity against template structure.">
 
-<title>FLUX persona-in-template ad generation – Aja S.</title>
+<title>FLUX Persona-in-Template Ad Generation – Aja S.</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -133,7 +133,7 @@ div.csl-indent {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -185,17 +185,19 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="FLUX persona-in-template ad generation – Aja S.">
-<meta property="og:description" content="A staged search of ControlNet conditioning on FLUX.1-dev with a persona-LoRA (twenty-one sweeps, 2,716 scored rows), measured against floors, ceilings and seed noise. The ControlNet scales are the only configurations on the identity-versus-structure trade-off, and the values the search selects are one step inside the identity cliff.">
+<meta property="og:title" content="FLUX Persona-in-Template Ad Generation – Aja S.">
+<meta property="og:description" content="A staged search of ControlNet scales on FLUX.1-dev with a persona-LoRA (21 sweeps, 2,716 scored rows) that maps identity fidelity against template structure.">
 <meta property="og:image" content="https://aja-ekapada.github.io/flux-persona-in-template/figures/link_preview.png">
 <meta property="og:site_name" content="Aja S.">
 <meta property="og:image:height" content="630">
 <meta property="og:image:width" content="1200">
-<meta name="twitter:title" content="FLUX persona-in-template ad generation – Aja S.">
-<meta name="twitter:description" content="A staged search of ControlNet conditioning on FLUX.1-dev with a persona-LoRA (twenty-one sweeps, 2,716 scored rows), measured against floors, ceilings and seed noise. The ControlNet scales are the only configurations on the identity-versus-structure trade-off, and the values the search selects are one step inside the identity cliff.">
+<meta property="og:image:alt" content="Four line charts against the ControlNet conditioning sum from 0.50 to 0.70. Face similarity falls from about 97 to 47 while the canny, depth and pose structure scores all rise, and the steepest face drop lies between 0.60 and 0.65.">
+<meta name="twitter:title" content="FLUX Persona-in-Template Ad Generation – Aja S.">
+<meta name="twitter:description" content="A staged search of ControlNet scales on FLUX.1-dev with a persona-LoRA (21 sweeps, 2,716 scored rows) that maps identity fidelity against template structure.">
 <meta name="twitter:image" content="https://aja-ekapada.github.io/flux-persona-in-template/figures/link_preview.png">
 <meta name="twitter:image-height" content="630">
 <meta name="twitter:image-width" content="1200">
+<meta name="twitter:image:alt" content="Four line charts against the ControlNet conditioning sum from 0.50 to 0.70. Face similarity falls from about 97 to 47 while the canny, depth and pose structure scores all rise, and the steepest face drop lies between 0.60 and 0.65.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://aja-ekapada.github.io/flux-persona-in-template/">
 </head>
@@ -336,8 +338,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">FLUX persona-in-template ad generation</h1>
-<p class="subtitle lead">A scored characterization of a LoRA + ControlNet conditioning scheme — how identity fidelity trades against the spatial structure (canny, depth and pose) of a creative ad template.</p>
+<h1 class="title">FLUX Persona-in-Template Ad Generation</h1>
+<p class="subtitle lead">A scored characterization of how a LoRA + ControlNet conditioning scheme trades identity fidelity against the spatial structure (canny, depth and pose) of a creative ad template.</p>
   <div class="quarto-categories">
     <div class="quarto-category">ControlNet</div>
     <div class="quarto-category">FLUX</div>
@@ -349,7 +351,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    A staged search of ControlNet conditioning on FLUX.1-dev with a persona-LoRA (twenty-one sweeps, 2,716 scored rows), measured against floors, ceilings and seed noise. The ControlNet scales are the only configurations on the identity-versus-structure trade-off, and the values the search selects are one step inside the identity cliff.
+    A staged search of ControlNet scales on FLUX.1-dev with a persona-LoRA (21 sweeps, 2,716 scored rows) that maps identity fidelity against template structure.
   </div>
 </div>
 
@@ -6794,6 +6796,7 @@ Figure&nbsp;30: Semi-partial R²: the reduction in explained variance when a fac
 <li><strong>What transfers is the procedure, not the values:</strong> Cycle-consistency structure scoring against the template, face_sim against held-out reference photographs, floors, ceilings and seed noise before any claim, and a selection rule with two stops, the structure floors and the usable face_sim 80. The scale values belong to these pipelines and these persona-LoRAs, and stay there.</li>
 </ul>
 <p>Run the search for your own ControlNet and your own persona-LoRAs. Do not start from the numbers in this report.</p>
+<hr>
 </section>
 <section id="sec-appendix-union" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Appendix: the Union branch, sweep by sweep</h1>
@@ -12670,7 +12673,7 @@ Table&nbsp;85: The floor and ceiling of each identity score, in the columns of <
 <h1 class="unnumbered">How to cite</h1>
 <p>If you found this useful, please cite as:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">aja2026persona</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {FLUX persona-in-template ad generation},</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {FLUX Persona-in-Template Ad Generation},</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Aja S.},</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>   = {2026},</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>    = {https://aja-ekapada.github.io/flux-persona-in-template/}</span>
@@ -12798,7 +12801,7 @@ Table&nbsp;85: The floor and ceiling of each identity score, in the columns of <
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "FLUX persona-in-template ad generation",
+  "headline": "FLUX Persona-in-Template Ad Generation",
   "datePublished": "2026-10-07",
   "author": { "@type": "Person", "name": "Aja S." }
 }

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aja S.">
-<meta name="description" content="A three-stage FLUX.1-dev LoRA hyperparameter study on one subject, scored on face_sim and image-prompt cosine_sim against two test sets: the identity/prompt-adherence trade-off is real but weak, training steps matter more than learning rate, and twenty images is the working point.">
+<meta name="description" content="A three-stage FLUX.1-dev LoRA hyperparameter study on one subject. Training steps matter more than learning rate, and twenty images is the working point.">
 
-<title>FLUX LoRA influencer-likeness research – Aja S.</title>
+<title>FLUX LoRA Influencer-Likeness Research – Aja S.</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -133,7 +133,7 @@ div.csl-indent {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Aja S.",
-  "description": "Applied research on image and video generation, and a deep dive into the mathematics behind generative AI.",
+  "description": "Empirical research in image and video generation, and the mathematical foundations of modern generative models, derived from first principles.",
   "url": "https://aja-ekapada.github.io/",
   "inLanguage": "en"
 }
@@ -185,17 +185,19 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="FLUX LoRA influencer-likeness research – Aja S.">
-<meta property="og:description" content="A three-stage FLUX.1-dev LoRA hyperparameter study on one subject, scored on face_sim and image-prompt cosine_sim against two test sets: the identity/prompt-adherence trade-off is real but weak, training steps matter more than learning rate, and twenty images is the working point.">
+<meta property="og:title" content="FLUX LoRA Influencer-Likeness Research – Aja S.">
+<meta property="og:description" content="A three-stage FLUX.1-dev LoRA hyperparameter study on one subject. Training steps matter more than learning rate, and twenty images is the working point.">
 <meta property="og:image" content="https://aja-ekapada.github.io/flux-lora-likeness/figures/link_preview.png">
 <meta property="og:site_name" content="Aja S.">
 <meta property="og:image:height" content="630">
 <meta property="og:image:width" content="1200">
-<meta name="twitter:title" content="FLUX LoRA influencer-likeness research – Aja S.">
-<meta name="twitter:description" content="A three-stage FLUX.1-dev LoRA hyperparameter study on one subject, scored on face_sim and image-prompt cosine_sim against two test sets: the identity/prompt-adherence trade-off is real but weak, training steps matter more than learning rate, and twenty images is the working point.">
+<meta property="og:image:alt" content="Scatter plot of image-prompt cosine similarity against transfer face similarity for LoRAs trained on 10, 20 and 30 images at the learning-rate 2e-4, rank 8 cell, with arrows from 10 to 20 to 30 and a ring marking the recommended 20.">
+<meta name="twitter:title" content="FLUX LoRA Influencer-Likeness Research – Aja S.">
+<meta name="twitter:description" content="A three-stage FLUX.1-dev LoRA hyperparameter study on one subject. Training steps matter more than learning rate, and twenty images is the working point.">
 <meta name="twitter:image" content="https://aja-ekapada.github.io/flux-lora-likeness/figures/link_preview.png">
 <meta name="twitter:image-height" content="630">
 <meta name="twitter:image-width" content="1200">
+<meta name="twitter:image:alt" content="Scatter plot of image-prompt cosine similarity against transfer face similarity for LoRAs trained on 10, 20 and 30 images at the learning-rate 2e-4, rank 8 cell, with arrows from 10 to 20 to 30 and a ring marking the recommended 20.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://aja-ekapada.github.io/flux-lora-likeness/">
 </head>
@@ -306,8 +308,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">FLUX LoRA influencer-likeness research</h1>
-<p class="subtitle lead">A three-stage hyperparameter study — Pilot, Partial Sweep, Full Sweep — of how learning rate, rank, training steps, dataset size, timestep sampling, dropout and inference scale trade identity fidelity against prompt adherence for one subject.</p>
+<h1 class="title">FLUX LoRA Influencer-Likeness Research</h1>
+<p class="subtitle lead">A three-stage hyperparameter study (Pilot, Partial Sweep, Full Sweep) of how learning rate, rank, training steps, dataset size, timestep sampling, dropout and inference scale trade identity fidelity against prompt adherence for one subject.</p>
   <div class="quarto-categories">
     <div class="quarto-category">LoRA</div>
     <div class="quarto-category">FLUX</div>
@@ -319,7 +321,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    A three-stage FLUX.1-dev LoRA hyperparameter study on one subject, scored on face_sim and image-prompt cosine_sim against two test sets: the identity/prompt-adherence trade-off is real but weak, training steps matter more than learning rate, and twenty images is the working point.
+    A three-stage FLUX.1-dev LoRA hyperparameter study on one subject. Training steps matter more than learning rate, and twenty images is the working point.
   </div>
 </div>
 
@@ -3442,7 +3444,7 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 <h1 class="unnumbered">How to cite</h1>
 <p>If you found this useful, please cite as:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">aja2026lora</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {FLUX LoRA influencer-likeness research},</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {FLUX LoRA Influencer-Likeness Research},</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Aja S.},</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>   = {2026},</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>    = {https://aja-ekapada.github.io/flux-lora-likeness/}</span>
@@ -3497,13 +3499,13 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 <div class="csl-left-margin">[15] </div><div class="csl-right-inline"><span class="nocase">Y. Lipman <em>et al.</em></span>, <span>“Flow matching for generative modeling.”</span> 2022. Available: <a href="https://arxiv.org/abs/2210.02747">https://arxiv.org/abs/2210.02747</a></div>
 </div>
 <div id="ref-bfl_flux1dev" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Black Forest Labs, <span>“<span class="nocase">FLUX.1-dev</span> model card.”</span> Hugging Face, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev">https://huggingface.co/black-forest-labs/FLUX.1-dev</a></div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">Black Forest Labs, <span>“<span class="nocase">FLUX.1-dev</span> model card.”</span> Hugging Face, 2024. Accessed: Aug. 21, 2026. [Online]. Available: <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev">https://huggingface.co/black-forest-labs/FLUX.1-dev</a></div>
 </div>
 <div id="ref-chen2016checkpointing" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Chen, B. Xu, C. Zhang, and C. Guestrin, <span>“Training deep nets with sublinear memory cost.”</span> 2016. Available: <a href="https://arxiv.org/abs/1604.06174">https://arxiv.org/abs/1604.06174</a></div>
 </div>
 <div id="ref-ostris_aitoolkit" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline"><span class="nocase">ostris</span>, <span>“<span class="nocase">ai-toolkit</span>: Flow matching schedulers and <span class="nocase">timestep_type</span>.”</span> GitHub repository; DeepWiki summary, <a href="https://deepwiki.com/ostris/ai-toolkit/8.2-flow-matching-schedulers" class="uri">https://deepwiki.com/ostris/ai-toolkit/8.2-flow-matching-schedulers</a>. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://github.com/ostris/ai-toolkit">https://github.com/ostris/ai-toolkit</a></div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline"><span class="nocase">ostris</span>, <span>“<span class="nocase">ai-toolkit</span>: Flow matching schedulers and <span class="nocase">timestep_type</span>.”</span> GitHub repository; DeepWiki summary, <a href="https://deepwiki.com/ostris/ai-toolkit/8.2-flow-matching-schedulers" class="uri">https://deepwiki.com/ostris/ai-toolkit/8.2-flow-matching-schedulers</a>. Accessed: Aug. 21, 2026. [Online]. Available: <a href="https://github.com/ostris/ai-toolkit">https://github.com/ostris/ai-toolkit</a></div>
 </div>
 <div id="ref-ho2022cfg" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[19] </div><div class="csl-right-inline">J. Ho and T. Salimans, <span>“Classifier-free diffusion guidance,”</span> in <em><span class="nocase">NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications</span></em>, 2021. Available: <a href="https://arxiv.org/abs/2207.12598">https://arxiv.org/abs/2207.12598</a></div>
@@ -3518,7 +3520,7 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 <div class="csl-left-margin">[22] </div><div class="csl-right-inline">D. Shenaj, F. Errica, and A. Carta, <span>“Not all layers are created equal: Adaptive <span>LoRA</span> ranks for personalized image generation.”</span> 2026. Available: <a href="https://arxiv.org/abs/2603.21884">https://arxiv.org/abs/2603.21884</a></div>
 </div>
 <div id="ref-segmind_fluxguide" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Segmind, <span>“Easy <span>Flux</span> <span>LoRA</span> training guide.”</span> Blog post, 2025. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://blog.segmind.com/easy-flux-lora-training-guide/">https://blog.segmind.com/easy-flux-lora-training-guide/</a></div>
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">Segmind, <span>“Easy <span>Flux</span> <span>LoRA</span> training guide.”</span> Blog post, 2025. Accessed: Aug. 21, 2026. [Online]. Available: <a href="https://blog.segmind.com/easy-flux-lora-training-guide/">https://blog.segmind.com/easy-flux-lora-training-guide/</a></div>
 </div>
 <div id="ref-wu2009experiments" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[24] </div><div class="csl-right-inline">C. F. J. Wu and M. S. Hamada, <em>Experiments: Planning, analysis, and optimization</em>. Wiley, 2009.</div>
@@ -3536,7 +3538,7 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 <div class="csl-left-margin">[28] </div><div class="csl-right-inline"><span>“<span>EliGen</span>: Entity-level controlled image generation with regional attention.”</span> 2025. Available: <a href="https://arxiv.org/abs/2501.01097">https://arxiv.org/abs/2501.01097</a></div>
 </div>
 <div id="ref-bghira_simpletuner635" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><span class="nocase">bghira</span>, <span>“<span>FLUX</span> <span>LoRA</span> optimal training.”</span> SimpleTuner GitHub discussion #635, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://github.com/bghira/SimpleTuner/discussions/635">https://github.com/bghira/SimpleTuner/discussions/635</a></div>
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><span class="nocase">bghira</span>, <span>“<span>FLUX</span> <span>LoRA</span> optimal training.”</span> SimpleTuner GitHub discussion #635, 2024. Accessed: Aug. 21, 2026. [Online]. Available: <a href="https://github.com/bghira/SimpleTuner/discussions/635">https://github.com/bghira/SimpleTuner/discussions/635</a></div>
 </div>
 <div id="ref-aghajanyan2021intrinsic" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[30] </div><div class="csl-right-inline">A. Aghajanyan, S. Gupta, and L. Zettlemoyer, <span>“Intrinsic dimensionality explains the effectiveness of language model fine-tuning,”</span> in <em>Proceedings of ACL 2021</em>, 2021. Available: <a href="https://arxiv.org/abs/2012.13255">https://arxiv.org/abs/2012.13255</a></div>
@@ -3554,7 +3556,7 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 <div class="csl-left-margin">[34] </div><div class="csl-right-inline"><span class="nocase">P. Esser <em>et al.</em></span>, <span>“Scaling rectified flow transformers for high-resolution image synthesis.”</span> 2024. Available: <a href="https://arxiv.org/abs/2403.03206">https://arxiv.org/abs/2403.03206</a></div>
 </div>
 <div id="ref-fasterdit2024" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[35] </div><div class="csl-right-inline"><span>“<span>FasterDiT</span>: Towards faster diffusion transformers training without architecture modification.”</span> OpenReview, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://openreview.net/pdf?id=cqRgoDFaGN">https://openreview.net/pdf?id=cqRgoDFaGN</a></div>
+<div class="csl-left-margin">[35] </div><div class="csl-right-inline"><span>“<span>FasterDiT</span>: Towards faster diffusion transformers training without architecture modification.”</span> OpenReview, 2024. Accessed: Aug. 21, 2026. [Online]. Available: <a href="https://openreview.net/pdf?id=cqRgoDFaGN">https://openreview.net/pdf?id=cqRgoDFaGN</a></div>
 </div>
 <div id="ref-curriculum2026sampling" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[36] </div><div class="csl-right-inline"><span>“Curriculum sampling: A two-phase curriculum for efficient training of flow matching.”</span> 2026. Available: <a href="https://arxiv.org/abs/2603.12517">https://arxiv.org/abs/2603.12517</a></div>
@@ -3575,7 +3577,7 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 <div class="csl-left-margin">[41] </div><div class="csl-right-inline"><span class="nocase">D. Biderman <em>et al.</em></span>, <span>“<span>LoRA</span> learns less and forgets less.”</span> 2024. Available: <a href="https://arxiv.org/abs/2405.09673">https://arxiv.org/abs/2405.09673</a></div>
 </div>
 <div id="ref-fooocus_3561" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[42] </div><div class="csl-right-inline"><span class="nocase">lllyasviel</span>, <span>“<span>FLUX</span> doesn’t understand specifics.”</span> Fooocus GitHub discussion #3561, 2024. Accessed: Oct. 07, 2026. [Online]. Available: <a href="https://github.com/lllyasviel/Fooocus/discussions/3561">https://github.com/lllyasviel/Fooocus/discussions/3561</a></div>
+<div class="csl-left-margin">[42] </div><div class="csl-right-inline"><span class="nocase">lllyasviel</span>, <span>“<span>FLUX</span> doesn’t understand specifics.”</span> Fooocus GitHub discussion #3561, 2024. Accessed: Aug. 21, 2026. [Online]. Available: <a href="https://github.com/lllyasviel/Fooocus/discussions/3561">https://github.com/lllyasviel/Fooocus/discussions/3561</a></div>
 </div>
 <div id="ref-grother2019frvt" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[43] </div><div class="csl-right-inline">P. Grother, M. Ngan, and K. Hanaoka, <span>“<span>Face Recognition Vendor Test</span> (<span>FRVT</span>) part 3: Demographic effects,”</span> <span>National Institute of Standards and Technology</span>, NISTIR 8280, 2019. doi: <a href="https://doi.org/10.6028/NIST.IR.8280">10.6028/NIST.IR.8280</a>.</div>
@@ -3597,7 +3599,7 @@ Figure&nbsp;38: One panel per rank and test set, the three learning rates within
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "FLUX LoRA influencer-likeness research",
+  "headline": "FLUX LoRA Influencer-Likeness Research",
   "datePublished": "2026-08-22",
   "author": { "@type": "Person", "name": "Aja S." }
 }
