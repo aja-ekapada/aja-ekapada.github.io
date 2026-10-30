@@ -18,7 +18,27 @@
 <width>96</width>
 </image>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Thu, 22 Oct 2026 10:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 29 Oct 2026 10:00:00 GMT</lastBuildDate>
+<item>
+  <title>Rectified Flow and Optimal Transport: Straight Paths from Noise to Data</title>
+  <dc:creator>Aja S.</dc:creator>
+  <link>https://aja-ekapada.github.io/continuous-time-generative-models/05-rectified-flow-optimal-transport/</link>
+  <description><![CDATA[ Rectified flow, reflow, optimal transport and Schrödinger bridges, and diffusion as one probability path of flow matching, built from first principles. ]]></description>
+  <category>diffusion models</category>
+  <category>flow matching</category>
+  <category>rectified flow</category>
+  <category>stochastic interpolants</category>
+  <category>optimal transport</category>
+  <category>Monge-Ampère equation</category>
+  <category>Schrödinger bridges</category>
+  <category>Sinkhorn algorithm</category>
+  <category>probability-flow ODE</category>
+  <category>continuity equation</category>
+  <category>Tweedie&#39;s formula</category>
+  <guid>https://aja-ekapada.github.io/continuous-time-generative-models/05-rectified-flow-optimal-transport/</guid>
+  <pubDate>Thu, 29 Oct 2026 10:00:00 GMT</pubDate>
+  <media:content url="https://aja-ekapada.github.io/continuous-time-generative-models/05-rectified-flow-optimal-transport/share.png" medium="image" type="image/png" height="76" width="144"/>
+</item>
 <item>
   <title>Flow-Based Generative Models: When Probability Flows Like a Fluid</title>
   <dc:creator>Aja S.</dc:creator>

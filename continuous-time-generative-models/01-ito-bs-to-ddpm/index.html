@@ -594,6 +594,11 @@ window.Quarto = {
 <td><span class="listing-date">Oct 22, 2026</span></td>
 <td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
 </tr>
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-order">Part 5</span></td>
+<td><span class="listing-date">Oct 29, 2026</span></td>
+<td><a href="../05-rectified-flow-optimal-transport/index.html" class="title listing-title">Rectified Flow and Optimal Transport: Straight Paths from Noise to Data</a></td>
+</tr>
 </tbody>
 </table>
 
@@ -1749,7 +1754,7 @@ p_\theta\big(x^{(1)}, \ldots, x^{(n)}\big) = \prod_{i=1}^{n} p_\theta\big(x^{(i)
 <p><span id="eq-w2-distance"><span class="math display">
 \boxed{W_2^2(p, q) = \inf_{\gamma}\ \mathbb{E}_{(X, Y) \sim \gamma} \lVert X - Y \rVert^2}
 \tag{32}</span></span></p>
-<p>where the infimum runs over the <strong>couplings</strong> <span class="math inline">\gamma</span> of <span class="math inline">p</span> and <span class="math inline">q</span> <span class="citation" data-cites="kantorovich1942translocation"><a href="#ref-kantorovich1942translocation" role="doc-biblioref">[24]</a></span>, the joint distributions of pairs <span class="math inline">(X, Y)</span> with <span class="math inline">X \sim p</span> and <span class="math inline">Y \sim q</span>. Unlike the KL divergence, which is infinite for two distributions on disjoint sets, it grows with how far apart the two distributions lie. P5:§3.1 develops these distances.</p>
+<p>where the infimum runs over the <strong>couplings</strong> <span class="math inline">\gamma</span> of <span class="math inline">p</span> and <span class="math inline">q</span> <span class="citation" data-cites="kantorovich1942translocation"><a href="#ref-kantorovich1942translocation" role="doc-biblioref">[24]</a></span>, the joint distributions of pairs <span class="math inline">(X, Y)</span> with <span class="math inline">X \sim p</span> and <span class="math inline">Y \sim q</span>. Unlike the KL divergence, which is infinite for two distributions on disjoint sets, it grows with how far apart the two distributions lie. <a href="../05-rectified-flow-optimal-transport/index.html#sec-optimal-transport">P5:§3.1</a> develops these distances.</p>
 <section id="sec-divergence-to-loss" class="level4" data-number="4.1.2.1">
 <h4 data-number="4.1.2.1" class="anchored" data-anchor-id="sec-divergence-to-loss"><span class="header-section-number">4.1.2.1</span> From divergence to loss</h4>
 <p>The problem of <a href="#eq-generative-learning" class="quarto-xref">Eq.&nbsp;28</a> cannot be solved as stated, since <span class="math inline">p_0</span> is unknown and the divergence cannot be evaluated. Training instead minimizes a <strong>loss</strong>, a function of <span class="math inline">\theta</span> computable from <span class="math inline">\mathcal{D}</span> that equals a divergence up to a constant independent of <span class="math inline">\theta</span>, or bounds it from above. Minimizing the loss then minimizes the divergence, or an upper bound on it. The core losses of this series:</p>

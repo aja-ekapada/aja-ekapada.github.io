@@ -479,6 +479,11 @@ window.Quarto = {
 <td><span class="listing-date">Oct 22, 2026</span></td>
 <td><a href="../04-flow-matching/index.html" class="title listing-title">Flow-Based Generative Models: When Probability Flows Like a Fluid</a></td>
 </tr>
+<tr class="odd" onclick="href = this.querySelector('a').getAttribute('href'); if (href) { window.location=href ; return false; }">
+<td><span class="listing-order">Part 5</span></td>
+<td><span class="listing-date">Oct 29, 2026</span></td>
+<td><a href="../05-rectified-flow-optimal-transport/index.html" class="title listing-title">Rectified Flow and Optimal Transport: Straight Paths from Noise to Data</a></td>
+</tr>
 </tbody>
 </table>
 
@@ -995,7 +1000,7 @@ f_{\mathrm{lin}}(t) = -\tfrac12 \beta(t), \qquad g(t)^2 = \beta(t)\big(1 - \bar\
 \tag{16}</span></span></p>
 <p>This is the sub-VP perturbation kernel. <span class="math inline">\square</span></p>
 <p>Sub-VP shares the VP mean, and its variance is the VP variance squared. For <span class="math inline">\bar\alpha(t) \in (0, 1)</span>, <span class="math inline">(1 - \bar\alpha)^2 &lt; 1 - \bar\alpha</span>, so the sub-VP variance lies strictly below the VP variance at each intermediate time. The two meet at both ends: at <span class="math inline">0</span> when <span class="math inline">t = 0</span>, and at <span class="math inline">1</span> as <span class="math inline">\bar\alpha \to 0</span>. Sub-VP therefore has the same initial condition, the data, and reaches the same prior <span class="math inline">\mathcal{N}(0, I)</span> with less noise in between.</p>
-<p>This is the bound the name captures. In Song et al.’s experiments on CIFAR-10, a dataset of <span class="math inline">32 \times 32</span> colour images, it gives higher likelihoods than VP for each model compared <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. The likelihood here is the density the trained model assigns to held-out test images, computed exactly through the instantaneous change of variables (<a href="../04-flow-matching/index.html#sec-exact-likelihood">P4:§3.4</a>), which P5:§4.2 applies to diffusion models.</p>
+<p>This is the bound the name captures. In Song et al.’s experiments on CIFAR-10, a dataset of <span class="math inline">32 \times 32</span> colour images, it gives higher likelihoods than VP for each model compared <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>. The likelihood here is the density the trained model assigns to held-out test images, computed exactly through the instantaneous change of variables (<a href="../04-flow-matching/index.html#sec-exact-likelihood">P4:§3.4</a>), which <a href="../05-rectified-flow-optimal-transport/index.html#sec-pf-likelihood">P5:§4.2</a> applies to diffusion models.</p>
 <p>On CIFAR-10 sub-VP reached <span class="math inline">2.99</span> bits per dimension <span class="citation" data-cites="song2021scoresde"><a href="#ref-song2021scoresde" role="doc-biblioref">[1]</a></span>, the negative base-2 log-likelihood of a test image divided by its number of pixel values, so lower is better. The integer pixel values were first dequantized, by adding uniform noise, so that the data has a density.</p>
 </section>
 </section>

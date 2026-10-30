@@ -13,7 +13,8 @@
       "/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html",
       "/continuous-time-generative-models/02-variational-vs-score-matching/index.html",
       "/continuous-time-generative-models/03-the-unification/index.html",
-      "/continuous-time-generative-models/04-flow-matching/index.html"
+      "/continuous-time-generative-models/04-flow-matching/index.html",
+      "/continuous-time-generative-models/05-rectified-flow-optimal-transport/index.html"
     ]
   },
   {
@@ -25,7 +26,8 @@
       "/continuous-time-generative-models/01-ito-bs-to-ddpm/index.html",
       "/continuous-time-generative-models/02-variational-vs-score-matching/index.html",
       "/continuous-time-generative-models/03-the-unification/index.html",
-      "/continuous-time-generative-models/04-flow-matching/index.html"
+      "/continuous-time-generative-models/04-flow-matching/index.html",
+      "/continuous-time-generative-models/05-rectified-flow-optimal-transport/index.html"
     ]
   }
 ]
