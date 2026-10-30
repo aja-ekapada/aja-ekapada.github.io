@@ -232,16 +232,21 @@ div.quarto-post.series-card .listing-title .listing-date {
    so it must be styled identically site-wide. These rules mirror the landing
    page's inline <style> for that id (header hidden, tight rows, theme link
    colours), plus a highlight for the current post. */
-#listing-posts-mini table { margin-bottom: 0; }
-#listing-posts-mini table thead { display: none; }
-#listing-posts-mini table td { padding-top: 0.15rem; padding-bottom: 0.15rem; border: 0; }
-#listing-posts-mini { margin: 0.25rem 0 0.5rem; }
-#listing-posts-mini a { color: var(--bs-body-color, #373a3c); text-decoration: none; }
-#listing-posts-mini a:hover { color: var(--bs-link-color, #2761e3); text-decoration: underline; }
-#listing-posts-mini .listing-title a,
-#listing-posts-mini .listing-title { font-weight: 500; }
-#listing-posts-mini .listing-date,
-#listing-posts-mini .listing-date a { color: var(--bs-secondary-color, #6c757d); white-space: nowrap; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) table { margin-bottom: 0; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) table thead { display: none; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) table td { padding-top: 0.15rem; padding-bottom: 0.15rem; border: 0; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) { margin: 0.25rem 0 0.5rem; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) a { color: var(--bs-body-color, #373a3c); text-decoration: none; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) a:hover { color: var(--bs-link-color, #2761e3); text-decoration: underline; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-title a,
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-title { font-weight: 500; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-date,
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-date a { color: var(--bs-secondary-color, #6c757d); white-space: nowrap; }
+/* "Part N" column before the date (user request 2026-10-28). The per-post table (.series-list) writes the text
+   itself; the landing pages' Quarto listing shows the post's `order:` number, so the word is added here. */
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-order,
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-order a { color: var(--bs-secondary-color, #6c757d); white-space: nowrap; }
+:is(#listing-posts-mini:not(.series-list), #listing-posts-mini-ivg) .listing-order::before { content: "Part "; }
 
 /* Lead-in label above the embedded listing (per-post only). */
 .series-list-head {

@@ -8,7 +8,7 @@
 <title>Continuous-Time Generative Models – Aja S.</title>
 <link>https://aja-ekapada.github.io/continuous-time-generative-models/</link>
 <atom:link href="https://aja-ekapada.github.io/continuous-time-generative-models/index.xml" rel="self" type="application/rss+xml"/>
-<description>Diffusion and flow models from first principles: Itô calculus, the ELBO and score matching, SDEs, flow matching, Langevin sampling, guidance and EDM.</description>
+<description>Diffusion and flow models from first principles: Itô calculus, the ELBO and score matching, SDEs, flow matching, Langevin sampling and EDM.</description>
 <language>en</language>
 <image>
 <url>https://aja-ekapada.github.io/favicon.png</url>
@@ -44,7 +44,6 @@
   <category>linear SDEs</category>
   <category>Fokker-Planck equation</category>
   <category>Girsanov&#39;s theorem</category>
-  <category>risk-neutral pricing</category>
   <category>diffusion models</category>
   <category>VP-SDE</category>
   <category>VE-SDE</category>

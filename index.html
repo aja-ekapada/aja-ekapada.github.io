@@ -131,7 +131,7 @@ div.csl-indent {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-order','listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
@@ -166,6 +166,62 @@ div.csl-indent {
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-posts-full'] = new List('listing-posts-full', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts-mini-ivg .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-order','listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts-mini-ivg'] = new List('listing-posts-mini-ivg', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts-full-ivg .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-subtitle','listing-categories',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts-full-ivg'] = new List('listing-posts-full-ivg', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -358,21 +414,21 @@ section.level2 > h2:has(+ p > .section-sub) { border-bottom: none; padding-botto
 section.level2 > h2 + p:has(> .section-sub) { border-bottom: 1px solid #6f7173; padding-bottom: 0.6rem; margin-bottom: 1rem; }
 .section-sub { color: var(--bs-secondary-color, #6c757d); font-size: 1.03rem; display: block; margin-bottom: 0; }
 .section-more { font-size: 0.95rem; }
-/* Compact "Posts" quick-list: drop the table header, tighten rows (copied from the CTGM page). */
-#listing-posts-mini table { margin-bottom: 0; }
-#listing-posts-mini table thead { display: none; }
-#listing-posts-mini table td { padding-top: 0.15rem; padding-bottom: 0.15rem; border: 0; }
-#listing-posts-mini { margin: 0.25rem 0 0.5rem; }
-/* Theme-matched colours for the quick-list (instead of the default bright link-blue) */
-#listing-posts-mini a { color: var(--bs-body-color, #373a3c); text-decoration: none; }
-#listing-posts-mini a:hover { color: var(--bs-link-color, #2761e3); text-decoration: underline; }
-#listing-posts-mini .listing-title a { font-weight: 500; }
-#listing-posts-mini .listing-date, #listing-posts-mini .listing-date a { color: var(--bs-secondary-color, #6c757d); white-space: nowrap; }
+/* Compact "Posts" quick-lists of the two series: drop the table header, tighten rows (copied from the CTGM page). */
+:is(#listing-posts-mini, #listing-posts-mini-ivg) table { margin-bottom: 0; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) table thead { display: none; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) table td { padding-top: 0.15rem; padding-bottom: 0.15rem; border: 0; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) { margin: 0.25rem 0 0.5rem; }
+/* Theme-matched colours for the quick-lists (instead of the default bright link-blue) */
+:is(#listing-posts-mini, #listing-posts-mini-ivg) a { color: var(--bs-body-color, #373a3c); text-decoration: none; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) a:hover { color: var(--bs-link-color, #2761e3); text-decoration: underline; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-title a { font-weight: 500; }
+:is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-date, :is(#listing-posts-mini, #listing-posts-mini-ivg) .listing-date a { color: var(--bs-secondary-color, #6c757d); white-space: nowrap; }
 </style>
 <section id="research" class="level2">
 <h2 class="anchored" data-anchor-id="research">Research</h2>
 <p><span class="section-sub">Applied generative AI research in model fine-tuning, controlled image and video generation, and quantitative evaluation.</span></p>
-<p>These applied research studies tackle concrete machine learning problems, from identity-preserving fine-tuning and controlled image generation to scalable clustering of large malware corpora. Each study (except clustering) follows an end-to-end workflow spanning problem formulation, experimental design, model adaptation, hyperparameter optimization, quantitative evaluation, and error analysis.</p>
+<p>These applied research studies tackle concrete machine-learning problems, from identity-preserving fine-tuning and controlled image generation to scalable clustering of large malware corpora. Each study (except clustering) follows an end-to-end workflow spanning problem formulation, experimental design, model adaptation, hyperparameter optimization, quantitative evaluation, and error analysis.</p>
 <p>The work applies foundation models such as FLUX.1-dev using parameter-efficient fine-tuning with low-rank adaptation (LoRA) and controlled generation with ControlNet. Experiments are evaluated against explicit metrics, including face similarity and image-text similarity. Findings are grounded in systematic experiments and reproducible evaluation, with documented trade-offs, limitations, and failure modes.</p>
 <div id="listing-research-posts" class="quarto-listing quarto-listing-container-custom">
 <div class="list quarto-listing-default">
@@ -464,6 +520,10 @@ section.level2 > h2 + p:has(> .section-sub) { border-bottom: 1px solid #6f7173; 
 <tr>
 
 <th>
+order
+</th>
+
+<th>
 Date
 </th>
 
@@ -475,8 +535,11 @@ Title
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793090765141" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="181" data-listing-word-count-sort="36041" data-listing-title-sort="Itô's Lemma: From Black-Scholes to Diffusion Models" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793336760265" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="181" data-listing-word-count-sort="36120" data-listing-title-sort="Itô's Lemma: From Black-Scholes to Diffusion Models" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-order">1</span>
+</td>
 <td>
 <span class="listing-date">Aug 10, 2026</span>
 </td>
@@ -486,8 +549,11 @@ Title
 
 </tr>
 
-<tr data-index="1" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793090765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="170" data-listing-word-count-sort="33829" data-listing-title-sort="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793336760269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="187" data-listing-word-count-sort="37254" data-listing-title-sort="The Variational Bound (ELBO) and Score Matching: Two Routes to Denoising Diffusion" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-order">2</span>
+</td>
 <td>
 <span class="listing-date">Sep 10, 2026</span>
 </td>
@@ -497,8 +563,11 @@ Title
 
 </tr>
 
-<tr data-index="2" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDcmlzay1uZXV0cmFsJTIwcHJpY2luZyUyQ2RpZmZ1c2lvbiUyMG1vZGVscyUyQ1ZQLVNERSUyQ1ZFLVNERSUyQ3JldmVyc2UtdGltZSUyMFNERSUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREUlMkNzY29yZSUyMG1hdGNoaW5nJTJDZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZyUyQ3ByZWRpY3Rvci1jb3JyZWN0b3IlMjBzYW1wbGluZw==" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793090765144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="143" data-listing-word-count-sort="28435" data-listing-title-sort="SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDVlAtU0RFJTJDVkUtU0RFJTJDcmV2ZXJzZS10aW1lJTIwU0RFJTJDcHJvYmFiaWxpdHktZmxvdyUyME9ERSUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDcHJlZGljdG9yLWNvcnJlY3RvciUyMHNhbXBsaW5n" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793336760269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="174" data-listing-word-count-sort="34717" data-listing-title-sort="SDE-Based Generative Models: The Unification of the Variational Bound and Score Matching" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-order">3</span>
+</td>
 <td>
 <span class="listing-date">Oct 16, 2026</span>
 </td>
@@ -508,8 +577,11 @@ Title
 
 </tr>
 
-<tr data-index="3" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793090765146" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="149" data-listing-word-count-sort="29682" data-listing-title-sort="Flow-Based Generative Models: When Probability Flows Like a Fluid" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793336760274" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="179" data-listing-word-count-sort="35734" data-listing-title-sort="Flow-Based Generative Models: When Probability Flows Like a Fluid" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-order">4</span>
+</td>
 <td>
 <span class="listing-date">Oct 22, 2026</span>
 </td>
@@ -532,7 +604,7 @@ Title
 <p>Now that you have the full context, dive in. Each post is math-first and derives its results in full, building on the posts before it. They are listed below in reading order, starting with post 1, each with a summary of what it covers.</p>
 <div id="listing-posts-full" class="quarto-listing quarto-listing-container-custom">
 <div class="list quarto-listing-default">
-<div class="quarto-post series-card" data-index="0" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793090765141" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="181" data-listing-word-count-sort="36041">
+<div class="quarto-post series-card" data-index="0" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDQnJvd25pYW4lMjBtb3Rpb24lMkNJdCVDMyVCNCdzJTIwbGVtbWElMkNGb2trZXItUGxhbmNrJTIwZXF1YXRpb24lMkNCbGFjay1TY2hvbGVzJTJDb3B0aW9ucyUyMHByaWNpbmclMkNkaWZmdXNpb24lMjBtb2RlbHMlMkN2YXJpYXRpb25hbCUyMGF1dG9lbmNvZGVycyUyQ25vcm1hbGl6aW5nJTIwZmxvd3MlMkNlbmVyZ3ktYmFzZWQlMjBtb2RlbHMlMkNERFBNJTJDVlAtU0RF" data-listing-date-sort="1786356000000" data-listing-file-modified-sort="1793336760265" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="181" data-listing-word-count-sort="36120">
 <div class="body">
 <div class="card-head">
 <h3 class="no-anchor listing-title">
@@ -576,7 +648,7 @@ Title
 </div>
 </div>
 </div>
-<div class="quarto-post series-card" data-index="1" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793090765143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="170" data-listing-word-count-sort="33829">
+<div class="quarto-post series-card" data-index="1" data-categories="ZGlmZnVzaW9uJTIwbW9kZWxzJTJDdmFyaWF0aW9uYWwlMjBhdXRvZW5jb2RlcnMlMkNFTEJPJTJDRERQTSUyQ2VuZXJneS1iYXNlZCUyMG1vZGVscyUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDVHdlZWRpZSdzJTIwZm9ybXVsYSUyQ0xhbmdldmluJTIwZHluYW1pY3MlMkNOQ1NO" data-listing-date-sort="1789034400000" data-listing-file-modified-sort="1793336760269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="187" data-listing-word-count-sort="37254">
 <div class="body">
 <div class="card-head">
 <h3 class="no-anchor listing-title">
@@ -612,11 +684,11 @@ Title
 <div class="listing-blurb">
 <p>This post focuses entirely on generative AI, tracing the two main lineages of diffusion modeling. It begins with the variational route, from latent-variable models to variational autoencoders (VAEs), the evidence lower bound (ELBO), variational inference, and hierarchical VAEs. It then shows how DDPM can be understood as a hierarchical VAE with a fixed encoder, trained with the same variational bound, which reduces to a noise-prediction loss, and sampled through ancestral sampling.</p>
 <p>The second half develops the score-based route from first principles. Energy-based models leave a normalizing constant that cannot be computed, and the score does not depend on it. Explicit and implicit score matching with Langevin sampling work in principle but meet four pitfalls on real data. Denoising score matching resolves them and cuts the cost per example from <span class="math inline">O(d)</span> to <span class="math inline">O(1)</span>. Vincent’s theorem shows it has the same minimizer as score matching on the perturbed data, and Tweedie’s formula ties that minimizer to the posterior mean.</p>
-<p>A single noise level still forces a dilemma. Song and Ermon’s score matching with Langevin dynamics resolves it by perturbing the data at a finite sequence of noise levels, training one noise-conditional score network across them, and sampling with annealed Langevin dynamics. The post closes by weighing what the reformulation from densities to scores bought and what it cost, leaving the unification of the two lineages to post 3.</p>
+<p>A single noise level still forces a dilemma. Song and Ermon’s score matching with Langevin dynamics resolves it by perturbing the data at a finite sequence of noise levels, training one noise-conditional score network across them, and sampling with annealed Langevin dynamics. The post closes by weighing what the reformulation from densities to scores gained and what it cost, leaving the unification of the two lineages to post 3.</p>
 </div>
 </div>
 </div>
-<div class="quarto-post series-card" data-index="2" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDcmlzay1uZXV0cmFsJTIwcHJpY2luZyUyQ2RpZmZ1c2lvbiUyMG1vZGVscyUyQ1ZQLVNERSUyQ1ZFLVNERSUyQ3JldmVyc2UtdGltZSUyMFNERSUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREUlMkNzY29yZSUyMG1hdGNoaW5nJTJDZGVub2lzaW5nJTIwc2NvcmUlMjBtYXRjaGluZyUyQ3ByZWRpY3Rvci1jb3JyZWN0b3IlMjBzYW1wbGluZw==" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793090765144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="143" data-listing-word-count-sort="28435">
+<div class="quarto-post series-card" data-index="2" data-categories="c3RvY2hhc3RpYyUyMGNhbGN1bHVzJTJDbGluZWFyJTIwU0RFcyUyQ0Zva2tlci1QbGFuY2slMjBlcXVhdGlvbiUyQ0dpcnNhbm92J3MlMjB0aGVvcmVtJTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDVlAtU0RFJTJDVkUtU0RFJTJDcmV2ZXJzZS10aW1lJTIwU0RFJTJDcHJvYmFiaWxpdHktZmxvdyUyME9ERSUyQ3Njb3JlJTIwbWF0Y2hpbmclMkNkZW5vaXNpbmclMjBzY29yZSUyMG1hdGNoaW5nJTJDcHJlZGljdG9yLWNvcnJlY3RvciUyMHNhbXBsaW5n" data-listing-date-sort="1792144800000" data-listing-file-modified-sort="1793336760269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="174" data-listing-word-count-sort="34717">
 <div class="body">
 <div class="card-head">
 <h3 class="no-anchor listing-title">
@@ -634,8 +706,6 @@ Title
 <div class="listing-category">Fokker-Planck equation</div>
 
 <div class="listing-category">Girsanov's theorem</div>
-
-<div class="listing-category">risk-neutral pricing</div>
 
 <div class="listing-category">diffusion models</div>
 
@@ -657,12 +727,12 @@ Title
 </div>
 <div class="listing-blurb">
 <p>This post brings the two lineages together in continuous time, showing that both are instances of one family of linear SDEs. It presents the Variance-Exploding (VE) and Variance-Preserving (VP) SDEs as its two variance regimes, one with no drift and growing variance, the other with mean-reverting drift and bounded variance.</p>
-<p>Anderson’s theorem then provides the reverse-time SDE, whose one unknown term is the score and whose solution reproduces the forward process in reverse. The post derives this result twice, through the Fokker-Planck equation and through Bayes’ rule, whose reweighting is Girsanov’s change of measure. It then introduces the probability-flow ODE, whose deterministic solution has the same marginals as the solutions of the forward and reverse-time SDEs.</p>
-<p>It shows how denoising score matching learns the score and, with DDPM’s weighting, reduces to DDPM’s noise-prediction loss. It then solves the reverse-time SDE with three samplers. Reverse diffusion sampling and post 2’s ancestral sampling are two discretizations of the same equation, and predictor-corrector sampling adds post 2’s Langevin steps as corrections.</p>
+<p>Anderson’s theorem then provides the reverse-time SDE, whose one unknown term is the score and whose solution reproduces the forward process in reverse. The post derives this result twice, through the Fokker-Planck equation and through Bayes’ rule, whose reweighting is Girsanov’s change of measure, and checks it in closed form for Gaussian data. It then introduces the probability-flow ODE, whose deterministic solution has the same marginals as the solutions of the forward and reverse-time SDEs, and which returns each sample when solved forward and back.</p>
+<p>It shows how denoising score matching learns the score and, with DDPM’s weighting, reduces to DDPM’s noise-prediction loss, while with the likelihood weighting it is, in continuous time, the part of the ELBO that sums over the denoising steps. It then solves the reverse-time SDE with three samplers. Reverse diffusion sampling and post 2’s ancestral sampling are two discretizations of the same equation, and predictor-corrector sampling adds post 2’s Langevin steps as corrections.</p>
 </div>
 </div>
 </div>
-<div class="quarto-post series-card" data-index="3" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793090765146" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="149" data-listing-word-count-sort="29682">
+<div class="quarto-post series-card" data-index="3" data-categories="Zmx1aWQlMjBtZWNoYW5pY3MlMkNjb250aW51aXR5JTIwZXF1YXRpb24lMkNvcHRpbWFsJTIwdHJhbnNwb3J0JTJDZGlmZnVzaW9uJTIwbW9kZWxzJTJDbm9ybWFsaXppbmclMjBmbG93cyUyQ2Zsb3clMjBtb2RlbHMlMkNmbG93JTIwbWF0Y2hpbmclMkNjb25kaXRpb25hbCUyMGZsb3clMjBtYXRjaGluZyUyQ3Byb2JhYmlsaXR5LWZsb3clMjBPREU=" data-listing-date-sort="1792663200000" data-listing-file-modified-sort="1793336760274" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="179" data-listing-word-count-sort="35734">
 <div class="body">
 <div class="card-head">
 <h3 class="no-anchor listing-title">
@@ -704,6 +774,29 @@ Title
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 <p><a href="continuous-time-generative-models/index.html" class="section-more">Open the Continuous-Time Generative Models page →</a></p>
+<!-- While the series is a draft, _overview-gate.lua hides this section: its landing page carries `draft: true`. -->
+<div class="d-none">
+<div id="listing-posts-mini-ivg" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table table-hover caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">order</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+</tr>
+</thead>
+<tbody class="list">
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<div id="listing-posts-full-ivg" class="quarto-listing quarto-listing-container-custom">
+<div class="list quarto-listing-default">
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
 
 
 
